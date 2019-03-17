@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        #id {
+            width: 100px;
+            height: 100px;
+            background-color: #0000FF;
+            padding: 20px;
+            border:10px solid red;
+            margin-left: 100px;
+        }
+        .shoebox{
+            width: 200px;
+            height: 200px;
+            background-color: #add8e6;
+            padding: 20px;
+            margin: 100px;
+        }
+        .shoe{
+            width: 200px;
+            height: 200px;
+            background-color:royalblue;
+        }
+        .clazz{
+            width: 200px;
+            height: 200px;
+            background-color:royalblue;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    盒子模型：<br>
+        1，盒子模型的内容包括：content、padding、border、margin。<br>
+        2，盒子模型分类：<br>
+            ----标准盒：正常盒模型、怪异盒模型<br>
+            ----伸缩盒：新、旧<br>
+            ----内边距：padding<br>
+            ----内边距在content（内容）外，边框内<br>
+        内边距属性：<br>
+            ----padding：设置所有边距<br>
+            ----padding-bottom：设置底边距<br>
+            ----padding-left/right：设置左/右边距<br>
+            ----padding-top：设置上边距<br>
+        外边距属性：<br>
+            ----margin：设置所有边距<br>
+            ----margin-bottom:设置底边距<br>
+            ----margin-left：设置左边距<br>
+            ----margin-right:设置右边距<br>
+            ----margin-top：设置上边距<br>
+              1，围绕在内容边框的区域就是外边距，外边距默认为透明区域，<br>
+              2，外边距接收任何长度单位，百分数指<br>
+              3，外边距合并：取最大值。
+        边框：border<br>
+         --属性：<br>
+            ----border-width：边框宽度<br>
+            ----border-style：边框样式<br>
+            ----border-color：边框颜色<br>
+            ----border-radius：圆角边框<br>
+            ----box-shadow：设置对象阴影<br>
+            ----border-image：边框背景图片<br>
+--------------------------------------------------------------<br>
+    <div id="id">哈哈</div>
+
+
+    <div class="shoebox">
+      <div class="shoe">
+      </div>
+    </div>
+    <div class="clazz">哈哈</div>
+</body>
+</html>

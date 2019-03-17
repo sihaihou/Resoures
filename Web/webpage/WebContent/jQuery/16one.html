@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#btnOne").one("click",function(){
+                alert("点击了一次性按钮");
+            });
+
+            $("#btnOne2").one("click",function(){
+                alert("点击了自定义一次性按钮");
+                $(this).unbind("click");
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="button" value="一次性按钮" id="btnOne">
+    <input type="button" value="自定义一次性按钮" id="btnOne2">
+</body>
+</html>

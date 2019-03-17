@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.reyco.core.dao.VipDao">
+	<!-- 缓存类配置-->
+  	<cache /> 
+  	
+	<!-- 分页列表 -->
+	<select id="searchPage" resultType="Vip" useCache="true">
+		select id,name,lowVip,higVip,`desc`,gmtCreate,gmtModified from vip 
+		<trim  prefix="where"  prefixOverrides="and|or">
+			<if test="name != null and name != ''">
+				and name = #{name}
+			</if>
+		</trim>
+		order by gmtModified desc
+	</select>
+	
+	<!-- 类别下拉条 -->
+	<select id="searchList" resultType="Vip" useCache="true">
+		select id,name from vip order by id desc limit #{size}
+	</select>
+	
+	<!-- 新增类别 -->
+	<insert id="insertVip">
+		insert into vip 
+			<trim prefix="(" suffix=")" suffixOverrides=",">
+				<if test="name != null and name != ''">
+					name,
+				</if>
+				<if test="lowVip != null">
+					lowVip,
+				</if>
+				<if test="higVip != null">
+					higVip,
+				</if>
+				<if test="desc != null and desc != ''">
+					`desc`,
+				</if>
+				<if test="status != null">
+					status,
+				</if>
+				gmtCreate,gmtModified
+			</trim>
+			<trim prefix="values(" suffix=")" suffixOverrides=",">
+				<if test="name != null and name != ''">
+					#{name},
+				</if>
+				<if test="lowVip != null">
+					#{lowVip},
+				</if>
+				<if test="higVip != null">
+					#{higVip},
+				</if>
+				<if test="desc != null and desc != ''">
+					#{desc},
+				</if>
+				<if test="status != null">
+					#{status},
+				</if>
+				now(),now()
+			</trim>
+			<selectKey resultType="int" keyProperty="id" order="AFTER">
+				select @@identity
+			</selectKey>
+	</insert>
+	
+	
+	<!-- 根据id查询 -->
+	<select id="searchById" resultType="Vip" useCache="true">
+		select id,name,lowVip,higVip,`desc` from vip where id = #{id}
+	</select>
+	
+	<!-- 编辑 -->
+	<update id="updateVip">
+		update vip 
+			<set>
+				<if test="name != null and name != ''">
+					name = #{name},
+				</if>
+				<if test="lowVip != null">
+					lowVip = #{lowVip},
+				</if>
+				<if test="higVip != null">
+					higVip = #{higVip},
+				</if>
+				<if test="status != null">
+					status = #{status},
+				</if>
+				<if test="desc != null and desc !=''">
+					`desc` = #{desc},
+				</if>
+				gmtModified=now()
+			</set>
+			where id = #{id}
+	</update>
+	
+	
+</mapper>

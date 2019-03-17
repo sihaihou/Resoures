@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--form表单;
+            校验状态：
+            控件尺寸：
+            辅助文本:help-block
+        -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!--校验状态:
+                使用时，添加 .has-warning、.has-error 或 .has-success 类到这些控件的父元素即可
+        -->
+        <form method="post" class="form-horizontal">
+            <div class="form-group has-warning">
+                <label class="control-label">hello</label>
+                <input type="text" class="form-control">
+            </div>
+        </form>
+        <!--添加额外的图标:表单和内联表单设置可选的图标：
+                只需设置相应的 .has-feedback 类并添加正确的图标即可。
+                反馈图标（feedback icon）只能使用在文本输入框 <input class="form-control"> 元素上。
+        -->
+        <form class="form-horizontal">
+            <div class="form-group has-success has-feedback">
+                <label class="control-label" >Input group with success</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">@</span>
+                        <input type="text" class="form-control" aria-describedby="inputGroupSuccess2Status">
+                    </div>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+            </div>
+        </form>
+        <!--控件尺寸：
+                通过 .input-lg 类似的类可以为控件设置高度，通过 .col-lg-* 类似的类可以为控件设置宽度。
+                input-lg：大  input-sm:小
+        水平排列的表单组的尺寸：
+                通过添加 .form-group-lg 或 .form-group-sm 类，为 .form-horizontal 包裹的 label 元素和表单控件快速设置尺寸。
+        调整列（column）尺寸：
+                用栅格系统中的列（column）包裹输入框或其任何父元素，都可很容易的为其设置宽度。
+        -->
+        <form method="post" class="form-horizontal">
+            <div class="form-group ">
+                <input type="text" class="form-control input-lg" placeholder="大">
+                <input type="text" class="form-control" placeholder="默认">
+                <input type="text" class="form-control input-sm" placeholder="小">
+            </div>
+        </form>
+        <form class="form-horizontal">
+            <div class="form-group form-group-lg">
+                <label class="col-sm-2 control-label" for="formGroupInputLarge">Large label</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" id="formGroupInputLarge" placeholder="Large input">
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" placeholder=".col-xs-3">
+            </div>
+        </form>
+        <P>===========================================================================================================</P>
+        <!--辅助文本:help-block-->
+        <form class="form-horizontal">
+            <label class="sr-only">hello</label>
+            <input type="text" class="form-control" aria-describedby="helpBlock">
+            <span class="help-block">这是一个提示文本</span>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+/*轮播图片*/
+body{
+	background-color:black;
+}
+.teachers_banner{
+    width:100%;
+    height:575px;
+    background: url(../images/teachers_banner.jpg) no-repeat center top;
+    background-size: cover;
+     position: relative;
+    overflow: hidden;
+}
+.teachers_b{
+  position:relative;
+  margin-top:130px;
+}
+#slide {
+    margin: 0 auto;
+    width: 760px;
+    height: 330px;
+    position: relative;
+  }
+
+#slide li {
+    position: absolute;
+    width:760px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -webkit-align-items: flex-start;
+    background:#fff;
+    overflow:hidden;
+    box-shadow: 0 0 20px #1d374d;
+}
+
+#slide li img {
+    width: 100%;
+    height: 100%;
+}
+.slide_left{
+ /* width:240px;*/
+}
+.slide_right{
+ /* width:440px;*/
+  padding: 40px;
+  -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    min-width: 0;
+}
+.slide_right h3{
+font: 400 30px/18px "Microsoft Yahei";
+color:#222222;
+}
+.slide_right h3 span{
+  display:inline-block;
+  margin-left:10px;
+  font: 400 14px/36px "Microsoft Yahei";
+color:#555555;
+}
+.slide_right p{
+  padding:20px 0 30px;
+  color:#555555;
+    font: 400 14px/24px "Microsoft Yahei";
+    border-bottom: 1px solid #dbdbdb;
+}
+.slide_right dl{
+  padding-top:30px;
+}
+.slide_right dd{
+  float: left;
+  width:33.3%;
+   color:#777;
+    font: 400 12px/24px "Microsoft Yahei";
+
+}
+.slide_right dd h3{
+color:#ff9000;
+margin-bottom:20px;
+}
+.arrow {
+   /* display: none;*/
+}
+
+.arrow .prev,
+.arrow .next {
+    position: absolute;
+    width: 64px;
+    top: 38%;
+    z-index: 9;
+    font: 700 96px 'simsun';
+    opacity: 0.3;
+    color: #fff;
+    cursor: pointer;
+}
+
+.arrow .prev {
+    left: -220px;
+}
+
+.arrow .next {
+    right: -220px;
+}
+
+.arrow .prev:hover,
+.arrow .next:hover {
+    color: #00a0e9;
+    opacity: .7;
+}

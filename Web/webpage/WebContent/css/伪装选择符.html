@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul li a{
+            font-size: 30px
+            font-style:宋体;
+        }
+        ul li a:link{   /*  元素：link  ：设置超链接a在未被访问前的样式*/
+            color:black;;
+        }
+        ul li a:visited{   /*  元素：visited  ： 设置超链接a在链接地址被访问过的样式*/
+            color:black;
+        }
+        ul li a:hover{	/*  元素：hover  ：设置元素在鼠标悬停时的样式 */
+            color:red;
+            font-family: inherit;
+        }
+        ul li a:active{	/*  元素：active  ：设置元素在被用户激活时的样式*/
+            color:orangered;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>
+        <a href="a">伪装选择符</a>
+        <img src="pe.png" width="100px">
+    </li>
+</ul>
+</body>
+</html>
+/* 注意：
+《伪装选择符》
+a:hover必须位于a:link之后，a:active必须位于a:hover之后；---
+执行顺序：a:link-->a:visited-->a:hover-->a:active
+*/

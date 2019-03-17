@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>jQuery 执行顺序</title>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+
+        /*
+        *   当页面中所有的元素都加载完成后，才会执行启动jQuery的代码，也就是说在$(function(){})这个里面写代码时页面中所有的元素都已经出现了
+        * */
+        //alert(document.getElementById("name").value);  //错误的写法
+        alert(1);
+        $(function(){
+            alert(document.getElementById("name").value);
+            alert("jQuery启动了！");
+
+
+            //获取都Dom对象
+            var v_dom = document.getElementById("name");
+            alert("Dom对象："+v_dom.value);
+            //获取JQuery对象
+            //把DOM对象转化成jQuery对象
+            var v_jQuery = $(v_dom);
+            alert("jQuery对象不能调用dom方法和属性："+v_jQuery.value);//jQuery对象不能调用dom属性
+            alert("jQuery对象："+v_jQuery.val());
+        });
+        alert(2);
+    </script>
+</head>
+<body>
+    <input type="text" value="张三" id="name">
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title> 基础选择器 </title>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <div>
+        <span class="s"></span>
+        <p></p>
+        <label id="id"></label>
+        <ul id="ul"></ul>
+        <li></li>
+        <em></em>
+    </div>
+<script>
+    /*
+    *   Id 是不能重复的，因此页面中有多个元素id相同，那么jQuery只会获取对一次出现的Id作为jQuery对象
+    *   $("div > .s").html("选中div标签内的class为 s 的元素");
+    * */
+    $(function(){
+        $("div *").html("选中所有子标签");   /* html：给标签添加内容 */
+        $(".s").html("类选择器！");
+        $("p").html("标签选择器！");
+        $("#id").html("id选择器！");
+        $("#ul,li,em").html("选中多个选择器！");
+    })
+</script>
+</body>
+</html>

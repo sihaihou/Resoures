@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //Number数据类型:
+        // Number：1,2,1.5,,NaN,Infinity
+        var i = 10;
+        alert("i变量的数据类型："+ typeof i);
+        i = NaN;
+        alert("i变量的数据类型："+ typeof i);
+        i = Infinity;
+        alert("i变量的数据类型："+ typeof i);
+
+        //在js中不管是整数函数浮动数，都是number数据类型
+        // 1,什么时候执行结果是NaN类型 ？
+        /* 计算结果应该返回数字，但是最终结果不是数字的时候，结果就是NaN
+        * NaN ： Not a Number:不是有个数，但NaN本身是一种number数据类型。
+        * */
+        var num = "ss"/1;
+        alert("ss/1的数据类型:"+num);
+        //重要函数：isNaN(数据)
+        //isNaN的执行结果是true、false
+        //该函数的作用是用来判断数据是否是一个数，不是一个数是true，是一个数是false
+        //is Not a Number:不是一个数是
+        alert("ss/1不是一个数："+isNaN(num));
+         // 2,什么时候执行结果是Infinity类型 ？
+         //Infinity表示无穷大，除数是 0 的时候，结果一定是Infinity
+        var val = 1/0;
+        alert("1/0的数据类型:"+val);
+
+        //parseInt函数,将非数字转换成number类型的数字，保留整数位
+        //parseFloat函数,将非数字转换成number类型的数字，保留小数
+        //parseInt(数据)
+        var price = "100";
+        price = parseInt(price);
+        alert(price+1);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

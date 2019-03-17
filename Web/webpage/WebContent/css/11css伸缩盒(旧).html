@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .container {
+            width: 600px;
+            height: 600px;
+            background-color: #2dcb70;
+            display:-webkit-box; /* 变成盒子 -moz-box*/
+          /*  -webkit-box-orient: vertical;*//*变成垂直排列*//*
+            -webkit-box-pack: center;*//*垂直居中*//*
+            -webkit-box-align:center;*//*水平居中*/
+            -webkit-box-direction: reverse;/*反转*/
+        }
+        .one{
+            width: 100px;
+            height: 100px;
+            background-color: coral;
+            -webkit-box-flex: 3;  /* 所占比例*/
+        }
+        .two{
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            -webkit-box-flex: 1; /* 所占比例*/
+        }
+        .three{
+            width: 100px;
+            height: 100px;
+            background-color: palevioletred;
+            -webkit-box-flex: 2; /* 所占比例*/
+        }
+    </style>
+</head>
+<body>
+    伸缩盒：<br>
+   -- 1，css引入了一种新的布局模式----Flexbox布局，即伸缩布局盒模型（flexible），用来提供一个更加有效的方法制定、调整和分布一个容器里项目布局，即使他们的大小是未知或者动态的。<br>
+   -- 2，Flexbox布局可以轻松的实现屏幕和浏览器窗口大小发生变化时，保持元素的相对位置和大小不变。<br>
+    --伸缩盒（旧）：<br>
+    ----box-orient：伸缩盒对象的子元素的排列方式<br>
+    ----box-pack/align：垂直/水平居中<br>
+    ----box-flex：伸缩盒对象的子元素如何分配其余空间<br>
+    ----box-direction：伸缩盒对象的子元素的排列顺序是否反转！<br>
+    --伸缩盒（新）：<br>
+    ----flex：复合属性，设置伸缩盒对象的子元素如何分配其余空间<br>
+    ----flex-grow：弹簧盒的扩展比率，按比率平均分配<br>
+    ----flex-flow：复合属性。设置伸缩盒对象的子元素排列方式<br>
+    ----flex-wrap：设置伸缩盒对象的子元素超出父容器时是否换行<br>
+    ----order：设置伸缩盒对象的子元素出现的顺序<br>
+
+    <div class="container">
+        <div class="one">box1</div>
+        <div class="two">box2</div>
+        <div class="three">box3</div>
+    </div>
+</body>
+</html>

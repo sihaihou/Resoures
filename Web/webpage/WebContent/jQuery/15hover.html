@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .img1{
+            border-style: solid;
+            border-color: #0000FF;
+        }
+        .img2{
+            border-style: solid;
+            border-color: red;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#img").hover(
+                    function(){
+                        $(this).removeClass("img1");
+                        $(this).addClass("img2");
+                    },function(){
+                        $(this).addClass("img1");
+                        $(this).removeClass("img2");
+            });
+        });
+    </script>
+</head>
+<body>
+    <center>
+        <img src="img/2.jpg" title="" alt="" class="img1" id="img">
+    </center>
+</body>
+</html>

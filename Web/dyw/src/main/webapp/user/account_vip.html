@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" />
+	<link rel="stylesheet" href="css/Site.css" />
+	<link rel="stylesheet" href="css/zy.all.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<link rel="stylesheet" href="css/amazeui.min.css" />
+	<link rel="stylesheet" href="css/admin.css" />
+	<!-- loading  -->
+	<link rel="stylesheet" href="../css/loading.css">
+	<!-- 分页按钮样式 -->
+	<link rel="stylesheet" href="../css/page.css"/>
+	<!-- 弹窗样式  -->
+	<link rel="stylesheet" href="../css/tanchuang.css"/>
+	<!-- 返回信息样式： 是否成功 -->
+	<link rel="stylesheet" href="../css/return.css"/>
+	<style type="text/css">
+		.table thead tr th,.table tbody tr td{
+		    border: 1px solid #DDD;
+		    text-indent: 20px;
+		    padding: 5px 4px;
+		    font-size: 12px;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<!-- <script type="text/javascript" src="/jquery/jquery-3.2.1.js"></script> -->
+	<script type="text/javascript" src="js/plugs/jquery.SuperSlide.source.js"></script>
+	<script type="text/javascript" src="../js/reyco.js"></script>
+	<script type="text/javascript" src="../js/checkUser.js"></script>
+	<script type="text/javascript" src="../laypage/laypage/laypage.js"></script>
+	<script type="text/javascript" src="../js/page.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			 $(".tabs").slide({ trigger: "click" });
+			 //分页
+			 searchPage(pageNo)
+			 // 添加类别
+			 add_vip();
+			 //类别编辑
+			 update_vip();
+			 //关闭弹窗
+			 close();
+		});
+		//分页
+		function searchPage(pageNo){
+		    $.ajax({
+		        type:'post',
+		        dataType:"json",
+		        url:"../vip/searchPage.do",
+		        data:{ 
+		        	pageNo:pageNo
+		        },
+		      //数据加载前调用方法
+		        beforeSend:function(data){
+		        	//loading显示
+		        	$("#loadingOver").css('display','block');
+		        	$("#loadingLayout").css('display','block');
+		        },
+		        success:function(data){
+		        	var flag = data.success;
+		        	if(flag){
+		        		pageNum = data.data.info.pageNo;
+		        		pageSize = data.data.info.totalPage;
+		        		total = data.data.info.totalCount;
+		        		var date_length = getJSonObjLenth(data.data.info.list);
+		        		$("#tbody").empty();
+		        		for (var i = 0;i < date_length;i++) {
+		        			var tr_node = $("<tr>"+
+		        			        "<td>"+data.data.info.list[i].id+"</td>"+
+		        			        "<td>"+data.data.info.list[i].name+"</td>"+
+		        			        "<td>"+data.data.info.list[i].lowVip+"</td>"+
+		        			        "<td>"+data.data.info.list[i].higVip+"</td>"+
+		        			        "<td>"+data.data.info.list[i].desc+"</td>"+
+		        			        "<td>"+data.data.info.list[i].gmtCreate+"</td>"+
+		        			        "<td>"+data.data.info.list[i].gmtModified+"</td>"+
+		        			        "<td class='edit'><button onclick='btn_edit("+data.data.info.list[i].id+")'><i class='icon-edit bigger-120 show'>编辑</i></button></td>"+
+		        			        "<td class='delete'><button onclick='btn_delete("+data.data.info.list[i].id+")'><i class='icon-trash bigger-120 show'>删除</i></button></td>"+
+		        			        +"</tr>");
+		        			$("#tbody").append(tr_node);
+		        			page(pageNum,pageSize,total);
+		        		}
+		        	}else{
+		        		
+		        	}
+		        },
+		      //数据加载后调用的方法
+		       complete:function(data){
+		        	//loading隐藏
+		        	$("#loadingOver").css('display','none');
+		        	$("#loadingLayout").css('display','none');
+		        }, 
+		        error:function(){
+		        
+		        }
+		    });
+		}
+		//添加类别
+		function add_vip(){
+			$("#submit").click(function(){
+				var url = "../vip/insertVip.do";
+				var args = {
+					name : $("#vip_name").val(),
+					lowVip : $("#vip_lowVip").val(),
+					higVip : $("#vip_higVip").val(),
+					desc : $("#vip_desc").val()
+				};
+				$.getJSON(url,args,function(data) {
+					var register_flag = data.success;
+					if(register_flag){
+						$(".msg_info").html(data.data.info);
+						$(".msg_info").show().delay (1000).fadeOut();
+						$("#vip_name").val('');
+						$("#vip_lowVip").val('');
+						$("#vip_lowVip").val('');
+						$("#vip_desc").val('');
+						//再清空
+		        		setTimeout(function(){
+		        			$(".msg_info").css('display','none');
+		        		},1100);
+					}else {//重置密码失败
+						alert(data.data.msg);
+						$("#vip_name").val('');
+						$("#vip_lowVip").val('');
+						$("#vip_lowVip").val('');
+						$("#vip_desc").val('');
+						//再清空
+		        		setTimeout(function(){
+		        			$(".msg_info").css('display','none');
+		        		},1100);
+					}
+				});
+			})
+		}
+		//确定要删除吗------点击删除按钮执行
+		function btn_delete(id){
+		     if(confirm("您确定要删除吗？")){
+		    	// 删除
+		    	deleteVip(id);
+		        return true;
+		    }else{
+		        return false;
+		    } 
+		}
+		function deleteVip(id){
+			$.ajax({
+		        type:'post',
+		        dataType: "json",
+		        url:"../vip/updateVip.do",
+		        data:{ 
+		        	id:id,
+		        	status:"1"
+		        },
+		      //数据加载前调用方法
+		        beforeSend:function(data){
+		        	//loading显示
+		        	$("#loadingOver").css('display','block');
+		        	$("#loadingLayout").css('display','block');
+		        },
+		        success:function(data){
+		        	var flag = data.success;
+		        	if(flag){
+		        		//显示编辑是否成功
+		        		$(".msg_info").html(data.data.info);
+		        		$(".msg_info").show().delay (1000).fadeOut();
+		        		//暂停一秒后关闭弹窗
+		        		setTimeout(function(){
+		        			closeDiv();
+		        		},1000);
+		        		//再清空
+		        		setTimeout(function(){
+		        			$(".msg_info").css('display','none');
+		        		},1100);
+		        	}else{
+		        		//编辑失败
+		        		$(".msg_info").html(data.data.info);
+		        		$(".msg_info").show().delay (1000).fadeOut();
+		        		//再清空
+		        		setTimeout(function(){
+		        			$(".msg_info").css('display','none');
+		        		},1100);
+		        	}
+		        },
+		        //数据加载后调用的方法
+		       complete:function(data){
+		        	//loading隐藏
+		        	$("#loadingOver").css('display','none');
+		        	$("#loadingLayout").css('display','none');
+		        }, 
+		        error:function(){
+		        	//错误
+		        }
+		    });
+		} 
+		// 编辑按钮   ---- 点击执行
+		function btn_edit(id){
+			//调用打开弹窗
+			showDiv();
+			//调用查询并赋值
+			searchById_vip(id);
+		}
+		//让弹窗打开
+		function showDiv(){
+			//打开弹窗
+			$("#MyDiv").css('display','block'); 
+			$("#fade").css('display','block'); 
+			$("#fade").css('width',$(window).width());
+			$("#fade").css('height',$(window).height());
+		}
+		// 关闭弹窗  ---点击关闭弹窗
+		function close(){
+			$("#close").click(function(){
+				closeDiv();
+			})
+		}
+		//让弹窗关闭
+		function closeDiv(){
+			$("#MyDiv").css('display','none'); 
+			$("#fade").css('display','none'); 
+		}
+		//查询单行数据并赋值----点击编辑按钮执行
+		function searchById_vip(id){
+			$.ajax({
+		        type:'post',
+		        dataType: "json",
+		        url:"../vip/searchById.do",
+		        data:{ 
+		        	id:id,
+		        },
+		      //数据加载前调用方法
+		        beforeSend:function(data){
+		        	//loading显示
+		        	$("#loadingOver").css('display','block');
+		        	$("#loadingLayout").css('display','block');
+		        },
+		        success:function(data){
+		        	var flag = data.success;
+		        	if(flag){
+		        		var name = data.data.info.name;
+		        		var lowVip = data.data.info.lowVip;
+		        		var higVip = data.data.info.higVip;
+		        		var desc =data.data.info.desc;
+		        		$("#vip-id").val(id);
+		        		$("#vip-name").val(name);
+		        		$("#vip-lowVip").val(lowVip);
+		        		$("#vip-higVip").val(higVip);
+		        		$("#vip-desc").val(desc);
+		        	}else{
+		        		//查询失败
+		        	}
+		        },
+		        //数据加载后调用的方法
+		       complete:function(data){
+		        	//loading隐藏
+		        	$("#loadingOver").css('display','none');
+		        	$("#loadingLayout").css('display','none');
+		        }, 
+		        error:function(){
+		        	//错误
+		        }
+		    });
+		}
+		 //类别编辑
+		function update_vip(){
+		    $("#updateVip").click(function(){
+				$.ajax({
+			        type:'post',
+			        dataType: "json",
+			        url:"../vip/updateVip.do",
+			        data:{ 
+			        	id:$("#vip-id").val(),
+		        		name:$("#vip-name").val(),
+		        		lowVip:$("#vip-lowVip").val(),
+		        		higVip:$("#vip-higVip").val(),
+			        	desc:$("#vip-desc").val()
+			        },
+			      //数据加载前调用方法
+			        beforeSend:function(data){
+			        	//loading显示
+			        	$("#loadingOver").css('display','block');
+			        	$("#loadingLayout").css('display','block');
+			        },
+			        success:function(data){
+			        	var flag = data.success;
+			        	if(flag){
+			        		//显示编辑是否成功
+			        		$(".msg_info").html(data.data.info);
+			        		$(".msg_info").show().delay (1000).fadeOut();
+			        		//暂停一秒后关闭弹窗
+			        		setTimeout(function(){
+			        			closeDiv();
+			        		},1000);
+			        		//再清空
+			        		setTimeout(function(){
+			        			$(".msg_info").css('display','none');
+			        		},1100);
+			        		
+			        	}else{
+			        		//编辑失败
+			        		$(".msg_info").html(data.data.info);
+			        		$(".msg_info").show().delay (1000).fadeOut();
+			        		//再清空
+			        		setTimeout(function(){
+			        			$(".msg_info").css('display','none');
+			        		},1100);
+			        	}
+			        },
+			        //数据加载后调用的方法
+			       complete:function(data){
+			        	//loading隐藏
+			        	$("#loadingOver").css('display','none');
+			        	$("#loadingLayout").css('display','none');
+			        }, 
+			        error:function(){
+			        	//错误
+			        }
+			    });
+			})
+		}
+	</script>	
+<body>
+	<!-- loading before -->
+	    <div id="loadingOver" class="loadingOver"></div>
+	    <div id="loadingLayout" class="loadingLayout"><img src="../imags/loading.gif" alt=""/></div>
+	<!-- loading after -->
+	<div class="dvcontent">
+		<div>
+			<!--tab start-->
+			<div class="tabs">
+				<div class="hd">
+					<ul style="">
+						<li style="box-sizing: initial;-webkit-box-sizing: initial;" class="on">查看分类</li>
+						<li class="" style="box-sizing: initial;-webkit-box-sizing: initial;">添加分类</li>
+					</ul>
+				</div>
+				<div class="bd">
+					<ul style="display: block;padding: 20px;">
+						<li>
+							<!-- 显示编辑是否成功 -->
+							<div class="msg_info"></div>
+							<!--分页显示角色信息 start-->
+							<div id="dv1">
+								<table class="table" id="tbRecord">
+									<thead>
+										<tr>
+											<th>vip编号</th>
+											<th>分类名称</th>
+											<th>lowVip</th>
+											<th>higVip</th>
+											<th>分类备注</th>
+											<th>创建时间</th>
+											<th>修改时间</th>
+											<th>编辑</th>
+											<th>删除</th>
+										</tr>
+									</thead>
+									<tbody id="tbody">
+										<!-- 类别列表 -->
+									</tbody>
+								</table>
+								<div id="page" class="page"></div>
+							</div>
+							<!--分页显示角色信息 end-->
+						</li>
+					</ul>
+					<ul class="theme-popbod dform" style="display: none;">
+				<div class="am-cf admin-main" style="padding-top: 0px;">
+			<!-- content start -->
+			<div class="am-cf admin-main" style="padding-top: 0px;">
+			<!-- content start -->
+			<div class="admin-content">
+				<div class="admin-content-body">
+					<div class="am-g">
+						<div class="am-u-sm-12 am-u-md-4 am-u-md-push-8"></div>
+							<div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4" style="padding-top: 30px;">
+								
+								<!-- 显示编辑是否成功 -->
+								<div class="msg_info"></div>
+								
+								<form class="am-form am-form-horizontal">
+									<div class="am-form-group">
+										<label for="vip_name" class="am-u-sm-3 am-form-label">vip名称</label>
+										<div class="am-u-sm-9">
+											<input type="text" id="vip_name" required placeholder="类别名称">
+											<small>5字以内...</small>
+										</div>
+									</div>
+									<div class="am-form-group">
+										<label for="vip_lowVip" class="am-u-sm-3 am-form-label">vip名称</label>
+										<div class="am-u-sm-9">
+											<input type="text" id="vip_lowVip" required placeholder="lowVip">
+											<small>5字以内...</small>
+										</div>
+									</div>
+									<div class="am-form-group">
+										<label for="vip_higVip" class="am-u-sm-3 am-form-label">vip名称</label>
+										<div class="am-u-sm-9">
+											<input type="text" id="vip_higVip" required placeholder="higVip">
+											<small>5字以内...</small>
+										</div>
+									</div>
+									<div class="am-form-group">
+										<label for="vip_desc" class="am-u-sm-3 am-form-label">vip备注</label>
+										<div class="am-u-sm-9">
+											<textarea class="" rows="5" id="vip_desc" placeholder="输入备注,32字以内..."></textarea>
+											<small>32字以内...</small>
+										</div>
+									</div>
+									<div class="am-form-group">
+										<div class="am-u-sm-9 am-u-sm-push-3">
+											<input id="submit" type="button" class="am-btn am-btn-success" value="添加vip" />
+										</div>
+									</div>
+								</form>
+								
+							</div>
+						</div>
+					</div>
+		
+				</div>
+		<!-- content end -->
+			</div>
+			<!-- end-->
+		</ul>
+	</div>
+</div>
+<!--tab end-->
+</div>
+
+
+<!--	弹窗开始  -->
+		<!--弹出层时背景层DIV-->
+		<div id="fade" class="black_overlay" style="display: none; height: 526px;"></div>
+		  <div id="MyDiv" class="white_content" style="display: none;">
+		    <div style="text-align: right; cursor: default; height: 40px;">
+		      <span id="close" style="font-size: 20px;">关闭 </span>
+		    </div>
+			<!-- content start -->
+			<div class="admin-content-body">
+				<div class="am-g">
+					<div class="am-u-sm-12 am-u-md-4 am-u-md-push-8"></div>
+					<div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4" style="padding-top: 30px;">
+					
+						<!-- 显示编辑是否成功 -->
+						<div class="msg_info"></div>
+					
+						<form class="am-form am-form-horizontal">
+							<div class="am-form-group">
+								<label for="vip-id" class="am-u-sm-3 am-form-label">vip编号</label>
+								<div class="am-u-sm-9">
+									<input type="text" id="vip-id" disabled="disabled" required>
+								</div>
+							</div>
+							<div class="am-form-group">
+								<label for="vip-name" class="am-u-sm-3 am-form-label">vip名称</label>
+								<div class="am-u-sm-9">
+									<input type="text" id="vip-name" required >
+								</div>
+							</div>
+							<div class="am-form-group">
+								<label for="vip-lowVip" class="am-u-sm-3 am-form-label">lowVip</label>
+								<div class="am-u-sm-9">
+									<input type="text" id="vip-lowVip" required >
+								</div>
+							</div>
+							<div class="am-form-group">
+								<label for="vip-higVip" class="am-u-sm-3 am-form-label">higVip</label>
+								<div class="am-u-sm-9">
+									<input type="text" id="vip-higVip" required >
+								</div>
+							</div>
+							<div class="am-form-group">
+								<label for="vip-desc" class="am-u-sm-3 am-form-label">类别备注</label>
+								<div class="am-u-sm-9">
+									<input type="text" id="vip-desc" required>
+								</div>
+							</div>
+							<div class="am-form-group">
+								<div class="am-u-sm-9 am-u-sm-push-3">
+									<a class="btn pull-left btn-link text-muted" onClick="goto_login()"></a>
+									<input id="updateVip" type="button" class="am-btn am-btn-success" value="修改"/>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- content end -->
+		</div>
+		<!-- 弹窗结束 -->	
+</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>正则表达式</title>
+    <script>
+        /*
+        *       1. 正则表达式是一名独立的学科，和任何编程语言无关，，最初使用在医学方面，表示神经传输符号，
+        *          在现代计算机编程中也可以使用大量的正则表达式。
+        *
+        *       2. 在编程中使用正则表达式最主要是用来做字符串模式匹配。
+        *           尤其javascript中使用最多。
+        *
+        *       3. 在正则表达式中规定了一些特殊的符号，每一个符号都具有特殊的含义。
+        *
+        *       4. 在事件开发中我们可以从网络中搜索相关的常用的正则表达式，直接使用，但在使用前，需要进行反复的测试。
+        *           javaScript程序员更应该研究在js中如何使用正则表达式，而不是研究正则表达式该怎么写。
+        *
+        *       5. 常用的正则表达式符号：
+        *           ^ :字符串开始
+        *           $ :字符串结束
+        *           \s : 空白
+        *
+        *           +  出现1-N次
+        *           *  出现0-N
+        *           ？ 出现0或1次
+        *
+        *           [2,5] 出现【2-5】次
+        *           [1,*] 至少出现1次
+        *
+        *           [0-9]  0-9的阿拉伯数字
+        *           [a-z]  a-z的所有字母
+        *
+        *       6. 在js中创建正则表达式对象？ 正则表达式对象中哪些方法最常用？
+        *             创建正则表达式对象有两种方式：
+        *                 第一种方式：[常用]
+        *                       var regexp = /正则表达式/flag;
+        *                 第一种方式：
+        *                       var regexp = new RegExp("正则表达式","flag");
+        *                  注：flag  可选值 ： i,g,m
+        *                           i:忽略大小写
+        *                           g:当前所有数据
+        *                           m：支持多行搜索
+        *                     i、g、m可以结合使用。
+        *         正则表达式对象中有一个很重要的方法，叫做test
+        *           语法格式：
+        *                   var regexp = /正则表达式/;
+        *                   var retValue = regexp.test(字符串);
+        *                   retValue： true  字符串符合正则表达式
+        *                   retValue： false  字符串不符合正则表达式
+        *
+        * */
+       function checkEmil(emil){
+           //重点
+           var emilRegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+           var Ok = emilRegExp.test(emil);
+
+           var emilError = document.getElementById("emilError");
+           if(Ok){
+               emilError.innerHTML = "<font color='green'>邮箱可以使用</font>";
+           }else{
+               emilError.innerHTML = "<font color='red'>邮箱地址格式错误</font>";
+           }
+       }
+        function checkEmilError(){
+            var span = document.getElementById("emilError");
+            var emil = document.getElementById("emil");
+            span.innerHTML = "";
+            emil.value = "请输入邮箱";
+        }
+
+     </script>
+</head>
+<body>
+
+       邮箱<input type="text" name="emil" id="emil" onblur="checkEmil(this.value);" onfocus="checkEmilError()">
+       <span id="emilError"></span>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.reyco.core.dao.SystemInfoDao">
+	
+	<!-- 缓存类配置-->
+  	<cache /> 
+  	
+	<select id="searchByInfoKey" resultType="string" useCache="true">
+		select infoValue from systemInfo where InfoKey = #{infoKey}
+	</select>
+	
+	<select id="searchAll" resultType="SystemInfo" useCache="true">
+		select infoKey,infoValue from systemInfo
+	</select>
+	
+	<update id="updateById">
+		update systemInfo 
+			<set>
+				<if test="infoValue != null and infoValue != ''">
+					infoValue=#{infoValue},
+				</if>
+				<if test="status != null">
+					status=#{status},
+				</if>
+				<if test="desc != null and desc != ''">
+					`desc`=#{desc},
+				</if>
+				gmtModified=now()
+			</set>
+			where id = #{id}
+	</update>
+	
+</mapper>

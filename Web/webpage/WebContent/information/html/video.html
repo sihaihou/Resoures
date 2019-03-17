@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"/>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>我的视频</title>
+		<!-- 外部引入css样式 -->
+		<link rel="stylesheet"  type="text/css" href="../css/default.css" />
+		<link rel="stylesheet" type="text/css" href="../css/mp4/default.css" id='style'>
+		<link rel="stylesheet" type="text/css" href="../css/mp4/main.css" id='style'>
+		<link rel="stylesheet" type="text/css" href="" id='style'>
+		<style>
+			#tab{
+				width:600px;
+				height:450px;
+			}
+			#search-button{
+				border:2px solid blue;
+				background-color:DeepSkyBlue;
+			}
+		</style>
+		<!-- js引入 -->
+		<script type="text/javascript" src="../js/jquery-1.8.1.min.js"></script>
+		<script type="text/javascript" src="../js/config.js"></script>
+		<script type="text/javascript">
+			var __BG__='/skins/bg';var __WWWROOT__='';set_color();
+			<!--   设置搜索按钮样式  -->
+			function changeOpacity(value){
+				var ssEle = document.getElementsByName("ss");
+				ssEle[0].style.opacity = value;
+			}			
+			/*  设置搜索按钮链接 */
+			function sousuo(){
+				var keyword = document.getElementById("search-keyword").value;
+				if(keyword == "首页"){
+					document.location = "../index.html";
+				}else if(keyword == "相册"){
+					document.location = "photo.html";
+				}else if(keyword == "照片墙"){
+					document.location = "page.html";
+				}else if(keyword == "情人节"){
+					document.location = "qrj.html";
+				}else{
+					alert('很抱歉！系统暂不完善，暂不支持此关键字搜索！可搜索关键字"首页"、"相册"、"照片墙"、"情人节"!');
+				}	
+			}
+			
+			
+			
+		</script>
+	</head>
+<body>
+	<div class="toper">
+		<a class='toper-left' href="/" onclick="setHome(this,this.href);return false;">把本站设为主页</a>
+		<a class='toper-right'  href="javascript:void(0);" onclick="setting.background();return false;">个性设置</a>
+	</div>
+	<div class='block'>
+		<div class="logo">
+			<a class="logo-link" href="#" title="我的个性网址导航">
+				<img alt="logo"  src="../image/video/logo.gif" class="logo-image">
+			</a>
+		</div>
+	</div>
+	<div class='block'>
+		<form action='http://www.baidu.com/s'  target="_blank" method="get"  id='search-form'>
+			<div class="search-box"><div id='search-select'><div class="search-toggle-icon"></div>
+				<!--
+					<div class='select-list close '>
+						<a  title='百度' cateid='2' s_id='4'  style='background-image: url(../image/video/01.jpg);'></a>	
+					</div>
+				-->
+				<a href='javascript:void(0);' class='search-logo'>
+					<img src='../image/video/01.jpg' title='百度' alt="baidu">
+				</a>
+			</div>
+			<div id='search-input'>
+				<div class='search-tab'>
+					<ul>
+						<li><a href="../index.html" target="_blank" cateid='2' class='search-cate-def'>首页</a></li>
+						<li><a href="../html/photo.html" target="_blank"  cateid='11'>相册</a></li>
+						<li><a href="../html/page.html" target="_blank" cateid='9'>照片墙</a></li>
+						<li><a href="../html/qrj.html" target="_blank" cateid='10'>情人节</a></li>
+						<li><a href="#" target="_blank" cateid='13'>本页</a></li>
+					</ul>
+				</div>
+				<div class='search-keyword'>
+					<b class="shadow-x"></b>
+					<b class="shadow-y"></b>
+					<input type="text" autocomplete="off" id='search-keyword' name='wd'/>
+				</div>
+				</div>
+					<input type="button" value="搜 索" name="ss" id="search-button" onclick="sousuo();" onmouseleave="changeOpacity(1);" onmouseenter="changeOpacity(0.5);" />
+					<div id='search-params' style='display:none;'>
+						<input type="hidden" name="tn" value="divencheng_pg" />
+					</div>
+				</div>
+		</form>
+	</div>
+	
+	<script type="text/javascript" >
+		/*保存到缓存，浏览器缓存，不需要每个页面都加载*/search.init();
+	</script>
+	
+	<div>	
+	<center>
+		<table  id="tab">
+			<tr align="center">
+				<td>
+					<ul>
+						<li>
+							<a href="../mp4/01.mp4" target="_blank">
+								<video width="100px" src="../mp4/01.mp4" title="徐若瑄演唱_爱笑的眼睛__<br>唱出不一样的味道"/>
+							</a>
+						</li>
+						<li><a href="../mp4/01.mp4" target="_blank">徐若瑄演唱_爱笑的眼睛__<br>唱出不一样的味道</a></li>
+					</ul>
+				</td>
+				<td>
+					<li>
+						<a href="../mp4/02.mp4" target="_blank">
+							<video width="100px" src="../mp4/02.mp4" title="吴聘死后-周莹思念吴聘"/>
+						</a>
+					</li>
+					<li><a href="../mp4/02.mp4" target="_blank">吴聘死后-周莹思念吴聘</a></li>
+				</td>
+				<td>
+					<li>
+						<a href="../mp4/03.mp4" target="_blank">
+							<video width="100px" src="../mp4/03.mp4" title="柴静专访周星驰谈爱情：<br>一万年太久"/>
+						</a>
+					</li>
+					<li><a href="../mp4/03.mp4" target="_blank">-柴静专访周星驰谈爱情：<br>一万年太久</a></li>
+				</td>				
+				<td>
+					<li>
+						<a href="../mp4/04.mp4" target="_blank">
+							<video width="100px" src="../mp4/04.mp4" title="卢冠廷——一生所爱<br>(大话西游之仙履奇缘主题曲)<br>_高清"/>
+						</a>
+					</li>
+					<li><a href="../mp4/04.mp4" target="_blank">卢冠廷——一生所爱<br>(大话西游之仙履奇缘主题曲)<br>_高清</a></li>
+				</td>
+			</tr>
+			<tr align="center">
+				<td>
+					<ul>
+						<li>
+							<a href="../mp4/05.mp4" target="_blank">
+								<video width="100px" src="../mp4/05.mp4" title="平凡相依，<br>何润东张钧宁"/>
+							</a>
+						</li>
+						<li><a href="../mp4/05.mp4" target="_blank">平凡相依，<br>何润东张钧宁</a></li>
+					</ul>
+				</td>
+				<td>
+					<li>
+						<a href="../mp4/06.mp4" target="_blank">
+							<video width="100px" src="../mp4/06.mp4" title="周星驰功夫-<br>只要为你活一天"/>
+						</a>
+					</li>
+					<li><a href="../mp4/06.mp4" target="_blank">周星驰功夫-<br>只要为你活一天</a></li>
+				</td>
+				<td>
+					<li>
+						<a href="../mp4/01.mp4" target="_blank">
+							<video width="100px" src="../mp4/01.mp4" title="徐若瑄演唱_爱笑的眼睛__<br>唱出不一样的味道"/>
+						</a>
+						</li>
+						<li><a href="../mp4/01.mp4" target="_blank">徐若瑄演唱_爱笑的眼睛__<br>唱出不一样的味道</a></li>
+				</td>
+				<td>
+					<li>
+						<a href="../mp4/01.mp4" target="_blank">
+							<video width="100px" src="../mp4/01.mp4" title="徐若瑄演唱_爱笑的眼睛__唱出不一样的味道<b>布局视频</b>教程CAD三"/>
+						</a>
+					</li>
+					<li><a href="../mp4/01.mp4" target="_blank">徐若瑄演唱_爱笑的眼睛__<br>唱出不一样的味道</a></li>
+				</td>
+			</tr>
+			<tr align="center">
+				<td>
+					<ul>
+						<li>
+							<a href="../mp4/01.mp4" target="_blank">
+								<video width="100px" src="../mp4/01.mp4" title="徐若瑄演唱_爱笑的眼睛__唱出不一样的味道<b>布局视频</b>教程CAD三"/>
+							</a>
+						</li>
+						<li><a href="../mp4/01.mp4" target="_blank">徐若瑄演唱_爱笑的眼睛__<br>唱出不一样的味道</a></li>
+					</ul>
+				</td>
+				<td>
+					<li>
+						<a href="../mp4/01.mp4" target="_blank">
+							<video width="100px" src="../mp4/01.mp4" title="徐若瑄演唱_爱笑的眼睛__唱出不一样的味道<b>布局视频</b>教程CAD三"/>
+						</a>
+					</li>
+					<li><a href="../mp4/01.mp4" target="_blank">徐若瑄演唱_爱笑的眼睛__<br>唱出不一样的味道</a></li>
+				</td>
+				<td>
+					<li>
+						<a href="../mp4/01.mp4" target="_blank">
+							<video width="100px" src="../mp4/01.mp4" title="徐若瑄演唱_爱笑的眼睛__唱出不一样的味道<b>布局视频</b>教程CAD三"/>
+						</a>
+						</li>
+						<li><a href="../mp4/01.mp4" target="_blank">徐若瑄演唱_爱笑的眼睛__<br>唱出不一样的味道</a></li>
+				</td>
+				<td>
+					<li>
+						<a href="../mp4/01.mp4" target="_blank">
+							<video width="100px" src="../mp4/01.mp4" title="徐若瑄演唱_爱笑的眼睛__唱出不一样的味道<b>布局视频</b>教程CAD三"/>
+						</a>
+					</li>
+					<li><a href="../mp4/01.mp4" target="_blank">徐若瑄演唱_爱笑的眼睛__<br>唱出不一样的味道</a></li>
+				</td>
+			</tr>
+		</table>
+		</center>
+    </div>
+	</div>
+	<div class='c'></div>
+	
+	<div class="footer block">
+		<a href="#">信息工程学院</a>&nbsp;|
+		<a href="mailto:1548171008@qq.com" target="_blank" style="color:red;">reyco</a>&nbsp;|
+		<a href="#" target="">计算机科学与技术微机1203班</a>&nbsp;| 
+	</div>
+</body>
+</html>

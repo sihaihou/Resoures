@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>超碰用户管理系统</title>
+		<link href="css/Site.css" rel="stylesheet" type="text/css" />
+		<link href="css/zy.layout.css" rel="stylesheet" />
+		<link href="css/zy.form.css" rel="stylesheet" />
+		<link href="css/font-awesome.min.css" rel="stylesheet" />
+		<link href="css/zy.menu.css" rel="stylesheet" />
+		<style type="text/css">
+			.headerlitooleulsubitem_gray {
+				background-Color: White;
+				position: absolute;
+				border-left: 1px solid #BCD4E5;
+				border-right: 1px solid #BCD4E5;
+				border-bottom: 1px solid #BCD4E5;
+				box-shadow: 0px 0px 5px #BCD4E5;
+				width: 230px;
+				margin-left: -170px;
+				color: Black;
+				display: none;
+			}
+			
+			.headerlitooleulsubitem_red {
+				background-Color: White;
+				position: absolute;
+				border-left: 1px solid #E5BCD4;
+				border-right: 1px solid #E5BCD4;
+				border-bottom: 1px solid #E5BCD4;
+				box-shadow: 0px 0px 5px #E5BCD4;
+				width: 230px;
+				margin-left: -170px;
+				color: Black;
+				display: none;
+			}
+			
+			.headerlitooleulsubitem_gray>li,
+			.headerlitooleulsubitem_red>li {
+				height: 45px;
+				background-color: White;
+				padding: 0px 10px;
+				border-bottom: 1px solid #E4ECF3;
+				font-size: 14px;
+				line-height: 26px;
+			}
+			
+			.headerlitoolelisubitemtitle_gray {
+				height: 35px !important;
+				line-height: 35px !important;
+				background-color: #ECF2F7 !important;
+				margin: 0px !important;
+				color: #8090A0 !important;
+				font-size: 14px;
+				font-weight: bold;
+				border-bottom: 1px solid #BCD4E5 !important;
+			}
+			
+			.headerlitoolelisubitemtitle_red {
+				height: 35px !important;
+				line-height: 35px !important;
+				background-color: #F7ECF2 !important;
+				margin: 0px !important;
+				color: #B471A0 !important;
+				font-size: 14px;
+				font-weight: bold;
+				border-bottom: 1px solid #E5BCD4 !important;
+			}
+			
+			.headerlitooleulsubitem_gray>li:hover {
+				background-Color: #F4F9FC;
+			}
+			
+			.headerlitooleulsubitem_red>li:hover {
+				background-color: #FCF4F9;
+			}
+			
+			.ulsubitemitems>li {
+				float: left;
+				height: 20px;
+				font-size: 13px;
+				font-weight: normal !important;
+				color: #555 !important;
+			}
+			
+			.ulsubitemitems>li:last-child {
+				clear: both;
+				width: 100%;
+				height: 10px;
+				margin-top: 8px;
+				background-color: #DADADA;
+			}
+			.headerlitools_info,.logout {
+				background-color: #075597;
+				height: 45px;
+				padding: 0px 5px;
+				
+			}
+			.headerlitools_info{
+				float: left;
+			}
+			.logout{
+				float: right;
+			}
+			.logout-iocn{
+				display: block;
+				width: 30px;
+			    height: 30px;
+			    text-align:center;
+			   	float:right; 
+			    margin : 8px 0px 5px 5px;
+			    background-image:url('../user/images/icon_2.jpg') ;
+			    background-size: cover;    
+			}
+			.headeruserface {
+				/* background-image: url('../user/images/logo.png'); */
+				width: 40px;
+				height: 40px;
+				background-color: white;
+				margin: 2px 10px 2px 2px;
+				border-radius: 20px;
+				float: left;
+			}
+			
+			.headerlitools_ulinfo {
+				background-Color: white;
+				border-left: 1px solid #D1D1D1;
+				border-right: 1px solid #D1D1D1;
+				border-bottom: 1px solid #D1D1D1;
+				box-shadow: 0px 0px 5px #D1D1D1;
+				width: 160px;
+				margin-left: -20px;
+				color: Black;
+				display: none;
+			}
+			
+			.headerlitools_ulinfo>li {
+				height: 35px;
+				background-color: White;
+				padding: 0px 10px;
+				font-size: 14px;
+				line-height: 36px;
+			}
+			
+			.headerlitools_ulinfo>li:hover {
+				background-Color: #FEE188;
+			}
+			
+			.dvcontent {
+				padding: 0px 20px;
+				margin: 45px auto 0px auto;
+				overflow: auto;
+			}
+			
+			.dvpagerecord {
+				padding: 6px 12px;
+				background-color: #EAEFF2;
+				color: #2283C5;
+				float: left;
+				border: 1px solid #D9D9D9;
+				text-decoration: underline;
+				font-size: 14px;
+				cursor: pointer;
+			}
+			
+			.dvpagerecord:hover {
+				cursor: pointer;
+			}
+			
+			.dvpagerecord:hover i {
+				text-decoration: underline;
+			}
+			
+			.ulpageRecord {
+				max-width: 165px;
+				float: left;
+				white-space: nowrap;
+				overflow: hidden;
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			.ulpageRecord li {
+				margin: 0px;
+				padding: 6px 12px;
+				background-color: #EAEFF2;
+				color: #2283C5;
+				display: inline-block;
+				font-size: 14px;
+				border: 1px solid #D9D9D9;
+			}
+			
+			.ulpageRecord li:hover {
+				text-decoration: underline;
+				cursor: pointer;
+			}
+			
+			.currentPage {
+				background-color: #2468a9 !important;
+				color: white !important;
+			}
+			
+			#warn {
+				width: 300px;
+			}
+			
+			#warn tr {
+				width: 300px;
+				height: 20px;
+			}
+			
+			#warn tr td {
+				width: 90px;
+				height: 20px;
+				text-align: center;
+			}
+			
+			iframe {
+				border: none;
+			}
+		</style>
+		<script type="text/javascript" src="../jQuery/jquery-3.2.1.js"></script>
+		<script type="text/javascript" src="../js/checkUser.js"></script>
+		<script type="text/javascript">
+		$(function(){
+			addMsg();
+			logout();
+			checkAdmin();
+		})
+		function addMsg(){
+			$("#admin").html(localStorage.name);
+		}
+		function logout(){
+			$("#logout").click(function(){
+				$.ajax({
+			        type:'post',
+			        dataType: "json",
+			        url:"../account/logout.do",
+			        data:{ 
+			        	time:new Date()
+			        },
+			        success:function(data){
+			        	var flag = data.success;
+			        	if(flag){
+			        		$(location).attr('href', '../user/login.html');
+			        	}else{
+			        		//编辑失败
+			        		alert("退出失败");
+			        	}
+			        },
+			        error:function(){
+			        	//错误
+			        }
+			    });
+			})
+		}
+		function abc(){
+			console.log("~~~~");
+		}
+		function checkAdmin(){
+			if(localStorage.vipId == 1){
+				$("#category").css("display","block");
+				$("#manage").css("display","block");
+				$("#vip").css("display","block");
+			}
+		}
+		</script>
+	</head>
+
+	<body>
+		<div class="dvheader">
+			<div class="dvheadertools">
+				<span class="headerspantitle">Reyco管理系统</span>
+				<div  class="headerultools">
+					<!-- 管理员图标 -->
+					<div class="headerlitools_info">
+						<div class="headeruserface" style="text-align: center;">
+							<a href="user_info.html" target="right">
+								<i class="icon-user" style="color: black;font-size: 19px;"></i>
+							</a>
+						</div>
+					</div>
+					<!-- 管理员呢称 -->
+					<div class="headerlitools_info">
+						<div>
+							<a id="admin"  style="color: white;" href="user_info.html" target="right">
+								<i class="icon-user" style="font-size: 19px;"></i>
+							</a>
+						</div>
+					</div>
+					<!-- 登出 -->
+					<div id="logout" class="logout">
+						<a href="javascript:void(0)">
+							<i class="logout-iocn"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="dvcontent">
+			<ul class="ulleftmenu" style="border-right: 1px solid #ddd;">
+				<li class="limenuitem">
+					<i class="icon-cog menuicon"></i>系统菜单
+					<b class="arrow icon-angle-down arrow-down"></b>
+					<ul class="ulleftsubitems">
+						<a href="video_upload.html" target="right">
+							<li>视频上传</li>
+						</a>
+						<a href="video_list.html" target="right" onclick="abc()">
+							<li>视频管理</li>
+						</a>
+						<a id="category" style="display: none" href="video_type.html" target="right">
+							<li>分类管理</li>
+						</a>
+						<a id="manage" style="display: none" href="user_manage.html" target="right">
+							<li>用户管理</li>
+						</a>
+						<a id="vip" style="display: none" href="account_vip.html" target="right">
+							<li>vip管理</li>
+						</a>
+						<a href="user_info.html" target="right">
+							<li>用户信息</li>
+						</a>
+						<a href="password_update.html" target="right">
+							<li >密码修改</li>
+						</a>
+					</ul>
+				</li>
+			</ul>
+			<div style="position: absolute; left: 191px; right: 20px; ">
+				<iframe src="video_upload.html" scrolling="no"  width="100%" height="1200" name="right" border="none"></iframe>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js" ></script>
+		<script type="text/javascript" src="js/plugs/Jqueryplugs.js"></script>
+		<script type="text/javascript" src="js/_layout.js" ></script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+       // window 是BOM对象
+       // BOM[Browser Object Model]
+       // window代表整个浏览器窗口
+
+        //弹出消息框
+        //window.alert("系统消息！");
+
+        //弹出确认框
+        //删除数据的时候，数据无价，需要给用户提示，待用户删除数据，才敢删除数据
+        //var ok = window.confirm("请,确认删除该用户吗？");
+        //alert(ok);
+
+        function del(){
+            var ok = window.confirm("请,确认删除该用户吗？");
+            if(ok){
+                window.alert("正在删除数据请稍后...")
+                var div = document.getElementById("div");
+                div.innerHTML = "";
+            }
+        }
+        // 注： confirm 和 alert相同，都会阻塞当前HTML页面的加载。
+    </script>
+</head>
+<body>
+    <input type="button" value="删除" onclick="del();">
+    <div id="div">我是数据</div>
+</body>
+</html>

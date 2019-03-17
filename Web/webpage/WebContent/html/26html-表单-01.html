@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+	<body>
+    <!--
+            name属性：表单的名称
+            action属性：提交表单请求的路径
+            method属性：提交表单的方式：
+                        1.get:默认值
+                        2.post:相对于get来说是安全，因为用户post提交表单的参数在地址栏中看不到
+        -->
+    <!--
+        input标签的type属性值：
+            1.text:文本输入框
+            2.password:密码输入框
+            3.radio:单选按钮,name属性的值必须保证是一致
+            4.checkbox:多选按钮,name属性的值必须保证是一致
+            5.submit:提交按钮,该提交按钮默认提交当前所在的表单,使用submit按钮必须放在form表单里，才有效果
+            6.reset:重置按钮
+            7.button:普通按钮
+    -->
+<!--
+http://localhost:8080/oa/user/save?username=zhangsan&password=12312312&gender=1&interest=music&interest=food&interest=travel&interest=sport&grade=ss&introduce=student
+
+username=zhangsan&password=12312312&gender=1&interest=music&interest=food&interest=travel&interest=sport&grade=ss&introduce=student
+
+-->
+		<form name="userForm" action="http://localhost:8080/oa/user/save" method="get">
+			用户名：
+				<input type="text" name="username" />
+				<br><br>
+			密&nbsp;&nbsp;码：
+				<input type="password" name="password"/>
+				<br><br>
+			性&nbsp;&nbsp;别：
+				<input type="radio" name="gender" value="1" checked/>男
+				<input type="radio" name="gender" value="0"/>女
+				<br><br>
+			兴&nbsp;&nbsp;趣：
+				<input type="checkbox" name="interest" value="music"/>音乐
+				<input type="checkbox" name="interest" value="food"/>美食
+				<input type="checkbox" name="interest" value="travel"/>旅游
+				<input type="checkbox" name="interest" value="sleep"/>睡觉
+				<input type="checkbox" name="interest" value="sport" checked/>运动
+				<br><br>
+            学&nbsp;&nbsp;历：
+				<select name="grade"> 
+					<option value="gz">高中</option>
+					<option value="bk" selected>本科</option>
+					<option value="ss">硕士</option>
+					<option value="bs">博士</option>
+				</select>
+				<br><br>
+			介&nbsp;&nbsp;绍：
+				<textarea name="introduce" cols="50" rows="10"></textarea>
+				<br><br>
+				<input type="submit" value="注册"/>
+				<input type="reset" value="重置"/>
+				<input type="button" value="注册2"/>
+		</form>
+
+				<input type="submit" value="注册1"/>
+				<input type="button" value="注册3"/>
+	</body>
+</html>

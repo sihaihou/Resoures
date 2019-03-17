@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--主要内容：排版-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>h1标签<small>副标题</small></h1>
+        <h2>h2标签<small>副标题</small></h2>
+        <h3>h3标签<small>副标题</small></h3>
+        <h4>h4标签<small>副标题</small></h4>
+        <h5>h5标签<small>副标题</small></h5>
+        <h6>h6标签<small>副标题</small></h6>
+        <!--中心内容-->
+        <!--内联元素使用标签;
+            del 被删除文本:被一条横线贯穿
+            s 无用文本:被一条横线贯穿
+            ins 插入文本：有一条下划线
+            u 带下划线的文本：有一条下划线
+            small 小号文本：约父类文本大小的85%
+            strong 着重：本文被加粗
+            em 斜体：文本倾斜
+            mark标签
+        -->
+        <p><del>只有爱玩的人</del><em>才能画出</em>，<small>美丽的图画</small>
+        <br><s>只有爱玩的人</s>才能画出，<ins>美丽的图画</ins></p>
+        <p class="lead"><mark>只有</mark><strong>爱玩</strong>的人才能画出，<u>美丽的图画</u></p>
+
+        <!--基本缩略语：必须有一个abbr标签，后跟title属性，值为*-->
+        <p><abbr title="attribute">只有爱玩的人才能画出美丽的图画</abbr> </p>
+
+        <!--对齐方式-->
+        <p class="text-left">左对齐</p>
+        <p class="text-right">右对齐</p>
+        <p class="text-center">居中</p>
+        <p class="text-justify">text-justify</p>
+        <p class="text-nowrap">text-nowrap</p>
+        <!-- 大小写-->
+        <p class="text-lowercase">全部小写：Text-lowercase</p>
+        <p class="text-uppercase">全部大写：text-uppercase全部大写</p>
+        <p class="text-capitalize">首字母大写：text-capitalize首字母大写</p>
+
+        <!--引用：有一个blockquote标签，用p标签承载内容-->
+        <blockquote>
+            <p>只有爱玩的人才能画出美丽的图画</p>
+        </blockquote>
+        <!--引用：footer表明引用来源，来源的名可以包裹进cite标签中
+            class="blockquote-reverse"： 向右对齐
+         -->
+        <blockquote class="blockquote-reverse">
+            <p>只有爱玩的人才能画出美丽的图画</p>
+            <footer>someone famous in <cite title="source Title">source Title</cite> </footer>
+        </blockquote>
+
+        <!--无序列表：ul/li标签-->
+        <ul>
+            <li>hello</li>
+            <li>hello</li>
+            <li>
+                <ul>
+                    <li>hello</li>
+                    <li>hello</li>
+                </ul>
+            </li>
+            <li>hello</li>
+            <li>hello</li>
+        </ul>
+
+        <!--有序列表：ol/li标签-->
+        <ol>
+            <li>hello</li>
+            <li>hello</li>
+            <li>
+                <ol>
+                    <li>hello</li>
+                    <li>hello</li>
+                </ol>
+            </li>
+            <li>hello</li>
+            <li>hello</li>
+        </ol>
+
+        <!--无样式列表:添加一个类class="list-unstyled"
+            只对直接子元素有效果-->
+        <ul class="list-unstyled">
+            <li>hello</li>
+            <li>
+                <ul class="list-unstyled">
+                    <li>hello</li>
+                </ul>
+            </li>
+            <li>hello</li>
+        </ul>
+
+        <!--内联列表：添加一个类class="list-inline"
+             只对直接子元素有效果（效果：将所有元素放置于同一行）-->
+        <ul class="list-inline">
+            <li>hello</li>
+            <li>
+                <ul class="list-inline">
+                    <li>hello</li>
+                </ul>
+            </li>
+            <li>hello</li>
+        </ul>
+
+        <!--带有描述的短语列表:水平配列的描述:
+            dl-horizontal 可以让<dl>内的短语及其描述排在一行，开始是像<dl>的样式堆叠在一起，随着导航条逐渐扩展而排列在一起
+        -->
+        <ul class="dl-horizontal">
+            <li>hello</li>
+            <li>
+                <ul class="dl-horizontal">
+                    <li>hello</li>
+                </ul>
+            </li>
+            <li>hello</li>
+        </ul>
+    </div>
+</body>
+</html>

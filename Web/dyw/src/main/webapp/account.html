@@ -1,0 +1,23 @@
+<html>
+<head>
+	<script type="text/javascript" src="jQuery/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+	</script>
+</head>
+<body>
+
+	<h1>account账号登录</h1>
+	<form action="/account/login.do" method="post">
+		<input type="text" name="phone">
+		<input type="password" name="password">
+		<input type="submit" value="login">
+	</form>
+	
+	<h1>测试批量新增上传excel表格,未使用多线程</h1>
+	<form action="/account/insert.do" method="post" enctype="multipart/form-data">
+		<input type="file" name="file">
+		<input type="submit" value="上传">
+	</form>
+	
+</body>
+</html>

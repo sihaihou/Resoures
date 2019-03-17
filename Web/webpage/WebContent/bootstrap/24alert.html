@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--警告框-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!--警告框：
+            警告框组件通过提供一些灵活的预定义消息，为常见的用户动作提供反馈消息。
+            将任意文本和一个可选的关闭按钮组合在一起就能组成一个警告框，.alert 类是必须要设置的，另外我们还提供了
+            有特殊意义的4个类（例如，.alert-success），代表不同的警告信息。
+       警告框中的链接:
+            用 .alert-link 工具类，可以为链接设置与当前警告框相符的颜色。
+            -->
+    <div class="container">
+        <div class="alert alert-info" role="alert">
+            <strong>info</strong>信息
+            <a href="#" class="alert-link">链接</a>
+        </div>
+        <div class="alert alert-success" role="alert">
+            <strong>info</strong>成功
+            <a href="#" class="alert-link">链接</a>
+        </div>
+        <div class="alert alert-warning" role="alert">
+            <strong>info</strong>警告
+            <a href="#" class="alert-link">链接</a>
+        </div>
+        <div class="alert alert-danger" role="alert">
+            <strong>info</strong>危险
+            <a href="#" class="alert-link">链接</a>
+        </div>
+        <!--可关闭的警告框:
+                为警告框添加一个可选的 .alert-dismissible 类和一个关闭按钮。确保在所有设备上的正确行为,务必给 <button>
+                元素添加 data-dismiss="alert" 属性。
+                依赖警告框 JavaScript 插件:
+                    如果需要为警告框组件提供关闭功能，请使用 jQuery 警告框插件。
+                -->
+        <div class="alert alert-danger alert-dismissable" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>危险</strong>请关闭
+            <a href="#" class="alert-link">链接</a>
+        </div>
+    </div>
+    <script src="css/jquery.min.js"></script>
+    <script src="css/bootstrap.min.js"></script>
+</body>
+</html>

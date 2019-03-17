@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        div{
+            width: 600px;
+            height: 400px;
+            background:url("imgs/pe.png");
+            position: relative;
+            top: 100px;
+            left: 300px;
+        }
+        div:hover::before,div:hover::after{
+            content: " < ";
+            display: block;
+            width: 30px;
+            height: 60px;
+            background-color: red;
+            position: absolute;
+            top: 170px;
+            left: 0px;
+            font-size: 40px;
+            color: #ffffff;
+            line-height: 50px;
+            text-align: center;
+            background: rgba(0,0,0,0.3);
+        }
+        div:hover::after{
+            content: " > ";
+            left: 570px;
+            font-size: 40px;
+        }
+        ul{
+            position: absolute;
+            top: 350px;
+            left: 220px;
+        }
+        ul li {
+            list-style: none;
+            float: left;
+            width: 30px;
+        }
+        ul li a{
+            display: block;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            background-color: #000000;
+            text-align: center;
+            line-height: 20px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+        ul li a:hover{
+            background-color: red;
+            text-align: center;
+            line-height: 20px;
+            text-decoration: none;
+        }
+        p a{
+            width: 70px;
+            height: 20px;
+            background-color: red;
+            position: fixed;
+            top: 75%;
+            right: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+        </ul>
+    </div>
+    <p>
+        <a href="#">回到顶部</a>
+    </p>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function getName(){
+            //第一步：先获取整个文本框节点，第二部获取文本框节点的value
+            //通过元素的id获取该节点
+            //document内置对象，属于DOM对象，以下编程属于DOM编程。
+
+            //document有一个方法可以通过id获取元素：getElementById(“id”)
+            var name = document.getElementById("name");
+            //var name = document.getElementsByName("name")[0];
+            //name.type = "checkbox"; //修改类型
+            //name.value = "aaaaa";   //赋值
+
+            //input文本框中有value属性，可以使用这种语法获取value属性值：元素对象。value
+            var v_name = name.value;
+            document.getElementById("div").innerHTML = v_name;
+        }
+    </script>
+</head>
+<body>
+    <input type="text" name="name" id="name">
+    <input type="button" value="获取数据" onclick="getName()">
+    <font color="red"><div id="div"></div></font>
+</body>
+</html>

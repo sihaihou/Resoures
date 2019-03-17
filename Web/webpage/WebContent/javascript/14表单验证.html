@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        /*  方法一：
+            function checkNameError(){
+                var name = document.getElementById("name").value;
+                alert(name);
+           }
+        */
+        /*  方法二：*/
+            var checkNameOk = false;
+            function checkNameError(name){
+                var span = document.getElementById("span");
+                if(name.length >= 6 && name.length <= 16){
+                    span.innerHTML = "<font color='green'>用户名可以使用</font>";
+                    checkNameOk = true;
+                }else if(name.length == 0){
+                    span.innerHTML = "<font color='red'>用户名不能为空</font>";
+                    checkNameOk = false;
+                }else{
+                    span.innerHTML = "<font color='red'>用户名长度为6-16个字符</font>";
+                    checkNameOk = false;
+                }
+            }
+            function clearNameError(){
+                var span = document.getElementById("span");
+                span.innerHTML = "";
+            }
+            function checkForm(){
+                return checkNameOk;
+            }
+        /*  方法三
+            function checkNameError(name){
+                alert(name);
+            }
+         */
+
+
+    </script>
+</head>
+<body>
+<!--
+    1.表单验证的时候，尽量不要再点击按钮的时候才验证，最好用户填写一个验证一个。这样比较人性化。
+    2.我们的表单就采取失去焦点的时候就验证信息，
+      验证通过的化，不显示任何信息，验证失败，提示用户不可用显示到文本框右面。
+    3.失去焦点事件是：blur事件  事件句柄：onblur
+    4.调用验证方法，将用户名传递给该方法。 this.value
+    5. 验证哪些 ？
+            5.1. 用户名不能为空。
+            5.2. 用户名长度在6-16字符
+            5.3. 用户名不能有空格
+    6.文本框获取焦点事件： focus  事件句柄： onfocus
+    7.表单提交事件：submit  事件句柄：onsubmit   这个事件句柄需要编写在form标签中。
+          <form onsubmit="return true;">   提交表单
+          <form onsubmit="return false;">  取消提交表单
+-->
+    <form name="userForm" action="01function_1.html" method="post" onsubmit= "return checkForm();">
+        <!--  方法一：
+        用户<input type="text" name="name" id="name" onblur="checkNameError();">
+        -->
+
+       <!--   方法二：this指当前文本框 -->
+        用户<input type="text" name="name"  onblur="checkNameError(this.value);" onfocus="clearNameError();">
+
+        <!--  方法三：userForm指form表单
+        用户<input type="text" name="name"  onblur="checkNameError(userForm.name.value);">
+        -->
+            <span id="span"></span><br>
+            <input type="submit" value="注册">
+    </form>
+</body>
+</html>

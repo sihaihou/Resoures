@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+  		  http://www.springframework.org/schema/beans/spring-beans.xsd
+       	  http://www.springframework.org/schema/aop 
+       	  http://www.springframework.org/schema/aop/spring-aop.xsd
+       	  http://www.springframework.org/schema/tx 
+       	  http://www.springframework.org/schema/tx/spring-tx.xsd
+       	  http://www.springframework.org/schema/context 
+       	  http://www.springframework.org/schema/context/spring-context.xsd">
+     <!-- shiroFilter配置 -->                    
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<!-- securityManager配置 -->
+		<property name="securityManager" ref="securityManager"/>
+		<!-- 当访问需要认证的资源时，那么将自动跳转到该url 
+			 如果不配做该属性，默认情况下会到根路径下的login.jsp
+		-->
+		<property name="loginUrl" value="/login"/>
+		<!-- 配置认证成功后跳转到哪个Url上，通常不配做;如果不配置，那么默认认证成功后跳转到上一个url -->
+		<property name="successUrl" value="/index.jsp"/>
+		<!-- 配置用户没有权限访问资源时跳转的页面 -->
+		<property name="unauthorizedUrl" value="/refuse.jsp" />
+		<!-- 配置shiro的过滤器链 -->
+		<property name="filterChainDefinitions">
+			<value>
+				/toLogin=anon
+				/login=authc
+				/logout=logout
+				/index.jsp=user
+				/js/**=anon
+				/css/**=anon
+				/images/**=anon
+				/jQery/**=anon
+				/**=anon			
+			</value>
+		</property>
+	</bean>
+	
+	<!-- 配置authc -->
+	<bean id="authc" class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter">
+		<property name="usernameParam" value="name"></property>
+		<property name="passwordParam" value="pwd"></property>
+	</bean>
+	<!-- 配置logout -->                            
+	<bean id="logout" class="org.apache.shiro.web.filter.authc.LogoutFilter" >
+		<property name="redirectUrl" value="toLogin"/>
+	</bean>
+	
+	<!-- securityManager配置 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="userRealm"/>
+		<property name="cacheManager" ref="cacheManager"></property>
+		<property name="sessionManager" ref="sessionManager"></property>
+		<property name="rememberMeManager" ref="rememberMeManager"></property>
+	</bean>
+	<!-- ehcache配置缓存 -->
+	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManagerConfigFile" value="classpath:ehcache.xml"></property>
+	</bean>
+	<!-- 配置会话管理 -->
+	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+		<!-- session超时时间，单位毫秒 -->
+		<property name="globalSessionTimeout" value="1800000"/>
+		<!-- 清理无效的session -->
+		<property name="deleteInvalidSessions" value="true"/>
+	</bean>
+	<!-- 配置记住我 -->
+	<bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+		<property name="cookie" ref="rememberMeCookie"/>
+	</bean>
+	<bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+		<!-- 设置cookie的存活时间 -->
+		<property name="maxAge" value="604800"/>
+		<property name="name" value="rememberMe"></property>
+	</bean>
+	<!-- 自定义realm -->	
+	<bean id="userRealm" class="com.reyco.core.realm.UserRealm">
+		<property name="credentialsMatcher" ref="credentialsMatcher"/>
+	</bean>
+    <!-- 凭证匹配器 -->
+    <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+    	<property name="hashAlgorithmName" value="md5"/>
+    	<property name="hashIterations" value="2"/>
+    </bean>   	  
+ </beans>       

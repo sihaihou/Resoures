@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+ <!--主要内容：栅格系统
+ 在不同设备显示
+ col-md-* 代表桌面
+ col-sm-* 代表平板
+ col-xs-* 代表手机
+ col-lg-* 代表大桌面
+ 当内容过多，不会增加长度，可是会增加宽度
+ -->
+    <style>
+       /*class名为col-的全部选择 */
+        [class*="col-"]{
+            padding-top: 15px;
+            padding-bottom: 15px;
+            background-color: #eeeeee;
+            border: 1px solid #888888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!--一行最多排12列-->
+        一行最多排12列
+        <div class="row">
+            <div class="col-md-1">col-ma-1</div>
+            <div class="col-md-1">col-ma-1</div>
+            <div class="col-md-1">col-ma-1</div>
+            <div class="col-md-1">col-ma-1</div>
+            <div class="col-md-1">col-ma-1</div>
+            <div class="col-md-1">col-ma-1</div>
+            <div class="col-md-1">col-ma-1</div>
+            <div class="col-md-1">col-ma-1</div>
+            <div class="col-md-1">col-ma-1</div>
+            <div class="col-md-1">col-ma-1</div>
+            <div class="col-md-1">col-ma-1</div>
+            <div class="col-md-1">col-ma-1</div>
+        </div>
+        <!--等比例排列-->
+        等比例排列
+        <div class="row">
+            <div class="col-md-4">col-ma-4</div>
+            <div class="col-md-4">col-ma-4</div>
+            <div class="col-md-4">col-ma-4</div>
+        </div>
+        <!--按比例排列-->
+        按比例排列
+        <div class="row">
+            <div class="col-md-4">col-ma-4</div>
+            <div class="col-md-8">col-ma-8</div>
+        </div>
+        <!--在移动手机端显示6:6-->
+        在移动手机端显示
+        <div class="row">
+            <div class="col-md-8 col-xs-6">col-ma-4</div>
+            <div class="col-md-4 col-xs-6">col-ma-8</div>
+        </div>
+        <!--在平板显示4:8-->
+        在平板显示
+        <div class="row">
+            <div class="col-md-8 col-sm-4 col-xs-6">col-ma-4</div>
+            <div class="col-md-4 col-sm-8 col-xs-6">col-ma-8</div>
+        </div>
+        <!--偏移量:col-md-offset-*向右偏移*份-->
+        偏移量
+        <div class="row">
+            <div class="col-md-8 col-md-offset-4">col-ma-8</div>
+        </div>
+        <!--栅格系统嵌套-->
+        栅格系统嵌套
+        <div class="row">
+            <div class="col-md-9 col-md-offset-3">
+                col-ma-9
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-4">col-md-5</div>
+                </div>
+            </div>
+        </div>
+        <!--排序-->
+        排序
+        <div class="row">
+            <div class="col-md-9 col-md-push-3">col-ma-9</div>
+            <div class="col-md-3 col-md-pull-9">col-ma-3</div>
+        </div>
+    </div>
+</body>
+</html>

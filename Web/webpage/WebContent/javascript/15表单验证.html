@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>表单验证</title>
+    <script>
+            String.prototype.trim = function(){
+                return this.replace(/^\s+/,"").replace(/\s+$/,"");
+            };
+
+            var checkNameOk = false;
+            //提示错误
+            function checkNameError(name){
+                var span = document.getElementById("span");
+                name  = name.trim();
+                if(name.length >= 6 && name.length <= 16){
+                    span.innerHTML = "<font color='green'>用户名可以使用</font>";
+                    checkNameOk = true;
+                }else if(name.length == 0){
+                    span.innerHTML = "<font color='red'>用户名不能为空</font>";
+                    checkNameOk = false;
+                }else{
+                    span.innerHTML = "<font color='red'>用户名长度为6-16个字符</font>";
+                    checkNameOk = false;
+                }
+                return checkNameOk;
+            }
+            //获取焦点清除span标签
+            function clearNameError(){
+                var span = document.getElementById("span");
+                span.innerHTML = "";
+            }
+            function checkForm(){
+               //获取用户名
+                var username = document.getElementById("name").value;
+                //不合法则放弃提交表单，提示错误
+                var nameOk = checkNameError(username);
+                if(nameOk){
+                    //合法这提交表单
+                    // 1.先获取表单对象，因为一个网页中可以有多个表单。
+                    //document.forms[0].action = "01.function_1.html";
+                    //document.forms[0].method = "post";
+                    //document.forms["formName"].submit();
+                    document.forms[0].submit();
+                }
+            }
+    </script>
+</head>
+<body>
+    <form name="formName" action="13时钟.html" method="post">
+
+        用户<input type="text" name="name" id="name" onblur="checkNameError(this.value);" onfocus="clearNameError();">
+
+            <span id="span"></span><br>
+
+            <input type="button" value="注册" onclick="checkForm();">
+    </form>
+</body>
+</html>

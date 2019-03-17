@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        // json : Javascript Object Notation [JavaScript对象标记]
+        // json对象使用 {} 进行创建 这种语法可以创建一种无类型的JavaScript对象
+        // json 通常使用在语言之间进行数据交换的时候充当”数据交换格式“；
+        //    java 可以在后台拼接json字符串，将json字符串发送给浏览器，浏览器中的js程序可以解析json格式的字符串，
+        //    这样java和JavaScript就完成了数据交换。
+        // json 是一种数据传送格式，是一套标准的简单的轻量级的数据传送格式。
+        // 任何一个编程语言都可以在后台拼接 json 格式的字符串方式给前端
+        var user = {
+            "id" : 1001,
+            "name" : "张三",
+            "password" : "123456"
+        };
+        //alert(user.id)
+        //alert(user.name)
+        //alert(user.password)
+
+        // 在js 中 [] 表示数组对象  { }表示json对象
+
+
+        // 尝试定义一个json对象，存储班级中所有学生的信息
+        // 要求该对象描述：学生总数，每个学生的学号，姓名
+        var students = {
+            "totals" : 4 ,
+            "data" :[
+                        { "id" : 1001, "name": "张三" },
+                        { "id" : 1002, "name" : "李四" },
+                        { "id" : 1003, "name" : "王五" },
+                        { "id" : 1004, "name" : "赵六" }
+                    ]
+        };
+        // 从 以上json对象中获取每一个学生的姓名
+        alert(students.totals)
+        alert(students.data[3].name)
+        for(var i = 0; i < students.data.length ; i++){
+            alert(students.data[i].name)
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

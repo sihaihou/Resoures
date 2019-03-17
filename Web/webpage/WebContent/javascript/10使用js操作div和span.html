@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>使用js操作div和span</title>
+    <script>
+        function setDiv(){
+            // 1，获取div元素
+            var divEle = document.getElementById("div");
+            // 2,设置div中的文本
+            //通过innerHTMl属性设置元素中的html代码，也可以获取该元素中的html代码
+            divEle.innerHTML = "<font color='red'>hello world</font>";
+            //获取该元素中的html代码
+            alert(divEle.innerHTML);
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="设置div中的文本" onclick="setDiv()">
+    <div id="div"></div>
+</body>
+</html>

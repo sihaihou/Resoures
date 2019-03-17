@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+       function checkAll(){
+           // 1.获取复选框的选中状态，
+           // 1.1 获取复选框元素
+           var checkboxes = document.getElementById("checkbox");
+           // 1.2 获取选中状态
+           var checked = checkboxes.checked;   //checked既可以获取复选框的选中状态，也可以设置复选框的选中状态
+
+           var span = document.getElementById("span");
+
+           // 2.若checked为true，将所有的复选框选中，若checked为false，将所有的复选框取消选中，
+           // 2.1 获取所有的复选框
+           var names = document.getElementsByName("name");
+           // 2.2 循环遍历每一个复选框
+           if(checked){
+               // 全选
+                for(var i = 0; i < names.length ; i++){
+                    names[i].checked = true;
+                }
+               span.innerHTML = "取消全选";
+           }else{
+               // 取消全选
+               for(var i = 0; i < names.length ; i++){
+                   names[i].checked = false;
+               }
+               span.innerHTML = "全选";
+           }
+       }
+    </script>
+</head>
+<body>
+    <input type="checkbox" id="checkbox" onclick="checkAll()"><span id="span">全选</span> <br>
+    运动<input type="checkbox" name="name" value="sport"><br>
+    音乐<input type="checkbox" name="name" value="music"><br>
+    美食<input type="checkbox" name="name" value="food"><br>
+    睡觉<input type="checkbox" name="name" value="sleep"><br>
+</body>
+</html>

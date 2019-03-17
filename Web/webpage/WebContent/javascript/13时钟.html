@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function displayTime(){
+            //获取div元素
+            var timeDiv = document.getElementById("div");
+            //获取系统时间
+            var nowDate = new Date();
+            var time = nowDate.toLocaleString();
+            //将系统时间设置到div元素中
+            timeDiv.innerHTML = time;
+        }
+        //每个一秒调用displayTime()函数
+        function start(){
+            //设置每隔特定时间执行特定函数
+            window.setInterval("displayTime()",1000);
+        }
+    </script>
+</head>
+<!--
+    load事件
+    onload事件句柄
+    load事件什么时候发生？
+            当整个文档加载完毕后之后，load事件发生。
+    onload事件句柄需要编写到body标签中。
+-->
+<body onload="start()">
+    <div id="div"></div>
+</body>
+</html>

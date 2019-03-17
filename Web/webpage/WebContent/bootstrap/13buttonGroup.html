@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--按钮组:
+            通过按钮组容器把一组按钮放在同一行里。通过与按钮插件联合使用，可以设置为单选框或多选框的样式和行为。
+    -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <!--按钮组中的工具提示和弹出框需要特别的设置:
+                当为 .btn-group 中的元素应用工具提示或弹出框时，必须指定 container: 'body' 选项，这样可以避免不必要的副作用
+            确保设置正确的 role 属性并提供一个 label 标签:
+                为了向使用辅助技术 - 如屏幕阅读器 - 的用户正确传达一正确的按钮分组，需要提供一个合适的 role 属性。对于按钮组合，
+                应该是 role="group"，对于toolbar（工具栏）应该是 role="toolbar"。
+                此外，按钮组和工具栏应给定一个明确的label标签，尽管设置了正确的 role 属性，但是大多数辅助技术将不会正确的识读他们。
+                在这里提供的实例中，我们使用 aria-label，但是， aria-labelledby 也可以使用。-->
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default">left</button>
+            <button type="button" class="btn btn-default">middle</button>
+            <button type="button" class="btn btn-default">right</button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+            </button>
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-arrow-up"></span>
+            </button>
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-arrow-right"></span>
+            </button>
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-arrow-down"></span>
+            </button>
+         </div>
+        <br><br>
+        <!--按钮工具栏:
+                把一组 <div class="btn-group"> 组合进一个 <div class="btn-toolbar"> 中就可以做成更复杂的组件。-->
+        <div class="btn-toolbar" role="toolbar">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default">left</button>
+                <button type="button" class="btn btn-default">middle</button>
+                <button type="button" class="btn btn-default">right</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-arrow-left"></span>
+                </button>
+                <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-arrow-up"></span>
+                </button>
+                <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-arrow-right"></span>
+                </button>
+                <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                </button>
+            </div>
+        </div>
+        <br><br>
+        <!--尺寸：
+               只要给 .btn-group 加上 .btn-group-* 类，就省去为按钮组中的每个按钮都赋予尺寸类了，如果包含了多个按钮组时也适用。-->
+        <div class="btn-group btn-group-lg" role="group" >
+            <button type="button" class="btn btn-default">大</button>
+        </div>
+        <div class="btn-group" role="group" >
+            <button type="button" class="btn btn-default">默认</button>
+        </div>
+        <div class="btn-group btn-group-sm" role="group" >
+            <button type="button" class="btn btn-default">小</button>
+        </div>
+        <div class="btn-group btn-group-xs" role="group">
+            <button type="button" class="btn btn-default">最小</button>
+        </div>
+        <br><br>
+        <!--嵌套
+            想要把下拉菜单混合到一系列按钮中，只须把 .btn-group 放入另一个 .btn-group 中。-->
+        <div class="btn-group" role="group">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">link</a></li>
+                    <li><a href="#">link</a></li>
+                    <li><a href="#">link</a></li>
+                </ul>
+            </div>
+        </div>
+        <br><br>
+        <!--垂直排列:
+                让一组按钮垂直堆叠排列显示而不是水平排列。分列式按钮下拉菜单不支持这种方式。-->
+        <div class="btn-group-vertical" role="group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">link</a></li>
+                <li><a href="#">link</a></li>
+            </ul>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">link</a></li>
+                <li><a href="#">link</a></li>
+            </ul>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">link</a></li>
+                <li><a href="#">link</a></li>
+            </ul>
+        </div>
+        <br><br>
+        <!--两端对齐排列的按钮组：
+                让一组按钮拉长为相同的尺寸，填满父元素的宽度。对于按钮组中的按钮式下拉菜单也同样适用。
+            关于 <a> 元素:
+                只须将一系列 .btn 元素包裹到 .btn-group.btn-group-justified 中即可。
+        -->
+        <div class="btn-group btn-group-justified" role="group">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default">left</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default">middle</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default">right</button>
+            </div>
+        </div>
+    </div>
+    <script src="css/jquery.min.js"></script>
+    <script src="css/bootstrap.min.js"></script>
+</body>
+</html>

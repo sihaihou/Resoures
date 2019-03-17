@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html,body{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            width: 100%;
+            min-width: 996px;
+            height: 70px;
+            background-color:aquamarine;
+        }
+
+        .header{
+            width:80%;
+            min-width: 996px;
+            height: 70px;
+            background-color:antiquewhite;
+            margin: 0 auto;
+            text-align: center;   /* 水平居中 */
+        }
+        ul{
+            line-height: 70px;  /* 垂直居中 */
+        }
+        ul li{
+            display: inline-block;  /* 设置成内联块级元素 */
+            list-style-type: none;
+        }
+
+        .t{
+            display: table;
+            width: 100px;
+            height: 100px;
+           background-color: #AEBDCC;
+        }
+        p{
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+
+        .outer{
+            display:-webkit-box;
+            width: 200px;
+            height: 200px;
+            background-color: aqua;.
+            -webkit-box-pack:center;
+            -webkit-box-align: center;
+        }
+        .inner{
+            display: -webkit-box;
+            -webkit-box-pack:center;
+            -webkit-box-align: center;
+            width: 100px;
+            height: 100px;
+            background-color: #0000FF;
+
+        }
+    </style>
+</head>
+<body>
+
+    居中：<br>
+        1、margin：0 auto；<br>
+        2、文字居中：line-height; text-align:center;<br>
+        3、由table演变来的一种居中<br>
+        4、利用伸缩盒居中<br>
+    <br>----------------------------------------------------------------------------------------------------<br>
+
+
+    <div class="container">
+      <div class="header">
+          <ul>
+              <li>项目列表</li>
+              <li>项目列表</li>
+              <li>项目列表</li>
+              <li>项目列表</li>
+          </ul>
+      </div>
+    </div>
+    <br>------------------------------------------------------------------------------------------<br>
+
+
+    <div class="t">
+        <p>哈哈</p>
+    </div>
+<br>------------------------------------------------------------------------------------------<br>
+    <div class="outer">
+        <div class="inner">哈哈</div>
+    </div>
+
+</body>
+</html>

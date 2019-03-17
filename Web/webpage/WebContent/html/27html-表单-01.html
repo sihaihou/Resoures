@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+	<body>
+        <form name="userForm" action="http://localhost:8080/oa/user/save" method="get">
+            <!--
+                input标签type属性值
+                    1.file：文件上传
+                    2.hidden:隐藏表单
+
+                readonly修饰的文本输入框：只读，该文本输入框的值可作为参数提交到后台服务器
+                disabled修饰的文本输入框：不能被修改，该文本输入框的值不可作为参数提交服务器
+            -->
+            用户名：
+            <input type="text" name="username" maxlength="20"/>
+            <br><br>
+            文件：
+            <input type="file" name="file"/>
+            <br><br>
+            <input type="hidden" name="id" value="10001"/>
+            <br><br>
+            银行帐号：
+            <input type="text" name="cardId01" value="62262111122233" readonly/>
+            <br><br>
+            银行帐号：
+            <input type="text" name="card02" value="622688899955" disabled/>
+            <br><br>
+            <input type="submit" value="提交"/>
+
+        </form>
+	</body>
+</html>

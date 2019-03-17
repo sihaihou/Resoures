@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- 5种数据类型
+        undefined：undefined
+        string："a","ab"
+        Number:1,2,1.5,,NaN,Infinity
+        boolean:true,false
+        Object:new Object();null
+    -->
+        <script>
+            /* typeof 判断数据类型：运算结果是字符串类型：undefined、number、string、object、boolean、function */
+            var str = "sss";
+            alert(typeof str);
+            function add(a,b){
+                if((typeof a) == "number" && (typeof b) == "number"){
+                    return a+b;
+                };
+                return "参数必须数字类型";
+            }
+            //alert(add(2,5));
+            //alert(add(1,"ss"));
+
+            /* prototype属性:可以动态给String类型的数据扩展方法和属性 */
+            String.prototype.doSome=function(){
+                alert("do something");
+            };
+            str.doSome();
+        </script>
+
+
+</head>
+<body>
+
+</body>
+</html>

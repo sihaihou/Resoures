@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //alert($("#div1").html());
+            //alert($("#div1").text());
+
+
+            // html()获取这个元素的内容（包括html代码）
+            alert($("#div2").html());
+            //text()获取这个元素的文本内容（不包括html代码）
+            alert($("#div2").text());
+
+            //设置一段 HTML 代码到这个元素中。(html编译后的内容)
+            $("#div3").html('<a href="#">你好！</a>');
+            //设置一段 HTML 代码文本到这个元素中。(html内容不进行编译)
+            $("#div4").text('<a href="#">你好！</a>');
+        });
+
+    </script>
+</head>
+<body>
+    <div id="div1">你好！</div>
+    <div id="div2"><a href="#">你好！</a></div>
+    <br><br>
+    <div id="div3"></div>
+    <div id="div4"></div>
+</body>
+</html>

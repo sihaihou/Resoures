@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html body{
+            margin: 0px;
+            padding: 0px;
+        }
+        .container{
+            height: 1500px;
+            background:url("imgs/wxlt.jpg") repeat-y;
+        }
+        /*   header区域 */
+        .header{
+              height: 20px;
+          }
+        /*  you内容承载区 */
+        .you-cont{
+            width: 400px;
+            height: 100px;
+            line-height: 100px;
+            padding-left: 20px;
+        }
+        /*  you头像区 */
+        .you .you-tx{
+            width: 50px;
+            height: 50px;
+        }
+       /* you头像 */
+        .you .you-tx img{
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+        }
+        /*  you文字区 */
+        .you .you-ck{
+            width: 300px;
+            height: 50px;
+        }
+        /* you三角 */
+        .you .you-ck .sj{
+            display: inline-block;
+            width: 0px;
+            height: 0px;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-right: 10px solid green;
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+        /* you矩形 */
+        .you .you-ck .jx{
+            display: inline-block;
+            width: 280px;
+            height: 40px;
+            border-radius: 5px;
+            background: green;
+            line-height: 40px;
+            margin-top: 10px;
+            position: relative;
+
+        }
+        .you .you-ck .sj,.you .you-ck .jx{
+            float: left;
+        }
+        .you .you-ck .jx p{
+            position: absolute;
+            top: -15px;
+            bottom: -15px;
+            text-indent: 10px;
+        }
+        /* you文字 */
+        .you .you-tx,.you .you-ck{
+            float: left;
+        }
+        /* 清除浮动 */
+      .clear{
+            content: "";
+            display: block;
+            overflow: hidden;
+        }
+
+        /* me 区 */
+        .me{
+            width: 100%;
+            height: 100px;
+            float: right;
+        }
+        .me .me-cont{
+            width: 400px;
+            height: 100px;
+            line-height: 100px;
+            float: right;
+        }
+        .me .me-cont .me-tx{
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+        }
+        .me .me-cont .me-ck{
+            width: 300px;
+            height: 50px;
+        }
+        .me .me-cont .me-tx, .me .me-cont .me-ck{
+            float: right;
+        }
+        .me .me-tx img{
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+        }
+        .me .me-cont .me-ck .sj,.me .me-cont .me-ck .jx{
+            float: right;
+        }
+        .me .me-ck .sj{
+            display: inline-block;
+            width: 0px;
+            height: 0px;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 10px solid orchid;
+            margin-top: 20px;
+            margin-right: 10px;
+        }
+        .me .me-ck .jx{
+           display: inline-block;
+            width: 280px;
+            height: 40px;
+            border-radius: 10px;
+            background: orchid;
+            line-height: 40px;
+            margin-top: 10px;
+            position: relative;
+        }
+        .me .me-ck .jx p{
+            position: absolute;
+            top: -15px;
+            text-indent: 10px;
+        }
+        .you{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container clear">
+        <div class="header"></div>
+        <div class="you">
+           <div class="you-cont clear">
+               <div class="you-tx">
+                   <img src="imgs/wxlt_tx_you.jpg">
+               </div>
+               <div class="you-ck clear">
+                   <span class="sj"></span>
+                    <span class="jx">
+                      <p>长得太帅了晚上睡不着怎么办？</p>
+                    </span>
+               </div>
+           </div>
+        </div>
+        <div class="me">
+           <div class="me-cont clear">
+               <div class="me-tx">
+                   <img src="imgs/wxlt-tx_me.jpg">
+               </div>
+               <div class="me-ck clear">
+                   <span class="sj"></span>
+                    <span class="jx">
+                        <p>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
+                    </span>
+               </div>
+           </div>
+        </div>
+        <div class="you clear">
+            <div class="you-cont clear">
+                <div class="you-tx">
+                    <img src="imgs/wxlt_tx_you.jpg">
+                </div>
+                <div class="you-ck clear">
+                    <span class="sj"></span>
+                    <span class="jx">
+                      <p>我每天早上被自己帅醒怎么办？</p>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="me">
+            <div class="me-cont clear">
+                <div class="me-tx">
+                    <img src="imgs/wxlt-tx_me.jpg">
+                </div>
+                <div class="me-ck clear">
+                    <span class="sj"></span>
+                    <span class="jx">
+                        <p>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="you clear">
+            <div class="you-cont clear">
+                <div class="you-tx">
+                    <img src="imgs/wxlt_tx_you.jpg">
+                </div>
+                <div class="you-ck clear">
+                    <span class="sj"></span>
+                    <span class="jx">
+                      <p>女朋友太多怎么办？</p>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

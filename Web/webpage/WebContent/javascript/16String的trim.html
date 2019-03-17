@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>String的trim方法</title>
+    <script>
+        var str = "   abc   ";
+        //alert("-"+str+"-");
+        //js中的string有trim函数，但是存在浏览器兼容问题，在chrome、FF浏览器中支持。在IE浏览器中不支持
+        //str =str.trim();
+        //alert("-"+str+"-");
+
+        //给String扩展一个通用的trim函数
+        String.prototype.trim = function(){
+            //去掉前后空格:
+            //          前空格正则表达式：/^\s+/
+            //          后空格正则表达式：/\s+$/
+            return this.replace(/^\s+/,"").replace(/\s+$/,"");
+        };
+        //调用扩展之后的通用的trim函数
+        str = str.trim();
+        alert("-"+str+"-");
+    </script>
+</head>
+<body>
+
+</body>
+</html>

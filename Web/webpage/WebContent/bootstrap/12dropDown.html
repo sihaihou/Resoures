@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--下拉菜单:用于显示链接列表的可切换、有上下文的菜单。-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <!--下拉菜单：
+                 将下拉菜单触发器和下拉菜单都包裹在 .dropdown 里，或者另一个声明了 position: relative; 的元素。然后加入
+                 组成菜单的 HTML 代码。
+        -->
+        <div class="dropdown">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                dropdown
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">1</a> </li>
+                <li><a href="#">2</a> </li>
+                <li><a href="#">3</a> </li>
+                <li><a href="#">4</a> </li>
+            </ul>
+        </div>
+        <!--对齐：
+                B默认情况下，下拉菜单自动沿着父元素的上沿和左侧被定位为 100% 宽度。 为 .dropdown-menu 添加 .dropdown-menu-right 类可以让菜单右对齐。
+                不建议使用 .pull-right：
+                        从 v3.1.0 版本开始，我们不再建议对下拉菜单使用 .pull-right 类。如需将菜单右对齐，请使用
+                        dropdown-menu-right 类。导航条中如需添加右对齐的导航（nav）组件，请使用 .pull-right 的 mixin 版本，
+                        可以自动对齐菜单。如需左对齐，请使用 .dropdown-menu-left 类。
+             标题：
+                在任何下拉菜单中均可通过添加标题来标明一组动作。
+            分割线：
+                为下拉菜单添加一条分割线，用于将多个链接分组。
+            禁用的菜单项：
+                为下拉菜单中的 <li> 元素添加 .disabled 类，从而禁用相应的菜单项。
+        -->
+        <div class="dropdown pull-right">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                dropdown
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li class="dropdown-header">标题</li>
+                <li class="divider">分割线</li>
+                <li class="disabled"><a href="#">禁用</a> </li>
+                <li><a href="#">1</a> </li>
+                <li><a href="#">2</a> </li>
+                <li><a href="#">3</a> </li>
+                <li><a href="#">4</a> </li>
+            </ul>
+        </div>
+    </div>
+    <script src="css/jquery.min.js"></script>
+    <script src="css/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<html>
+<head>
+	<style type="text/css">
+		#search-button{
+			width: 50px;
+			text-align: center;
+		}
+		#search-button{
+				opacity:0.9;
+				border:1px solid #2d78f4;
+				background-color:#3385ff;
+		}
+		#search-button:hover{
+			opacity:1.0;
+			background-color:#317ef3;
+			border:1px solid #2868c8;
+		}
+	</style>
+	<script type="text/javascript" src="jQuery/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		 /* 导出用户 */
+		 function download(){
+			  var url = "../base/searchList.do?name="+$("#name").val();
+			  $('<form method="post" action="' + url + '"></form>').appendTo('body').submit().remove();
+			  delete dataParams[exportExcel];
+		 }
+	</script>
+	
+</head>
+<body>
+	
+	<h1>测试base账号登录</h1>
+	<form action="/base/login.do" method="post">
+		<input type="text" name="name">
+		<input type="password" name="password">
+		<input type="submit" value="login">
+	</form>	
+	
+	<h1>测试上传excel表格,使用多线程批量插入</h1>
+	<form action="base/batchInsert.do" method="post" enctype="multipart/form-data">
+		<input type="file" name="file" accept="xls/xlsx">
+		<input type="submit" value="上传">
+	</form>
+	
+	<h1>测试上传excel表格,使用生产者、消费者批量新增</h1>
+	<form action="base/moshiBatchInsert.do" method="post" enctype="multipart/form-data">
+		<input type="file" name="file" accept="xls/xlsx">
+		<input type="submit" value="上传">
+	</form>
+	
+	
+	<h1>导出所有用户</h1>
+	用户名:<input id="name" >
+	<div id="search-button" onmouseleave="changeOpacity(0.9);" onmouseenter="changeOpacity(1.0);"  onclick="download()">导出</div>
+	
+</body>
+</html>

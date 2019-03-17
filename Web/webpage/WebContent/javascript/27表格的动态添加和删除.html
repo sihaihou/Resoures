@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function add() {
+            //获取姓名
+            var username = document.getElementById("username").value;
+
+            //获取表格对象
+            var table = document.getElementById("table");
+
+           //调用表格对象的相关方法实现添加新行
+            var index = table.length;
+            var tableRow =  table.insertRow(index);  //添加新行
+
+            //添加属性
+            tableRow.align = "center";
+            var numTime = new Date().getTime();  //毫秒数
+            tableRow.id = numTime;
+
+            //给tableRow添加两个单元格
+            var tableCell0 = tableRow.insertCell(0);
+            var tableCell1 = tableRow.insertCell(1);
+
+            // 给每个单元格设置 HTML 代码
+            tableCell0.innerHTML = username;
+            tableCell1.innerHTML = '<input type="button" value="删除" onclick="del('+ numTime +')"/> ';
+        }
+        function del(tableRowId){
+            // 获取tableRow对象
+           var tableRow = document.getElementById(tableRowId);
+
+            // 获取表格对象
+            var table = document.getElementById("table");
+            //获取tableRow在表格中的位置
+            var index = tableRow.rowIndex;
+
+            var deleteOk = window.confirm("亲,确认删除该用户吗？");
+            if(deleteOk){
+                //删除tableRow
+                table.deleteRow(index);
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="text" name="username" id="username">
+    <input type="button" value="添加" onclick="add();">
+    <hr>
+    <table border="1" width="40%" id="table">
+        <tr>
+            <th>姓名</th>
+            <th>操作</th>
+        </tr>
+    </table>
+</body>
+</html>

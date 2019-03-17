@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .img1{
+            border-style: solid;
+            border-color: red;
+        }
+        .img2{
+            border-style: solid;
+            border-color: #800080;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        function over(){
+            $("#img").addClass("img1");   //添加class，并选择对应的样式
+            $("#img").removeClass("img2");   //移除默认class
+        }
+        function out(){
+            $("#img").removeClass("img1"); //移除class，清除鼠标移入样式
+            $("#img").addClass("img2");   //添加class，并选择对应的样式
+
+        }
+    </script>
+</head>
+<body>
+   <center>
+
+       <img src="img/2.jpg" class="img2" title="图片" alt="图片找不到了" id="img" onmouseover="over()" onmouseout="out()">
+
+   </center>
+</body>
+</html>

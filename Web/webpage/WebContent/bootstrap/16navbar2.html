@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--导航条-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body{
+            padding-top: 75px;
+        }
+    </style>
+</head>
+<body>
+    <!--固定在顶部(navbar-fixed-top类)/固定在底部(navbar-fixed-bottom 类):
+            添加 .navbar-fixed-top/navbar-fixed-bottom 类可以让导航条固定在顶部/底部,当body里有内容时，会影响body里的内容
+            要为 body 元素设置内补（padding）：
+                这个固定的导航条会遮住页面上的其它内容，除非你给 <body> 元素底部设置了 padding。用你自己的值，或用下面给
+                出的代码都可以。提示：导航条的默认高度是 50px。
+       静止在顶部:
+            通过添加 .navbar-static-top 类即可创建一个与页面等宽度的导航条，它会随着页面向下滚动而消失。
+        反色的导航条:
+            通过添加 .navbar-inverse 类可以改变导航条的外观。
+            -->
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">
+                    <img src="imgs/baidu.jpg" style="width: 75px">
+                </a>
+            </div>
+            <ul class="nav nav-pills navbar-nav">
+                <li  class="active"><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                        下拉菜单<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">link1</a></li>
+                        <li><a href="#">link2</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!--表单:
+                    将表单放置于 .navbar-form 之内可以呈现很好的垂直对齐，并在较窄的视口（viewport）中呈现折叠状态。 使用对齐选项可以规定其在导航条上出现的位置。
+                    注意，.navbar-form 和 .form-inline 的大部分代码都一样，内部实现使用了 mixin。 某些表单组件，例如输入框组，
+                    可能需要设置一个固定宽度，从而在导航条内有合适的展现。-->
+            <form method="post" class="navbar-form navbar-left" role="search">
+                <input type="text" class="form-control" placeholder="请输入">
+                <button type="submit" class="btn btn-default" style="background-color:dodgerblue">百度一下</button>
+            </form>
+            <!--按钮:
+                    对于不包含在 <form> 中的 <button> 元素，加上 .navbar-btn 后，可以让它在导航条里垂直居中
+                组件排列:
+                    通过添加 .navbar-left 和 .navbar-right 工具类让导航链接、表单、按钮或文本对齐-->
+            <button type="button" class="btn btn-default navbar-btn navbar-right">搜索</button>
+            <!--文本:
+                    把文本包裹在 .navbar-text中时，为了有正确的行距和颜色，通常使用 <p> 标签。-->
+            <p class="navbar-text">
+                <!--非导航的链接：
+                        或许你希望在标准的导航组件之外添加标准链接，那么，使用 .navbar-link 类可以让链接有正确的默认颜色和反色设置。-->
+               <a href="#" class="navbar-link"> 文本</a>
+            </p>
+        </div>
+    </nav>
+    hello hello hello hello<br>
+    <script src="css/jquery.min.js"></script>
+    <script src="css/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	 scan: 当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。
+	 scanPeriod: 设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。
+	 		当scan为true时，此属性生效。默认的时间间隔为1分钟。
+	 debug: 当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。 
+ -->
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+	<!-- <contextName>：用来设置上下文名称，每个logger都关联到logger上下文，默认上下文名称为default。
+		但可以使用<contextName>设置成其他名字，用于区分不同应用程序的记录。一旦设置，不能修改。  -->
+	<contextName>default</contextName> 
+	
+	<!-- <property>：用来定义变量值，它有两个属性name和value，通过<property>定义的值会被插入到logger上下文中，可以使“${}”来使用变量。 -->
+	<property name="LOG_HOME" value="D:/application/workspace/csyl/src/main/resources/logs"/> 
+	
+	<!-- <timestamp>：获取时间戳字符串，他有两个属性key和datePattern 
+			key: 标识此<timestamp> 的名字； 
+			datePattern: 设置将当前时间（解析配置文件的时间）转换为字符串的模式，遵循java.txt.SimpleDateFormat的格式。 -->
+	<timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss"/> 
+	
+	<!-- <appender>：负责写日志的组件，它有两个必要属性name和class。name指定appender名称，class指定appender的全限定名 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <!-- RollingFileAppender：滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件。 -->
+    <appender name="ADS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    	<!-- <file>：被写入的文件名，可以是相对目录，也可以是绝对目录，如果上级目录不存在会自动创建，没有默认值。 -->
+    	<file>${LOG_HOME}/csyl_%d{yyyy-MM-dd}.log</file>
+    	
+    	<!-- <append>：如果是 true，日志被追加到文件结尾，如果是 false，清空现存文件，默认是true。 -->
+    	<append>true</append>
+    	
+    	<!-- <rollingPolicy>:当发生滚动时，决定RollingFileAppender的行为，涉及文件移动和重命名。
+    			属性class定义具体的滚动策略类,class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy":最常用的滚动策略，
+    			它根据时间来制定滚动策略，既负责滚动也负责出发滚动. -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        
+        	<!-- <fileNamePattern>：必要节点，包含文件名及“%d”转换符,
+        		 “%d”可以包含一个java.text.SimpleDateFormat指定的时间格式，如：%d{yyyy-MM}。-->
+            <FileNamePattern>${LOG_HOME}/csyl.log</FileNamePattern>
+            
+            <!-- <minIndex>:窗口索引最小值
+				 <maxIndex>:窗口索引最大值，当用户指定的窗口过大时，会自动将窗口设置为12。 -->
+            <minIndex>1</minIndex> 
+    　　　		<maxIndex>3</maxIndex> 
+            
+            <!-- <maxHistory>:可选节点，控制保留的归档文件的最大数量，超出数量就删除旧文件。
+            	  假设设置每个月滚动，且<maxHistory>是6，则只保存最近6个月的文件，删除之前的旧文件。
+            	  注意，删除旧文件是，那些为了归档而创建的目录也会被删除。-->
+            <MaxHistory>7</MaxHistory>
+        </rollingPolicy>
+        <!-- <triggeringPolicy >: 告知 RollingFileAppender 合适激活滚动。
+        	 ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy:查看当前活动文件的大小，
+				如果超过指定大小会告知RollingFileAppender 触发当前活动文件滚动。 -->
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy"> 
+        	<!-- <maxFileSize>:这是活动文件的大小，默认值是10MB。 -->
+　　　　　　　<maxFileSize>5MB</maxFileSize> 
+　　　　</triggeringPolicy> 
+
+        <!-- <encoder>：对记录事件进行格式化。（具体参数稍后讲解 ） -->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{20} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <!-- <logger>：用来设置某一个包或具体的某一个类的日志打印级别、以及指定<appender>。<loger>仅有一个name属性，一个可选的level和一个可选的addtivity属性。
+    	 可以包含零个或多个<appender-ref>元素，标识这个appender将会添加到这个loger.
+    	 name: 用来指定受此loger约束的某一个包或者具体的某一个类。 
+    	 level:用来设置打印级别，大小写无关：TRACE, DEBUG, INFO, WARN, ERROR, ALL和OFF，还有一个特俗值INHERITED或者同义词NULL，代表强制执行上级的级别。 如果未设置此属性，那么当前loger将会继承上级的级别。
+    -->
+    <!--  <logger name="com.ideveloperx.smartCall.core.security.GlobalExceptionHandler" level="ERROR" additivity="false" >
+        <appender-ref ref="ERROR_DATA"/>
+    </logger> -->
+    
+    <!--myibatis log configure-->
+	<logger name="jdbc.sqltiming" level="debug"/>
+    <logger name="com.ibatis" level="debug" />
+    <logger name="com.ibatis.common.jdbc.SimpleDataSource" level="debug" />
+    <logger name="com.ibatis.common.jdbc.ScriptRunner" level="debug" />
+    <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="debug" />
+	<logger name="java.sql.Connection" level="DEBUG"/>
+	<logger name="java.sql.Statement" level="DEBUG"/>
+	<logger name="java.sql.PreparedStatement" level="DEBUG"/>
+	<logger name="java.sql.ResultSet" level="DEBUG"/>
+	
+    <logger name="com.reyco.core" level="debug" additivity="false">
+        <appender-ref ref="ADS"/>
+    </logger>
+    
+    <root level="info">
+   	 	<appender-ref ref="STDOUT"/>
+    </root>
+    
+</configuration>

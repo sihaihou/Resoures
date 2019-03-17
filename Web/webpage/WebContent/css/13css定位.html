@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .one{
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            position: fixed;    /*绝对定位*/
+            z-index:-1;
+            top: 100px;
+            left: 200px;
+        }
+        .container{
+            width: 300px;
+            height: 300px;
+            background-color: antiquewhite;
+            margin-top: 200px;
+            position: relative;
+        }
+        .two{
+            width: 100px;
+            height: 100px;
+            background-color: #A0A000;
+            top: 50px;
+            position: absolute;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="one">div</div>
+    <div>1111111111111111111111111111111</div>
+    <div>1111111111111111111111111111111</div>
+    <div>1111111111111111111111111111111</div>
+    <div>1111111111111111111111111111111</div>
+    <div>1111111111111111111111111111111</div>
+    <div>1111111111111111111111111111111</div>
+    <div>1111111111111111111111111111111</div>
+    <div>1111111111111111111111111111111</div>
+<br>------------------------------------------------------------------------------------<br>
+
+    <div class="container">
+        <div class="two">内层div</div>
+    </div>
+
+    <br>------------------------------------------------------------------------------------<br>
+
+    定位：<br>
+        --1，css定位：改变元素在页面上的位置<br>
+        --2，css定位机制：<br>
+            ----1),普通流：元素按照其在HTML中的位置顺序决定排布的过程<br>
+            ----2),浮动：<br>
+            ----3),绝对布局：<br>
+        --3，css定位属性：<br>
+            ----position：把元素放在一个静态的、相对的、或固定的位置上。<br>
+            ----top/bottom/left/right：元素向上/下/左/右的偏移量<br>
+            ----z-index:设置元素的堆叠顺序！<br>
+            ----position属性：<br>
+                ------static对象遵循常规流，不会被应用<br>
+                ------relative对象遵循常规流<br>
+                ------absolute对象脱离常规流<br>
+                ------fixed与absolute一致，但偏移定位是以窗口为参考。当出现滚动条时，对象不会随着滚动<br>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .container{
+            width: 200px;
+            height: 200px;
+            background-color: antiquewhite;
+            visibility: hidden;
+        }
+        .context{
+            width: 100px;
+            height: 100px;
+            background-color: #AA22FF;
+            visibility: visible;
+        }
+
+
+        .text{
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            overflow: auto;/* auto:按需出现滚动条  hidden:隐藏  visible:不处理  scroll:出现滚动条*/
+           /* overflow-x:auto;
+            overflow-y: auto;*/
+        }
+
+
+    </style>
+</head>
+<body>
+     visibility：<br>
+     --1，设置是否显示。与display：none；不同，此属性为隐藏的对象保留其占据的物理空间<br>
+     --2，如果对象为可是，其父对象也必须是可视的<br>
+     --3，属性值：<br>
+         ----visible：设置对象可视<br>
+         ----hidden：设置对象隐藏！<br>
+     overflow：<br>
+     --1，复合属性。设置对象处理溢出内容的方式。效果等同于overflow-x + overflow-y.<br>
+     --2，如果希望对象可视，其父对象也必须是可视的<br>
+     --3，属性值：<br>
+         ----visible：对溢出内容不做处理，内容可能会超出容器。（默认）<br>
+         ----hidden：隐藏溢出容器的内容且不出现滚动条<br>
+         ----scroll：隐藏溢出容器的内容，溢出的内容将以滚动条的方式呈现<br>
+         ----auto：当内容没有溢出容器时不出现滚动条，当内容溢出容器时出现滚动条，按需出现滚动条。此为body对象和textarea的默认值。<br>
+
+    <div class="container">
+        <div class="context"></div>
+    </div>
+
+    <div class="text">
+        overflowoverflowoverflowoverflowoverflowoverflowoverflowoverflow
+    </div>
+</body>
+</html>

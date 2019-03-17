@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+          //object数据类型
+          // object:new Object();null
+        var obj = new Date();
+        alert(typeof obj);
+        obj = null;
+        alert(typeof obj);
+
+        //js中自定义类
+        //自定义的类：默认继承的父类是 object
+        //js自定义的函数，函数名本身就是类名
+        // js函数声明就表示定义了一个类，函数本身又是构造函数，函数声明和类的定义混合完成。
+
+        /* 1，定义类的第一种方式：function语句式，效率高，占用内存  */
+        function User(id,name){
+            //属性
+            this.id = id;
+            this.name = name;
+            //方法
+            this.shopping = function(){
+                alert(this.name + " being shopping...");
+            };
+        }
+        //创建对象，类似 java
+        var user = new User("1","zs");
+        user.shopping();
+
+          /* 2，定义类的第一种方式：,函数的直接量ECMAScript */
+          var Employee = function(id,name){
+              this.id = id;
+              this.name = name;
+          }
+          var e = new Employee(111,"zs");
+          alert(e.id  + "," + e.name);
+          //给Employee动态扩展一个方法
+          Employee.prototype.work = function(){
+              alert(this.name + " is working...");
+          }
+          e.work();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

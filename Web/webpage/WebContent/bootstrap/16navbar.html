@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--导航条:
+            默认样式的导航条
+            品牌图标
+    -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!--导航条的可访问性:
+            务必使用 <nav> 元素，或者，如果使用的是通用的 <div> 元素的话，务必为导航条设置 role="navigation" 属性，这样
+            能够让使用辅助设备的用户明确知道这是一个导航区域。-->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!--品牌图标:
+                    将导航条内放置品牌标志的地方替换为 <img> 元素即可展示自己的品牌图标。由于 .navbar-brand 已经被
+                    设置了内补（padding）和高度（height），你需要根据自己的情况添加一些 CSS 代码从而覆盖默认设置。
+            -->
+            <div class="navbar-header">
+                <a class="navbar-brand">
+                    <img src="imgs/baidu.jpg" style="width: 75px">
+                </a>
+            </div>
+            <ul class="nav nav-pills navbar-nav">
+                <li  class="active"><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <!--下拉菜单-->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                        下拉菜单<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">link1</a></li>
+                        <li><a href="#">link2</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <script src="css/jquery.min.js"></script>
+    <script src="css/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title> id 选择器</title>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        /*
+        *   根据Id 获取JQuery对象，jQuery对象其实是一个数组，数组的长度取决于jQuery获取页面元素的个数，根据Id只能获取到1个，
+        *   这些数组中存放的元素都是DOM对象。
+        * */
+        $(function(){
+            //根据Id 获取JQuery对象
+          var v_jquery = $("#name");
+            alert(v_jquery.val());
+            //将jQuery对象转换成DOM对象
+            var v_dom = v_jquery[0];
+            alert(v_dom.value);
+        });
+    </script>
+</head>
+<body>
+    <input type="text" value="张三" id="name">
+</body>
+</html>

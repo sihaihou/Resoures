@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: antiquewhite;
+        }
+        .change{
+           /* 2D的转换 */
+           /*transform:translate(50px,20px);*/  /* 水平移动 50px，垂直移动 20px */
+          /* transform:rotate(30deg);*/   /*角度单位：deg*/
+           /*transform:scale(2,1);*/    /* 宽扩大2倍，高扩大一倍 */
+            transform:skew(20deg,40deg);  /* X轴倾斜20度，Y轴倾斜40度  */
+            /* 3D的转换 */
+            transform:rotateX(60deg);
+
+            /* 支持各种浏览器内核*/
+            transform:translate(50px,20px);
+            -webkit-tranform:translate(50px,20px);
+            -moz-transform:translate(50px,20px);
+            -o-transform:translate(50px,20px);
+            -ms-transform:translate(50px,20px);
+        }
+    </style>
+</head>
+<body>
+2D、3D（transform）转换方法：<br>
+    --2D<br>
+        ----1、translate（）移动<br>
+        ----2、rotate（）旋转（角度单位：deg）<br>
+        ----3、scale（）缩放<br>
+        ----4、skew（）倾斜<br>
+        ----matrix（）矩阵方法变换<br>
+    --3D、<br>
+        ----1、rotateX（）<br>
+        ----2、rotateY（）<br>
+
+<br>-------------------------------------------------------------------<br>
+    <div>初始化效果</div>
+    <div class="change">变换后效果</div>
+
+</body>
+</html>

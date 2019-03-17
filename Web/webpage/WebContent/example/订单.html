@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html body{
+            padding: 0px;
+            margin: 0px;
+        }
+        /* 顶部*/
+        header{
+            height: 45px;
+            background-color: red;
+            text-align: center;
+            line-height:45px ;
+            position: relative;
+        }
+        header a{
+            position: absolute;
+            left: 15px;
+            font-size: 16px;
+            color: #ddd;
+            font-style: normal;
+            text-decoration: none;
+        }
+        header span{
+            font-size: 22px;
+            color: #ddd;
+        }
+        /* 物流信息*/
+        .wlxx{
+            display: flex;
+            height: 100px;
+            border-bottom: 1px solid #9d9d9d;
+            margin-bottom: 15px;
+        }
+        .wlxx .wl1{
+            flex-grow:2;
+            background: url("imgs/yycg_on.png") no-repeat center 15px;
+            background-size: 60px;
+        }
+        .wlxx .wl2{
+            flex-grow:2;
+            background: url("imgs/jiantou_on.png") no-repeat center;
+            background-size: 15px;
+        }
+
+
+        /*货物信息*/
+        .hwxx h1{
+            font-size: 20px;
+            font-weight: normal;
+            border-left:3px solid red ;
+            margin-left: 15px;
+            padding-left: 15px;
+        }
+        .hwxx .hwxx-main{
+            border-top: 1px solid #9d9d9d;
+            border-bottom: 1px solid #9d9d9d;
+            padding-left: 15px;
+            margin-bottom: 15px;
+            line-height: 10px;
+        }
+        .hwxx .hwxx-main p span{
+            font-size: 16px;
+            color: #9d9d9d;
+        }
+        .hwxx .hwxx-main p i{
+            font-size: 16px;
+            font-style: normal;
+        }
+        .tj a{
+            display: block;
+            width: 80%;
+            height: 40px;
+            margin: 0 auto;
+            border: 1px solid #9d9d9d;
+            border-radius: 20px;
+            text-align: center;
+            line-height: 40px;
+            font-size: 20px;
+            color: #9d9d9d;
+        }
+        .tj a:hover{
+            background-color: #FF0000;
+            border: 1px solid #FF0000;
+            border-radius: 20px;
+            font-size: 20px;
+            color: #ffffff;
+        }
+        .ts{
+            margin-left: 15px;
+            margin-bottom: 60px;
+            line-height: 10px;
+        }
+        .ts p{
+            font-size: 14px;
+        }
+        .ts .tips{
+            color: #9d9d9d;
+        }
+        footer{
+            width: 100%;
+            height: 60px;
+            background-color: #fff;
+            position: fixed;
+            bottom: 0px;
+            display: flex;
+            text-align: center;
+            line-height: 80px;
+            border-top: 1px solid #9d9d9d;
+        }
+         footer div{
+            flex-grow: 1;
+        }
+        footer .sy{
+            background: url("imgs/sy.png") no-repeat center 10px;background-size: 20px;
+        }
+        footer .dd{
+            background: url("imgs/dd.png") no-repeat center 10px;background-size: 20px;
+        }
+        footer .wd{
+            background: url("imgs/wd.png") no-repeat center 10px;background-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#">&lt;返回</a>
+        <span>订单详情</span>
+    </header>
+    <div class="wlxx">
+        <div class="wl1 yycg"></div>
+        <div class="wl2"></div>
+        <div class="wl1"></div>
+        <div class="wl2"></div>
+        <div class="wl1"></div>
+        <div class="wl2"></div>
+        <div class="wl1"></div>
+    </div>
+    <div class="hwxx">
+        <h1>货物信息</h1>
+       <div class="hwxx-main">
+           <p><span>商品名：</span><i>YSL圣罗兰口红</i></p>
+           <p><span>商品编号：</span><i>YSL12341231</i></p>
+           <p><span>商品价格：</span><i>¥320</i></p>
+           <p><span>收货地址：</span><i>西三旗桥东神舟科技园尚学堂</i></p>
+       </div>
+        <h1>支付信息</h1>
+        <div class="hwxx-main">
+            <p><span>原价格：</span><i>¥400</i></p>
+            <p><span>实际价格：</span><i>¥320</i></p>
+            <p><span>支付方式：</span><i>微信支付</i></p>
+        </div>
+    </div>
+    <div class="tj">
+        <a href="#">提交订单</a>
+    </div>
+    <!--  <p class="tips">温馨提示</p>
+            <p>成功派单之后，不可取消订单。</p>
+            <p>选择线下支付方式的，我们的服务人员会当面向您收取服务款。</p>-->
+    <div class="ts">
+        <p class="tips">温馨提示</p>
+        <p>成功派单之后，不可取消订单。</p>
+        <p>选择线下支付方式的，我们的服务人员会当面向您收取服务款。</p>
+    </div>
+    <footer>
+        <div class="sy">首页</div>
+        <div class="dd">订单</div>
+        <div class="wd">我的</div>
+    </footer>
+</body>
+</html>

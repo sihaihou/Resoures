@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--导航-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!--导航：
+                Bootstrap中的导航组件都依赖同一个 .nav 类，状态类也是共用的。改变修饰类可以改变样式。
+                标签页：
+                    注意 .nav-tabs 类依赖 .nav 基类。
+             active类:默认选中第一个链接
+                    -->
+        <ul class="nav nav-tabs" id="mytab">
+            <li role="presentation" class="active"><a href="#">导航线路1</a></li>
+            <li role="presentation"><a href="#">导航线路2</a></li>
+            <li role="presentation"><a href="#">导航线路3</a></li>
+        </ul>
+        <!--胶囊式标签页:
+                HTML 标记相同，但使用 .nav-pills 类：
+                胶囊是标签页也是可以垂直方向堆叠排列的。只需添加 .nav-stacked 类.Home
+                -->
+        <ul class="nav nav-pills nav-stacked" id="mytab2">
+            <li role="presentation" class="active"><a href="#">导航线路1</a></li>
+            <li role="presentation"><a href="#">导航线路2</a></li>
+            <li role="presentation"><a href="#">导航线路3</a></li>
+        </ul>
+        <!--两端对齐的标签页:
+                在大于 768px 的屏幕上，通过 .nav-justified 类可以很容易的让标签页或胶囊式标签呈现出同等宽度。在小屏幕上，
+                导航链接呈现堆叠样式。
+            禁用的链接:
+                对任何导航组件（标签页、胶囊式标签页），都可以添加 .disabled 类，从而实现链接为灰色且没有鼠标悬停效果。
+            添加下拉菜单：
+            带下拉菜单的胶囊式标签页:添加一个.nav-pills类
+                -->
+        <ul class="nav nav-pills nav-stacked nav-justified" id="mytab3">
+            <li role="presentation" class="active"><a href="#">导航线路1</a></li>
+            <li role="presentation" class="disabled"><a href="#">禁用的链接</a></li>
+            <li role="presentation">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="true">
+                    下拉菜单
+                    <span class="caret"></span>
+               </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">a</a></li>
+                    <li><a href="#">b</a></li>
+                    <li><a href="#">c</a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+    <script src="css/jquery.min.js"></script>
+    <script src="css/bootstrap.min.js"></script>
+    <script>
+        $("#mytab a").click(function(e){
+            $(this).tab("show");
+        })
+        $("#mytab2 a").click(function(e){
+            $(this).tab("show");
+        })
+        $("#mytab3 a").click(function(e){
+            $(this).tab("show");
+        })
+    </script>
+</body>
+</html>

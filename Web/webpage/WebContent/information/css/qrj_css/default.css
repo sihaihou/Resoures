@@ -1,0 +1,129 @@
+BODY {
+			MARGIN: 0px;
+		}
+		#re_header {
+			BACKGROUND: #eee;
+			marign: 0;
+		}
+		#re_header .banner_text_top {
+			FONT-SIZE: 12px;
+			COLOR: #999; 
+			LINE-HEIGHT: 20px; 
+			TEXT-DECORATION: none;
+		}
+		#re_header .txt_blod {
+			COLOR: #ff0000;
+		}
+		#re_header .ba_waikuang {
+			BORDER-BOTTOM: #ff0000 1px solid ;
+		}
+		#re_header A {
+			FONT-SIZE: 12px;
+			COLOR: #333; 
+			LINE-HEIGHT: 22px; 
+			TEXT-DECORATION: none;
+		}
+		#re_header A:hover {
+			FONT-SIZE: 12px; 
+			COLOR: #333; 
+			LINE-HEIGHT: 22px; 
+			TEXT-DECORATION: underline;
+		}
+		#re_mediapaly {
+		TEXT-ALIGN: center;
+	}
+	#re_footer {
+		FONT-SIZE: 12px; 
+		MARGIN: 0px auto;
+		HEIGHT: 140px; 
+		TEXT-ALIGN: center;
+	}
+	#re_footer_b {
+		MARGIN: 0px auto; 
+		WIDTH: 740px; 
+		HEIGHT: 140px; 
+		TEXT-ALIGN: center;
+	}
+	#re_footer #div_1 {
+		PADDING-LEFT: 4px; 
+		FLOAT: left; 
+		WIDTH: 110px; 
+		PADDING-TOP: 4px; 
+		HEIGHT: 140px
+	}
+	#re_footer #div_2 {
+		MARGIN: 0px auto; 
+		WIDTH: 740px; 
+		HEIGHT: 140px; 
+		TEXT-ALIGN: center
+	}
+	#re_footer #div_2 #tips {
+		FONT-WEIGHT: bold; 
+		FONT-SIZE: 24px; 
+		COLOR: #ff9900; 
+		PADDING-TOP: 4px; 
+		HEIGHT: 30px; 
+		TEXT-ALIGN: center;
+	}
+	#re_footer #div_2 #div_box {
+		BORDER-RIGHT: #f5b50a 4px solid; 
+		PADDING-RIGHT: 5px; 
+		BORDER-TOP: #f5b50a 4px solid; 
+		PADDING-LEFT: 5px; 
+		PADDING-BOTTOM: 5px; 
+		BORDER-LEFT: #f5b50a 4px solid; 
+		WIDTH: 92%; 
+		PADDING-TOP: 5px; 
+		BORDER-BOTTOM: #f5b50a 4px solid;
+	}
+	#re_footer #div_2 #div_box .sltbox {
+		MARGIN-TOP: 5px;
+		HEIGHT: 30px; 
+		TEXT-ALIGN: left;
+	}
+	#re_footer #div_3 {
+		PADDING-LEFT: 4px; 
+		FLOAT: left; 
+		WIDTH: 110px; 
+		PADDING-TOP: 4px;
+		HEIGHT: 140px
+	}
+	#re_footer #div_2 #zf_copyright {
+		FONT-SIZE: 12px; 
+		COLOR: #999; 
+		PADDING-TOP: 4px;
+		HEIGHT: 16px; 
+		TEXT-ALIGN: center;
+	}
+	#re_footer #div_2 #zf_more {
+		FONT-SIZE: 12px;
+		COLOR: #999;
+		TEXT-ALIGN: right;
+	}
+	#re_footer .r {
+		PADDING-RIGHT: 6px;
+		FONT-WEIGHT: bold; 
+		FONT-SIZE: 12px; 
+		COLOR: #999; 
+		FONT-FAMILY: Arial;
+	}
+	#re_footer A {
+		COLOR: #999;
+	}
+	#re_footer .s {
+		PADDING-RIGHT: 6px; 
+		FONT-WEIGHT: bold; 
+		FONT-SIZE: 16px; 
+		COLOR: #999; 
+		FONT-FAMILY: Arial;
+	}
+	A.cf:link {
+		TEXT-DECORATION: none;
+	}
+	A.cf:visited {
+		TEXT-DECORATION: none;
+	}
+	A.cf:hover {
+		COLOR: #ccc; 
+		TEXT-DECORATION: underline;
+	}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+    function openWindow(){
+        //默认就是开启一个新窗口
+        window.open("测试.html","_blank");
+    }
+    </script>
+</head>
+<body>
+    <a href="测试.html">测试.html</a>
+
+    <a href="javascript:window.history.go(1);">前进</a>
+
+    <input type="button" value="测试open" onclick="openWindow();">
+</body>
+</html>

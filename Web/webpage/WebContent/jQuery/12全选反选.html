@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        var v_ahObj = null;
+        function quanxuan(){
+            v_ahObj = $(".ah");
+            for(var i=0;i<v_ahObj.length;i++){
+                $(v_ahObj[i]).attr("checked",true);
+            }
+        }
+        function fanxuan(){
+            v_ahObj = $(".ah");
+            for(var i=0;i<v_ahObj.length;i++){
+               $(v_ahObj[i]).attr("checked",!$(v_ahObj[i]).attr("checked"));
+            }
+        }
+        function quxiao(){
+            v_ahObj = $(".ah");
+            for(var i=0;i<v_ahObj.length;i++){
+                $(v_ahObj[i]).attr("checked",false);
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="全选" onclick="quanxuan()">
+    <input type="button" value="反选" onclick="fanxuan()">
+    <input type="button" value="取消" onclick="quxiao()">
+    <br>
+    爱好：
+    <input type="checkbox" class="ah">吃
+    <input type="checkbox" class="ah">喝
+    <input type="checkbox" class="ah">玩
+    <input type="checkbox" class="ah">乐
+</body>
+</html>

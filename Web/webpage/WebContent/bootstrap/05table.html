@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <!--支持手机端-->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container{
+            /*上边距*/
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!--响应式表格：将任何 .table 元素包裹在 .table-responsive 元素内，-->
+        <div class="table-responsive">
+        <!--条纹边框：table-striped类：给<tbody>之内的每一行增加一个斑马条纹样式的效果
+            带边框的表格：table-bordered类：为表格和其中的每一个单元格增加边框。
+            鼠标悬停：table-hover类：让<tbody>中的每一行对鼠标悬停状态做出响应。
+            紧缩表格：table-condensed类:可以让表哥更加紧凑，单元格中的内补（padding）均会减半。
+            状态类：不仅可以为一行添加，而且可以为一个单元格添加。
+                .active	鼠标悬停在行或单元格上时所设置的颜色
+                .success	标识成功或积极的动作---表现浅绿色
+                .info	标识普通的提示信息或动作---表现浅蓝色
+                .warning	标识警告或需要用户注意---表现浅黄色
+                .danger	标识危险或潜在的带来负面影响的动作---表现粉红色
+        -->
+        <table class="table table-striped table-bordered table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th>标题</th>
+                    <th>标题</th>
+                    <th>标题</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="success">
+                    <td>内容内容内容</td>
+                    <td>内容内容内容</td>
+                    <td>内容内容内容</td>
+                </tr>
+                <tr class="info">
+                    <td>内容内容内容</td>
+                    <td>内容内容内容</td>
+                    <td>内容内容内容</td>
+                </tr>
+                <tr class="warning">
+                    <td>内容内容内容</td>
+                    <td>内容内容内容</td>
+                    <td>内容内容内容</td>
+                </tr>
+                <tr class="danger">
+                    <td>内容内容内容</td>
+                    <td>内容内容内容</td>
+                    <td>内容内容内容</td>
+                </tr>
+                <tr>
+                    <td class="success">内容内容内容</td>
+                    <td>内容内容内容</td>
+                    <td>内容内容内容</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        function js(){
+            var v_num1 = $("#num1").val();
+            var v_num2 = $("#num2").val();
+            var v_sum = (v_num1*1) + (v_num2*1);
+            $("#sum").val(v_sum);
+        }
+    </script>
+</head>
+<body>
+
+    <input id="num1">+<input id="num2">=<input id="sum"><br>
+                <input type="submit" value="计算" onclick="js()">
+</body>
+</html>

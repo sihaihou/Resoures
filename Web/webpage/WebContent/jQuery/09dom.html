@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#div").append("<span>内部的后置插入...</span>");         //内部的后置插入
+            $("#div").prepend("<span>内部的前置插入...</span>");   //内部的前置插入
+            $("#div").before("<span>外部的前置插入</span>");         //外部的前置插入
+            $("#div").after("<span>外部的后置插入</span>");     //外部的后置插入
+
+            $("#sel").append("<option>北京</option>");
+            $("#sel").append("<option>上海</option>");
+
+            alert("remove一个属性");    //移除一个元素
+            //$("#div1").remove();
+            alert("empty一个属性");     //清空一个元素的内容，但是这个元素本身不会被移除
+            $("#div1").empty();
+        });
+    </script>
+</head>
+<body>
+    <div id="div">
+        你好
+    </div>
+    <br><br>
+
+    <select id="sel">
+        <option value="0">请选择省区</option>
+    </select>
+    <br><br>
+
+
+    <div id="div1">
+        hello word
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+BODY {
+	FONT-SIZE: 12px; BACKGROUND: url(../qixi7xi.files/images_www.qzhe.org/bj.jpg) #000 repeat-y; MARGIN: 0px auto
+}
+#page_body {
+	MARGIN: 0px auto; WIDTH: 1000px; COLOR: #fff; FONT-FAMILY: "ºÚÌå"
+}
+#title {
+	MARGIN-TOP: 10px; FONT-WEIGHT: bold; FONT-SIZE: 40px; FILTER: glow(color=#ffff00, strength=16); COLOR: #ff0000; LINE-HEIGHT: 90px; HEIGHT: 90px; TEXT-ALIGN: center
+}
+#t_text {
+	FONT-SIZE: 40px; COLOR: #ff0
+}
+#banner {
+	MARGIN-TOP: 10px; MARGIN-BOTTOM: 3px; HEIGHT: 94px; TEXT-ALIGN: center
+}
+.top_text {
+	FONT-WEIGHT: normal; FONT-SIZE: 18px; MARGIN: 15px auto; WIDTH: 760px; LINE-HEIGHT: 40px
+}
+.pic {
+	TEXT-ALIGN: center
+}
+.w_text {
+	MARGIN-TOP: 15px; FONT-SIZE: 15px; MARGIN-BOTTOM: 15px; TEXT-ALIGN: center
+}
+.four_bottom_text {
+	FONT-SIZE: 16px; MARGIN: 5px auto; WIDTH: 760px; LINE-HEIGHT: 40px; TEXT-ALIGN: center
+}
+.text_1 {
+	FONT-SIZE: 25px; MARGIN: 10px auto; WIDTH: 510px; LINE-HEIGHT: 40px; TEXT-ALIGN: center
+}
+.four {
+	MARGIN-TOP: 10px; MARGIN-BOTTOM: 20px; HEIGHT: 300px
+}
+.four_left {
+	MARGIN-TOP: 40px; FLOAT: left; MARGIN-LEFT: 60px; WIDTH: 400px; LINE-HEIGHT: 40px
+}
+.four_right {
+	FLOAT: left; MARGIN-LEFT: 80px; WIDTH: 400px
+}
+.six {
+	MARGIN-TOP: 20px; HEIGHT: 460px
+}
+.six_left {
+	FLOAT: left; MARGIN-LEFT: 60px; WIDTH: 300px
+}
+.six_right {
+	MARGIN-TOP: 80px; FLOAT: left; WIDTH: 450px; LINE-HEIGHT: 50px
+}
+.size {
+	FONT-SIZE: 30px
+}
+.red {
+	COLOR: #f00
+}
+.red_30 {
+	FONT-SIZE: 30px; COLOR: #f00
+}
+.y {
+	COLOR: #ff0
+}
+.y_25 {
+	FONT-SIZE: 25px; COLOR: #ff0
+}
+.ls {
+	COLOR: #0f0
+}
+.style {
+	COLOR: #0ff
+}
+.zs {
+	COLOR: #f0f
+}
+.y_b {
+	BACKGROUND: #ff0; COLOR: #f00
+}

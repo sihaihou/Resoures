@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>h5新标签</title>
+    <style>
+        header{
+            height: 100px;
+            background-color: #31b0d5;
+        }
+        nav{
+            height: 50px;
+            background-color: #269abc;
+        }
+        ul li{
+            list-style: none;
+            display: inline-block;
+        }
+        li{
+            width: 50px;
+            height: 30px;
+            background-color:greenyellow;
+            text-align: center;
+        }
+        summary,p{
+            width: 50px;
+            color:#ffffff;
+        }
+        .left{
+            width: 30%;
+            height: 600px;
+            background-color: seashell;
+            display: inline-block;
+        }
+        .right{
+            width: 68%;
+            height: 600px;
+            background-color:lightcyan;
+            display: inline-block;
+        }
+        footer{
+            height: 200px;
+            background-color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>页头</h1></header>
+    <nav>
+        <ul>
+            导航条
+            <li><a  href="#">aaa</a></li>
+            <li><a  href="#">aaa</a></li>
+            <li><a  href="#">aaa</a></li>
+            <li><a  href="#">aaa</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        <div class="left">
+            <video controls="controls" width="240px" height="160px">
+                <source src="mp4/01.ogg" type="video/ogg"/>
+                <source src="mp4/01.mp4" type="video/mp4"/>
+                <source src="mp4/01.webm" type="video/webm"/>
+                您的浏览器不支持video标签
+            </video>
+            <hr>
+            <audio controls="controls" width="240px" height="160px">
+                <source src="mp3/01.ogg" type="audio/ogg"/>
+                <source src="mp3/01.mp3" type="audio/mpeg"/>
+                您的浏览器不支持audio标签
+            </audio>
+        </div>
+
+        <div class="right">
+            <input type="text" list="cars">
+            <datalist id="cars">
+                <option value="宝马"></option>
+                <option value="奔驰"></option>
+                <option value="奥迪"></option>
+            </datalist>
+
+            <fieldset>
+                <legend>标题</legend>
+                <input type="text"><br>
+                <input type="password">
+            </fieldset>
+        </div>
+    </div>
+    <footer>
+        <details>
+            <summary>更多</summary>
+            <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </details>
+        <h1><font color="#ffffff">页脚</font></h1>
+    </footer>
+</body>
+</html>

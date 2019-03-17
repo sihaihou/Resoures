@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .container{
+            width: 300px;
+            height:300px;
+            background-color: #AA22FF;
+        }
+        .one{
+            float: left;
+            width: 100px;
+            height: 150px;
+            background-color: aquamarine;
+        }
+        .two{
+            float: left;
+            width:150px;
+            height: 100px;
+            background-color:antiquewhite;
+        }
+        .three{
+            width: 100px;
+            height: 100px;
+            float: left;
+            background-color:plum;
+        }
+
+
+
+        .text1{
+            float: right;
+            background-color: antiquewhite;
+        }
+        .text2{
+            clear: right;
+            background-color: #c0a16b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="one">div1</div>
+        <div class="two">div2</div>
+        <div class="three">div3</div>
+        helloword
+    </div>
+
+<br>------------------------------------------------------------------------------------<br>
+    <div class="text1">div1</div>
+    <div class="text2">div2</div>
+
+
+    浮动：<br>
+        --1，float属性可用的值：<br>
+              ----left|right：元素向左|右浮动<br>
+              ----none:元素不浮动<br>
+              ----inherit：从父级继承浮动属性<br>
+              ----注意：float在绝对定位和display为none时不生效。<br>
+        --2，clear属性：<br>
+              ----去掉浮动属性（包括继承来的属性）<br>
+              ----clear属性值：<br>
+                ------left|right：去掉元素向左、向右浮动<br>
+                ------both：左右两侧均去掉浮动<br>
+                ------inherit：从父级继承来clear属性<br>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title> 鼠标离开-经过事件</title>
+    <script>
+    function changeColor(colorValue){
+        var id = document.getElementById("id");
+        //修改 CSS 样式
+        id.style.color = colorValue;
+    }
+    </script>
+</head>
+<body>
+    <!--
+        mouseover:鼠标经过事件  onmouseover(事件句柄)
+        mouseout：鼠标离开事件 onmouseout(事件句柄)
+    -->
+    <a id="id"
+       style="cursor: pointer;text-decoration: underline;color: blue;"
+       onmouseover="changeColor('red');"
+       onmouseout="changeColor('blue');">
+        鼠标离开-经过事件
+    </a>
+</body>
+</html>

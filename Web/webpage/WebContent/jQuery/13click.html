@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //为but添加一个点击事件，当点击这个元素后触发click方法中参数的匿名方法，这个匿名方法为这个事件的处理方法。
+            $("#but").click(function(){
+                $("#sub").click();
+            });
+            //为sub这个元素绑定点击事件
+            $("#sub").click(function(){
+                alert("触发了sub事件");
+                //阻止浏览器的默认行为，触发事件的当前元素是提交按钮，因此阻止了表单的提交行为。
+                return false;
+            });
+        });
+    </script>
+</head>
+<body>
+    <form action="#" method="post">
+        用户：<input type="text" name="name">
+              <input type="submit" value="提交" id="sub">
+              <input type="button" value="提交" id="but">
+    </form>
+</body>
+</html>

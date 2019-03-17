@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //用于获取表单元素的value属性值，这个元素可以是文本框以及下拉列表
+          alert($("#name").val());
+           //设置某个表单元素的属性值，如果这个元素是下拉列表则则设置下拉列表的选中状态
+          $("#name").val("李四");
+
+          alert( $("#sel").val());
+
+        });
+
+    </script>
+</head>
+<body>
+
+    <center>
+        <input type="text" value="张三" id="name">
+        <select id="sel">
+            <option value="0">请选择班级</option>
+            <option value="1">1503班</option>
+            <option value="2">1504班</option>
+        </select>
+    </center>
+</body>
+</html>

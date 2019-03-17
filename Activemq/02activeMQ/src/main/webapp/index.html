@@ -1,0 +1,41 @@
+<html>
+ <head>
+ 	<script type="text/javascript" src="jQuery/jquery-3.2.1.js"></script>
+ 	<script type="text/javascript">
+ 	function redis(){
+			$.ajax({
+		        type:'post',
+		        dataType: "json",
+		        url:"base/redis.do",
+		        data:{ 
+		        	time:new Date()
+		        },
+		        //数据加载前调用方法
+		        beforeSend:function(data){
+		        	
+		        },
+		        success:function(data){
+		        	var flag = data.success;
+		        	if(flag){
+		        		//编辑成功
+		        	}else{
+		        		//编辑失败
+		        		alert("false");
+		        	}
+		        },
+		    	//数据加载后调用的方法
+		       complete:function(data){
+		        }, 
+		     	//错误
+		        error:function(){
+		        	
+		        }
+		    });
+ 		}
+ 	</script>
+ </head>
+<body>
+	<h2><a href="login.html">Hello World!</a></h2>
+	
+</body>
+</html>

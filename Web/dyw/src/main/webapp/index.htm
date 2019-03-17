@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>亚洲超碰福利视频网</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" media="all" href="css/css.css">
+	<link rel="stylesheet" type="text/css" media="all" href="css/loading.css">
+	<style type="text/css">
+		.type{
+			display: inline-block;
+		}
+		.searchPage{
+			display:none; 
+		}
+		
+	</style>
+	<script>var SitePath='/',SiteAid='10',SiteTid='',SiteId='';</script>
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.lazyload.js"></script>
+	<script src="js/jquery.autocomplete.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="jQuery/jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="js/reyco.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			searchNav_category();
+			searchByCategoryIdGroup();
+			searchAll();
+		})
+		function searchNav_category(){
+			 $.ajax({
+			        type:'post',
+			        dataType: "json",
+			        url:"category/searchNav.do",
+			        data:{ time:new Date()},
+			      //数据加载前调用方法
+			        beforeSend:function(data){
+			        	//loading显示
+			        	$("#loadingOver").css('display','block');
+			        	$("#loadingLayout").css('display','block');
+			        },
+			      //数据加载成功调用的方法
+			        success:function(data){
+			        	var flag = data.success;
+			        	if(flag){
+			        	 	var data_length = getJSonObjLenth(data.data.info);
+			        		var nav_node = $(".navbar-nav");
+			        		for(var i=0;i<data_length;i++){
+			        			var li_node = $("<li><a class='_self' target='_self' href='javascript:viod(0)'  onclick='searchPage("+data.data.info[i].id+")'>"+data.data.info[i].name+"</a></li>");
+			        			nav_node.append(li_node);
+			        		}
+			        	 }else{
+			        		//$(location).attr('href', '../user/login.html');
+			        	}  
+			       }, 
+			   	//数据加载后调用的方法
+			       complete:function(data){
+			        	//loading隐藏
+			        	$("#loadingOver").css('display','none');
+			        	$("#loadingLayout").css('display','none');
+			        }, 
+			        error:function(){
+			        	//$(location).attr('href', '../user/login.html');
+			        }
+			     });
+		 } 
+		function searchByCategoryIdGroup(){
+			$.ajax({
+		        type:'post',
+		        dataType: "json",
+		        url:"video/searchByCategoryIdGroup.do",
+		        data:{ time:new Date()},
+		      //数据加载前调用方法
+		        beforeSend:function(data){
+		        	//loading显示
+		        	$("#loadingOver").css('display','block');
+		        	$("#loadingLayout").css('display','block');
+		        },
+		      //数据加载成功调用的方法
+		        success:function(data){
+		        	var flag = data.success;
+		        	if(flag){
+		        	 	var data_length = getJSonObjLenth(data.data.info);
+		        	 	for(var i=0;i<data_length;i++){
+	        	 			var data_i_length = getJSonObjLenth(data.data.info[i]);
+			        		for(var j=0;j<data_i_length;j++){
+			        			if(i==0){
+				        			var searchPage_node_tp= $("<div class='col-md-2 col-sm-6 col-xs-6 movie-item-out'>"+
+				        					"<div class='movie-item'>"+
+				        					"<a class='video_a' style='position:relative;display:block;' title='"+data.data.info[i][j].name+"' target='_blank' onclick=openVideo('"+data.data.info[i][j].recordPath+"')>"+
+				        					"<img class='indexhot' title='imags/zt.jpg' alt='imags/zt.jpg' src='imags/zt.jpg'>"+
+				        					"</a>"+
+				        					"<div  class='meta'>"+
+				        					"<div style='width:100%;overflow:hidden;height:20px;'><a class='video_a movie-name' onclick=openVideo('"+data.data.info[i][j].recordPath+"')>"+data.data.info[i][j].name+"</a></div>"+
+											"<em>浏览次数：380</em>"+
+											"</div>"+
+											"</div>");
+				        			$("#zxtp").append(searchPage_node_tp);
+			        			}
+			        			if(i==1){
+				        			var searchPage_node_rh= $("<div class='col-md-2 col-sm-6 col-xs-6 movie-item-out'>"+
+				        					"<div class='movie-item'>"+
+				        					"<a class='video_a' style='position:relative;display:block;' title='"+data.data.info[i][j].name+"' target='_blank' onclick=openVideo('"+data.data.info[i][j].recordPath+"')>"+
+				        					"<img class='indexhot' title='imags/zt.jpg' alt='imags/zt.jpg' src='imags/zt.jpg'>"+
+				        					"</a>"+
+				        					"<div  class='meta'>"+
+				        					"<div style='width:100%;overflow:hidden;height:20px;'><a class='video_a movie-name' onclick=openVideo('"+data.data.info[i][j].recordPath+"')>"+data.data.info[i][j].name+"</a></div>"+
+											"<em>浏览次数：380</em>"+
+											"</div>"+
+											"</div>");
+				        			$("#zxrh").append(searchPage_node_rh);
+			        			}
+			        			if(i==2){
+				        			var searchPage_node_gq= $("<div class='col-md-2 col-sm-6 col-xs-6 movie-item-out'>"+
+				        					"<div class='movie-item'>"+
+				        					"<a class='video_a' style='position:relative;display:block;' title='"+data.data.info[i][j].name+"' target='_blank' onclick=openVideo('"+data.data.info[i][j].recordPath+"')>"+
+				        					"<img class='indexhot' title='imags/zt.jpg' alt='imags/zt.jpg' src='imags/zt.jpg'>"+
+				        					"</a>"+
+				        					"<div  class='meta'>"+
+				        					"<div style='width:100%;overflow:hidden;height:20px;'><a class='video_a movie-name' onclick=openVideo('"+data.data.info[i][j].recordPath+"')>"+data.data.info[i][j].name+"</a></div>"+
+											"<em>浏览次数：380</em>"+
+											"</div>"+
+											"</div>");
+				        			$("#zxgq").append(searchPage_node_gq);
+			        			}
+			        			if(i==3){
+				        			var searchPage_node_wm= $("<div class='col-md-2 col-sm-6 col-xs-6 movie-item-out'>"+
+				        					"<div class='movie-item'>"+
+				        					"<a class='video_a' style='position:relative;display:block;' title='"+data.data.info[i][j].name+"' target='_blank' onclick=openVideo('"+data.data.info[i][j].recordPath+"')>"+
+				        					"<img class='indexhot' title='imags/zt.jpg' alt='imags/zt.jpg' src='imags/zt.jpg'>"+
+				        					"</a>"+
+				        					"<div  class='meta'>"+
+				        					"<div style='width:100%;overflow:hidden;height:20px;'><a class='video_a movie-name' onclick=openVideo('"+data.data.info[i][j].recordPath+"')>"+data.data.info[i][j].name+"</a></div>"+
+											"<em>浏览次数：380</em>"+
+											"</div>"+
+											"</div>");
+				        			$("#zxwm").append(searchPage_node_wm);
+			        			}
+			        			if(i==4){
+				        			var searchPage_node_om= $("<div class='col-md-2 col-sm-6 col-xs-6 movie-item-out'>"+
+				        					"<div class='movie-item'>"+
+				        					"<a class='video_a' style='position:relative;display:block;' title='"+data.data.info[i][j].name+"' target='_blank' onclick=openVideo('"+data.data.info[i][j].recordPath+"')>"+
+				        					"<img class='indexhot' title='imags/zt.jpg' alt='imags/zt.jpg' src='imags/zt.jpg'>"+
+				        					"</a>"+
+				        					"<div  class='meta'>"+
+				        					"<div style='width:100%;overflow:hidden;height:20px;'><a class='video_a movie-name' onclick=openVideo('"+data.data.info[i][j].recordPath+"')>"+data.data.info[i][j].name+"</a></div>"+
+											"<em>浏览次数：380</em>"+
+											"</div>"+
+											"</div>");
+				        			$("#zxom").append(searchPage_node_om);
+			        			}
+			        		}
+		        	 	}
+		        	 }else{
+		        		//$(location).attr('href', '../user/login.html');
+		        	}  
+		       }, 
+		   	//数据加载后调用的方法
+		       complete:function(data){
+		        	//loading隐藏
+		        	$("#loadingOver").css('display','none');
+		        	$("#loadingLayout").css('display','none');
+		        }, 
+		        error:function(){
+		        	//$(location).attr('href', '../user/login.html');
+		        }
+		     });
+		}
+		var pageNo=1;
+		//视频列表分页----页面加载执行
+		function searchPage(id){
+			 $.ajax({
+			        type:'post',
+			        dataType: "json",
+			        url:"video/searchPage.do",
+			        data:{ 
+			        	status:0,
+			        	pageNo:pageNo,
+			        	categoryId:id,
+			        	time:new Date()
+			        },
+			        //数据加载前调用方法
+			        beforeSend:function(data){
+			        	//loading显示
+			        	$("#loadingOver").css('display','block');
+			        	$("#loadingLayout").css('display','block');
+			        },
+			        success:function(data){
+			        	var flag = data.success;
+			        	if(flag){
+			        		pageNum = data.data.info.pageNo;
+			        		pageSize = data.data.info.totalPage;
+			        		total = data.data.info.totalCount;
+			        		id = id;
+			        		var data_length = getJSonObjLenth(data.data.info.list);
+			        		$(".type").css('display','none');
+			        		$(".searchPage").css('display','block');
+			        		$("#searchPage").empty();
+			        		for (var i = 0;i<data_length;i++) {	 
+			        			var searchPage_node= $("<div class='col-md-2 col-sm-6 col-xs-6 movie-item-out'>"+
+			        					"<div class='movie-item'>"+
+			        					"<a class='video_a' style='position:relative;display:block;' title='"+data.data.info.list[i].name+"' target='_blank' onclick=openVideo('"+data.data.info.list[i].recordPath+"')>"+
+			        					"<img class='indexhot' title='imags/zt.jpg' alt='imags/zt.jpg' src='imags/zt.jpg'>"+
+			        					"</a>"+
+			        					"<div  class='meta'>"+
+			        					"<div style='width:100%;overflow:hidden;height:20px;'><a class='video_a movie-name' onclick=openVideo('"+data.data.info.list[i].recordPath+"')>"+data.data.info.list[i].name+"</a></div>"+
+										"<em>浏览次数：380</em>"+
+										"</div>"+
+										"</div>");		
+								$("#searchPage").append(searchPage_node);
+							} 
+			        	}else{
+			        		//$(location).attr('href', '../user/login.html');
+			        	}
+			        },
+			      	//数据加载后调用的方法
+			       complete:function(data){
+			        	//loading隐藏
+			        	$("#loadingOver").css('display','none');
+			        	$("#loadingLayout").css('display','none');
+			        }, 
+			        error:function(){
+			        	//$(location).attr('href', '../user/login.html');
+			        }
+			   });
+		}
+		function searchAll(){
+			 $.ajax({
+			        type:'post',
+			        dataType: "json",
+			        url:"systemInfo/searchAll.do",
+			        data:{ time:new Date()},
+			      //数据加载前调用方法
+			        beforeSend:function(data){
+			        	//loading显示
+			        	$("#loadingOver").css('display','block');
+			        	$("#loadingLayout").css('display','block');
+			        },
+			      //数据加载成功调用的方法
+			        success:function(data){
+			        	var flag = data.success;
+			        	if(flag){
+			        	 	var data_length = getJSonObjLenth(data.data.info);
+			        		for(var i=0;i<data_length;i++){
+			        			if(data.data.info[i].infoKey == "www_name"){
+			        				$("#title").html(data.data.info[i].infoValue);
+			        			}
+			        			if(data.data.info[i].infoKey == "welcome"){
+			        				$("#welcome").html(data.data.info[i].infoValue);
+			        			}
+			        			if(data.data.info[i].infoKey == "commercials"){
+			        				$("#commercials").attr("href",data.data.info[i].infoValue);
+			        			}
+			        			if(data.data.info[i].infoKey == "qq_proup_href"){
+			        				$("#qq_proup_href").attr("href",data.data.info[i].infoValue);
+			        			}
+			        			/* if(data.data.info[i].infoKey == "add_qq"){
+			        				$("#add_qq").attr("href",data.data.info[i].infoValue);
+			        			}
+			        			if(data.data.info[i].infoKey == "stationmaster"){
+			        				$("#stationmaster").attr("href",data.data.info[i].infoValue);
+			        			} */
+			        		}
+			        	 }else{
+			        		//$(location).attr('href', '../user/login.html');
+			        	}  
+			       }, 
+			   	//数据加载后调用的方法
+			       complete:function(data){
+			        	//loading隐藏
+			        	$("#loadingOver").css('display','none');
+			        	$("#loadingLayout").css('display','none');
+			        }, 
+			        error:function(){
+			        	//$(location).attr('href', '../user/login.html');
+			        }
+			     });
+		}
+		function openVideo(path){
+			var VideoPage = window.open();
+			var html="<html lang='zh-CN'>"+
+						"<head>"+
+							"<meta charset='uft-8'>"+
+							"<title></title>"+
+							"<link rel='stylesheet' href=css/bootstrap.css'>"+
+							"<link rel='stylesheet' type='text/css' media='all' href='css/css.css'>"+
+							"<link rel='stylesheet' type='text/css' media='all' href='css/loading.css'>"+
+							"<style type='text/css'>"+
+							"</style>"+
+						"<body style='background:black'>"+
+							"<div class='ytgg' onload='addytgg()'>"+
+								"<a href='' target='_blank'><img src='imags/zt.jpg' style='width:33%;height:60px' border='0' class='half-img'/></a>"+ 
+								"<a href='' target='_blank'><img src='imags/zt.jpg' style='width:33%;height:60px' border='0' class='half-img'/></a>"+ 
+								"<a href='' target='_blank'><img src='imags/zt.jpg' style='width:33%;height:60px' border='0' class='half-img'/></a>"+ 
+								"<a href='' target='_blank'><img src='imags/zt.jpg' style='width:33%;height:60px' border='0' class='half-img'/></a>"+ 
+								"<a href='' target='_blank'><img src='imags/zt.jpg' style='width:33%;height:60px' border='0' class='half-img'/></a>"+ 
+								"<a href='' target='_blank'><img src='imags/zt.jpg' style='width:33%;height:60px' border='0' class='half-img'/></a>"+ 
+							"</div>"+
+							"<div style='width:60%;margin:auto;'>"+
+								"<video controls width='100%'>"+
+									"<source src='"+path+"' type='video/mp4;codecs=avcl.42E01E, mp4a.40.2'/> "+
+									"<source src='"+path+"' type='video/webm;codecs=vp8, vorbis'/> "+
+									"<source src='"+path+"' type='video/ogg;codecs=theora, vorbis'/> "+
+								"</video>"+
+							"</div>"+
+				 		"</body>"+
+					 "</html";
+			VideoPage.document.write(html);
+		}
+	</script>
+	
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/respond.js/1.4.2/respond.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+	<!-- loading before -->
+    <div id="loadingOver" class="loadingOver"></div>
+    <div id="loadingLayout" class="loadingLayout"><img src="imags/loading.gif" alt=""/></div>
+  	<!-- loading after -->
+  	<div class="ytgg">
+		<a href="" target="_blank"><img src="imags/zt.jpg" border="0" class="half-img"/></a> 
+		<a href="" target="_blank"><img src="imags/zt.jpg" border="0" class="half-img"/></a>
+		<a href="" target="_blank"><img src="imags/zt.jpg" border="0" class="half-img"/></a>
+		<a href="" target="_blank"><img src="imags/zt.jpg" class="half-img" /></a>
+		<a href="" target="_blank"><img src="imags/zt.jpg" border="0" class="half-img"/></a>
+		<a href="" target="_blank"><img src="imags/zt.jpg" border="0" class="half-img"/></a>
+	</div>
+	
+	<div style="background: #fff url(imags/zt.jpg) no-repeat 50% 22px;">
+		<div style="padding: 5px 0;border-bottom: 0px solid #DDD;background: #CD2C42;">
+		    <div class="container">
+		        <span id="welcome" class="header-help">欢迎来到亚洲超碰福利视频网</span>
+		        <div class="pull-right">
+		            <a class="header-help" href="javascript:alert('快捷键Ctrl+D可以快速添加到收藏夹。');">Ctrl+D 加入收藏夹</a> -
+		            <a class="header-help" style="color:red;" href="#">保存到桌面</a> -
+		            <a id="commercials" class="header-help" style="color:rgb(40,96,144);" target="_blank" rel="nofollow" href="https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=%E5%B9%BF%E5%91%8A%E5%90%88%E4%BD%9CQQ%3A1548171008&">广告合作联系</a>-
+		            <a id="qq_proup_href" target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=acf6594a7470265291009bc305d09145b81afff9a0b73da132d1a95fd9bdce94">
+		            	<img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="深吻腿间唇" title="深吻腿间唇">
+		            </a>-
+					<a id="add_qq" class="header-help" target="_blank" href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1548171008">添加QQ</a>-
+					<a id="stationmaster" class="header-help" target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1548171008&amp;site=qq&amp;menu=yes">联系站长</a>-
+					<a id="login" class="header-help" target="_blank" href="user/index.html">登录</a>
+					<!-- <font color="#00EC00">邮箱：chenhaoxiang0117@qq.com</font> -->
+		        </div>
+		    </div>
+		</div>
+		<div class="container" style="padding-top:198px;padding-bottom:20px;padding-right:0;">
+		    <a  class="logo"  href="http://www.sihaihou.com"></a>
+		</div>
+		<nav class="navbar navbar-default" role="navigation">
+		    <div class="container">
+		        <div class="navbar-header">
+		            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+		            <span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            </button>
+		        </div>
+		        <div class="collapse navbar-collapse">
+		            <ul class="nav navbar-nav">
+		                <li  class="active" ><a href="#">首页</a></li>
+		                <!--偷拍自拍 日韩 欧美 动漫 中文字幕-->
+						<!-- <li class="dropdown"><a target="_self" href="http://www.sihaihou.com">最新地址http://www.sihaihou.com</a></li> -->
+		           	</ul>
+				    <div class="pull-right">
+				    	<form class="navbar-form" target="_blank" accept-charset="utf-8" action="/index.php?m=vod-search" method="POST" role="search">
+				            <div class="form-group">
+							<input type="text" id="wd" name="wd" class="form-control" onblur="if(this.value==''){ this.value='搜索一下';this.style.color='#cfcdcd';}" onfocus="if(this.value=='搜索一下'){this.value='';this.style.color='';}" value="搜索一下" />
+				            </div><button type="submit" class="btn btn-primary">搜索</button>
+				        </form>
+				    </div>
+		     	</div>
+		    </div>
+		</nav>
+	</div>
+
+	<div class="container">
+		<div class="row" id="topnotice">
+    		<div class="col-md-6 col-sm-12"></div>
+			<div class="row" id="topnotice">
+			    <div class="col-md-6 col-sm-12"></div>
+			    <div class="col-md-6 col-sm-12" style="padding:0;"></div>
+			</div>
+			<div class="row" style="padding:0 7px;">
+    			<div class="col-md-12 movie-item-out">
+					<a target="_blank" href="http://www.sihaihou.com"><img src="imags/zt.jpg" width="100%" height="60" border="边框"></a>
+					<a target="_blank" href="http://www.sihaihou.com"><img src="imags/zt.jpg" width="100%" height="60" border="边框"></a>
+					<!-- <TD>
+						<A href="" target=_blank>
+							<font color=#FF0000 size=5>
+								<b>广告内容</b>
+							 </font>
+						</A>
+					</TD> -->
+					<a target="_blank" href="http://www.sihaihou.com"><img src="imags/zt.jpg" class="half-img" width="30%" height="60"/></a> 
+					<a target="_blank" href="http://www.sihaihou.com"><img src="imags/zt.jpg" class="half-img" width="39%" height="60"/></a> 
+					<a target="_blank" href="http://www.sihaihou.com"><img src="imags/zt.jpg" class="half-img" width="30%" height="60"/></a>
+					<a target="_blank" href="http://www.sihaihou.com"><img src="imags/zt.jpg" width="100%" height="60" border="边框"></a>
+					<div class="alert alert-info top-alert" style="margin-bottom:0px;height:60px;border-radius:0;">
+				 		<strong>广告赞助点我</strong>
+			 			<a rel="nofollow" target="_blank" href="http://39.107.247.102/cpw/">
+			 				<strong>←←←本站：域名 sihaihou.com </strong>
+			 			</a>     
+				    </div> 
+				</div>
+			    <!-- 最新偷拍：start -->
+				<div id="zxtp" class="type row" style="padding:0 7px;">
+			    	<div class="col-md-12 movie-item-out">
+			        	<h3 style="padding-left:10px;border-left: 8px solid #E94B43;color: #FFFFFF;">最新偷拍：</h3>
+			    	</div>
+					<!-- <div class="col-md-2 col-sm-6 col-xs-6 movie-item-out">
+					    <div class="movie-item">
+					        <a style="position:relative;display:block;" title="一本道" target="_blank" href="http://www.sihaihou.com">
+					            <img class="indexhot" title="一本道" alt="一本道" src="imags/zt.jpg">
+					            <button class="hdtag"></button>
+					        </a>
+					        <div class="meta">
+					            <div style="width:100%;overflow:hidden;height:20px;"><a target="_blank" title="一本道" class="movie-name" href="http://www.sihaihou.com">一本道</a></div>
+					            <em>浏览次数：614</em>
+					        </div>
+					    </div>
+					</div> -->
+				</div>
+				 <!-- 最新偷拍：end -->
+				 <!-- 最新日韩：start -->
+				<div id="zxrh" class="type row" style="padding:0 7px;">
+				    <div class="col-md-12 movie-item-out">
+				          <h3 style="padding-left:10px;border-left: 8px solid #E94B43;color: #FFFFFF;">最新日韩：</h3>
+				    </div>
+					<!-- 
+					<div class="col-md-2 col-sm-6 col-xs-6 movie-item-out">
+					    <div class="movie-item">
+					        <a style="position:relative;display:block;" title="ヌキどきッ" target="_blank" href="http://www.sihaihou.com">
+					            <img class="indexhot" title="ヌキどきッ" alt="ヌキどきッ" src="imags/zt.jpg">
+					            <button class="hdtag"></button>
+					        </a>
+					        <div class="meta">
+					            <div style="width:100%;overflow:hidden;height:20px;"><a target="_blank" title="ヌキどきッ"></a></div>
+					            <em>浏览次数：360</em>
+					        </div>
+					    </div>
+					</div> -->
+				</div>
+				<!-- 最新日韩：end -->
+		
+				<!-- 最新高清：start-->
+				<div id="zxgq" class="type row" style="padding:0 7px;">
+				    <div class="col-md-12 movie-item-out">
+				          <h3 style="padding-left:10px;border-left: 8px solid #E94B43;color: #FFFFFF;">最新高清：</h3>
+				    </div>
+					<!-- <div class="col-md-2 col-sm-6 col-xs-6 movie-item-out">
+					    <div class="movie-item">
+					        <a style="position:relative;display:block;" title="AlinaForeverYouPart" target="_blank" href="http://www.sihaihou.com">
+					            <img class="indexhot" title="AlinaForeverYouPart" alt="AlinaForeverYouPart" src="imags/zt.jpg">
+					            <button class="hdtag"></button>
+					        </a>
+					        <div class="meta">
+					            <div style="width:100%;overflow:hidden;height:20px;"><a target="_blank" title="AlinaForeverYouPart" class="movie-name" href="http://www.sihaihou.com">AlinaForeverYouPart</a></div>
+					            <em>浏览次数：415</em>
+					        </div>
+					    </div>
+					</div> -->
+				</div>
+				<!-- 最新高清：end -->
+		
+				<!-- 最新无码：start -->
+				<div id="zxwm" class="type row" style="padding:0 7px;">
+				    <div class="col-md-12 movie-item-out">
+				          <h3 style="padding-left:10px;border-left: 8px solid #E94B43;color: #FFFFFF;">最新无码：</h3>
+				    </div>
+					
+				<!-- 	<div class="col-md-2 col-sm-6 col-xs-6 movie-item-out">
+					    <div class="movie-item">
+					        <a style="position:relative;display:block;" title="imags/zt.jpg" target="_blank" href="http://www.sihaihou.com">
+					            <img class="indexhot" title="imags/zt.jpg" alt="imags/zt.jpg" src="imags/zt.jpg">
+					            <button class="hdtag"></button>
+					        </a>
+					        <div class="meta">
+					            <div style="width:100%;overflow:hidden;height:20px;"><a target="_blank" title="imags/zt.jpg" class="movie-name" href="http://www.sihaihou.com">imags/zt.jpg</a></div>
+					            <em>浏览次数：360</em>
+					        </div>
+					    </div>
+					</div>	 -->
+				</div>
+				<!-- 最新无码：end -->
+				
+				<!-- 最新欧美：start -->
+				<div id="zxom" class="type row" style="padding:0 7px;">
+				    <div class="col-md-12 movie-item-out">
+				          <h3 style="padding-left:10px;border-left: 8px solid #E94B43;color: #FFFFFF;">最新欧美：</h3>
+				    </div>
+				<!-- 	<div class="col-md-2 col-sm-6 col-xs-6 movie-item-out">
+					    <div class="movie-item">
+					        <a style="position:relative;display:block;" title="imags/zt.jpg" target="_blank" href="http://www.sihaihou.com">
+					            <img class="indexhot" title="imags/zt.jpg" alt="imags/zt.jpg" src="imags/zt.jpg">
+					            <button class="hdtag"></button>
+					        </a>
+					        <div class="meta">
+					            <div style="width:100%;overflow:hidden;height:20px;"><a target="_blank" title="imags/zt.jpg" class="movie-name" href="http://www.sihaihou.com">imags/zt.jpg</a></div>
+					            <em>浏览次数：360</em>
+					        </div>
+					    </div>
+					</div>	 -->
+				</div>
+				<!-- 最新欧美：end -->
+		
+				<!-- 动态创建:start -->
+				<div id="searchPage" class="searchPage row" style="padding:0 7px;">
+				    <!--
+				   <div class="col-md-2 col-sm-6 col-xs-6 movie-item-out">
+					    <div class="movie-item">
+					        <a style="position:relative;display:block;" title="imags/zt.jpg" target="_blank" href="http://www.sihaihou.com">
+					            <img class="indexhot" title="imags/zt.jpg" alt="imags/zt.jpg" src="imags/zt.jpg">
+					            <button class="hdtag"></button>
+					        </a>
+					        <div class="meta">
+					            <div style="width:100%;overflow:hidden;height:20px;"><a target="_blank" title="imags/zt.jpg" class="movie-name" href="http://www.sihaihou.com">imags/zt.jpg</a></div>
+					            <em>浏览次数：360</em>
+					        </div>
+					    </div>
+					</div> 
+					 <div class="col-md-2 col-sm-6 col-xs-6 movie-item-out">
+					    <div class="movie-item">
+					        <a style="position:relative;display:block;" title="imags/zt.jpg" target="_blank" href="../video/1/1536703977662.mp4">
+					            <video class="indexhot" style="width=100%; height=100%; object-fit: fill" src="../video/1/1536703977662.mp4" title="徐若瑄演唱_爱笑的眼睛__<br>唱出不一样的味道"/>
+					            <button class="hdtag"></button>
+					        </a>
+					        <div class="meta">
+					           	<div style="width:100%;overflow:hidden;height:20px;"><a target="_blank" title="imags/zt.jpg" class="movie-name" href="../video/1/1536703977662.mp4">一本道</a></div>
+					            <em>浏览次数：360</em>
+					        </div>
+					    </div>
+					</div> -->
+					<div class="col-md-2 col-sm-6 col-xs-6 movie-item-out">
+					    <div class="movie-item">
+					        <a class="video_a" style="position:relative;display:block;" title="imags/zt.jpg" target="_blank" onclick="openVideo('recordPath')">
+					        	<img class="indexhot" title="imags/zt.jpg" alt="imags/zt.jpg" src="imags/zt.jpg">
+					            <button class="hdtag"></button>
+					        </a>
+					        <div class="meta">
+					           	<div style="width:100%;overflow:hidden;height:20px;"><a target="_blank" title="imags/zt.jpg" class="video_a movie-name" onclick="openVideo('recordPath')">一本道</a></div>
+					            <em>浏览次数：360</em>
+					        </div>
+					    </div>
+					</div> 
+				</div>
+				<!-- 动态创建:end -->
+			
+				<div><a target="_blank" class="btn btn-primary btn-block" href="http://www.sihaihou.com"><i class="glyphicon glyphicon-fire"></i> 更多热门电影 &raquo; </a></div>
+				<footer class="footer">
+					<p>杭州电影网信息科技有限公司  版权所有 © 2017-2018  HUYA 12318全国文化市场举报网站 中国互联网不良信息举报中心 客服举报电话：0756-2211951</p>
+				    <p>免责声明：本网站所有内容都是靠程序在互联网上自动搜集而来，仅供测试和学习交流。<br/>目前正在逐步删除和规避程序自动搜索采集到的不提供分享的版权影视。</p>
+				    <p>若侵犯了您的权益，请即时发邮件通知站长，邮箱：1548171008@qq.com 万分感谢！</p>
+				    <p>友情链接：
+						<a target="_blank" href="">哥哥爱看</a>
+						<a target="_blank" href="">高清HD视频</a>
+					</p>
+			    	<em><a href="http://www.sihaihou.com">♥ 亚洲超碰福利视频网</a> ·亚洲超碰AV网 </em>
+				</footer>
+			</div>
+			<div style="display:none;"><iframe src="error.html"></iframe></div>
+		</div>
+		<!-- end container -->
+	</div>
+</body>
+</html>
+ 
+ 
+ 

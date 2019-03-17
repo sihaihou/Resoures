@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="../jQuery/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="../js/checkUser.js"></script>
+<script type="text/javascript">
+	$(function() {	
+		$("#accountId").val(localStorage.id);
+	}
+</script>
+</head>
+<body>
+	<form action="../video/insertVideo.do" method="post" enctype="multipart/form-data">
+		视频类型<select name="type"> 
+			<option value="1" selected>偷怕</option>
+			<option value="2">日韩</option>
+			<option value="3">欧美</option>
+			<option value="4">动漫</option>
+			<option value="5">中文字幕</option>
+			<option value="6">高清</option>
+			<option value="7">无码</option>
+		</select><br>
+		<input id="accountId" type="hidden"/><br>
+		视频文件<input type="file" name="file"/><br>
+		视频名称<input type="text" name="name"><br>
+		视频备注<input type="text" name="desc"><br>
+		<input type="submit" value="上传"/>
+	</form>
+</body>
+</html>

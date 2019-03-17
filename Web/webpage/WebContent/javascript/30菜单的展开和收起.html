@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        ul{
+            list-style-type: none;
+        }
+        #cityList{
+            display:none;
+        }
+    </style>
+    <script>
+        //默认是隐藏的
+        var hide = true ;
+        function displayOrHide(){
+            var cityList =document.getElementById("cityList");
+            if(hide){
+                //显示
+                cityList.style.display = "block";
+                hide = false;
+            }else{
+                //隐藏
+                cityList.style.display = "none";
+                hide = true;
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li><a style="cursor: pointer;color: blue;" onclick="displayOrHide();">中国</a>
+            <ul id="cityList">
+                <li>北京</li>
+                <li>天津</li>
+                <li>上海</li>
+                <li>重庆</li>
+            </ul>
+        </li>
+        <li>美国</li>
+        <li>日本</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function addNewOptoin(){
+            // 1.获取课程名
+            var courseName = document.getElementById("courseName").value;
+
+            // 2.获取下拉列表对象
+            var selectObj = document.getElementById("select");
+
+            // 3.创建option对象节点
+            // 3.1.创建option新节点
+            var optionObj = document.createElement("option");
+            // 3.2.给option新节点添加属性和 HTML 代码
+            optionObj.innerHTML = courseName;
+            optionObj.value = courseName;
+
+            // 4.将option节点追加到下拉列表对象中
+            selectObj.appendChild(optionObj);
+        }
+        // 获取焦点清除 value
+        function clearCourseVal(){
+            var courseName = document.getElementById("courseName");
+            courseName.value = "";
+        }
+        // option改变弹出被选中的value值
+        function changeSelect(val){
+            alert(val);
+        }
+
+    </script>
+</head>
+<body>
+    <input type="text" name="name" id="courseName" onfocus="clearCourseVal();" >
+    <input type="button" value="添加" onclick="addNewOptoin();">
+    <hr>
+
+    <select id="select" onchange="changeSelect(this.value);">
+        <option value="">--请选择课程--</option>
+    </select>
+</body>
+</html>

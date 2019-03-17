@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--表单：基本表单展示效果-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <form method="post">
+            <div class="form-group">
+                <label for="name">用户名</label>
+                <input type="text" class="form-control" placeholder="用户名" id="name">
+            </div>
+            <div class="form-group">
+                <label for="pwd">密码</label>
+                <input type="password"  class="form-control" placeholder="密码" id="pwd">
+            </div>
+            <div class="form-group">
+                <label for="file">File input</label>
+                <input type="file" class="form-control" id="file">
+                <p>请选择文件</p>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox">女
+                </label>
+            </div>
+            <div>
+             <button type="submit" class="btn btn-default">提交</button>
+            </div>
+         </form>
+        <p>=========================================================================================================================</p>
+        <!--内联表单显示在一行-->
+        <form method="post" class="form-inline">
+            <div class="form-group" >
+                <label class="sr-only">用户名</label>
+                <input type="text" class="form-control" placeholder="用户名">
+            </div>
+            <div class="form-group">
+                <label class="sr-only">密码</label>
+                <input type="password"  class="form-control" placeholder="密码">
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">$</div>
+                    <input type="text"  class="form-control" placeholder="金额">
+                    <div class="input-group-addon">.00</div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

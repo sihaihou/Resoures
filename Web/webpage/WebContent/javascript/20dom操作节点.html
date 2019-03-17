@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function setDiv(){
+            //向div中追加一个子节点 font
+            // 1.获取div节点
+            var div = document.getElementById("div");
+
+            // 2.创建 font节点
+            var fontEle = document.createElement("font");  //重点
+            fontEle.innerHTML = "测试";
+            fontEle.color = "red";
+
+            // 3.将font节点追加到div节点中
+            div.appendChild(fontEle);            //重点
+        }
+
+    </script>
+</head>
+<body>
+    <input type="button" value="给div标签追加子节点font" onclick="setDiv();">
+    <div id="div">
+    </div>
+</body>
+</html>

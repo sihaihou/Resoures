@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var str = " 3 + 4 ";
+        //alert(eval(str));
+
+        // 重点： java出现连接数据库之后，查询数据然后拼接成一个json格式的字符串发送给浏览器，
+        //        浏览器只是接收到一个普通的json格式的字符串，然后在js中使用 eval 函数，将 json
+        //        格式的字符串转换成 json 对象。
+        var javaSendStr = "var obj = {\"id\":1001,\"username\":\"zhangsan\"};";
+        eval(javaSendStr);
+       alert("eval函数处理java数据----" + obj.id  + " , " +obj.username)
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

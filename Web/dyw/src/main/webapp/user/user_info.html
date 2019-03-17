@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="css/default.css" />
+	<link rel="stylesheet" href="css/userInfo.css" />
+	<!-- loading  -->
+	<link rel="stylesheet" href="../css/loading.css">
+	<!-- 返回信息样式： 是否成功 -->
+	<link rel="stylesheet" href="../css/return.css"/>
+	<style type="text/css">
+		.xx-info div{
+			display:block;
+			padding-top: 10px;
+			padding-left: 20px;
+			padding-bottom: 0px;
+		}
+		.xx-info .save{
+			padding-left: 80px;
+		} 
+		.bj-info ul li{
+			cursor:pointer;
+			color:#99DD00;
+			font-weight: bold;
+		}
+	</style>
+	<script type="text/javascript" src="../jQuery/jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="../js/checkUser.js"></script>
+	<script type="text/javascript" src="../js/reyco.js"></script>
+	<script type="text/javascript">
+		function bjxx_click(id){
+			var info =id+"_info";
+			var input =id+"_input";
+			var objInfo = $("#"+info+"");
+			var objInput = $("#"+input+"");
+			objInfo.css("display","none");
+			if(id=="gender"){
+				objInput.find("option[value='"+objInfo.attr("value")+"']").prop("selected",true);
+			}else{
+				objInput.val(objInfo.attr("value"));
+			}
+			objInput.css("display","-webkit-inline-box");
+			objInput.focus();
+		}
+		function bjxx_blur(id){
+			var objPhone_info = $("#phone_info");
+			var objPhone_input = $("#phone_input");
+			var objName_info = $("#name_info");
+			var objName_input = $("#name_input");
+			var objGender_info = $("#gender_info");
+			var objGender_input = $("#gender_input");
+			var objEmail_info = $("#email_info");
+			var objEmail_input = $("#email_input");
+			if(id=="phone_input"){
+				objPhone_input.css("display","none");
+				objPhone_info.css("display","-webkit-inline-box");
+				objPhone_info.text(objPhone_input.val());
+				objPhone_info.attr("value",objPhone_input.val());
+			}else if(id=="name_input"){
+				objName_input.css("display","none");
+				objName_info.css("display","-webkit-inline-box");
+				objName_info.text(objName_input.val());
+				objName_info.attr("value",objName_input.val());
+			}else if(id=="gender_input"){
+				objGender_input.css("display","none");
+				objGender_info.css("display","-webkit-inline-box");
+				var gender_info= objGender_input.val();
+				if(gender_info == "1"){
+					objGender_info.text("男");
+				}else if(gender_info == "0"){
+					objGender_info.text("女");
+				}
+				objGender_info.attr("value",objGender_input.val());
+			}else if(id=="email_input"){
+				objEmail_input.css("display","none");
+				objEmail_info.css("display","-webkit-inline-box");
+				objEmail_info.text(objEmail_input.val());
+				objEmail_info.attr("value",objEmail_input.val());
+			}
+		}
+		//修改生日
+		function bjxx_bir_click(id){
+			var objInfo = $("#bir_info");
+			var objInput = $("#bir_input");
+			var objYear =$("#bir_year");
+			var objMonth =$("#bir_month");
+			var objDay =$("#bir_day");
+			var objInfo =$("#bir_info");
+			if(id=="bir_false"){
+				$(".bir").attr('id','bir_true');
+				objInfo.css("display","none");
+				objInput.css("display","-webkit-inline-box");
+				var objInfoVal =objInfo.text();
+				var year = objInfoVal.substring(0,4);
+				var month = objInfoVal.substring(5,7);
+				var day = objInfoVal.substring(8,10);
+				objYear.val(year);
+				objMonth.val(month);
+				objDay.val(day);
+			}else if(id=="bir_true"){
+				$(".bir").attr('id','bir_false');
+				objInfo.css("display","-webkit-inline-box");
+				objInput.css("display","none");
+				var year = objYear.val();
+				var month = objMonth.val();
+				var day = objDay.val();
+				var objInfoTest = year+"年"+month+"月"+day+"日";
+				var objInfoValue = year+"-"+month+"-"+day;
+				objInfo.text(objInfoTest);
+				objInfo.attr("value",objInfoValue);
+			}
+		}
+		$(function(){
+			var id = localStorage.id;
+			add_account_info(id);
+		})
+		//设置个人信息
+		function add_account_info(id){
+			$.ajax({
+		        type:'post',
+		        dataType: "json",
+		        url:"../account/searchById.do",
+		        data:{
+		        	id:id,
+		        	time:new Date()
+		        },
+		        //数据加载前调用方法
+		        beforeSend:function(data){
+		        	//loading显示
+		        	$("#loadingOver").css('display','block');
+		        	$("#loadingLayout").css('display','block');
+		        },
+		        success:function(data){
+		        	var flag = data.success;
+		        	if(flag){
+		        		 //成功
+		        		var user = data.data.info.phone;
+		    			var name = data.data.info.name;
+		    			var gender = data.data.info.gender;
+		    			var birthday = data.data.info.birthday;
+		    			var email = data.data.info.email;
+		    			var desc = data.data.info.desc;
+		    			if(!email ){
+		    				email = "";
+		    			}else{
+		    				email=email;
+		    			}
+		    			$("#phone_info").text(user);
+		    			$("#phone_info").attr("value",user);
+		    			$("#name_info").text(name);
+		    			$("#name_info").attr("value",name);
+		    			if(gender == "1"){
+		    				$("#gender_info").text("男");
+		    			}else{
+		    				$("#gender_info").text("女");
+		    			}
+		    			$("#gender_info").attr("value",gender);
+		    			
+		    			var year = birthday.substring(0,4);	
+		    			var month = birthday.substring(5,7);	
+		    			var day = birthday.substring(8,10);
+		    			var birthday_Str = year+"年"+month+"月"+day+"日";
+		    			$("#bir_info").text(birthday_Str);
+		    			$("#bir_info").attr("value",birthday);
+		    			$("#email_info").text(email);
+		    			$("#email_info").attr("value",email);
+		    			$("#desc").val(desc);
+		        	}else{
+		        		//编辑失败
+		        		alert("false");
+		        	}
+		        },
+		    	//数据加载后调用的方法
+		       complete:function(data){
+		        	//loading隐藏
+		        	$("#loadingOver").css('display','none');
+		        	$("#loadingLayout").css('display','none');
+		        }, 
+		        error:function(){
+		        	//错误
+		        }
+		    });
+		}
+		function updateAccount(){
+			$.ajax({
+		        type:'post',
+		        dataType: "json",
+		        url:"../account/updateAccount.do",
+		        data:{
+		        	id:localStorage.id,
+		        	name:$("#name_info").attr("value"),
+		        	gender:$("#gender_info").attr("value"),
+		        	birthday:$("#bir_info").attr("value"),
+		        	email:$("#email_info").attr("value"),
+		        	desc:$("#desc").val(),
+		        	time:new Date()
+		        },
+		        //数据加载前调用方法
+		        beforeSend:function(data){
+		        	//loading显示
+		        	$("#loadingOver").css('display','block');
+		        	$("#loadingLayout").css('display','block');
+		        },
+		        success:function(data){
+		        	var flag = data.success;
+		        	if(flag){
+		        		//编辑成功
+		        		localStorage.name = $("#name_info").attr("value");
+		        		//显示编辑是否成功
+		        		$("#msg_info").html(data.data.info);
+						$("#msg_info").show().delay (1000).fadeOut();
+						//暂停一秒后关闭弹窗
+						setTimeout(function(){
+							//closeDiv();
+						},1000);
+		        	}else{
+		        		//编辑失败
+		        		//编辑失败
+		        		$("#msg_info").html(data.data.info);
+						$("#msg_info").show().delay (1000).fadeOut();
+		        	}
+		        },
+		    	//数据加载后调用的方法
+		       complete:function(data){
+		        	//loading隐藏
+		        	$("#loadingOver").css('display','none');
+		        	$("#loadingLayout").css('display','none');
+		        }, 
+		        error:function(){
+		        	//错误
+		        }
+		    });
+		}
+	</script>
+	</head>
+<body>
+	<!-- loading before -->
+	    <div id="loadingOver" class="loadingOver"></div>
+	    <div id="loadingLayout" class="loadingLayout"><img src="../imags/loading.gif" alt=""/></div>
+	<!-- loading after -->
+	  	
+	<div class="dvcontent">
+		<div class="tabs">
+			<div class="hd">
+				<!-- 显示编辑是否成功 -->
+				<div id="msg_info" class="msg_info"></div>
+				<font style="font-weight: bold;">用户信息</font>
+			</div>
+			<div class="bd">
+				<div class="content">
+					<div class="tx">
+						<div class="tx-info">
+							<div onclick="alert('很抱歉，暂不支持该功能。');" style="cursor: pointer;">修改头像</div>
+						</div>
+					</div>
+					<div class="xx">
+						<div class="xx-info">
+							<ul>
+								<li>
+									账号:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<span id="phone_info" tyle="display:-webkit-inline-box"></span>
+									<input id="phone_input" onblur="bjxx_blur(this.id)" style="display: none;width: 130px;">
+								</li>
+								<li>
+									昵称:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+									<span id="name_info" style="display:-webkit-inline-box"></span>
+									<input id="name_input" onblur="bjxx_blur(this.id)" style="display: none;width: 130px;">
+								</li>
+								<li>
+									性别:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								 	<span id="gender_info" style="display:-webkit-inline-box" value="1"></span>
+									<select id="gender_input" onblur="bjxx_blur(this.id)" style="display:none;">
+										<option value="0">女</option>
+										<option value="1">男</option>
+									</select>
+									保密
+								</li>
+								<li>
+									生日:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+									<span id="bir_info" onblur="bjxx_bir_blur(this.id);" style="display:-webkit-inline-box"></span>
+									<span id="bir_input" style="display:none;height: 20px;"> 
+										<select id="bir_year">
+											<option value="2018">2018</option>
+											<option value="2017">2017</option>
+											<option value="2016">2016</option>
+											<option value="2015">2015</option>
+											<option value="2014">2014</option>
+											<option value="2013">2013</option>
+											<option value="2012">2012</option>
+											<option value="2011">2011</option>
+											<option value="2010">2010</option>
+											<option value="2009">2009</option>
+											<option value="2008">2008</option>
+											<option value="2007">2007</option>
+											<option value="2006">2006</option>
+											<option value="2005">2005</option>
+											<option value="2004">2004</option>
+											<option value="2003">2003</option>
+											<option value="2002">2002</option>
+											<option value="2001">2001</option>
+											<option value="2000">2000</option>
+										</select>
+										<select id="bir_month">
+											<option value="01">1</option>
+											<option value="02">2</option>
+											<option value="03">3</option>
+											<option value="04">4</option>
+											<option value="05">5</option>
+											<option value="06">6</option>
+											<option value="07">7</option>
+											<option value="08">8</option>
+											<option value="09">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+										</select>
+										<select id="bir_day">
+											<option value="01">1</option>
+											<option value="02">2</option>
+											<option value="03">3</option>
+											<option value="04">4</option>
+											<option value="05">5</option>
+											<option value="06">6</option>
+											<option value="07">7</option>
+											<option value="08">8</option>
+											<option value="09">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+											<option value="13">13</option>
+											<option value="14">14</option>
+											<option value="15">15</option>
+											<option value="16">16</option>
+											<option value="17">17</option>
+											<option value="18">18</option>
+											<option value="19">19</option>
+											<option value="20">20</option>
+											<option value="21">21</option>
+											<option value="22">22</option>
+											<option value="23">23</option>
+											<option value="24">24</option>
+											<option value="25">25</option>
+											<option value="26">26</option>
+											<option value="27">27</option>
+											<option value="28">28</option>
+											<option value="29">29</option>
+											<option value="30">30</option>
+											<option value="31">31</option>
+										</select>
+									</span>
+								</li>
+								<li>
+									邮箱:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+									<span id="email_info" style="display:-webkit-inline-box"></span>
+									<input id="email_input" onblur="bjxx_blur(this.id)" style="display: none;width: 130px;">
+								</li>
+							</ul>
+							<div>
+								<div><textarea id="desc" cols="50" rows="4" placeholder="个人信息介绍" style="width: 200px;resize:none;"></textarea></div>
+								<div class="save"><a style="display:block;width:60px;text-align:center; background-color:#00A600;color: white;border-radius: 3px;" onclick="updateAccount();" href="javascript:void(0);">保存</a></div>
+							</div>
+						</div>
+					</div>
+					<div class="bj">
+						<div class="bj-info">
+							<ul>
+								<li id="phone" onclick="alert('很抱歉，账号不能修改。');">&nbsp;&nbsp;</li>
+								<li id="name" onclick="bjxx_click(this.id)">修改</li>
+								<li id="gender" onclick="bjxx_click(this.id)">修改</li>
+								<li id="bir_false" class="bir" onclick="bjxx_bir_click(this.id)">修改</li>
+								<li id="email" onclick="bjxx_click(this.id)">修改</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

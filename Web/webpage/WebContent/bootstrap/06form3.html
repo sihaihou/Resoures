@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--form表单：
+            焦点状态：focus
+            禁用状态：disabled
+            只读状态：readonly
+    -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!--焦点状态:
+                我们将某些表单控件的默认 outline 样式移除，然后对 :focus 状态赋予 box-shadow 属性
+            禁用状态:
+                 为输入框设置 disabled 属性可以禁止其与用户有任何交互（焦点、输入等）。被禁用的输入
+            框颜色更浅，并且还添加了 not-allowed 鼠标状态。
+            -->
+        <form method="post">
+            <label class="sr-only">焦点状态与禁用状态</label>
+            <input class="form-control focus" disabled>
+        </form>
+       <!-- 被禁用的fieldset:
+                 为<fieldset> 设置 disabled 属性,可以禁用 <fieldset> 中包含的所有控件。如<input>、<select> 和 <button> 等元素。
+                 但不能禁用<a>标签
+                 -->
+        <form method="post">
+           <fieldset disabled>
+               <div class="form-group">
+                   <label class="sr-only">被禁用的fieldset</label>
+                   <input class="form-control">
+               </div>
+               <div class="form-group">
+                   <label class="sr-only">被禁用的fieldset</label>
+                   <input class="form-control">
+               </div>
+           </fieldset>
+        </form>
+        <!--只读状态:
+            为输入框设置 readonly 属性可以禁止用户修改输入框中的内容。处于只读状态的输入框颜色
+            更浅（就像被禁用的输入框一样），但是仍然保留标准的鼠标状态。-->
+        <form method="post">
+            <label class="sr-only">hello</label>
+            <input class="form-control" type="text" placeholder="只读状态" readonly >
+        </form>
+    </div>
+</body>
+</html>

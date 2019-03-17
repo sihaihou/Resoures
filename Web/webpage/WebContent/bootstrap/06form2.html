@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--注意内容：-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!--水平排列的表单form-horizontal:
+                通过为表单添加 .form-horizontal 类，并联合使用 Bootstrap 预置的栅格类，
+                可以将 label 标签和控件组水平并排布局。这样做将改变 .form-group 的行为，使其表现为栅格系
+                统中的行（row），因此就无需再额外添加 .row 了
+            被支持的控件:
+                必须添加类型声明
+                只有正确设置了 type 属性的输入控件才能被赋予正确的样式。
+                -->
+        <form method="post" class="form-horizontal">
+            <!--文本域:支持多行文本的表单控件。可根据需要改变 rows 属性。-->
+            <textarea class="form-control" rows="3"></textarea>
+            <label class="col-md-2 col-md-offset-1 control-label">Email</label>
+                <div class="col-md-8">
+                  <input type="email" class="form-control">
+                </div>
+            <!--下拉列表（select）:
+                注意，很多原生选择菜单 - 即在 Safari 和 Chrome 中 - 的圆角是无法通过修改 border-radius 属性来改变的。
+                multiple：对于标记了 multiple 属性的 <select> 控件来说，默认显示多选项。
+                -->
+            <select  multiple  class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+            </select>
+            <p>====================================================================================================</p>
+            <!--静态控件:
+                如果需要在表单中将一行纯文本和 label 元素放置于同一行，为 <p> 元素添加 .form-control-static 类即可。-->
+            <div class="form-group">
+                <label class="col-md-2 control-label">Email</label>
+                <div class="col-md-8">
+                    <p class="form-control-static">1548171008@qq.com</p>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>

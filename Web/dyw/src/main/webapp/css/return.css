@@ -1,0 +1,20 @@
+/* 编辑 或 删除 时弹出提示:编辑或删除是否成功
+	标签  <div class="msg_info"></div>
+ */
+.msg_info{
+		display: none; 
+		width: 100px; 
+		height: 22px; 
+		position: absolute; 
+		top: 6px; 
+		left:360px;
+		background-color: #00A600; 
+		border-radius: 5px;
+		z-index: 5000; 
+		opacity: 0.8; 
+		background-position: initial initial; 
+		background-repeat: initial initial;
+		text-align: center;
+		font-size:12px;
+		color: black;
+}

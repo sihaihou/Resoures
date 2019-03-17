@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>css基本语法</title>
+    <link href="" rel="stylesheet" type="text/css">
+    <style>
+        @import "";
+    </style>
+</head>
+<body>
+    <a>css基本语法:</a><br>
+    <b>----选择器{
+      属性:属性值
+      }   例：selector{
+      property：value
+      }<br>
+        ----属性与属性之间用分号隔开
+      例;h1{color：blue ；  font-size：20px}
+     </b><br>
+     <c>----元素与元素之间用逗号隔开
+        例：p,m,n{color:red;font-size:20px}
+     </c><br>
+    css引入方式：<br>
+    <d> <!--<d  style="font-size: 50px;width: 50px;height: 50px">-->
+        ----行内样式：就是把css代码直接写在现有的HTML标签中
+    </d><br>
+    <e>
+        ----内部样式：就是把css代码写在style标签中，然后放在head页面中
+    </e><br>
+    <f>
+        ----外部样式：把css代码写在一个单独的外部文件中，放在\head\区内使用\link\标签将css样式文件链接到HTML文件中
+    </f><br>
+    <g>
+        ----导入样式：是指在内部样式表的\style\标签里导入一个外部样式表，导入时用： @import
+    </g><br>
+    <h>
+       ---- 优先级：行内样式 > 内部样式 > 外部样式 > 导入样式  内部样式必须放在外部样式后面
+    </h>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--分页-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!--分页：
+            禁用和激活状态：
+                链接在不同情况下可以定制。你可以给不能点击的链接添加 .disabled 类、给当前页添加 .active 类。
+        -->
+        <nav>
+            <ul class="pagination">
+                <li class="disabled"><a href="#" aria-label="previous"><span aria-hidden="true">&laquo;</span></a></li>
+                <li class="active"><a href="#">1</a> </li>
+                <li><a href="#">2</a> </li>
+                <li><a href="#">3</a> </li>
+                <li><a href="#">4</a> </li>
+                <li><a href="#">5</a> </li>
+                <li><a href="#" aria-label="next"><span aria-hidden="true">&raquo;</span></a></li>
+            </ul>
+        </nav>
+        <!--尺寸：
+                 想要更小或更大的分页？.pagination-lg 或 .pagination-sm 类提供了额外可供选择的尺寸。-->
+        <nav>
+            <ul class="pagination pagination-lg">
+                <li class="disabled"><a href="#" aria-label="previous"><span aria-hidden="true">&laquo;</span></a></li>
+                <li class="active"><a href="#">1</a> </li>
+                <li><a href="#">2</a> </li>
+                <li><a href="#" aria-label="next"><span aria-hidden="true">&raquo;</span></a></li>
+            </ul>
+            <ul class="pagination">
+                <li class="disabled"><a href="#" aria-label="previous"><span aria-hidden="true">&laquo;</span></a></li>
+                <li class="active"><a href="#">1</a> </li>
+                <li><a href="#">2</a> </li>
+                <li><a href="#" aria-label="next"><span aria-hidden="true">&raquo;</span></a></li>
+            </ul>
+            <ul class="pagination pagination-sm">
+                <li class="disabled"><a href="#" aria-label="previous"><span aria-hidden="true">&laquo;</span></a></li>
+                <li class="active"><a href="#">1</a> </li>
+                <li><a href="#">2</a> </li>
+                <li><a href="#" aria-label="next"><span aria-hidden="true">&raquo;</span></a></li>
+            </ul>
+        </nav>
+        <!--翻页:
+            对齐链接:
+        -->
+        <nav>
+            <ul class="pager">
+                <li><a href="#">上一页</a></li>
+                <li><a href="#">下一页</a></li><br><br>
+                <li class="previous"><a href="#">上一页</a></li>
+                <li  class="next"><a href="#">下一页</a></li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<html>
+<head>
+	<script type="text/javascript" src="jQuery/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+	//视频列表分页----页面加载执行
+	function sendMsg(){
+		 var msg = $("#msg").val();
+		 $.ajax({
+		        type:'post',
+		        dataType: "json",
+		        url:"base/send.do",
+		        data:{ 
+		        	msg:msg,
+		        	time:new Date()
+		        },
+		        //数据加载前调用方法
+		        beforeSend:function(data){
+		        	//loading显示
+		        },
+		        success:function(data){
+		        	var flag = data.success;
+		        	if(flag){
+		        		alert(data.msg);
+		        	}else{
+		        		//$(location).attr('href', '../user/login.html');
+		        		alert(data.msg);
+		        	}
+		        },
+		      	//数据加载后调用的方法
+		       complete:function(data){
+		        	//loading隐藏
+		        }, 
+		        error:function(){
+		        	//$(location).attr('href', '../user/login.html');
+		        }
+		   });
+	}	        	
+	</script>
+</head>
+<body>
+
+	<h2><a href="index.html">login</a></h2>
+	<input type="text" name="msg" id="msg">
+	<a onclick="sendMsg()">send</a>
+	
+</body>
+</html>

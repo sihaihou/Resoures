@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>日期Date</title>
+    <script>
+        //获取系统当前时间
+        var nowDate = new Date();
+        alert("获取系统当前时间==="+nowDate);
+
+        //将系统时间转换成具有本地语言环境的时间
+        var strNowDate = nowDate.toLocaleString();
+        alert("将系统时间转换成具有本地语言环境的时间==="+strNowDate);
+
+        //获取日期的年月日时分秒，
+        var year = nowDate.getYear();
+        alert("获取日期的年=="+year);
+
+        //避免千年虫问题
+        year = nowDate.getFullYear();
+        alert("避免千年虫问题==="+year);
+
+        //获取毫秒数
+        var time = nowDate.getTime();
+        alert("获取毫秒数==="+time);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

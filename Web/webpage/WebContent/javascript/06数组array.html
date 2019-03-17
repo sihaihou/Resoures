@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        // js中内置可一个对象Array数组
+        // 创建数组
+        // 静态初始化
+        var myarray = [1,2,3,4,5];
+        for(var i = 0;i < myarray.length ; i++){
+            alert(myarray[i]);
+        }
+        // 动态初始化
+        myarray  = new Array(5);       //动态分配5个空间，没有手动赋值，系统默认值 undefined；
+        for(var i = 0;i < myarray.length ; i++){
+            alert("ele="+myarray[i]);
+        }
+
+        myarray[0] = "zs";
+        myarray[1] = false;
+        myarray[2] = new Object();
+        for(var i = 0;i < myarray.length ; i++){
+            alert("element="+myarray[i]);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

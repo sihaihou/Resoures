@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.reyco.core.mapper.permission.mapper">
+
+	<select id="searchPermissionByUserId" resultType="Permission">
+		select id,name,percode from user_permission_view where id=#{id}
+	</select>
+	
+</mapper>

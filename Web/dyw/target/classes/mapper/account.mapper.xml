@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.reyco.core.dao.AccountDao">
+
+	<!-- 缓存类配置-->
+  	<cache/> 
+  	
+	<!-- login 登录 -->
+	<select id="login" resultType="Account" useCache="true">
+		select 
+			a.id,v.id as vipId,a.phone,a.password,a.name,a.status 
+		from 
+			account a join vip v 
+		on 
+			a.integral between v.lowVip and v.higVip
+		where 
+			a.phone = #{phone}
+	</select>
+	
+	<!-- account分页  -->
+	<select id="searchPage" resultType="Account" useCache="true">
+		select 
+			a.id,a.integral,v.name as vipName,a.phone,a.name,a.password,a.status,a.`desc`,a.gmtCreate,a.gmtModified 
+		from 
+			account a join vip v 
+		on 
+			a.integral between v.lowVip and v.higVip
+		<trim  prefix="where"  prefixOverrides="and|or">
+			<if test="name != null and name != '' ">
+				and a.name like #{name}"%"
+			</if>
+			<if test="phone != null and phone != '' ">
+				and a.phone = #{phone}
+			</if>
+			<if test="status != null ">
+				and a.status = #{status}
+			</if>
+			<if test="vipId != null ">
+				and a.vipId = #{vipId}
+			</if>
+			<if test="startTime != null ">
+				and a.gmtCreate <![CDATA[>=]]> #{startTime}
+			</if>
+			<if test="endTime != null ">
+				and a.gmtCreate <![CDATA[<=]]> #{endTime}
+			</if>
+		</trim>
+		order by a.gmtModified desc,a.gmtCreate desc
+	</select>
+	
+	<!-- register 注册 -->
+	<insert id="register">
+		insert into account
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="phone != null and phone != ''">
+				phone,
+			</if>
+			<if test="password != null and password != ''">
+				password,
+			</if>
+			<if test="name != null and name != ''">
+				name,
+			</if>
+			<if test="gender != null">
+				gender,
+			</if>
+			<if test="birthday != null">
+				birthday,
+			</if>
+			<if test="email != null and email != ''">
+				email,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="desc != null">
+				`desc`,
+			</if>
+			gmtCreate,gmtModified
+		</trim>
+		<trim prefix="values(" suffix=")" suffixOverrides=",">
+			<if test="phone != null and phone != ''">
+				#{phone},
+			</if>
+			<if test="password != null and password != ''">
+				#{password},
+			</if>
+			<if test="name != null and name != ''">
+				#{name},
+			</if>
+			<if test="gender != null">
+				#{gender},
+			</if>
+			<if test="birthday != null">
+				#{birthday},
+			</if>
+			<if test="email != null and email != ''">
+				#{email},
+			</if>
+			<if test="status != null">
+				#{status},
+			</if>
+			<if test="desc != null">
+				#{desc},
+			</if>
+			now(),now()
+		</trim>
+		<selectKey resultType="int" keyProperty="id" order="AFTER">
+			select @@identity
+		</selectKey>
+	</insert>
+	
+	<!-- searchCountByPhone 过滤用户名不能重复 -->
+	<select id="searchCountByPhone" resultType="int" useCache="true">
+		select Count(phone) from account where status != 1 and phone =#{phone}
+	</select>
+	
+	<update id="updateAccount">
+		update account 
+			<set>
+				<if test="integral != null">
+					integral=#{integral},
+				</if>
+				<if test="phone != null and phone != ''">
+					phone=#{phone},
+				</if>
+				<if test="name != null and name != ''">
+					name=#{name},
+				</if>
+				<if test="password != null">
+					password=#{password},
+				</if>
+				<if test="status != null">
+					status=#{status},
+				</if>
+				<if test="gender != null">
+					gender=#{gender},
+				</if>
+				<if test="birthday != null">
+					birthday=#{birthday},
+				</if>
+				<if test="email != null">
+					email=#{email},
+				</if>
+				<if test="desc != null">
+					`desc`=#{desc},
+				</if>
+				gmtModified=now()
+			</set>
+			where id=#{id}
+	</update>
+	
+	<!-- 根据id查询 -->
+	<select id="searchById" resultType="Account" useCache="true">
+		select 
+			a.id,v.id as vipId,v.name as vipName,a.integral,a.phone,a.password,a.name,a.status,a.gender,a.birthday,a.email,a.`desc`,a.gmtCreate,a.gmtModified 
+		from 
+			account a 
+		join 
+			vip v 
+		on 
+	 		a.integral between v.lowVip and v.higVip
+		where	
+			a.id = #{id}
+	</select>
+	
+	<!-- 导出用户使用 -->
+	<select id="searchList" resultType="Account" useCache="true">
+		select 
+			a.phone,a.name,v.name as vipName,a.integral,a.email,a.status,a.gmtCreate 
+		from 
+			account a 
+		join 
+			vip v 
+		on 
+	 		a.integral between v.lowVip and v.higVip
+	 	<trim  prefix="where"  prefixOverrides="and|or">
+			<if test="status != null ">
+				and a.status = #{status}
+			</if>
+			<if test="vid != null ">
+				and v.id = #{vid}
+			</if>
+		</trim>
+		order by a.gmtModified desc,a.gmtCreate desc
+	</select>
+</mapper>

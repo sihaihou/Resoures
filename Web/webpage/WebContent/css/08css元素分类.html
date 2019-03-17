@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+        }
+        .one{
+            background-color: #00A000;
+        }
+        .two{
+            background-color: blueviolet;
+        }
+        .three{
+            display: inline;
+        }
+        a{
+            width: 100px;
+            height: 100px;
+            display: block;
+            background-color: coral;
+        }
+        #aid{
+            display: inline-block;
+        }
+        p{
+            background-color: chartreuse;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+1、块级元素：<br>
+--(1)常用的块级元素：div、p、h1...h6、ol、ul、li、dl、dd、dt、table、tr、td、address、blockquote、form<br>
+--(2)块级元素的特点：<br>
+    ----a:每个块级元素都从新的一行开始，并且其后的元素也另起一行。<br>
+    ----b：元素的高度、宽度、行高以及顶和底边框都可以设置。<br>
+    ----c:元素宽度在不设置的情况下，是它本身父容器的100%，除非设定一个宽度。<br>
+--(3)设置display：block可将元素显示为块级元素，如：  a{ display:block; }<br>
+
+2、内联元素：<br>
+--(1)常用的内联元素：a、b span、br、i、em、strong、label、q、cite、code<br>
+--(2)内联元素特点:<br>
+    ----a:和其他元素都在一行上；<br>
+    ----b:元素的高度、宽度、行高以及顶和底边框都不可设置。<br>
+    ----c:元素的宽度就是它包含的文字或图片的宽度，不可改变！<br>
+--(3)内联元素也可以通过代码display：inline将元素设置为内联元素，<br>
+
+3,内联块级元素：<br>
+--(1)常用的内联块级元素：img、input<br>
+--(2)内联块级元素特点:<br>
+    ----a:和其他元素都在一行上；<br>
+    ----b:元素的高度、宽度、行高以及顶和底边框都可设置。<br>
+--(3)代码display：inline-block就是将元素设置为内联块级元素。<br>
+
+
+-----------------------------------------------------<br>
+    <div class="one">块级元素1</div>
+    <div class="two">块级元素2
+        <p>p标签</p>
+    </div>
+-----------------------------------------------------<br>
+    <div class="three">块级元素3变成内联元素
+        <p>p标签</p>
+    </div>
+
+<br>-----------------------------------------------------<br>
+
+    <span>内联元素1</span>
+    <a href="">内联元素2变成块级元素</a>
+----------------------------------------------------------<br>
+    <span>内联元素1</span>
+    <a href="" id="aid">内联元素2变成内联块级元素</a><br>
+----------------------------------------------------------<br>
+    <p>块级元素3变成内联块级元素</p>
+    <p>块级元素3变成内联块级元素</p>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>change事件</title>
+    <script>
+    function getValue(val){
+        alert(val);
+    }
+    </script>
+</head>
+<body>
+    <!--
+        chang 事件是在什么时候发生的？
+            下拉列表中的选项发生改变的时候，change事件发生，此时注册在onchange事件句柄后的js代码会自动执行。
+    -->
+    <select onchange="getValue(this.value)">
+        //this.value :将当期被选中的value传递过来
+        <option value="0">--请选择课程--</option>
+        <option value="1">J2EE</option>
+        <option value="2">J2SE</option>
+        <option value="3">JS</option>
+    </select>
+
+</body>
+</html>

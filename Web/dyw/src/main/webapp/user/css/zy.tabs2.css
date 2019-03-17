@@ -1,0 +1,13 @@
+﻿@charset "utf-8";
+.tabs {
+    border: 1px solid #ddd;
+    text-align: left;
+    margin: 30px;
+}
+.tabs > .hd{
+    height: 37px;
+    line-height: 36px;
+    background: #EFF3F8;
+    padding: 0px 10px;
+    border-bottom: 1px dashed #ddd;
+}

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.reyco.core.dao.BaseDao">
+ 	<!-- 缓存类配置 -->
+  	<cache />
+  	
+  	<select id="login" resultType="Base" useCache="true">
+  		select name,password from base where name=#{name}
+  	</select>
+  	
+ 	<!-- 新增 -->
+ 	<insert id="insert">
+ 		insert into base
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="name != null and name != ''">
+				name,
+			</if>
+			<if test="password != null and password != ''">
+				password,
+			</if>
+		</trim>
+		<trim prefix="values(" suffix=")" suffixOverrides=",">
+			<if test="name != null and name != ''">
+				#{name},
+			</if>
+			<if test="password != null and password != ''">
+				#{password},
+			</if>
+		</trim>
+		<selectKey resultType="int" keyProperty="id" order="AFTER">
+			select @@identity
+		</selectKey>
+ 	</insert>
+ 	
+ 	
+ 	<!-- batchInsert -->
+ 	<insert id="batchInsert" parameterType="java.util.List">
+ 		insert into base (name,password) values
+	    <foreach collection="list" item="item" index="index" separator=",">
+	   		(#{item.name},#{item.password})
+	   	</foreach>
+		<selectKey resultType="int" keyProperty="id" order="AFTER">
+			select @@identity
+		</selectKey>
+ 	</insert>
+ 	
+ 	
+ 	
+ 	<!-- 根据id查询 -->
+ 	<select id="searchById" resultType="Base" useCache="true">
+ 		select id,name,password from base where id = #{id}
+ 	</select>
+ 	
+ 	<!-- 根据id更新 -->
+ 	<update id="updateById">
+ 		update base 
+		<set>
+			<if test="name != null and name != ''">
+				name=#{name},
+			</if>
+			<if test="password != null">
+				password=#{password},
+			</if>
+		</set>
+		where id=#{id}
+ 	</update>
+ 	
+ 	<!-- 分页 -->
+ 	<select id="searchPage" resultType="base" useCache="true">
+ 		select id,name,password from base
+		<trim  prefix="where"  prefixOverrides="and|or">
+			<if test="name != null and name != '' ">
+				and name like #{name}"%"
+			</if>
+		</trim>
+		order by id
+ 	</select>
+ 	
+ 	<select id="searchCount" resultType="int" useCache="true">
+ 		select count(id) from base
+ 		<trim  prefix="where" prefixOverrides="and|or">
+			<if test="name != null and name != '' ">
+				and name like #{name}"%"
+			</if>
+		</trim>
+ 	</select>
+ 	
+ 	
+ 	
+ 	
+</mapper>

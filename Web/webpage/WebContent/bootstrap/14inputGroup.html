@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--输入框组-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!--输入框组
+                通过在文本输入框 <input> 前面、后面或是两边加上文字或按钮，可以实现对表单控件的扩展。为 .input-group 赋
+                予.input-group-addon 或 .input-group-btn 类，可以给 .form-control 的前面或后面添加额外的元素。
+                只支持文本输入框 <input>
+                    这里请避免使用 <select> 元素，因为 WebKit 浏览器不能完全绘制它的样式。
+                    避免使用 <textarea> 元素，由于它们的 rows 属性在某些情况下不被支持。-->
+        <div class="input-group">
+            <span class="input-group-addon">@</span>
+            <input type="text" class="form-control" placeholder="email">
+            <span class="input-group-addon">@qq.com</span>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">￥</span>
+            <input type="text" class="form-control" placeholder="金额（单位/元）">
+            <span class="input-group-addon">.00元</span>
+        </div>
+        <br>
+        <!--尺寸:
+                为 .input-group 添加相应的尺寸类，其内部包含的元素将自动调整自身的尺寸。不需要为输入框组中的每个元素重复地添加控制尺寸的类。
+        -->
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">@</span>
+            <input type="text" class="form-control" placeholder="大尺寸">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">@</span>
+            <input type="text" class="form-control" placeholder="默认尺寸">
+        </div>
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon">@</span>
+            <input type="text" class="form-control" placeholder="小尺寸">
+        </div>
+        <br><br>
+        <!--作为额外元素的多选框和单选框：
+                可以将多选框或单选框作为额外元素添加到输入框组中。
+        -->
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input type="checkbox" aria-label="true">
+                    </span>
+                    <input type="text" class="form-control" placeholder="多选框">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input type="radio" aria-label="true">
+                    </span>
+                    <input type="text" class="form-control" placeholder="单选框">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

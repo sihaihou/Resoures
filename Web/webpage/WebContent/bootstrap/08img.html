@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!--响应式图片:
+                在 Bootstrap 版本 3 中，通过为图片添加 .img-responsive 类可以让图片支持响应式布局。其实质是为图片
+                设置了 max-width: 100%;、 height: auto; 和 display: block; 属性，从而让图片在其父元素中更好的缩放。
+                img-responsive 类的图片水平居中，请使用 .center-block 类，不要用 .text-center。
+        图片形状:
+                 通过为 <img> 元素添加相应的类，可以让图片呈现不同的形状。(类：img-rounded(矩形圆角)、img-circle(圆形)、img-thumbnail(矩形))
+        -->
+        <img src="imgs/02.jpg" class="img-responsive center-block img-rounded" alt="这是一个矩形圆角图片">
+        <img src="imgs/02.jpg" class="img-responsive center-block img-circle" alt="这是一个圆形图片">
+        <img src="imgs/02.jpg" class="img-responsive center-block img-thumbnail" alt="这是一个矩形图片">
+    </div>
+</body>
+</html>

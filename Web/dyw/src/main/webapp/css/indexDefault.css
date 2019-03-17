@@ -1,0 +1,107 @@
+body,html{
+    	font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans","wenquanyi micro hei","Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
+	}
+body{
+    background: url("../imags/bjt.jpg") no-repeat 50% 259px;
+    background-color: #000000 !important;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: -webkit-filter linear 1s;
+    transition: -webkit-filter linear 1s;
+    -o-transition: filter linear 1s;
+    transition: filter linear 1s;
+    transition: filter linear 1s, -webkit-filter linear 1s;
+}
+.header-help{
+	width: 100%;
+	height: 32px;
+	background-color: #CD2C42;
+	font-size: 12px;
+	padding: 6px 230px;
+	border-bottom: 0px solid #DDD;
+}
+.help{
+	color: #fff;	
+}
+.logo{
+	width:100%;
+	height:280px;
+	margin-top:0px;
+	background:url(../imags/zt.jpg) no-repeat 50% 0px;
+}
+.zt-icon{
+    display: inline-block;
+    height: 50px;
+    width: 170px;
+    padding-top:200px;
+    padding-left: 210px;
+}
+.nav{
+    background: #C91E32;
+    border: none;
+    border-radius: 0;
+}
+.navbar-nav li a{
+	color: #FFF;	
+}
+  	.navbar-nav li a:hover{
+	 background: #964315;
+	 color: #FFF;	
+}
+.navbar-nav .active a{
+    background: #964315;
+    color: #FFF;
+}
+.navbar-nav li a:visited {
+	 background-color:#964315;
+   	 color: black;
+}
+.active{
+	margin-left:210px;
+}
+.pull-right{
+	margin-right: 210px;
+}
+.ggq{
+	padding:0px 0px;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #DE514B;
+    border-color: #D2413B;
+}
+.copyright{
+    font-size: 12px;
+    border-top: 0px solid #DF7A1D;
+    text-align: center;
+    margin-top: 0px;
+    padding: 20px 10px;
+    color: #FFF;
+    background-color: #bb1d2e !important;
+}
+.copyright a{
+    color: #FFF;
+}
+.header a img{width:33%;height:40px}
+@media screen and (max-width:900px){.header a img{  width:49%; height:40px;}}
+@media screen and (max-width:600px){.header a img{  width:99%; height:40px;}}
+.gg-img{width:33%;height:40px}
+@media screen and (max-width:900px){.gg-img{  width:49%; height:40px;}}
+@media screen and (max-width:600px){.gg-img{  width:99%; height:40px;}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

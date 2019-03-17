@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.reyco.core.dao.VideoDao">
+	<!-- 缓存类配置 -->
+  	<cache />
+  	
+	<!-- video分页  -->
+	<select id="searchPage" resultType="Video" useCache="true">
+		select v.id,c.name as categoryName,a.name as accountName,vi.name as vipName,v.name,v.recordPath,v.hitQuantity,v.`desc`,v.status,v.gmtCreate,v.gmtModified 
+		from video v 
+		join category c on v.categoryId=c.id 
+		join vip vi on v.vipId=vi.id 
+		join account a on v.accountId=a.id 
+		<trim  prefix="where"  prefixOverrides="and|or">
+			<if test="status != null ">
+				and v.status = #{status}
+			</if>
+			<if test="name != null and name != ''">
+				and v.name like #{name}"%"
+			</if>
+			<if test="categoryId != null ">
+				and v.categoryId = #{categoryId}
+			</if>
+			<if test="accountId != null">
+				 and v.accountId=#{accountId}
+			</if>
+		</trim>
+		order by v.gmtModified desc,v.gmtCreate desc
+	</select>
+	
+	<!-- 文件上传 -->
+	<insert id="insertVideo">
+		insert into video
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="categoryId != null">
+				categoryId,
+			</if>
+			<if test="vipId != null">
+				vipId,
+			</if>
+			<if test="accountId != null">
+				accountId,
+			</if>
+			<if test="name != null and name != ''">
+				name,
+			</if>
+			<if test="recordPath != null and recordPath != ''">
+				recordPath,
+			</if>
+			<if test="hitQuantity != null">
+				hitQuantity,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="desc != null and desc != ''">
+				`desc`,
+			</if>
+			gmtCreate,gmtModified
+		</trim>
+		<trim prefix="values(" suffix=")" suffixOverrides=",">
+			<if test="categoryId != null">
+				#{categoryId},
+			</if>
+			<if test="vipId != null">
+				#{vipId},
+			</if>
+			<if test="accountId != null">
+				#{accountId},
+			</if>
+			<if test="name != null and name != ''">
+				#{name},
+			</if>
+			<if test="recordPath != null and recordPath != ''">
+				#{recordPath},
+			</if>
+			<if test="hitQuantity != null">
+				#{hitQuantity},
+			</if>
+			<if test="status != null">
+				#{status},
+			</if>
+			<if test="desc != null and desc != ''">
+				#{desc},
+			</if>
+			now(),now()
+		</trim>
+		<selectKey resultType="int" keyProperty="id" order="AFTER">
+			select @@identity
+		</selectKey>
+	</insert>
+	
+	<update id="updateVideo">
+		update video 
+			<set>
+				<if test="categoryId != null">
+					categoryId = #{categoryId},
+				</if>
+				<if test="name != null and name != ''">
+					name = #{name},
+				</if>
+				<if test="hitQuantity != null">
+					hitQuantity = #{hitQuantity},
+				</if>
+				<if test="status != null">
+					status=#{status},
+				</if>
+				<if test="desc != null and desc !=''">
+					`desc` = #{desc},
+				</if>
+				gmtModified=now()
+			</set>
+			where id = #{id}
+	</update>
+	
+	<!-- 根据id查询 -->
+	<select id="searchById" resultType="Video" useCache="true">
+		select v.categoryId,c.name as categoryName,v.name,v.recordPath,v.hitQuantity,v.`desc` 
+		from video v 
+		join category c on v.categoryId=c.id
+		where v.id = #{id}
+	</select>
+	
+	<!-- 查询每个分类的最新几条数据 -->
+	<select id="searchByCategoryIdGroup" resultType="Video" useCache="true">
+		<![CDATA[
+		select a.id,a.categoryId,(select name from category where id=a.categoryId) as categoryName,a.name,a.recordPath from video a where `status`= 0 and  (select count(*)from video b where b.categoryId = a.categoryId and b.gmtCreate > a.gmtCreate ) 
+			< #{count} order by a.categoryId,a.gmtCreate desc;
+		]]>
+	</select>
+	
+	<select id="searchCount" resultType="int" useCache="true">
+		select count(id) from video
+		<trim  prefix="where"  prefixOverrides="and|or">
+			<if test="status != null ">
+				and status = #{status}
+			</if>
+			<if test="categoryId != null ">
+				and categoryId = #{categoryId}
+			</if>
+			<if test="accountId != null">
+				 and accountId=#{accountId}
+			</if>
+		</trim>
+	</select>
+	
+	
+</mapper>

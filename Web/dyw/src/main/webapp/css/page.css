@@ -1,0 +1,43 @@
+/**
+	<div class="page">
+  		<span class="pre-page">
+			<a id="firstPage">Ê×Ò³</a>
+			<a id="prePage"><</a>
+		</span>
+		<span class="ele-page">
+			<!-- eleÔªËØ -->
+		</span>
+		<span class="next-page">
+			<a id="nextPage">></a>
+			<a id="lastPage">Î²Ò³</a>
+		</span>
+		<span id="totalPage"></span>
+		<span id="id">Ç°Íù<input autocomplete="off" min="1" max="4" style="width: 40px;height: 25px;border-radius: 3px;">Ò³</span>
+	</div>
+ */
+
+.page{
+		width: 960px;
+		height: 40px;
+		margin: 0 auto;
+		text-align: center;
+}
+.page span a{
+	display: inline-block;
+	padding: 7px 10px;
+	background: #c0c4cc;
+	font-size: 12px;
+	line-height: 12px;
+	text-decoration: none;
+	color: #393c35;
+	opacity:0.8;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.page span a:hover{
+	background-color:gray;
+	color:white;
+}
+.elemts{
+	margin: 2px;
+}

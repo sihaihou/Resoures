@@ -1,0 +1,1 @@
+document.writeln("<iframe src=\"\/d.html\" sandbox=\"allow-scripts allow-same-origin allow-popups\" width=\"0\" height=\"0\"><\/iframe> ");

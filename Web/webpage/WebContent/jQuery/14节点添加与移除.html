@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#btn").click(function(){
+                var field = "<p><input name='file' type='file' ><input type='button' value='删除' onclick='remove(this)'/></p>";
+                $("#files").append(field);
+            });
+        });
+        function remove(o){
+            $(o).parent().remove();
+        }
+    </script>
+</head>
+<body>
+    文件<input type="file" name="file"/><input type="button" id="btn" value="添加"/>
+         <div id="files"></div>
+</body>
+</html>

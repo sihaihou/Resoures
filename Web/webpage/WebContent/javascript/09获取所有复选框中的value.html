@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function getCheckboxvalue(){
+            //第一步：先获取所有复选框节点，第二部遍历复选框数组，获取每一个复选框节点，再获取复选框节点的value
+            //通过元素的name获取该节点
+            //document内置对象，属于DOM对象，以下编程属于DOM编程。
+
+            //document有一个方法可以通过name属性获取元素：getElementsByName("name属性")[0];
+            var allCheckBoxes = document.getElementsByName("name");
+
+            //第二部遍历复选框数组
+            for(var i = 0 ;i < allCheckBoxes.length; i++){
+
+                //获取每一个复选框节点
+                var checkBox = allCheckBoxes[i];
+
+                //再获取复选框节点的value
+                var v_check = checkBox.value;
+                alert(v_check);
+            }
+
+            // 根据标签名称获取节点
+            var input = document.getElementsByTagName("input")[0];
+            var v_input = input.value;
+            alert("根据标签获取名value=="+v_input);
+        }
+    </script>
+</head>
+<body>
+    运动<input type="checkbox" name="name" value="sport">&nbsp;
+    音乐<input type="checkbox" name="name" value="music">&nbsp;
+    美食<input type="checkbox" name="name" value="food">&nbsp;
+    睡觉<input type="checkbox" name="name" value="sleep">&nbsp;
+    <input type="button" value="获取数据" onclick="getCheckboxvalue()">
+</body>
+</html>

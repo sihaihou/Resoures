@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="css/Site.css" />
+	<link rel="stylesheet" href="css/zy.all.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<link rel="stylesheet" href="css/amazeui.min.css" />
+	<link rel="stylesheet" href="css/admin.css" />
+	<!-- loading  -->
+	<link rel="stylesheet" href="../css/loading.css">
+	<!-- 返回信息样式： 是否成功 -->
+	<link rel="stylesheet" href="../css/return.css"/>
+	<!-- 弹窗样式  -->
+	<link rel="stylesheet" href="../css/tanchuang.css"/>
+	<!-- 分页按钮样式 -->
+	<link rel="stylesheet" href="../css/page.css"/>
+	<style type="text/css">
+		a{
+			cursor: pointer;
+		}
+		.table tbody tr td,.table thead tr th {
+		    border: 1px solid #DDD;
+		    text-indent: 20px;
+		    padding: 5px 4px;
+		    font-size: 12px;
+		}
+	</style>
+	<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="js/plugs/Jqueryplugs.js" type="text/javascript"></script>
+    <script src="js/_layout.js"></script>
+    <script src="js/plugs/jquery.SuperSlide.source.js"></script>
+	<script type="text/javascript" src="../jQuery/jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="../js/checkUser.js"></script>
+	<script type="text/javascript" src="../js/reyco.js"></script>
+	<script type="text/javascript" src="../laypage/laypage/laypage.js"></script>
+	<script type="text/javascript" src="../js/page.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var name="";
+			searchPage(pageNo,name);
+			searchList_category();
+			searchList_vip();
+			update_video();
+			close();
+		});
+		//搜索
+		/* debugger; */
+		function search(){
+			name =$("#search_name").val();
+			alert(name);
+			searchPage(pageNo,name);
+		}
+		//视频列表分页----页面加载执行
+		function searchPage(pageNo,name){
+			var parameter;
+			if(localStorage.vipId == 1){
+				parameter={
+		        	pageNo:pageNo,
+		        	name:name,
+		        	time:new Date()
+				}
+        	}else{
+        		parameter={
+        			status:0,
+	        		pageNo:pageNo,
+	        		name:name,
+		        	accountId:localStorage.id,
+		        	time:new Date()
+        		}
+        	}
+		    $.ajax({
+		        type:'post',
+		        dataType: "json",
+		        url:"../video/searchPage.do",
+	        	data:parameter,
+		        //数据加载前调用方法
+		        beforeSend:function(data){
+		        	//loading显示
+		        	$("#loadingOver").css('display','block');
+		        	$("#loadingLayout").css('display','block');
+		        },
+		        success:function(data){
+		        	var flag = data.success;
+		        	if(flag){
+		        		pageNum = data.data.info.pageNo;
+		        		pageSize = data.data.info.totalPage;
+		        		total = data.data.info.totalCount;
+		        		var date_length = getJSonObjLenth(data.data.info.list);
+		        		$("#tbody").empty();
+		        		 for (var i = 0;i < date_length;i++) {	     
+		        			 //<input id="Button1" value="编辑" onclick="ShowDiv('MyDiv','fade')" type="button">
+		        			var tr_node = $("<tr>"+
+		        			        "<td>"+data.data.info.list[i].id+"</td>"+
+		        			        "<td><a onclick=openVideo('"+data.data.info.list[i].recordPath+"')>"+data.data.info.list[i].name+"</td>"+
+		        			        "<td>"+data.data.info.list[i].categoryName+"</td>"+
+		        			        "<td>"+data.data.info.list[i].vipName+"</td>"+
+		        			        "<td>"+data.data.info.list[i].accountName+"</td>"+
+		        			        "<td>"+data.data.info.list[i].hitQuantity+"</td>"+
+		        			        "<td>"+data.data.info.list[i].status_info+"</td>"+
+		        			        "<td>"+data.data.info.list[i].desc+"</td>"+
+		        			        "<td>"+data.data.info.list[i].gmtCreate+"</td>"+
+		        			        "<td>"+data.data.info.list[i].gmtModified+"</td>"+
+		        			        "<td class='edit'><button onclick='btn_edit("+data.data.info.list[i].id+")'><i class='icon-edit bigger-120 show'>编辑</i></button></td>"+
+		        			        "<td class='delete'><button onclick='btn_delete("+data.data.info.list[i].id+")'><i class='icon-trash bigger-120 show'>删除</i></button></td>"+
+		        			        +"</tr>");
+		        			$("#tbody").append(tr_node);
+		        			page(pageNum,pageSize,total);
+						} 
+		        	}else{
+		        		//$(location).attr('href', '../user/login.html');
+		        	}
+		        },
+		      	//数据加载后调用的方法
+		       complete:function(data){
+		        	//loading隐藏
+		        	$("#loadingOver").css('display','none');
+		        	$("#loadingLayout").css('display','none');
+		        }, 
+		        error:function(){
+		        	//$(location).attr('href', '../user/login.html');
+		        }
+		    });
+		}
+		//确定要删除吗------点击删除按钮执行
+		function btn_delete(id){
+		     if(confirm("您确定要删除吗？")){
+		    	// 删除
+		    	delete_video(id);
+		        return true;
+		    }else{
+		        return false;
+		    } 
+		}
+		function delete_video(id){
+			$.ajax({
+		        type:'post',
+		        dataType: "json",
+		        url:"../video/updateVideo.do",
+		        data:{ 
+		        	id:id,
+		        	status:"1",
+		        	time:new Date()
+		        },
+		        //数据加载前调用方法
+		        beforeSend:function(data){
+		        	//loading显示
+		        	$("#loadingOver").css('display','block');
+		        	$("#loadingLayout").css('display','block');
+		        },
+		        success:function(data){
+		        	var flag = data.success;
+		        	if(flag){
+		        		//编辑成功
+		        		alert("true");
+		        	}else{
+		        		//编辑失败
+		        		alert("false");
+		        	}
+		        },
+		    	//数据加载后调用的方法
+		       complete:function(data){
+		        	//loading隐藏
+		        	$("#loadingOver").css('display','none');
+		        	$("#loadingLayout").css('display','none');
+		        }, 
+		        error:function(){
+		        	//错误
+		        }
+		    });
+		} 
+		// 编辑按钮   ---- 点击执行
+		function btn_edit(id){
+			//调用打开弹窗
+			showDiv();
+			//调用查询并赋值
+			searchById_video(id);
+		}
+		//让弹窗打开
+		function showDiv(){
+			//打开弹窗
+			$("#MyDiv").css('display','block'); 
+			$("#fade").css('display','block'); 
+			$("#fade").css('width',$(window).width());
+			$("#fade").css('height',$(window).height());
+		}
+		// 关闭弹窗  ---点击关闭弹窗
+		function close(){
+			$("#close").click(function(){
+				closeDiv();
+			})
+		}
+		//让弹窗关闭
+		function closeDiv(){
+			$("#MyDiv").css('display','none'); 
+			$("#fade").css('display','none'); 
+		}
+		//查询单行数据并赋值----点击编辑按钮执行
+		function searchById_video(id){
+			$.ajax({
+		        type:'post',
+		        dataType: "json",
+		        url:"../video/searchById.do",
+		        data:{ 
+		        	id:id,
+		        	time:new Date()
+		        },
+		        //数据加载前调用方法
+		        beforeSend:function(data){
+		        	//loading显示
+		        	$("#loadingOver").css('display','block');
+		        	$("#loadingLayout").css('display','block');
+		        },
+		        success:function(data){
+		        	var flag = data.success;
+		        	if(flag){
+		        		var name = data.data.info.name;
+		        		var categoryId =data.data.info.categoryId;
+		        		var desc =data.data.info.desc;
+		        		$("#video-id").val(id);
+		        		$("#video-name").val(name);
+		        		$("#category_list").find("option[value='"+categoryId+"']").prop("selected",true);
+		        		$("#video-desc").val(desc);
+		        	}else{
+		        		//查询失败
+		        	}
+		        },
+		    	//数据加载后调用的方法
+		       complete:function(data){
+		        	//loading隐藏
+		        	$("#loadingOver").css('display','none');
+		        	$("#loadingLayout").css('display','none');
+		        }, 
+		        error:function(){
+		        	//错误
+		        }
+		    });
+		}
+		//分类列表----页面加载执行
+		function searchList_category(){
+		    $.ajax({
+		        type:'post',
+		        dataType: "json",
+		        url:"../category/searchList.do",
+		        data:{ time:new Date()},
+		        //数据加载前调用方法
+		        beforeSend:function(data){
+		        	//loading显示
+		        	$("#loadingOver").css('display','block');
+		        	$("#loadingLayout").css('display','block');
+		        },
+		        success:function(data){
+		        	var flag = data.success;
+		        	if(flag){
+						var data_length = getJSonObjLenth(data.data.info);
+						$("#category_list").empty();
+						for(var i=0;i<data_length;i++){
+							var option_node = $("<option value='"+data.data.info[i].id+"'>"+data.data.info[i].name+"</option>");
+							$("#category_list").append(option_node);
+							//$("#category_list_input").append(option_node);
+						}
+		        	}else{
+		        		//查询失败
+		        	}
+		        },
+		    	//数据加载后调用的方法
+		       complete:function(data){
+		        	//loading隐藏
+		        	$("#loadingOver").css('display','none');
+		        	$("#loadingLayout").css('display','none');
+		        }, 
+		        error:function(){
+		        	//查询错误
+		        }
+		    });
+		}
+		//分类列表----页面加载执行
+		function searchList_vip(){
+			var vipId = localStorage.vipId;
+			var parameter={
+	        	size:6-vipId,
+	        	time:new Date()
+			}
+		    $.ajax({
+		        type:'post',
+		        dataType: "json",
+		        url:"../vip/searchList.do",
+		        data:parameter,
+		        //数据加载前调用方法
+		        beforeSend:function(data){
+		        	//loading显示
+		        	$("#loadingOver").css('display','block');
+		        	$("#loadingLayout").css('display','block');
+		        },
+		        success:function(data){
+		        	var flag = data.success;
+		        	if(flag){
+						var data_length = getJSonObjLenth(data.data.info);
+						$("#vip_list").empty();
+						for(var i=0;i<data_length;i++){
+							var option_node = $("<option value='"+data.data.info[i].id+"'>"+data.data.info[i].name+"</option>");
+							$("#vip_list").append(option_node);
+							//$("#vip_list_input").prepend(option_node);
+						}
+		        	}else{
+		        		//查询失败
+		        	}
+		        },
+		    	//数据加载后调用的方法
+		       complete:function(data){
+		        	//loading隐藏
+		        	$("#loadingOver").css('display','none');
+		        	$("#loadingLayout").css('display','none');
+		        }, 
+		        error:function(){
+		        	//查询错误
+		        }
+		    });
+		}
+		 //视频编辑
+		function update_video(){
+		    $("#updateVideo").click(function(){
+				$.ajax({
+			        type:'post',
+			        dataType: "json",
+			        url:"../video/updateVideo.do",
+			        data:{ 
+			        	id:$("#video-id").val(),
+			        	categoryId:$("#category_list").val(),
+		        		name:$("#video-name").val(),
+			        	desc:$("#video-desc").val()
+			        },
+			        //数据加载前调用方法
+			        beforeSend:function(data){
+			        	//loading显示
+			        	$("#loadingOver").css('display','block');
+			        	$("#loadingLayout").css('display','block');
+			        },
+			        success:function(data){
+			        	var flag = data.success;
+			        	if(flag){
+			        		//显示编辑是否成功
+			        		$("#msg_info").html(data.data.info);
+							$("#msg_info").show().delay (1000).fadeOut();
+							//暂停一秒后关闭弹窗
+							setTimeout(function(){
+								closeDiv();
+							},1000);
+			        	}else{
+			        		//编辑失败
+			        		$("#msg_info").html(data.data.info);
+							$("#msg_info").show().delay (1000).fadeOut();
+			        	}
+			        },
+			    	//数据加载后调用的方法
+			       complete:function(data){
+			        	//loading隐藏
+			        	$("#loadingOver").css('display','none');
+			        	$("#loadingLayout").css('display','none');
+			        }, 
+			        error:function(){
+			        	//错误
+			        }
+			    });
+			})
+		}
+		function openVideo(path){
+			var VideoPage = window.open();
+			var html="<body style='background:black'>"+
+						"<div style='width:60%;margin:auto;'>"+
+							"<video controls width='100%' src='"+path+ "'></video>"+
+						"</div>"+
+					 "</body>";
+			VideoPage.document.write(html);
+		}
+		</script>
+	</head>
+<body>
+	<!-- loading before -->
+	    <div id="loadingOver" class="loadingOver"></div>
+	    <div id="loadingLayout" class="loadingLayout"><img src="../imags/loading.gif" alt=""/></div>
+	<!-- loading after -->
+	  	
+	<div class="dvcontent">
+		<div>
+			<div class="tabs">
+				<div class="hd">
+					<!-- <ul>
+						<li class="on" style="box-sizing: initial;-webkit-box-sizing: initial;">视频列表</li>
+					</ul> -->
+					<input type="text" id="search_name" placeholder="请输入视频名称" style="display: inline-block;width: 140px;">
+					<!-- <select id="category_list_input">
+						<option selected="selected">请选择视频类别</option>
+					</select>
+					<select id="vip_list_input">
+						<option selected="selected">请选择视频权限</option>
+					</select> -->
+					<input type="button" style="display: inline-block;width: 80px;height: 30px;text-align: center;line-height: 12px;" value="搜索" onclick="search()">
+				</div>
+				<div class="bd">
+					<ul style="display: block;padding: 20px;">
+						<li>
+							<div id="dv1">
+								<table class="table" id="tbRecord">
+									<thead align="center">
+										<tr>
+											<th>编号</th>
+											<th>视频名称</th>
+											<th>视频类别</th>
+											<th>视频权限</th>
+											<th>上传人</th>
+											<th>点击量</th>
+											<th>状态</th>
+											<th>备注</th>
+											<th>上传时间</th>
+											<th>修改时间</th>
+											<th>编辑</th>
+											<th>删除</th>
+										</tr>
+									</thead>
+									<tbody id="tbody" align="center">
+										<!-- 视频列表 -->
+									</tbody>
+								</table>													
+								<div id="page" class="page">
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--	弹窗开始  -->
+		<!--弹出层时背景层DIV-->
+		<div id="fade" class="black_overlay" style="display: none; height: 526px;"></div>
+		  <div id="MyDiv" class="white_content" style="display: none;">
+		    <div style="text-align: right; cursor: default; height: 40px;">
+		      <span id="close" style="font-size: 20px;">关闭 </span>
+		    </div>
+			<!-- content start -->
+			<div class="admin-content-body">
+				<div class="am-g">
+					<div class="am-u-sm-12 am-u-md-4 am-u-md-push-8"></div>
+					<div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4" style="padding-top: 30px;">
+					
+						<!-- 显示编辑是否成功 -->
+						<div id="msg_info" class="msg_info"></div>
+					
+						<form class="am-form am-form-horizontal">
+							<div class="am-form-group">
+								<label for="video-id" class="am-u-sm-3 am-form-label">视频编号</label>
+								<div class="am-u-sm-9">
+									<input type="text" id="video-id" disabled="disabled" required >
+								</div>
+							</div>
+							<div class="am-form-group">
+								<label for="video-name" class="am-u-sm-3 am-form-label">视频名称</label>
+								<div class="am-u-sm-9">
+									<input type="text" id="video-name" required >
+								</div>
+							</div>
+							<div class="am-form-group">
+								<label for="user-categoryId" class="am-u-sm-3 am-form-label">视频类别</label>
+								<div class="am-u-sm-9">
+									<select id="category_list" autocomplete="off">
+										<!-- 类别下拉条 -->
+									</select>
+								</div>
+							</div>
+							<div class="am-form-group">
+								<label for="video-vipId" class="am-u-sm-3 am-form-label">视频权限</label>
+								<div class="am-u-sm-9">
+									<select id="vip_list" autocomplete="off">
+										<!-- 类别下拉条 -->
+									</select>
+								</div>
+							</div>
+							<div class="am-form-group">
+								<label for="video-desc" class="am-u-sm-3 am-form-label">视频备注</label>
+								<div class="am-u-sm-9">
+									<input type="text" id="video-desc" required>
+								</div>
+							</div>
+							<div class="am-form-group">
+								<div class="am-u-sm-9 am-u-sm-push-3">
+									<a class="btn pull-left btn-link text-muted" onClick="goto_login()"></a>
+									<input id="updateVideo" type="button" class="am-btn am-btn-success" value="修改"/>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- content end -->
+		</div>
+		<!-- 弹窗结束 -->
+		
+	</div>
+</body>
+</html>

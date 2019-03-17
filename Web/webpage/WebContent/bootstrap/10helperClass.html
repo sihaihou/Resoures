@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--辅助类-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        P{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!--情境文本颜色:
+                通过颜色来展示意图，Bootstrap 提供了一组工具类。这些类可以应用于链接，
+                并且在鼠标经过时颜色可以还可以加深，就像默认的链接一样。-->
+        <p class="text-muted">辅助类</p>
+        <p class="text-primary">辅助类</p>
+        <p class="text-success">成功</p>
+        <p class="text-info">信息</p>
+        <p class="text-warning">警告</p>
+        <p class="text-danger">危险<p>
+        <br>
+        <a href="#" class="text-muted">辅助类</a>
+        <a href="#" class="text-primary">辅助类</a>
+        <a href="#" class="text-success">成功</a>
+        <a href="#" class="text-info">信息</a>
+        <a href="#" class="text-warning">警告</a>
+        <a href="#" class="text-danger">危险</a>
+        <br>
+        <!--情境背景色:
+                和情境文本颜色类一样，使用任意情境背景色类就可以设置元素的背景。链接组件在鼠标经过时颜色会加深，
+                就像上面所讲的情境文本颜色类一样。-->
+        <p class="bg-muted">辅助类</p>
+        <p class="bg-primary">辅助类</p>
+        <p class="bg-success">成功</p>
+        <p class="bg-info">信息</p>
+        <p class="bg-warning">警告</p>
+        <p class="bg-danger">危险<p>
+        <br>
+        <!--三角符号:<span class="caret"></span>
+                通过使用三角符号可以指示某个元素具有下拉菜单的功能。注意，向上弹出式菜单中的三角符号是反方向的
+            关闭按钮:
+                通过使用一个象征关闭的图标，可以让模态框和警告框消失。
+            快速浮动:pull-left/right类
+                通过添加一个类，可以将任意元素向左或向右浮动。不能用于导航条组件中排列导航条中的组件时可以使用这些
+                工具类：.navbar-left 或 .navbar-right 。-->
+        <span class="caret"></span>
+        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <br>
+        <!--让内容块居中:center-block类
+                为任意元素设置 display: block 属性并通过 margin 属性让其中的内容居中。
+            清除浮动:
+                通过为父元素添加 .clearfix 类可以很容易地清除浮动（float）。这里所使用的是 Nicolas Gallagher 创造的 micro clearfix 方式。此类还可以作为 mixin 使用。
+                -->
+        <p class="center-block">居中</p>
+    </div>
+</body>
+</html>

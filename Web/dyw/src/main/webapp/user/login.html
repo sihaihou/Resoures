@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>登录</title>
+<link rel="stylesheet" href="css/login/normalize.css">
+<link rel="stylesheet" href="css/login/login.css">
+<link rel="stylesheet" href="css/login/sign-up-login.css">
+<link rel="stylesheet" type="text/css" href="css/login/font-awesome.min.css">
+<link rel="stylesheet" href="css/login/inputEffect.css" />
+<link rel="stylesheet" href="css/login/tooltips.css" />
+<link rel="stylesheet" href="css/login/spop.min.css" />
+<!-- loading  -->
+<link rel="stylesheet" href="../css/loading.css">
+
+
+<script src="js/login/jquery.min.js"></script>
+<script src="js/login/snow.js"></script>
+<script src="js/login/jquery.pure.tooltips.js"></script>
+<script src="js/login/spop.min.js"></script>
+<script>
+	$(function(){
+		 $.ajax({
+		        type:'post',
+		        dataType: "json",
+		        url:"../account/checkUser.do",
+		        data:{ time:new Date()},
+		        success:function(data){
+		        	var flag = data.success;
+		        	if(flag){
+		        		$(location).attr('href', '../user/index.html');
+		        	}else{
+		        	}
+		        },
+		        error:function(){
+		        }
+		    });
+	})
+	$(function() {
+		// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+		if (!String.prototype.trim) {
+			(function() {
+				// Make sure we trim BOM and NBSP
+				var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+				String.prototype.trim = function() {
+					return this.replace(rtrim, '');
+				};
+			})();
+		}
+
+		[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+			// in case the input is already filled..
+			if( inputEl.value.trim() !== '' ) {
+				classie.add( inputEl.parentNode, 'input--filled' );
+			}
+
+			// events:
+			inputEl.addEventListener( 'focus', onInputFocus );
+			inputEl.addEventListener( 'blur', onInputBlur );
+		} );
+
+		function onInputFocus( ev ) {
+			classie.add( ev.target.parentNode, 'input--filled' );
+		}
+
+		function onInputBlur( ev ) {
+			if( ev.target.value.trim() === '' ) {
+				classie.remove( ev.target.parentNode, 'input--filled' );
+			}
+		}
+	})();
+	
+	$(function() {	
+		$('#login #login-password').focus(function() {
+			$('.login-owl').addClass('password');
+		}).blur(function() {
+			$('.login-owl').removeClass('password');
+		});
+		$('#login #register-password').focus(function() {
+			$('.register-owl').addClass('password');
+		}).blur(function() {
+			$('.register-owl').removeClass('password');
+		});
+		$('#login #register-repassword').focus(function() {
+			$('.register-owl').addClass('password');
+		}).blur(function() {
+			$('.register-owl').removeClass('password');
+		});
+		$('#login #forget-password').focus(function() {
+			$('.forget-owl').addClass('password');
+		}).blur(function() {
+			$('.forget-owl').removeClass('password');
+		});
+	});
+	
+	function goto_register(){
+		$("#register-username").val("");
+		$("#register-password").val("");
+		$("#register-repassword").val("");
+		$("#register-code").val("");
+		$("#tab-2").prop("checked",true);
+	}
+	
+	function goto_login(){
+		$("#login-username").val("");
+		$("#login-password").val("");
+		$("#tab-1").prop("checked",true);
+	}
+	
+	function goto_forget(){
+		$("#forget-username").val("");
+		$("#forget-password").val("");
+		$("#forget-code").val("");
+		$("#tab-3").prop("checked",true);
+	}
+	//登录开始
+	function login(){
+		var username = $("#login-username").val(),
+			password = $("#login-password").val(),
+			validatecode = null,
+			flag = true;
+		//判断用户名密码是否为空
+		if(username == ""){
+			$.pt({
+        		target: $("#login-username"),
+        		position: 'r',
+        		align: 't',
+        		width: 'auto',
+        		height: 'auto',
+        		content:"用户名不能为空"
+        	});
+			return flag = false;
+		}else{
+			//用户名必须为11位数字的手机号
+			var regExp = new RegExp("^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\\d{8}$");
+			if(!regExp.test(username)){
+				$.pt({
+	        		target: $("#login-username"),
+	        		position: 'r',
+	        		align: 't',
+	        		width: 'auto',
+	        		height: 'auto',
+	        		content:"请输入正确的手机号"
+	        	});
+				return flag = false;
+			}
+		}
+		if(password == ""){
+			$.pt({
+        		target: $("#login-password"),
+        		position: 'r',
+        		align: 't',
+        		width: 'auto',
+        		height: 'auto',
+        		content:"密码不能为空"
+        	});
+			return flag = false;
+		}else{
+			//密码格式验证   ^[0-9a-zA-Z_]{6,16}$
+			var regExp = new RegExp("^[0-9a-zA-Z_]{6,16}$");
+			if(!regExp.test(password)){
+				$.pt({
+	        		target: $("#login-password"),
+	        		position: 'r',
+	        		align: 't',
+	        		width: 'auto',
+	        		height: 'auto',
+	        		content:"密码只能为6-16位字母、数字、下划线。"
+	        	});
+				return flag = false;
+			}
+		}
+		if(flag){
+			//登录
+			$(function(){
+				 $.ajax({
+			        type:'post',
+			        dataType: "json",
+			        url:"../account/login.do",
+			        data:{
+			             phone:$("#login-username").val(),
+			             password:$("#login-password").val()
+			        },
+			      //数据加载前调用方法
+			        beforeSend:function(data){
+			        	//loading显示
+			        	$("#loadingOver").css('display','block');
+			        	$("#loadingLayout").css('display','block');
+			        },
+			        success:function(data){
+			        	var flag = data.success;
+			        	if(flag){ //登录成功
+			        		console.log("当前登录用户是====="+data.data.info);
+			        		localStorage.user = data.data.info.phone;
+			        		localStorage.id = data.data.info.id;
+			        		localStorage.name = data.data.info.name;
+			        		localStorage.vipId = data.data.info.vipId;
+			        		$(location).attr('href', '../user/index.html');
+			        	}else{
+			        		//登录失败
+			        		$.pt({
+			            		target: $("#login-password"),
+			            		position: 'r',
+			            		align: 't',
+			            		width: 'auto',
+			            		height: 'auto',
+			            		content:data.data.msg
+			            	});
+			        	}
+			        },
+			      //数据加载后调用的方法
+			       complete:function(data){
+			        	//loading隐藏
+			        	$("#loadingOver").css('display','none');
+			        	$("#loadingLayout").css('display','none');
+			        }, 
+			        error:function(){
+			        	$(location).attr('href', '../user/login.html');
+			        }
+				})
+			})
+		}
+	}
+	//登录结束
+	
+	//注册开始
+	function register(){
+		var username = $("#register-username").val(),
+			password = $("#register-password").val(),
+			repassword = $("#register-repassword").val(),
+			name = $("#register-name").val(),
+			flag = true,
+			validatecode = null;
+		//判断用户名密码是否为空
+		if(username == ""){
+			$.pt({
+        		target: $("#register-username"),
+        		position: 'r',
+        		align: 't',
+        		width: 'auto',
+        		height: 'auto',
+        		content:"用户名不能为空"
+        	});
+			return flag = false;
+		}else{
+			//用户名必须为11位数字的手机号
+			var regExp = new RegExp("^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\\d{8}$");
+			if(!regExp.test(username)){
+				$.pt({
+	        		target: $("#login-username"),
+	        		position: 'r',
+	        		align: 't',
+	        		width: 'auto',
+	        		height: 'auto',
+	        		content:"请输入正确的手机号"
+	        	});
+				return flag = false;
+			}
+		}
+		if(password == ""){
+			$.pt({
+        		target: $("#register-password"),
+        		position: 'r',
+        		align: 't',
+        		width: 'auto',
+        		height: 'auto',
+        		content:"密码不能为空"
+        	});
+			return flag = false;
+		}else{
+			//密码格式验证   ^[0-9a-zA-Z_]{6,16}$
+			var regExp = new RegExp("^[0-9a-zA-Z_]{6,16}$");
+			if(!regExp.test(password)){
+				$.pt({
+	        		target: $("#login-password"),
+	        		position: 'r',
+	        		align: 't',
+	        		width: 'auto',
+	        		height: 'auto',
+	        		content:"密码只能为6-16位字母、数字、下划线。"
+	        	});
+				return flag = false;
+			}
+			if(password != repassword){
+				$.pt({
+	        		target: $("#register-repassword"),
+	        		position: 'r',
+	        		align: 't',
+	        		width: 'auto',
+	        		height: 'auto',
+	        		content:"两次输入的密码不一致"
+	        	});
+				return	flag = false;
+			}
+		}
+		//检查用户名是否已经存在
+		//调后台代码检查用户名是否已经被注册
+		
+		//检查注册码是否正确
+		//调后台方法检查注册码，这里写死为11111111
+		if(name == ""){
+			$.pt({
+		        target: $("#register-name"),
+		        position: 'r',
+		        align: 't',
+		        width: 'auto',
+		        height: 'auto',
+		        content:"呢称不能为空"
+		       });
+			return flag = false;
+		}
+		if(flag){//注册
+			$(function() {
+				var url = "../account/register.do";		
+				var args = {
+					 phone:$("#register-username").val(),
+		             password:$("#register-password").val(),
+		             name:$("#register-name").val(),	
+				};	
+				$.getJSON(url,args,function(data){
+					var register_flag = data.success;
+					if(register_flag){//注册成功
+						spop({			
+		    				template: '<h4 class="spop-title">注册成功</h4>即将于3秒后返回登录',
+		    				position: 'top-center',
+		    				style: 'success',
+		    				autoclose: 3000,
+		    				onOpen : function(){
+		    					var second = 2;
+		    					var showPop = setInterval(function(){
+		    						if(second == 0){
+		    							clearInterval(showPop);
+		    						}
+		    						$('.spop-body').html('<h4 class="spop-title">注册成功</h4>即将于'+second+'秒后返回登录');
+		    						second--;
+		    					},1000);
+		    				},
+		    				onClose : function(){
+		    					goto_login();
+		    				}
+		    			});
+					}else{//注册失败
+						$.pt({
+		            		target: $("#register-repassword"),
+		            		position: 'r',
+		            		align: 't',
+		            		width: 'auto',
+		            		height: 'auto',
+		            		content:data.data.msg
+		            	});
+					}
+				});
+			})
+		}
+	}
+	//注册开始
+	
+	//重置密码
+	function forget(){
+		var username = $("#forget-username").val(),
+			oldPassword = $("#forget-oldPassword").val(),
+			newPassword = $("#forget-newPassword").val(),
+			flag = true,
+			validatecode = null;
+		//判断用户名密码是否为空
+		if(username == ""){
+			$.pt({
+        		target: $("#forget-username"),
+        		position: 'r',
+        		align: 't',
+        		width: 'auto',
+        		height: 'auto',
+        		content:"用户名不能为空"
+        	});
+			return	flag = false;
+		}else{
+			//用户名必须为11位数字的手机号
+			var regExp = new RegExp("^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\\d{8}$");
+			if(!regExp.test(username)){
+				$.pt({
+	        		target: $("#login-username"),
+	        		position: 'r',
+	        		align: 't',
+	        		width: 'auto',
+	        		height: 'auto',
+	        		content:"请输入正确的手机号"
+	        	});
+				return flag = false;
+			}
+		}
+		if(oldPassword == ""){
+			$.pt({
+        		target: $("#forget-oldPassword"),
+        		position: 'r',
+        		align: 't',
+        		width: 'auto',
+        		height: 'auto',
+        		content:"旧密码不能为空"
+        	});
+			return flag = false;
+		}else{
+			//密码格式验证   ^[0-9a-zA-Z_]{6,16}$
+			var regExp = new RegExp("^[0-9a-zA-Z_]{6,16}$");
+			if(!regExp.test(oldPassword)){
+				$.pt({
+	        		target: $("#forget-oldPassword"),
+	        		position: 'r',
+	        		align: 't',
+	        		width: 'auto',
+	        		height: 'auto',
+	        		content:"密码格式错误,密码只能为6-16位字母、数字、下划线。"
+	        	});
+				return flag = false;
+			}
+		}
+		//检查用户名是否存在
+		//调后台方法
+		
+		//检查注册码是否正确
+		if(newPassword == ''){
+			$.pt({
+		        target: $("#forget-newPassword"),
+		        position: 'r',
+		        align: 't',
+		        width: 'auto',
+		        height: 'auto',
+		        content:"新密码不能为空"
+		       });
+			return flag = true;
+		}else{
+			//密码格式验证   ^[0-9a-zA-Z_]{6,16}$
+			var regExp = new RegExp("^[0-9a-zA-Z_]{6,16}$");
+			if(!regExp.test(newPassword)){
+				$.pt({
+	        		target: $("#forget-newPassword"),
+	        		position: 'r',
+	        		align: 't',
+	        		width: 'auto',
+	        		height: 'auto',
+	        		content:"密码只能为6-16位字母、数字、下划线。"
+	        	});
+				return flag = false;
+			}
+		}
+		if(oldPassword == newPassword){
+			$.pt({
+        		target: $("#forget-newPassword"),
+        		position: 'r',
+        		align: 't',
+        		width: 'auto',
+        		height: 'auto',
+        		content:"新密码不能和旧密码相同。"
+        	});
+			return flag = false;
+		}
+		if(flag){
+		//重置密码
+			$(function() {
+				var url = "../account/updatePassword.do";		
+				var args = {
+					 phone:$("#forget-username").val(),
+		             oldPassword:$("#forget-oldPassword").val(),
+		             newPassword:$("#forget-newPassword").val(),	
+				};	
+				$.getJSON(url,args,function(data){
+					var register_flag = data.success;
+					if(register_flag){//重置密码成功
+						spop({			
+							template: '<h4 class="spop-title">重置密码成功</h4>即将于3秒后返回登录',
+							position: 'top-center',
+							style: 'success',
+							autoclose: 3000,
+							onOpen : function(){
+								var second = 2;
+								var showPop = setInterval(function(){
+									if(second == 0){
+										clearInterval(showPop);
+									}
+									$('.spop-body').html('<h4 class="spop-title">重置密码成功</h4>即将于'+second+'秒后返回登录');
+									second--;
+									},1000);
+							},
+							onClose : function(){
+								goto_login();
+							}
+						});
+					}else{//重置密码失败
+						$.pt({
+		            		target: $("#forget-newPassword"),
+		            		position: 'r',
+		            		align: 't',
+		            		width: 'auto',
+		            		height: 'auto',
+		            		content:data.data.msg
+		            	});
+					}
+				});
+			})
+		}
+	}
+	
+</script>
+<style type="text/css">
+html{width: 100%; height: 100%;}
+
+body{
+
+	background-repeat: no-repeat;
+
+	background-position: center center #2D0F0F;
+
+	background-color: #00BDDC;
+
+	/* background-image: url(images/snow.jpg); */
+
+	background-size: 100% 100%;
+
+}
+
+.snow-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 100001; }
+
+</style>
+</head>
+<body>
+	<!-- loading before -->
+	    <div id="loadingOver" class="loadingOver"></div>
+	    <div id="loadingLayout" class="loadingLayout"><img src="../imags/loading.gif" alt=""/></div>
+	<!-- loading after -->
+	<!-- 雪花背景 -->
+	<div class="snow-container"></div>
+	<!-- 登录控件 -->
+	<div id="login">
+		<input id="tab-1" type="radio" name="tab" class="sign-in hidden" checked />
+		<input id="tab-2" type="radio" name="tab" class="sign-up hidden" />
+		<input id="tab-3" type="radio" name="tab" class="sign-out hidden" />
+		<div class="wrapper">
+			<!-- 登录页面 -->
+			<div class="login sign-in-htm">
+				<form class="container offset1 loginform">
+					<!-- 猫头鹰控件 -->
+					<div id="owl-login" class="login-owl">
+						<div class="hand"></div>
+						<div class="hand hand-r"></div>
+						<div class="arms">
+							<div class="arm"></div>
+							<div class="arm arm-r"></div>
+						</div>
+					</div>
+					<div class="pad input-container">
+						<section class="content">
+							<span class="input input--hideo">
+								<input class="input__field input__field--hideo" type="text" id="login-username"
+									autocomplete="off" placeholder="请输入用户名" tabindex="1" maxlength="15" />
+								<label class="input__label input__label--hideo" for="login-username">
+									<i class="fa fa-fw fa-user icon icon--hideo"></i>
+									<span class="input__label-content input__label-content--hideo"></span>
+								</label>
+							</span>
+							<span class="input input--hideo">
+								<input class="input__field input__field--hideo" type="password" id="login-password" placeholder="请输入密码" tabindex="2" maxlength="15"/>
+								<label class="input__label input__label--hideo" for="login-password">
+									<i class="fa fa-fw fa-lock icon icon--hideo"></i>
+									<span class="input__label-content input__label-content--hideo"></span>
+								</label>
+							</span>
+						</section>
+					</div>
+					<div class="form-actions">
+						<a tabindex="4" class="btn pull-left btn-link text-muted" onClick="goto_forget()">忘记密码?</a>
+						<a tabindex="5" class="btn btn-link text-muted" onClick="goto_register()">注册</a>
+						<input id="login_submit" class="btn btn-primary" type="button" tabindex="3" onClick="login()" value="登录" 
+							style="color:white;"/>
+					</div>
+				</form>
+			</div>
+			<!-- 忘记密码页面 -->
+			<div class="login sign-out-htm">
+				<form action="#" method="post" class="container offset1 loginform">
+					<!-- 猫头鹰控件 -->
+					<div id="owl-login" class="forget-owl">
+						<div class="hand"></div>
+						<div class="hand hand-r"></div>
+						<div class="arms">
+							<div class="arm"></div>
+							<div class="arm arm-r"></div>
+						</div>
+					</div>
+					<div class="pad input-container">
+						<section class="content">
+							<span class="input input--hideo">
+								<input class="input__field input__field--hideo" type="text"  id="forget-username"  autocomplete="off" placeholder="请输入用户名"/>
+								<label class="input__label input__label--hideo" for="forget-username">
+									<i class="fa fa-fw fa-user icon icon--hideo"></i>
+									<span class="input__label-content input__label-content--hideo"></span>
+								</label>
+							</span>
+							<span class="input input--hideo">
+								<input class="input__field input__field--hideo" type="password" id="forget-oldPassword" autocomplete="off" placeholder="请输入原密码"/>
+								<label class="input__label input__label--hideo" for="forget-oldPassword">
+									<i class="fa fa-fw fa-wifi icon icon--hideo"></i>
+									<span class="input__label-content input__label-content--hideo"></span>
+								</label>
+							</span>
+							<span class="input input--hideo">
+								<input class="input__field input__field--hideo" type="password" id="forget-newPassword" placeholder="请输入新密码" />
+								<label class="input__label input__label--hideo" for="forget-newPassword">
+									<i class="fa fa-fw fa-lock icon icon--hideo"></i>
+									<span class="input__label-content input__label-content--hideo"></span>
+								</label>
+							</span>
+						</section>
+					</div>
+					<div class="form-actions">
+						<a class="btn pull-left btn-link text-muted" onClick="goto_login()">返回登录</a>
+						<input class="btn btn-primary" type="button" onClick="forget()" value="重置密码" 
+							style="color:white;"/>
+					</div>
+				</form>
+			</div>
+			<!-- 注册页面 -->
+			<div class="login sign-up-htm">
+				<form action="#" method="post" class="container offset1 loginform">
+					<!-- 猫头鹰控件 -->
+					<div id="owl-login" class="register-owl">
+						<div class="hand"></div>
+						<div class="hand hand-r"></div>
+						<div class="arms">
+							<div class="arm"></div>
+							<div class="arm arm-r"></div>
+						</div>
+					</div>
+					<div class="pad input-container">
+						<section class="content">
+							<span class="input input--hideo">
+								<input class="input__field input__field--hideo" type="text" id="register-username"
+									autocomplete="off" placeholder="请输入用户名" maxlength="15"/>
+								<label class="input__label input__label--hideo" for="register-username">
+									<i class="fa fa-fw fa-user icon icon--hideo"></i>
+									<span class="input__label-content input__label-content--hideo"></span>
+								</label>
+							</span>
+							<span class="input input--hideo">
+								<input class="input__field input__field--hideo" type="password" id="register-password" placeholder="请输入密码" maxlength="15"/>
+								<label class="input__label input__label--hideo" for="register-password">
+									<i class="fa fa-fw fa-lock icon icon--hideo"></i>
+									<span class="input__label-content input__label-content--hideo"></span>
+								</label>
+							</span>
+							<span class="input input--hideo">
+								<input class="input__field input__field--hideo" type="password" id="register-repassword" placeholder="请确认密码" maxlength="15"/>
+								<label class="input__label input__label--hideo" for="register-repassword">
+									<i class="fa fa-fw fa-lock icon icon--hideo"></i>
+									<span class="input__label-content input__label-content--hideo"></span>
+								</label>
+							</span>
+							<span class="input input--hideo">
+								<input class="input__field input__field--hideo" type="text" id="register-name"  autocomplete="off" placeholder="请输入呢称"/>
+								<label class="input__label input__label--hideo" for="register-name">
+									<i class="fa fa-fw fa-wifi icon icon--hideo"></i>
+									<span class="input__label-content input__label-content--hideo"></span>
+								</label>
+							</span>
+						</section>
+					</div>
+					<div class="form-actions">
+						<a class="btn pull-left btn-link text-muted" onClick="goto_login()">返回登录</a>
+						<input id="register_submit" class="btn btn-primary" type="button" onClick="register()" value="注册" 
+							style="color:white;"/>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div style="text-align:center;">
+</div>
+</body>
+</html>
