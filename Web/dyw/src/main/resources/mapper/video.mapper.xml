@@ -147,5 +147,9 @@
 		</trim>
 	</select>
 	
+	<!-- 查询所有 -->
+	<select id="searchAll" resultType="Video">
+		select `id`,`categoryId`,`vipId`,`accountId`,`name`,`recordPath`,`hitQuantity`,`status`,`desc`,`gmtCreate`,`gmtModified` from `video`
+	</select>
 	
 </mapper>

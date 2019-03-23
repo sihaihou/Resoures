@@ -26,6 +26,7 @@
 	<script src="http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="jQuery/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="js/reyco.js"></script>
+	<script type="text/javascript" src="../js/page.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			searchNav_category();
@@ -229,6 +230,63 @@
 			        }
 			   });
 		}
+		//solrSearch
+		function solrSearch(){
+			 var name =$("#wd").val();
+			 var pageNo = 1;
+			 $.ajax({
+			        type:'post',
+			        dataType: "json",
+			        url:"video/solrPage.do",
+			        data:{ 
+			        	pageNo:pageNo,
+			        	name:name,
+			        	time:new Date()
+			        },
+			        //数据加载前调用方法
+			        beforeSend:function(data){
+			        	//loading显示
+			        	$("#loadingOver").css('display','block');
+			        	$("#loadingLayout").css('display','block');
+			        },
+			        success:function(data){
+			        	var flag = data.success;
+			        	if(flag){
+			        		pageNum = data.data.info.pageNo;
+			        		pageSize = data.data.info.totalPage;
+			        		total = data.data.info.totalCount;
+			        		var data_length = getJSonObjLenth(data.data.info.list);
+			        		$(".type").css('display','none');
+			        		$(".searchPage").css('display','block');
+			        		$("#searchPage").empty();
+			        		for (var i = 0;i<data_length;i++) {	 
+			        			var searchPage_node= $("<div class='col-md-2 col-sm-6 col-xs-6 movie-item-out'>"+
+			        					"<div class='movie-item'>"+
+			        					"<a class='video_a' style='position:relative;display:block;' title='"+data.data.info.list[i].name+"' target='_blank' onclick=openVideo('"+data.data.info.list[i].recordPath+"')>"+
+			        					"<img class='indexhot' title='imags/zt.jpg' alt='imags/zt.jpg' src='imags/zt.jpg'>"+
+			        					"</a>"+
+			        					"<div  class='meta'>"+
+			        					"<div style='width:100%;overflow:hidden;height:20px;'><a class='video_a movie-name' onclick=openVideo('"+data.data.info.list[i].recordPath+"')>"+data.data.info.list[i].name+"</a></div>"+
+										"<em>浏览次数：380</em>"+
+										"</div>"+
+										"</div>");		
+								$("#searchPage").append(searchPage_node);
+							} 
+			        	}else{
+			        		//$(location).attr('href', '../user/login.html');
+			        	}
+			        },
+			     	//数据加载后调用的方法
+			       complete:function(data){
+			        	//loading隐藏
+			        	$("#loadingOver").css('display','none');
+			        	$("#loadingLayout").css('display','none');
+			        }, 
+			        error:function(){
+			        	//$(location).attr('href', '../user/login.html');
+			        }
+			   });
+		}
 		function searchAll(){
 			 $.ajax({
 			        type:'post',
@@ -376,8 +434,8 @@
 				    <div class="pull-right">
 				    	<form class="navbar-form" target="_blank" accept-charset="utf-8" action="/index.php?m=vod-search" method="POST" role="search">
 				            <div class="form-group">
-							<input type="text" id="wd" name="wd" class="form-control" onblur="if(this.value==''){ this.value='搜索一下';this.style.color='#cfcdcd';}" onfocus="if(this.value=='搜索一下'){this.value='';this.style.color='';}" value="搜索一下" />
-				            </div><button type="submit" class="btn btn-primary">搜索</button>
+							<input type="text" id="wd" name="wd" class="form-control" onblur="if(this.value==''){ this.value='';this.style.color='#cfcdcd';}" onfocus="if(this.value==''){this.value='';this.style.color='';}" placeholder="搜索一下"/>
+				            </div><button onclick="solrSearch()" type="button" class="btn btn-primary">搜索</button>
 				        </form>
 				    </div>
 		     	</div>
@@ -517,31 +575,6 @@
 		
 				<!-- 动态创建:start -->
 				<div id="searchPage" class="searchPage row" style="padding:0 7px;">
-				    <!--
-				   <div class="col-md-2 col-sm-6 col-xs-6 movie-item-out">
-					    <div class="movie-item">
-					        <a style="position:relative;display:block;" title="imags/zt.jpg" target="_blank" href="http://www.sihaihou.com">
-					            <img class="indexhot" title="imags/zt.jpg" alt="imags/zt.jpg" src="imags/zt.jpg">
-					            <button class="hdtag"></button>
-					        </a>
-					        <div class="meta">
-					            <div style="width:100%;overflow:hidden;height:20px;"><a target="_blank" title="imags/zt.jpg" class="movie-name" href="http://www.sihaihou.com">imags/zt.jpg</a></div>
-					            <em>浏览次数：360</em>
-					        </div>
-					    </div>
-					</div> 
-					 <div class="col-md-2 col-sm-6 col-xs-6 movie-item-out">
-					    <div class="movie-item">
-					        <a style="position:relative;display:block;" title="imags/zt.jpg" target="_blank" href="../video/1/1536703977662.mp4">
-					            <video class="indexhot" style="width=100%; height=100%; object-fit: fill" src="../video/1/1536703977662.mp4" title="徐若瑄演唱_爱笑的眼睛__<br>唱出不一样的味道"/>
-					            <button class="hdtag"></button>
-					        </a>
-					        <div class="meta">
-					           	<div style="width:100%;overflow:hidden;height:20px;"><a target="_blank" title="imags/zt.jpg" class="movie-name" href="../video/1/1536703977662.mp4">一本道</a></div>
-					            <em>浏览次数：360</em>
-					        </div>
-					    </div>
-					</div> -->
 					<div class="col-md-2 col-sm-6 col-xs-6 movie-item-out">
 					    <div class="movie-item">
 					        <a class="video_a" style="position:relative;display:block;" title="imags/zt.jpg" target="_blank" onclick="openVideo('recordPath')">
@@ -554,7 +587,9 @@
 					        </div>
 					    </div>
 					</div> 
+					<div id="page" class="page"></div>
 				</div>
+				
 				<!-- 动态创建:end -->
 			
 				<div><a target="_blank" class="btn btn-primary btn-block" href="http://www.sihaihou.com"><i class="glyphicon glyphicon-fire"></i> 更多热门电影 &raquo; </a></div>

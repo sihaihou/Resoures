@@ -66,4 +66,10 @@ public interface VideoDao {
 	 * @return
 	 */
 	public Integer searchCount(Video video);
+	/**
+	 * 查询所有
+	 * @return
+	 */
+	public List<Video> searchAll();
+	
 }

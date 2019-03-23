@@ -1,4 +1,4 @@
-package com.reyco.core.thread;
+package com.reyco.core.task;
 
 import java.util.List;
 import java.util.concurrent.CountDownLatch;

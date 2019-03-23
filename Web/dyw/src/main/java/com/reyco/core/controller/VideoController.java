@@ -3,6 +3,7 @@ package com.reyco.core.controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,6 +20,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import com.github.pagehelper.PageInfo;
 import com.reyco.core.constant.Contants;
 import com.reyco.core.constant.Status;
+import com.reyco.core.pojo.Page;
 import com.reyco.core.pojo.Video;
 import com.reyco.core.service.VideoService;
 import com.reyco.core.util.FileuploadUtil;
@@ -186,5 +188,30 @@ public class VideoController {
     	dataVideo.add(type_7);
     	return JSONResult.create(dataVideo).toJSON();
     }
+    @ResponseBody
+    @RequestMapping("/initSolr")
+    public String init() throws Exception {
+    	try {
+			videoService.Initialization();
+			return JSONResult.create("初始化成功...").toJSON();
+		} catch (Exception e) {
+			return JSONResult.failCreate("初始化失败...", "").toJSON();
+		}
+    }
+    @ResponseBody
+    @RequestMapping("/solrPage")
+    public String searchPage(Integer pageNo,String name) throws Exception {
+    	if(pageNo < 1) {
+			return JSONResult.failCreate(JSONResult.ERROR_SELECT,JSONResult.ERROR_SELECT).toJSON();
+		}
+    	Map<String, Object> map = videoService.searchPage(pageNo,Contants.SEAR_TYPE_SIZE, name);
+		if(map.size() < 1) {
+			return JSONResult.noDataCreate().toJSON();
+		}
+		Long totalCount = (Long)map.get("totalCount");
+		Page page = PageUtil.getPage(pageNo, Contants.SEAR_TYPE_SIZE,totalCount.intValue(), (List)map.get("videos"));
+		return JSONResult.create(page).toJSON();
+    }
+    
     
 }

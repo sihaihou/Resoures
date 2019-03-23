@@ -1,6 +1,10 @@
 package com.reyco.core.service;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+
+import org.apache.solr.client.solrj.SolrServerException;
 
 import com.reyco.core.pojo.Video;
 
@@ -19,7 +23,6 @@ public interface VideoService {
 	 * @param hitQuantity
 	 * @param desc
 	 */
-	//public void insertVideo(Integer categoryId,Integer vipId,Integer accountId,String name,String recordPath,Integer hitQuantity,Integer status,String desc);
 	public void insertVideoUpdateCategory(Integer categoryId,Integer vipId,Integer accountId, String name, String recordPath, Integer hitQuantity,Integer status, String desc);
 	/**
 	 * 编辑
@@ -51,4 +54,20 @@ public interface VideoService {
 	 * @return
 	 */
 	public Integer searchCount(Integer status,Integer categoryId,Integer accountId);
+	/**
+	 * solr数据初始化
+	 * @throws Exception
+	 */
+	public void Initialization()throws Exception;
+	
+	/**
+	 * solr分页搜索
+	 * @param name 查询字符
+	 * @param pageNo 第几页
+	 * @return
+	 * @throws SolrServerException
+	 * @throws IOException
+	 */
+	Map<String,Object> searchPage(Integer pageNo,Integer pageSize,String name) throws SolrServerException, IOException;
+	
 }
