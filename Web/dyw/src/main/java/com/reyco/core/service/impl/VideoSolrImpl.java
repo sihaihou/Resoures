@@ -30,7 +30,7 @@ public class VideoSolrImpl implements VideoSolrService<Video> {
 
 	public VideoSolrImpl() {
 		super();
-		this.solrClient = new HttpSolrClient("http://39.107.247.102:80/solr");
+		this.solrClient = new HttpSolrClient("http://ip:port/solr");
 	}
 
 	@Override
