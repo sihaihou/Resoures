@@ -32,10 +32,10 @@ import com.github.pagehelper.PageInfo;
 import com.reyco.core.pojo.Base;
 import com.reyco.core.service.BaseService;
 import com.reyco.core.task.Bases;
-import com.reyco.core.task.BatchInsertThread;
-import com.reyco.core.task.DoSome1;
-import com.reyco.core.task.EatSome1;
-import com.reyco.core.task.InsertThread;
+import com.reyco.core.task.BaseBatchInsertTask;
+import com.reyco.core.task.BaseBatchProvider;
+import com.reyco.core.task.BaseBatchConsumer;
+import com.reyco.core.task.BaseInsertTask;
 import com.reyco.core.util.JSONResult;
 import com.reyco.core.util.PageUtil;
 import com.reyco.core.util.PoiUtil;
@@ -254,7 +254,7 @@ public class BaseController {
 	 * @param end
 	 */
 	private void createInsertThread(List<Base> newList, CountDownLatch begin,CountDownLatch end) {
-		InsertThread insertThread = new InsertThread(newList,begin,end);
+		BaseInsertTask insertThread = new BaseInsertTask(newList,begin,end);
     	new Thread(insertThread).start();
 	}
 	/**
@@ -264,7 +264,7 @@ public class BaseController {
 	 * @param end
 	 */
 	private void createBatchInsertThread(List<Base> newList, CountDownLatch begin,CountDownLatch end) {
-		BatchInsertThread batchinsertThread = new BatchInsertThread(newList,begin,end);
+		BaseBatchInsertTask batchinsertThread = new BaseBatchInsertTask(newList,begin,end);
     	new Thread(batchinsertThread).start();
 	}
 	
@@ -287,8 +287,8 @@ public class BaseController {
 			Bases bases=new Bases();
 			//DoSome doSome=new DoSome(bases,list);
 			//EatSome eatSome=new EatSome(bases,list);
-			DoSome1 doSome= new DoSome1(bases,baseList);
-			EatSome1 eatSome= new EatSome1(bases,baseList);
+			BaseBatchProvider doSome= new BaseBatchProvider(bases,baseList);
+			BaseBatchConsumer eatSome= new BaseBatchConsumer(bases,baseList);
 			Thread t=new Thread(doSome);
 			Thread t2=new Thread(eatSome);
 			t.start();

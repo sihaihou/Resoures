@@ -27,7 +27,7 @@ import com.reyco.core.dao.VideoDao;
 import com.reyco.core.pojo.Video;
 import com.reyco.core.service.CategoryService;
 import com.reyco.core.service.VideoService;
-import com.reyco.core.task.InitSolrTask;
+import com.reyco.core.task.InitVideoSolrTask;
 import com.reyco.core.task.InsertVideoSolrTask;
 import com.reyco.core.task.UpdateVideoSolrTask;
 import com.reyco.core.util.DateUtil;
@@ -73,6 +73,7 @@ public class VideoServiceImpl implements VideoService {
 	private void insertVideo(Integer categoryId,Integer vipId,Integer accountId, String name, String recordPath, Integer hitQuantity,Integer status, String desc) {
 		Video video = new Video(categoryId,vipId,accountId,name,recordPath,hitQuantity,status,desc);
 		videoDao.insertVideo(video);
+		// 异步开启一个线程新增一条Solr数据
 		new Thread(new InsertVideoSolrTask(video)).start();
 	}
 	/**
@@ -92,6 +93,7 @@ public class VideoServiceImpl implements VideoService {
 	public void updateVideo(Integer id, Integer categoryId, String name,Integer hitQuantity,Integer status, String desc) {
 		Video video = new Video(id,categoryId,name,hitQuantity,status,desc);
 		videoDao.updateVideo(video);
+		// 异步开启一个线程更新这条Solr数据
 		new Thread(new UpdateVideoSolrTask(video)).start();
 		if(null != status) {
 			if(1==status) {
@@ -151,54 +153,14 @@ public class VideoServiceImpl implements VideoService {
 		return videoDao.searchCount(video);
 	}
 	@Override
-	public Map<String,Object> searchPage(Integer pageNo,Integer pageSize,String name) throws SolrServerException, IOException{
-		Map<String,Object> map = new HashMap<String,Object>();
-		SolrClient client = new HttpSolrClient("http://39.107.247.102:80/solr");
-		SolrQuery params = new SolrQuery();
-		if(StringUtils.isBlank(name)) {
-			params.setQuery("video_keywords:*");
-		}else {
-			params.setQuery("video_keywords:"+name);
-		}
-		params.setStart(pageSize*(pageNo-1));
-		params.setRows(pageSize);
-		QueryResponse response = client.query(params);
-		return getSolrVideoList(response);
+	public Map<String,Object> searchPage(Integer pageNo,Integer pageSize,String keywords) throws SolrServerException, IOException{
+		VideoSolrImpl videoSolrImpl = new VideoSolrImpl();
+		return videoSolrImpl.searchSolr(pageNo, pageSize, keywords);
 	}
-	/**
-	 * 
-	 * @param videoList
-	 * @return
-	 */
-	private Map<String,Object> getSolrVideoList(QueryResponse response){
-		SolrDocumentList videoList = response.getResults();
-		Map<String,Object> map = new HashMap<String,Object>();
-		List<Video> list = new ArrayList<Video>();
-		String path =PropertiesUtil.getValue("video.path");
-		for (SolrDocument solrDocument : videoList) {
-			Video video = new Video();
-			String fieldValue = (String)solrDocument.getFieldValue("id");
-			Integer id = Integer.parseInt(fieldValue);
-			video.setId(id);
-			video.setName((String)solrDocument.getFieldValue("video_name"));
-			video.setCategoryId((Integer)solrDocument.getFieldValue("video_categoryId"));
-			video.setVipId((Integer)solrDocument.getFieldValue("video_vipId"));
-			video.setAccountId((Integer)solrDocument.getFieldValue("video_accountId"));
-			video.setRecordPath(path+(String)solrDocument.getFieldValue("video_recordPath"));
-			video.setHitQuantity((Integer)solrDocument.getFieldValue("video_hitQuantity"));
-			video.setStatus((Integer)solrDocument.getFieldValue("video_status"));
-			video.setDesc((String)solrDocument.getFieldValue("video_desc"));
-			video.setGmtCreate(DateUtil.parseDateTime((String)solrDocument.getFieldValue("video_gmtCreate")));
-			video.setGmtModified(DateUtil.parseDateTime((String)solrDocument.getFieldValue("video_gmtModified")));
-			list.add(video);
-		}
-		map.put("totalCount", videoList.getNumFound());
-		map.put("videos", list);
-		return map;
-	}
+	
 	public static void main(String[] args) throws SolrServerException, IOException {
 		VideoServiceImpl videoServiceImpl = new VideoServiceImpl();
-		Map<String, Object> map = videoServiceImpl.searchPage(1,12,"周星驰");
+		Map<String, Object> map = videoServiceImpl.searchPage(1,12,"solr");
 		System.out.println(map);
 	}
 	@Override
@@ -228,7 +190,7 @@ public class VideoServiceImpl implements VideoService {
         for (int i=0;i<runThreadSize;i++) {
         	List<Video> newList = getEachTaskStartAndEnd(runThreadSize,count,list,i);
         	try {
-				executor.execute(new InitSolrTask(newList));
+				executor.execute(new InitVideoSolrTask(newList));
 				latch.countDown();
 			} catch (Exception e) {
 				e.printStackTrace();

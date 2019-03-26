@@ -262,7 +262,7 @@
 			        		for (var i = 0;i<data_length;i++) {	 
 			        			var searchPage_node= $("<div class='col-md-2 col-sm-6 col-xs-6 movie-item-out'>"+
 			        					"<div class='movie-item'>"+
-			        					"<a class='video_a' style='position:relative;display:block;' title='"+data.data.info.list[i].name+"' target='_blank' onclick=openVideo('"+data.data.info.list[i].recordPath+"')>"+
+			        					"<a class='video_a' style='position:relative;display:block;' target='_blank' onclick=openVideo('"+data.data.info.list[i].recordPath+"')>"+
 			        					"<img class='indexhot' title='imags/zt.jpg' alt='imags/zt.jpg' src='imags/zt.jpg'>"+
 			        					"</a>"+
 			        					"<div  class='meta'>"+
@@ -558,18 +558,6 @@
 				    <div class="col-md-12 movie-item-out">
 				          <h3 style="padding-left:10px;border-left: 8px solid #E94B43;color: #FFFFFF;">最新欧美：</h3>
 				    </div>
-				<!-- 	<div class="col-md-2 col-sm-6 col-xs-6 movie-item-out">
-					    <div class="movie-item">
-					        <a style="position:relative;display:block;" title="imags/zt.jpg" target="_blank" href="http://www.sihaihou.com">
-					            <img class="indexhot" title="imags/zt.jpg" alt="imags/zt.jpg" src="imags/zt.jpg">
-					            <button class="hdtag"></button>
-					        </a>
-					        <div class="meta">
-					            <div style="width:100%;overflow:hidden;height:20px;"><a target="_blank" title="imags/zt.jpg" class="movie-name" href="http://www.sihaihou.com">imags/zt.jpg</a></div>
-					            <em>浏览次数：360</em>
-					        </div>
-					    </div>
-					</div>	 -->
 				</div>
 				<!-- 最新欧美：end -->
 		
@@ -577,7 +565,7 @@
 				<div id="searchPage" class="searchPage row" style="padding:0 7px;">
 					<div class="col-md-2 col-sm-6 col-xs-6 movie-item-out">
 					    <div class="movie-item">
-					        <a class="video_a" style="position:relative;display:block;" title="imags/zt.jpg" target="_blank" onclick="openVideo('recordPath')">
+					        <a class="video_a" style="position:relative;display:block;"  target="_blank" onclick="openVideo('recordPath')">
 					        	<img class="indexhot" title="imags/zt.jpg" alt="imags/zt.jpg" src="imags/zt.jpg">
 					            <button class="hdtag"></button>
 					        </a>
@@ -587,7 +575,6 @@
 					        </div>
 					    </div>
 					</div> 
-					<div id="page" class="page"></div>
 				</div>
 				
 				<!-- 动态创建:end -->

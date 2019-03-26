@@ -200,11 +200,11 @@ public class VideoController {
     }
     @ResponseBody
     @RequestMapping("/solrPage")
-    public String searchPage(Integer pageNo,String name) throws Exception {
+    public String searchPage(Integer pageNo,String keywords) throws Exception {
     	if(pageNo < 1) {
 			return JSONResult.failCreate(JSONResult.ERROR_SELECT,JSONResult.ERROR_SELECT).toJSON();
 		}
-    	Map<String, Object> map = videoService.searchPage(pageNo,Contants.SEAR_TYPE_SIZE, name);
+    	Map<String, Object> map = videoService.searchPage(pageNo,Contants.SEAR_TYPE_SIZE, keywords);
 		if(map.size() < 1) {
 			return JSONResult.noDataCreate().toJSON();
 		}

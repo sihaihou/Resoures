@@ -6,10 +6,10 @@ import java.util.List;
 import com.reyco.core.pojo.Base;
 
 /**
- * 生产者对象
+ * 批量新增 ----生产者对象
  * @author reyco
  */
-public class DoSome1 implements Runnable{
+public class BaseBatchProvider implements Runnable{
 	/**
 	 * 共同的资源   
 	 */
@@ -28,7 +28,7 @@ public class DoSome1 implements Runnable{
 	 * 生产次数
 	 */
 	private int size;
-	public DoSome1(Bases bases,List<Base> list) {
+	public BaseBatchProvider(Bases bases,List<Base> list) {
 		super();
 		this.bases = bases;
 		this.list = list;
@@ -61,7 +61,7 @@ public class DoSome1 implements Runnable{
 			}else {
 				newList = list.subList(i*count, (i+1)*count);
 			}
-			bases.doSome(newList);
+			bases.provider(newList);
 		}
 	}
 }

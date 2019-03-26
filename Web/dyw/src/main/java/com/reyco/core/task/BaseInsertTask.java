@@ -9,21 +9,17 @@ import org.slf4j.LoggerFactory;
 import com.reyco.core.pojo.Base;
 import com.reyco.core.service.BaseService;
 import com.reyco.core.util.SpringContextHolder;
-/**
- * batchInsert线程类
- * @author reyco
- *
- */
-public class BatchInsertThread implements Runnable{
+
+public class BaseInsertTask implements Runnable{
 	protected Logger logger = LoggerFactory.getLogger(getClass());
 	
 	private BaseService baseService = SpringContextHolder.getBean("baseService");
 	List<Base> list;
 	CountDownLatch begin;
 	CountDownLatch end;
-	public BatchInsertThread() {
+	public BaseInsertTask() {
 	}
-	public BatchInsertThread(List<Base> list, CountDownLatch begin, CountDownLatch end) {
+	public BaseInsertTask(List<Base> list, CountDownLatch begin, CountDownLatch end) {
 		this.list = list;
 		this.begin = begin;
 		this.end = end;
@@ -31,7 +27,10 @@ public class BatchInsertThread implements Runnable{
 	@Override
 	public void run() {
 		try {
-			baseService.batchInsert(list);
+			for (Base base : list) {
+				baseService.insert(base);
+			}
+			//....
             //执行完让线程直接进入等待
             begin.await();
 		}catch (Exception e) {

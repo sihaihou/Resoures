@@ -3,7 +3,7 @@ package com.reyco.core.task;
 import com.reyco.core.pojo.Video;
 import com.reyco.core.service.impl.VideoSolrImpl;
 /**
- * 跟新Solr
+ * 更新Solr数据任务
  * @author reyco
  *
  */

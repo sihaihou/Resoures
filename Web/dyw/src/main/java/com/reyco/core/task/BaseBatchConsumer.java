@@ -9,7 +9,7 @@ import com.reyco.core.pojo.Base;
  * @author reyco
  *
  */
-public class EatSome1 implements Runnable{
+public class BaseBatchConsumer implements Runnable{
 	/**
 	 * 共同的资源   
 	 */
@@ -19,7 +19,7 @@ public class EatSome1 implements Runnable{
 	 */
 	private int size;
 	
-	public EatSome1(Bases bases, List<Base> list) {
+	public BaseBatchConsumer(Bases bases, List<Base> list) {
 		this.bases = bases;
 		//初始化
 		init(list);
@@ -45,7 +45,7 @@ public class EatSome1 implements Runnable{
 	public void run() {
 		//循环消费
 		for(int i=0;i<size;i++){
-			bases.eatSome();
+			bases.consumer();;
 		}		
 	}	
 }

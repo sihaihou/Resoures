@@ -2,7 +2,6 @@ package com.reyco.core.service;
 
 import java.util.List;
 
-import com.github.pagehelper.PageInfo;
 import com.reyco.core.pojo.Category;
 
 public interface CategoryService {
