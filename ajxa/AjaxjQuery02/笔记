@@ -1,0 +1,8 @@
+使用：Jackson
+/**
+ * 1,导入jar包
+ * 2,创建ObjectMapper对象
+ * 3,调用 ObjectMapper 对象的 writeValueAsString 方法，把一个对象或集合转换为JSON字符串。
+ * 4,注意：Jackson 使用 getter 方法来定位JSON对象的属性。
+ * 5,可以通过添加注解 @JsonIgnore 来忽略getter定义的属性。
+ */

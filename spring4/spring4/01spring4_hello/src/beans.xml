@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+	<!-- bean就是java对象，由spring来创建和管理 -->
+	<bean id="hello" class="hs.bean.Hello">
+		<property name="name" value="程飞扬"/>
+	</bean>
+ </beans>       

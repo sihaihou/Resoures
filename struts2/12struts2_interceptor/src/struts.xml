@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>		
+	<package name="default" namespace="/" extends="struts-default">  
+	    <interceptors>	    
+			<interceptor name="time" class="hs.intercept.TimeIntercept"/>
+			<interceptor name="login" class="hs.intercept.LoginIntercept"/>
+			<interceptor-stack name="myStack">
+	   			<interceptor-ref name="time"/> 
+	   			<interceptor-ref name="login"/>		
+	   			<interceptor-ref name="defaultStack"/>	   			
+			</interceptor-stack>
+		</interceptors>  	
+		<default-interceptor-ref name="myStack"/>
+		
+		<!-- 全局login结果集 -->
+		<global-results>
+			<result name="login">/login.jsp</result>
+		</global-results> 
+		
+   		<action name="hello" class="hs.action.HelloAction">
+   			<result>/WEB-INF/index.jsp</result> 
+   		</action> 
+
+   		<action name="login" class="hs.action.LoginAction">
+   			<result>/success.jsp</result>      				 			
+   		</action>      				 	
+  </package>
+</struts>
+ 

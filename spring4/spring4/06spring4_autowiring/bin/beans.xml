@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+         <!--autowire自动装配，简化spring配置 。建议少用
+         	 no 不使用自动装配
+         	 byName 根据名称(set方法名来的)去找相对应的bean，如果有则装配上(如果bean都是用同一种方式自动装配，在标头最后一行直接配置)
+         	 byType 根据类型进行自动装配，不用管bean的id，但是同一种类型的bean只能有一个。建议不用。
+        	 constructor 当通过构造器实例化 bean时，适用byType的方式装配构造方法。
+          -->
+         <!-- byName: 根据名称(set方法名来的)去找相对应的bean -->
+         <!--  <bean id="userDao" class="hs.dao.Impl.UserOracleDaoImpl"/>
+         <bean id="service" class="hs.service.Impl.UserServiceImpl" autowire="byName"/> -->
+         
+         <!-- byType： 根据类型进行自动装配，可以不用管bean的id，但是同一种类型的bean只能有一个。建议不用。 -->
+         <!-- <bean class="hs.dao.Impl.UserOracleDaoImpl"/>
+         <bean id="service" class="hs.service.Impl.UserServiceImpl" autowire="byType"/> -->
+         
+         <!-- constructor：当通过构造器实例化bean时，适用byType的方式装配构造方法。 -->
+         <bean id="userDao" class="hs.dao.Impl.UserOracleDaoImpl"/>
+         <bean id="service" class="hs.service.Impl.UserServiceImpl" autowire="constructor"/>
+         
+</beans>       

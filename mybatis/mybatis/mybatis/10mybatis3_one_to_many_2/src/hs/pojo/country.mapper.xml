@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hs.dao.CountryDao">	
+	<select id="selectMinisterByCountry" resultType="Minister">
+		select * from minister where mid=#{cid}
+	</select>
+	
+	<resultMap type="Country" id="countryMapper">
+		<id property="cid" column="cid"/>
+		<result property="cname" column="cname"/>
+		<!--  1，property:集合的属性名
+			  2，ofType：集合所对应的类型
+			  3，select：通过哪个查询体查询
+			  4，cid：通过哪个属性来查询
+		-->			
+		<collection property="ministers" ofType="Minister" select="selectMinisterByCountry" column="cid"/>
+	</resultMap>
+	
+	<select id="selectCountryById" resultMap="countryMapper">
+		select * from country 
+		where cid=#{cid}
+	</select>
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!--  设置临时目录  -->
+	<constant name="struts.multipart.saveDir" value="D:/"/>	
+	<!-- 设置上传文件的最大大小必须大于等于maximumSize -->
+	<constant name="struts.multipart.maxSize" value="20971520"/>	
+	
+	<package name="default" namespace="/"  extends="struts-default">  		
+		<action name="batch" class="hs.action.BatchUploadAction" method="batch">
+			<result>/index.jsp</result>
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">20971520</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"/>
+		</action> 		
+  </package>
+</struts>
+ 

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<!-- 配置struts属性 -->
+	<!-- 解决乱码 -->
+	<constant name="struts.i18n.encoding" value="utf-8"/>
+	<!-- 设置开发模式 -->
+	<constant name="struts.devMode" value="true"/>
+	<!-- 设置配置文件修改自动加载   -推荐开发中使用 -->
+	<constant name=" struts.configuration.xml.reload" value="true"/>		
+	<!-- 团队协作开发配置 -->
+	<!--  <include file="config/包名（有点的全部换成/,）/配置文件名"-->
+	<include file="config/hs/struts/user.xml"/>
+</struts>
+ 

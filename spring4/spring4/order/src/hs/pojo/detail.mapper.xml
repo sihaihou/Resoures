@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hs.pojo.detail.mapper">	
+	<select id="listByOrderId" parameterType="int" resultMap="DetailMenu">
+		select * from t_orderdetail where orderId=#{orderId}
+	</select>
+	<resultMap type="Detail" id="DetailMenu">
+		<association property="menu" column="menuId" javaType="Menu" select="hs.pojo.menu.mapper.getById"/>
+	</resultMap>
+	<delete id="delete" parameterType="int">
+		delete from t_orderdetail where id=#{id}
+	</delete>
+</mapper>

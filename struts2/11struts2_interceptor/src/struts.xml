@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>		
+	<package name="default" namespace="/" extends="struts-default">  
+		<!-- 配置拦截器 -->
+	    <interceptors>	    
+			<interceptor name="time" class="hs.intercept.TimeIntercept"/>			
+			<!-- 一个拦截器栈中，可以包含多个拦截器的引用，拦截器栈的引用和拦截器一致 -->
+			<interceptor-stack name="myStack">
+				<!-- 引用拦截器 -->
+	   			<interceptor-ref name="time"/>
+	   			<!-- 引用默认拦截器 :引用拦截器和引用拦截器栈的方式一样！-->
+	   			<interceptor-ref name="defaultStack"/>	   			
+			</interceptor-stack>
+		</interceptors>  	
+		
+		
+		<!-- 自定义默认的拦截器|栈 -->
+		<default-interceptor-ref name="myStack"/>
+   		<action name="hello" class="hs.action.HelloAction">
+   			<result>/index.jsp</result> 
+   			<!--使用默认的拦截器  --> 
+   			<!--  <interceptor-ref name="time"/>	 -->		
+   		</action>  		   		
+  </package>
+</struts>
+ 

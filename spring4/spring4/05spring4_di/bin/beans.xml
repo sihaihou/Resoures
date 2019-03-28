@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:c="http://www.springframework.org/schema/c"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+     <!-- bean的作用域： 
+     		 scope： singleton单列 整个容器中只有一个对象实例 默认是单列
+		 			 prototype原型 每次获取bean都产生一个新的对象
+		 			 request 每次请求时创建一个新的对象 
+		 			 session 在会话的范围内时一个对象 
+		 			 global session 只在portlet下有用，表示是application 
+		 			 application 在应用范围中一个对象 
+	  -->
+    <bean id="addr" class="hs.student.Address" scope="singleton"> 
+    	<property name="address" value="湖北襄阳"></property>
+    </bean>  
+	<bean name="student" class="hs.student.Student">
+		<!--  注入：1,常量注入 -->
+		<property name="name" value="程飞扬"/>	
+		
+		<!--  注入：2,bean注入：-->
+		<property name="addr" ref="addr"/>
+		
+		<!-- 注入:3.数组注入 -->
+		<property name="books">
+			<array>
+				<value>别爱我</value>
+				<value>爱笑的眼睛</value>
+				<value>笑着活下去</value>
+			</array>
+		</property>
+		
+		<!-- 注入：4，list注入 -->
+		<property name="hobbies">
+			<list>
+				<value>乒乓球</value>
+				<value>羽毛球球</value>
+				<value>台球</value>
+			</list>
+		</property>
+		
+		<!-- 注入：5，map注入 -->
+		<property name="cards">
+			<map>
+				<entry key="中国银行" value="62179952651656555"/>
+				<entry>
+					<key><value>兴业银行</value></key>
+					<value>62290813353656454121</value>
+				</entry>
+			</map>
+		</property>
+		
+		<!-- 注入：6，set注入 -->
+		<property name="games">
+			<set>
+				<value>cs</value>
+				<value>dnf</value>
+				<value>dota</value>
+			</set>
+		</property>
+		
+		<!-- 注入：7，Null注入： -->
+		<property name="wife">
+			<null/>
+		</property>
+		
+		<!-- 注入：8，properties注入： -->
+		<property name="info">
+			<props>
+				<prop key="学号">1505110307</prop>
+				<prop key="sex">男</prop>
+			</props>
+		</property>
+	</bean>	
+	<!-- 注入：9，p命名空间注入，属性依然需要set方法 -->
+	<bean id="user" class="hs.student.User" p:name="程飞扬" p:age="20"/>
+	
+	<!-- 注入：10，c命名空间注入，要求有对应参数的构造方法 -->
+	<bean id="u1" class="hs.student.User" c:name="程飞扬" c:age="19"/>				
+ </beans>       

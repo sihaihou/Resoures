@@ -1,0 +1,33 @@
+1,什么是Ajax？      ： 不要刷新页面，但可以和服务器进行通信的方式。使用Ajax的只要方式是：XMLHttpRequest对象
+
+2,使用XMLHttpRequest对象实现Ajax。（了解）
+
+3,Ajax传输数据的3种方式：
+   1),xml:笨重，解析困难，但xml是通用的数据传输方式。
+   2),html:不需要解析可以直接放入到文档中。若仅更新一部分区域。当传输的数据不是很方便，且html代码需要拼装完成。
+   3),json:小巧，有面向对象的特征，有且有很多第三方的Jar 包可以把java对象或集合转为json字符串。
+   
+4,使用jQuery完成ajax：
+  1),load()方法: 可以用于HTML文档的元素节点，把结果直接加为对应节点的子元素，通常而言，load方法加载后的数据是一个HTML片段。
+  	var $obj = ...;
+  	var url = ...;
+  	var args = {key:value};
+  	$obj.load(url,args);
+  2),$.get()、$.post()、$.getJSON()：更加灵活，除去使用load方法的情况，大部分时候都使用这3种方法。
+     I：基本使用：
+     	data:ajax 响应成功后的数据，可能是xml、HTML、json 
+     	$.get(url,args,function(data){
+     
+    	 });
+     II：请求json数据：
+        $.get(url,args,function(data){
+     
+    	 },"JSON");	 
+     	$.post(url,args,function(data){
+     
+    	 },"JSON");	 
+     	$.getJSON(url,args,function(data){
+     
+    	 });	 
+    	 
+    	 

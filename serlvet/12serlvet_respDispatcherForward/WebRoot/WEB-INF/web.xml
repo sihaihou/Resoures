@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>12serlvet_respDispatcherForward</display-name>
+  <servlet>
+    <servlet-name>loginServlet</servlet-name>
+    <servlet-class>hs.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>someServlet</servlet-name>
+    <servlet-class>hs.servlet.SomeServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>loginServlet</servlet-name>
+    <url-pattern>*.servlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>someServlet</servlet-name>
+    <url-pattern>*.some</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>   
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

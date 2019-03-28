@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hs.dao.UserDao">
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache">
+		<!-- 可以添加ehcache.xml的属性及参数 -->
+		<property name="" value=""/>
+	</cache>
+	
+	<select id="selectUserById" resultType="User">
+		select * from user where id =#{id}
+	</select>
+</mapper>

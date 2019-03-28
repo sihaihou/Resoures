@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hs.pojo.order.mapper">	
+	<select id="list" resultType="Order"> 
+		select * from t_order
+	</select>
+	<update id="update" parameterType="Order">
+		update t_order set deskId=#{deskId},totalPrice=#{totalPrice} where id=#{id} 
+	</update>
+	<select id="getById" resultType="Order">
+		select * from t_order where id=#{id}
+	</select>
+</mapper>

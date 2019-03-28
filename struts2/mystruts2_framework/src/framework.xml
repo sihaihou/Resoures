@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<framework>
+	<action name="hello" classes="hs.action.HelloAction" method="execute">
+		<result name="success" type="dispatcher">/index.jsp</result>
+		<result name="failed" type="redirect">/index.jsp</result>
+	</action>
+	<action name="list" classes="hs.action.UserAction" method="add">
+		<result>/list.jsp</result>
+	</action>	
+</framework>

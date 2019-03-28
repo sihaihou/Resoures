@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!--包的名称（name）：自定义，可配置多个包；namespace：命名空间，不同模块可以指定不同的命名空间；
+		extends；直接或者间接继承struts-default    -->
+	<package name="default" namespace="/user" extends="struts-default">
+		<!-- name:是url请求名称，不需要加后缀(.action),不要写 /; 
+    	 class：是处理url请求对应java类，完全限定名= 包名 + 类名；
+    	 method：配置处理请求类的处理方法，默认为execute； 方法要求：公共的，返回值类型是String，无参
+    	 method 和 name 无关-->  
+		<action name="login" class="hs.action.LoginAction" method="execute">
+			<!-- result:是结果集   
+	   		name：匹配请求处理方法的返回值；（对应action中的方法的返回值匹配），默认是success
+	   		type：结果处理类型，默认是dispatcher 转发 
+	   		type类型：
+	   			chain：指action链，链接下一个action；执行actionA以后直接执行ActionB后直接执行ActionC，用的很少；地址栏是执行的第一个action。
+	   		***	dispatcher：转发；和Servlet一致，如果request中有数据要到视图显示，那么使用dispatcher.
+	   		*** redirect:重定向；如果是重定向到jsp页面，可以直接重定向，如果是重定向到另一个action，需要注意是否配置了action的后缀名。如果要去有后缀，那么重定向到action一定要加上后缀名。
+	   		*** redirectAction：重定向到另一个action；不要加action的后缀名，会将前一个action的后缀名自动加上。
+	   		*** Stream：以流的形式显示---文件下载	   		
+	   		 -->	   
+			<result name="login">/success.jsp</result>
+			<result name="error">/login.jsp</result>
+		</action>
+	</package>
+</struts>	

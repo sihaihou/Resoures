@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">  
+	
+	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+	    <property name="prefix" value="/WEB-INF/jsp/"/>
+	    <property name="suffix" value=".jsp"/>
+	</bean>	
+	<!-- controller第三种配置： 通过为URL分配Bean -->	
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<!-- key对应url请求名，value对应处理器的id -->
+				<prop key="/hello.do">helloController</prop>
+			</props>
+		</property>
+	</bean> 
+	<bean id="helloController" class="hs.controller.HelloController"/>
+		
+	<!-- controller第二种配置：请求为hello*.do都将被匹配-->
+	<!-- <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+	<bean id="helloController" class="hs.controller.HelloController"/> -->
+	
+	<!-- controller第一种配置：通过URL对应Bean -->
+	<!-- <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+	<bean name="/hello.do" class="hs.controller.HelloController"/> -->
+	
+	<!-- controller第四种配置：使用注解 -->
+	<!-- 扫描该包下的注解 -->
+	<!-- <context:component-scan base-package="hs.controller"/>-->
+	
+</beans>

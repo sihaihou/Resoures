@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+
+	<servlet>
+		<servlet-name>someServlet</servlet-name>
+		<servlet-class>hs.servlet.SomeServlet</servlet-class>
+	</servlet>
+	
+	<!--urlpattern匹配原则：	
+				路径优先 后缀匹配原则
+				精确路径 优先匹配原则
+				最长路径 优先匹配原则
+	 -->
+	<servlet-mapping>
+		<servlet-name>someServlet</servlet-name>
+		<!-- 可以有多个 urlpattern;
+			/*和/ 都是全路径模式，但他们有所不同。
+			/* 可以拦截所有请求，无论是动态资源请求，还是静态资源请求，均会被拦截
+			/  只会拦截静态资源请求，对于动态资源请求无法拦截					
+		-->
+		<!-- <url-pattern>/*</url-pattern> -->
+		<url-pattern>/</url-pattern>
+		<!-- 后缀模式 -->
+		<url-pattern>*.servlet</url-pattern>
+	</servlet-mapping>
+	
+	
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

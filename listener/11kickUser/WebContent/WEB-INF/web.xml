@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>11kickUser</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+ 
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.hs.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/loginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>KickServlet</servlet-name>
+    <servlet-class>com.hs.servlet.KickServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>KickServlet</servlet-name>
+    <url-pattern>/kickServlet</url-pattern>
+  </servlet-mapping>
+  
+   <listener>
+    <listener-class>com.hs.listener.MyServletContextListener</listener-class>
+  </listener>
+</web-app>

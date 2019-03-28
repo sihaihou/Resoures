@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+     <!-- 1.ioc:通过无参构造方法创建对象  -->
+	   <!--  <bean id="user" class="hs.user.User">
+	    	<property name="name" value="程飞扬"/>
+	    </bean> -->
+      
+     <!-- 2_1. ioc:通过有参构造方法创建对象
+     		  index表示构造方法参数下标，从0开始。 -->
+     
+		<!--  <bean id="user" class="hs.user.User">
+			
+			<constructor-arg index="0" value="程飞扬"/>	
+		</bean>	 -->
+	 
+	 <!-- 2_2. ioc:通过根据参数名称来设置 
+	 			name:参数名 -->
+			<!-- <bean id="user" class="hs.user.User">		
+				<constructor-arg name="name" value="程飞扬"/>	
+			</bean> -->
+	 	
+	 <!-- 2_3.ioc:通过根据参数类型来设置 -->
+		<!-- <bean id="user" class="hs.user.User">
+			<constructor-arg type="String" value="程飞扬"/>				
+		</bean> -->
+	
+   	 <!-- 3_1.ioc:通过静态工厂方法来创建对象  -->
+   		<!-- <bean name="user" class="hs.factory.UserFactory" factory-method="newInstance">
+ 			<constructor-arg type="String" value="程飞扬"/>	
+ 		</bean>	 -->
+ 	 
+ 	 <!-- 3_2.ioc:通过动态工厂方法来创建对象--> 	
+ 		<bean id="userFactory" class="hs.factory.UserDynamicFactory"/>
+ 		<bean name="user" factory-bean="userFactory" factory-method="newInstance">
+ 			<constructor-arg type="String" value="程飞扬"/>	
+ 		</bean>			
+ </beans>       

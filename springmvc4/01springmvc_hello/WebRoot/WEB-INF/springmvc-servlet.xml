@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  头部在index.html下:第五大标题The web下：第一大标题下：第三小标题下找-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+        
+	<!-- 配置handlerMapping -->
+	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+	
+	<!-- 配置handleradapter后：请求名可以不用添加后缀  -->
+	<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
+	
+	<!-- 配置渲染器：在index.html下:第五大标题The web下：第一大标题下：第五小标题下找-->
+	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+	    <!--结果视图的前缀  -->
+	    <property name="prefix" value="/WEB-INF/jsp/"/>
+	    <!--结果视图的后缀  -->
+	    <property name="suffix" value=".jsp"/>
+	</bean>
+	
+	<!-- 配置请求和处理器: -->
+	<bean name="/hello.do" class="hs.controller.HelloController"/>
+</beans>

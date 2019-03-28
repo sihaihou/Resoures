@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0" metadata-complete="false">
+	<!-- 
+		metadata-complete的值为true,三大组件的注册方式,只有web.xml的注册有效。忽略注解,
+		metadata-complete的值为false,注解和web.xml都有效。
+	 -->
+	
+	<servlet>
+		<servlet-name>SomeServlet</servlet-name>
+		<servlet-class>com.hs.servlet.SomeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SomeServlet</servlet-name>
+		<url-pattern>/someServlet</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>SomeFilter</filter-name>
+		<filter-class>com.hs.filter.SomeFilter</filter-class>
+	</filter>
+	<!-- 只会拦截SomeServlet的以forward请求转发方式的请求 -->
+	<filter-mapping>
+		<filter-name>SomeFilter</filter-name>
+		<servlet-name>SomeServlet</servlet-name>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>	
+	<!--extends：必须写，直接或者间接继承struts-default  name：自定义  -->	
+	<package name="default" namespace="/" extends="struts-default">
+		<!-- name:是请求名称，不要写 /;  class：对应action完全限定名= 包名 + 类名 -->
+		<action name="hello" class="hs.action.HelloAction" method="execute">
+			<!-- result:是结果集   name：和对应action中的方法的返回值匹配，默认是success -->
+			<result name="success">/index.jsp</result>
+		</action>
+   	</package>
+</struts>
+ 

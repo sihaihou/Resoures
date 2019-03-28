@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmls="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2.0.xsd" version="2.0">
+	
+	<tlib-version>1.0</tlib-version>
+	<short-name>mt</short-name>                         <!-- 标签的前缀 -->
+	<uri>http://www.hs.com/jsp/tags/mytaglib</uri>		<!-- 标签的uri -->
+	<tag>
+		<name>myTag</name>		                 <!-- 标签的后缀 -->
+		<tag-class>com.hs.tag.MyTag</tag-class>  <!-- 标签的处理类 -->
+		<body-content>empty</body-content>		 <!-- 是否为空标签 -->
+	</tag>
+	
+	<tag>
+		<name>toUpper</name>		                 <!-- 标签的后缀 -->
+		<tag-class>com.hs.tag.ToUpper</tag-class>    <!-- 标签的处理类 -->
+		<!-- 
+			empty:表示当前标签没有标签体
+			scriptless：表示当前标签有标签体.可以出现EL表达式，但不能出现java脚本,
+			jsp:已废弃
+			tagdependent：表示当前标签没有标签体,会将标签体内容原样显示
+		 -->
+		<body-content>scriptless</body-content>		 <!-- 是否为空标签 -->
+	</tag>
+</taglib>	
