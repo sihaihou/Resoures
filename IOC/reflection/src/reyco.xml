@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+	<bean  id="grade" class="com.reyco.annotation.entity.Grade">
+		<property name="no" value="001"/>
+		<property name="name" value="高三四班"/>
+	</bean>
+	
+	<bean id="student" class="com.reyco.annotation.entity.Student">
+		<property name="id" value="1"/>
+		<property name="name" value="reyco"/>
+		<property name="age" value="24"/>
+		<property name="grade" ref="grade"/>
+	</bean>
+	<bean id="parson" class="com.reyco.annotation.entity.Parson">
+		<property name="name" value="老人"/>
+	</bean>
+</beans>
