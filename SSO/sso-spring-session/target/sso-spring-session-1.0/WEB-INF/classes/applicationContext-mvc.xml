@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:component-scan base-package="com.sxt.controller" />
+
+	<!-- 为SpringMVC配置注解驱动 -->
+	<mvc:annotation-driven />
+
+	<!-- 为Spring基础容器开启注解配置信息 -->
+	<context:annotation-config />
+	<!-- 就是用于提供HttpSession数据持久化操作的Bean对象。
+		对象定义后，可以实现数据库相关操作配置，自动的实现HttpSession数据的持久化操作（CRUD）
+	 -->
+	<bean
+		class="org.springframework.session.jdbc.config.annotation.web.http.JdbcHttpSessionConfiguration" />
+
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="url" value="jdbc:mysql://localhost:3306/testspringsession?useUnicode=true&amp;characterEncoding=UTF8"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+	</bean>
+
+	<!-- 事务管理器。为JdbcHttpSessionConfiguration提供的事务管理器。 -->
+	<bean
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<constructor-arg ref="dataSource" />
+	</bean>
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+

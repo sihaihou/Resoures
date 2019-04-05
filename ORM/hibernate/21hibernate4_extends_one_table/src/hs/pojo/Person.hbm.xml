@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="hs.pojo">
+	<class name="Person" table="person">
+		<id name="id">
+			<generator class="native"></generator>
+		</id>
+		<!-- 鉴别器 -->
+		<discriminator column="type" type="string"/>
+		<property name="name"/>
+		<property name="age"/>
+	</class>
+	<subclass name="Teacher" discriminator-value="t" extends="Person">
+		<property name="salary"/>
+	</subclass>
+	<subclass name="Student" discriminator-value="s">
+		<property name="work"/>
+	</subclass>
+</hibernate-mapping>

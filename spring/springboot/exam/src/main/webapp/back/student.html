@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <title></title>
+    <link href="css/Common.css" rel="stylesheet" />
+    <link href="css/Index2.css" rel="stylesheet" />
+    <style type="text/css">
+    	
+    </style>
+    <script type="text/javascript" src="jQuery/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="js/data.js"></script>
+    <script type="text/javascript" src="js/page.js"></script>
+    <script type="text/javascript">
+    	$(function(){
+    		searchPage(pageNo);
+    	})
+		function searchPage(pageNo){
+			var parameter;
+			if(1 == 1){
+				parameter={
+		        	pageNo:pageNo,
+		        	time:new Date()
+				}
+        	}else{
+        		parameter={
+        			status:0,
+	        		pageNo:pageNo,
+		        	accountId:localStorage.id,
+		        	time:new Date()
+        		}
+        	}
+		    $.ajax({
+		        type:'post',
+		        dataType: "json",
+		        url:"../student/searchPage.do",
+	        	data:parameter,
+		        //数据加载前调用方法
+		        beforeSend:function(data){
+		        },
+		        success:function(data){
+		        	var flag = data.success;
+		        	if(flag){
+		        		pageNum = data.data.info.pageNum;
+		        		pages = data.data.info.pages;
+		        		pageSize = data.data.info.pageSize;
+		        		total = data.data.info.total;
+		        		var date_length = getJSonObjLenth(data.data.info.list);
+		        		$("#tbody").empty();
+		        		for (var i = 0;i < date_length;i++) {	     
+		        			var tr_node = $("<tr>"+
+					        			        "<td><a onclick=openVideo('"+data.data.info.list[i].name+"')>"+data.data.info.list[i].name+"</td>"+
+					        			        "<td>"+data.data.info.list[i].no+"</td>"+
+					        			        "<td>"+data.data.info.list[i].gender+"</td>"+
+					        			        "<td>"+data.data.info.list[i].age+"</td>"+
+					        			        "<td>"+data.data.info.list[i].schoolName+"</td>"+
+					        			        "<td class='edit'><button onclick='btn_edit("+data.data.info.list[i].id+")'><i class='icon-edit bigger-120 show'></i></button></td>"+
+					        			        "<td class='delete'><button onclick='btn_delete("+data.data.info.list[i].id+")'><i class='icon-trash bigger-120 show'></i></button></td>"+
+				        			        +"</tr>");
+		        			$("#tbody").append(tr_node);
+		        			page(pageNum,pages,total);
+		        		 }
+		        	}else{
+		        	}
+		        },
+		      	//数据加载后调用的方法
+		        complete:function(data){
+		        }, 
+		        error:function(){
+		        }
+		    });
+		}
+    	function insert(){
+    		
+    	}
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    </script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <h4>数据列表</h4>
+            <div class="add"><a class="btn btn-success" onclick="openadd();">新增</a></div>
+            <div class="w">
+                <div class="span12">
+                    <table class="table table-condensed table-bordered table-hover tab">
+                        <thead>
+                            <tr>
+                                <th>姓名</th>
+                                <th>学号</th>
+                                <th>性别</th>
+                                <th>年龄</th>
+                                <th>学校</th>
+                                <th>编辑</th>
+                                <th>删除</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                        
+                        </tbody>
+                    </table>
+                    <div id="page" class="page"></div>
+                </div>
+            </div>
+            <div id="addModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">添加学生</h3>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="control-group">
+                            <label class="control-label" for="studentName">姓名</label>
+                            <div class="controls">
+                                <input type="text" id="studentName" placeholder="姓名">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="studentNo">学号</label>
+                            <div class="controls">
+                                <input type="text" id="studentNo" placeholder="学号">
+                            </div>
+                        </div>
+                         <div class="control-group">
+                            <label class="control-label" for="studentGender">性别</label>
+                            <div class="controls">
+                                <input type="text" id="studentGender" placeholder="性别">
+                            </div>
+                        </div>
+                         <div class="control-group">
+                            <label class="control-label" for="studentAge">年龄</label>
+                            <div class="controls">
+                                <input type="text" id="studentAge" placeholder="年龄">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="StudentSchoolName">学校</label>
+                            <div class="controls">
+                                <input type="text" id="StudentSchoolName" placeholder="学校">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+                    <button class="btn btn-primary" id="add" onclick="add();">保存</button>
+                    <button class="btn btn-primary" id="edt" onclick="edt();">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="layer-v2.3/layer/layer.js"></script>
+    <script src="laypage-v1.3/laypage/laypage.js"></script>
+    <script src="js/Index2.js"></script>
+</body>
+</html>

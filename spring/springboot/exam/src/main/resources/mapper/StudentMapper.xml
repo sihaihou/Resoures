@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.exam.core.dao.StudentDao" >
+	
+	<select id="searchPage" resultType="Student">
+		select * from studentView
+		<trim  prefix="where"  prefixOverrides="and|or">
+			<if test="name != null and name != '' ">
+				and a.name like #{name}"%"
+			</if>
+		</trim>
+		order by id
+	</select>
+	<select id="login" resultType="Student">
+		select st.id,st.no,st.name,st.password,st.status,sc.name as schoolName
+		from 
+			student st 
+		join 
+			school sc
+		on 
+			st.schoolId=sc.id	
+		where st.no=#{no}
+	</select>
+
+	<select id="searchList" resultType="Student">
+		select * from student
+		<trim  prefix="where"  prefixOverrides="and|or">
+			<if test="name != null and name != '' ">
+				and a.name like #{name}"%"
+			</if>
+		</trim>
+		order by id
+	</select>
+	
+	<insert id="insert">
+		insert into student
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="no != null">
+        		no,
+      		</if>
+		 	<if test="name != null">
+        		name,
+      		</if>
+		 	<if test="password != null">
+        		password,
+      		</if>
+      		<if test="gender != null">
+        		gender,
+      		</if>
+      		<if test="age != null">
+        		age,
+      		</if>
+      		<if test="address != null">
+        		address,
+      		</if>
+      		<if test="status != null">
+        		status,
+      		</if>
+      		<if test="gradeId != null">
+        		gradeId,
+      		</if>
+      		<if test="professionalId != null">
+        		professionalId,
+      		</if>
+      		<if test="facultyId != null">
+        		facultyId,
+      		</if>
+      		<if test="schoolId != null">
+        		schoolId,
+      		</if>
+        	gmtCreate,gmtModified
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides=",">
+		 	<if test="no != null">
+		        #{no},
+		     </if>
+		 	<if test="name != null">
+		        #{name},
+		     </if>
+		 	<if test="password != null">
+		        #{password},
+		     </if>
+		 	<if test="gender != null">
+		        #{gender},
+		     </if>
+		 	<if test="age != null">
+		        #{age},
+		     </if>
+		 	<if test="address != null">
+		        #{address},
+		     </if>
+		 	<if test="status != null">
+		        #{status},
+		     </if>
+		 	<if test="gradeId != null">
+		        #{gradeId},
+		     </if>
+		 	<if test="professionalId != null">
+		        #{professionalId},
+		     </if>
+		 	<if test="facultyId != null">
+		        #{facultyId},
+		     </if>
+		 	<if test="schoolId != null">
+		        #{schoolId},
+		     </if>
+		     now(),now()
+		 </trim>
+		 <selectKey resultType="int" keyProperty="id" order="AFTER">
+			select @@identity
+		</selectKey>
+	</insert>
+	
+	<select id="searchById" resultType="Student">
+		select * from student where id = #{id}
+	</select>
+	
+	
+	<update id="updateById">
+		update student 
+		<set>
+			<if test="name != null">
+				`name`=#{name},
+			</if>
+			<if test="password != null">
+				`password`=#{password},
+			</if>
+		</set>
+		 where id=#{id}
+	</update>
+	
+	<delete id="deleteById">
+		delete from student where id=#{id}
+	</delete>
+	
+	<delete id="deleteByList">
+		delete from student
+		where id in 
+		<foreach collection="list" index="index" item="item" open="(" close=")" separator=",">
+			#{item.id}
+		</foreach>
+	</delete>
+	
+	
+	
+</mapper>

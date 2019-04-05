@@ -1,0 +1,10 @@
+SpringBoot两种方式实现拦截器
+	一,使用Interceptor拦截器
+		1.首先新建一个拦截器(UserConfig)实现HandlerInterceptor接口,并重写preHandle(),postHandle,afterCompletion()方法,添加@Service注解
+		2.在入口类的目录或者兄弟目录下创建一个配置类(UserSpringMVCConfig)继承WebMvcConfigurerAdapter类并重写addInterceptors方法,注入UserConfig.
+	二、使用servlet的filter拦截器
+	    1,新建一个类实现javax.servlet.Filter接口，通过@WebFilter注解来配置要拦截的请求，doFilter方法是要进行的操作。
+	    2,执行chain.doFilter(request,response)方法类似于上面的返回true，让程序继续往下执行	
+	    
+	    
+banner.text:  http://patorjk.com/software/taag

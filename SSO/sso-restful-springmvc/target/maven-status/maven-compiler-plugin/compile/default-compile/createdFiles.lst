@@ -1,0 +1,3 @@
+com\sxt\controller\TestRestfulController.class
+com\sxt\service\TestRestfulService.class
+com\sxt\service\impl\TestRestfulServiceImpl.class

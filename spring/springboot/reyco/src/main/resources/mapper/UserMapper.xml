@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.reyco.core.dao.UserDao" >
+
+	<select id="login" resultType="User">
+		select id,name,password from user where name=#{name}
+	</select>
+	<select id="searchList" resultType="User">
+		select * from user
+		<trim  prefix="where"  prefixOverrides="and|or">
+			<if test="name != null and name != '' ">
+				and a.name like #{name}"%"
+			</if>
+		</trim>
+		order by id
+	</select>
+	
+	<insert id="insert">
+		insert into user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+		 	<if test="name != null">
+        		name,
+      		</if>
+		 	<if test="password != null">
+        		password,
+      		</if>
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides=",">
+		 	<if test="name != null">
+		        #{name},
+		     </if>
+		 	<if test="password != null">
+		        #{password},
+		     </if>
+		 </trim>
+	</insert>
+	
+	<select id="searchById" resultType="User">
+		select * from user where id = #{id}
+	</select>
+	
+	
+	<update id="updateById">
+		update user 
+		<set>
+			<if test="name != null">
+				`name`=#{name},
+			</if>
+			<if test="password != null">
+				`password`=#{password},
+			</if>
+		</set>
+		 where id=#{id}
+	</update>
+	
+	<delete id="deleteById">
+		delete from user where id=#{id}
+	</delete>
+	
+	<delete id="deleteByList">
+		delete from user
+		where id in 
+		<foreach collection="list" index="index" item="item" open="(" close=")" separator=",">
+			#{item.id}
+		</foreach>
+	</delete>
+	
+	
+	
+</mapper>

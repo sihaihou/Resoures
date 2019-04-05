@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="hs.pojo">
+	<class name="Grade" table="grade">
+		<id name="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="name"/>		
+		<map name="students">
+			<key column="grade_id"/>
+			<map-key type="string" column="name"/>
+			<one-to-many class="Student"/>
+		</map>
+	</class>
+</hibernate-mapping>
