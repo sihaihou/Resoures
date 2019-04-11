@@ -1,9 +1,10 @@
 package com.redis.distributedLock;
 
+import java.util.List;
 import java.util.UUID;
 
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.Transaction;
 
 /**
  * redis 分布式锁
@@ -70,23 +71,33 @@ public class DistributedLock {
 	 * @param lockName
 	 * 			锁的名称
 	 */
-	public void unlock(String lockName) {
+	public boolean unlock(String lockName,String lockValue) {
 		try {
 			// key
 			String lockKey = "lock_" + lockName;
-			if (jedis.exists(lockKey)) {
-				// 手动删除key,释放锁
-				jedis.del(lockKey);
+			while(jedis.exists(lockKey)) {
+				jedis.watch(lockKey);
+				if(lockValue.equals(jedis.get(lockKey))) {
+					Transaction transaction = jedis.multi();
+					// 手动删除key,释放锁
+					transaction.del(lockKey);
+					List<Object> execQueue = transaction.exec();
+					if(execQueue != null) {
+						return true;
+					}
+				}
+				jedis.unwatch();
+				break;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return false;
 	} 
 
 	public static void main(String[] args) {
 		for(int i=0;i<5;i++) {
 			new Thread(new Runnable() {
-				@Override
 				public void run() {
 					DistributedLock distributedLock = new DistributedLock();
 					String str = distributedLock.lock("12306", 5000, 10000);
@@ -99,7 +110,7 @@ public class DistributedLock {
 							e.printStackTrace();
 						}
 						// 释放锁
-						distributedLock.unlock("12306");
+						distributedLock.unlock("12306",str);
 					}
 				}
 			}).start();
