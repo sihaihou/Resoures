@@ -1,0 +1,3 @@
+024];
+	int len;
+	while(-1!=(len=raf.read(src))){

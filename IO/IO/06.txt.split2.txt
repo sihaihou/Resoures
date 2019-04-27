@@ -1,0 +1,2 @@
+ile(new File("E:/test/06.txt"),"r");
+	raf.seek(50
