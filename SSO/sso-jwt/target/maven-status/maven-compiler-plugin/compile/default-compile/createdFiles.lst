@@ -1,0 +1,6 @@
+com\sxt\sso\commons\JWTResponseData.class
+com\sxt\sso\commons\JWTUsers.class
+com\sxt\sso\commons\JWTUtils.class
+com\sxt\sso\commons\JWTSubject.class
+com\sxt\sso\commons\JWTResult.class
+com\sxt\sso\controller\JWTController.class
