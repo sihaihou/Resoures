@@ -1,0 +1,17 @@
+2018-12-12 21:04:33.297 [localhost-startStop-1] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+2018-12-12 21:04:33.331 [localhost-startStop-1] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2018-12-12 21:04:33.331 [localhost-startStop-1] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.0 created.
+2018-12-12 21:04:33.333 [localhost-startStop-1] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+2018-12-12 21:04:33.334 [localhost-startStop-1] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.0) 'org.springframework.scheduling.quartz.SchedulerFactoryBean#0' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2018-12-12 21:04:33.335 [localhost-startStop-1] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'org.springframework.scheduling.quartz.SchedulerFactoryBean#0' initialized from an externally provided properties instance.
+2018-12-12 21:04:33.335 [localhost-startStop-1] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.0
+2018-12-12 21:04:33.338 [localhost-startStop-1] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@5794aad6
+2018-12-12 21:04:33.349 [localhost-startStop-1] INFO  org.quartz.core.QuartzScheduler - Scheduler org.springframework.scheduling.quartz.SchedulerFactoryBean#0_$_NON_CLUSTERED started.
+2018-12-12 21:04:43.215 [http-apr-80-exec-1] INFO  com.reyco.core.controller.BaseController - ############################################请求参数错误--+name===null
