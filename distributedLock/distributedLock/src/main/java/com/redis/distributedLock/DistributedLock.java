@@ -1,13 +1,17 @@
-package com.redis.distributedLock;
+﻿package com.redis.distributedLock;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.Transaction;
 
 /**
  * redis 分布式锁
+ * 
  * @author reyco
  *
  */
@@ -18,18 +22,15 @@ public class DistributedLock {
 	public DistributedLock() {
 		super();
 		this.jedis = new Jedis("39.107.247.102", 6379);
-		this.jedis.auth("123456");
+		this.jedis.auth("uername");
 	}
-	
+
 	/**
 	 * 加锁
 	 * 
-	 * @param lockName
-	 *            锁的名称
-	 * @param acquireTimeout
-	 *            获取锁的超时时间,单位毫秒数
-	 * @param timeout
-	 *            key的超时时间,单位毫秒数
+	 * @param lockName       锁的名称
+	 * @param acquireTimeout 获取锁的超时时间,单位毫秒数
+	 * @param timeout        key的超时时间,单位毫秒数
 	 */
 	public String lock(String lockName, long acquireTimeout, long timeout) {
 		// 返回标识
@@ -68,21 +69,20 @@ public class DistributedLock {
 	/**
 	 * 手动释放锁
 	 * 
-	 * @param lockName
-	 * 			锁的名称
+	 * @param lockName 锁的名称
 	 */
-	public boolean unlock(String lockName,String lockValue) {
+	public boolean unlock(String lockName, String lockValue) {
 		try {
 			// key
 			String lockKey = "lock_" + lockName;
-			while(jedis.exists(lockKey)) {
+			while (jedis.exists(lockKey)) {
 				jedis.watch(lockKey);
-				if(lockValue.equals(jedis.get(lockKey))) {
+				if (lockValue.equals(jedis.get(lockKey))) {
 					Transaction transaction = jedis.multi();
 					// 手动删除key,释放锁
 					transaction.del(lockKey);
 					List<Object> execQueue = transaction.exec();
-					if(execQueue != null) {
+					if (execQueue != null) {
 						return true;
 					}
 				}
@@ -93,27 +93,34 @@ public class DistributedLock {
 			e.printStackTrace();
 		}
 		return false;
-	} 
+	}
 
-	public static void main(String[] args) {
-		for(int i=0;i<5;i++) {
-			new Thread(new Runnable() {
+	public static void main(String[] args) throws InterruptedException {
+		int threadpoolsize = 100;
+		ExecutorService threadpool = Executors.newFixedThreadPool(threadpoolsize);
+		CountDownLatch countDownLatch = new CountDownLatch(threadpoolsize);
+		for (int i = 0; i < threadpoolsize; i++) {
+			threadpool.execute(new Runnable() {
 				public void run() {
 					DistributedLock distributedLock = new DistributedLock();
-					String str = distributedLock.lock("12306", 5000, 10000);
+					String str = distributedLock.lock("12306", 1000000, 10000);
 					if (null != str && !str.equals("")) {
 						try {
-							System.out.println(str + ":"+Thread.currentThread().getName() + ":执行任务...");
-							// 休息一段时间，模拟业务执行耗时
-							Thread.sleep(10);
-						} catch (InterruptedException e) {
+							System.out.println(Thread.currentThread().getName() + ":执行任务...");
+							countDownLatch.countDown();
+						} catch (Exception e) {
 							e.printStackTrace();
 						}
 						// 释放锁
-						distributedLock.unlock("12306",str);
+						distributedLock.unlock("12306", str);
 					}
 				}
-			}).start();
+			});
 		}
+		System.out.println("ssssssssssss");
+		// 休息一段时间，模拟业务执行耗时
+		countDownLatch.await();
+		threadpool.shutdown();
 	}
+
 }
