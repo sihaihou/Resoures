@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hs.pojo.user.mapper">
+
+	<insert id="insertUser">
+		insert into user(name,age) values(#{name},#{age})
+	</insert>	
+	
+	<insert id="insertUserCacheId">
+		insert into user(name,age) values(#{name},#{age})
+		<!--resultType：生成结果类型
+			keyProperty：语句生成结果需要设置的属性名称。
+			order：BEFORE会先选择主键，然后设置KeyPropert，再执行insert语句
+			AFTER 先运行insert语句，在运行selectKey语句。 -->	
+		<selectKey resultType="int" keyProperty="id" order="AFTER">
+			select @@identity
+		</selectKey>
+	</insert>
+	
+	<delete id="deleteUserById">
+		<!-- id后的属性：#{}只是占位符， -->
+		delete from user where id=#{id}
+	</delete>
+	
+	<update id="updateUser">
+		update user set name=#{name},age=#{age} where id=#{id}
+	</update>
+	
+	<!-- resultType:指定查出的数据封装作为什么对象 -->
+	<select id="selectAllUserList" resultType="User">
+		select * from user  
+	</select>
+	<select id="selectAddUserMap" resultType="User">
+		select * from user
+	</select>
+	
+	<select id="selectUserById" resultType="User">
+		<!-- id后的属性：#{}只是占位符， -->
+		select * from user where id=#{id}
+	</select>
+	
+	<!--  根据名字模糊查询，可以查询一批带某个字的对象-->
+	<select id="selectUserByName" resultType="User">
+		select * from user where name like '%' #{***} '%'
+		<!-- select * from user where name like '%${value}%' -->
+	</select>
+	
+</mapper>

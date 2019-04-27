@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 动态代理：1.namespace值必须为全路径接口名 
+			    2.id必须为方法名称
+	-->
+<mapper namespace="hs.dao.UserDao">
+	<insert id="insertUser">
+		insert into user(name,age) values(#{name},#{age})
+	</insert>	
+	
+	<delete id="deleteUserById">
+		delete from user where id=#{id}
+	</delete>
+	
+	<update id="updateUser">
+		update user set name=#{name},age=#{age} where id=#{id}
+	</update>
+	
+	<select id="selectAllUserList" resultType="User">
+		select * from user  
+	</select>
+	
+	<select id="selectUserById" resultType="User">
+		select * from user where id=#{id}
+	</select>
+	
+	<select id="selectUserByName" resultType="User">
+		select * from user where name like '%' #{***} '%'
+	</select>
+</mapper>

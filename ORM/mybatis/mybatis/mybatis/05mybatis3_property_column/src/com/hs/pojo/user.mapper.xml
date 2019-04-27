@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--解决表的字段和类的属性不一致：类为：tname 表为：name  -->		
+<mapper namespace="com.hs.pojo.user.mapper">
+	<!-- 1, resultMap解决字段和表属性不一致 
+		select标签中的resultMap属性值必须引用resultMap标签的id属性值
+	-->
+	<resultMap type="User" id="userMapper">
+		<id column="id" property="tid"/>
+		<result column="name" property="tname"/>
+		<result column="age" property="tage"/>
+	</resultMap>
+	<select id="selectUserById" resultMap="userMapper">
+		select * from user where id=#{id}
+	</select>
+	
+	<!--2, 给字段取别名法 解决字段和表属性不一致 -->  
+	<!-- <select id="selectUserById" resultType="User">
+		select name tname,age tage,id tid from user where id=#{id}
+	</select> -->	
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="hs.pojo">
+	<class name="Student" table="student">
+		<id name="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="name"/>
+		<property name="age"/>
+		<!-- 多对一   name表示属性名      class指明属性对应的类    column指数据库表中的列名
+			not-null：外键是否为空
+		-->
+		<many-to-one name="grade" class="Grade" column="grade_id" not-null="true"/>
+	</class>
+</hibernate-mapping>

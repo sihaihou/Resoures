@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<!-- package声明pojo类所在的包，如果不写，那么在class中需要指明pojo类所在的包
+	schema指数据库模式，一个模式下可以有多张表
+ -->
+<hibernate-mapping package="hs.pojo">
+	<!-- class指映射一个pojo类
+		提供了公共的无参构造方法，通过反射生成对象
+		属性用private修饰，并且生成对应的get/set方法。
+		类不能用final来修饰，hibernate会产生代理类(cglib)
+		类需要指明标识，一般指主键
+		name表示pojo类名
+		table表示pojo类对应数据库中的表名。如果不写，默认是类名。
+ 	-->
+	<class name="User" table="user">
+		<!-- id表示实体类的标识(OID) 
+			对应数据库表中的主键
+			name指实体类的标识属性名。
+			column表示对应数据库表的列名，如果不写，则数据库表中的列名和属性名一致
+			length表示数据库表中 对应数据类型的长度，如果不写，有默认长度
+			type表示类型，如果不写，hibernate可以找到对应pojo类的属性的类型。			
+		-->
+		<id name="id" column="id">
+		<!-- 生成主键策略 
+			 increment 用于为long, short或者int类型生成 唯一标识。 只有在没有其他进程往同一张表中插入数据时才能使用。 在集群下不要使用 (mysql,ms sql) 
+			 identity 对DB2,MySQL, MS SQL Server, Sybase和HypersonicSQL 的内置标识字段提供支持。 返回的标识符是long, short 或者int类型的。
+			 sequence 在支持序列的数据库中使用 oracle <generator class="sequence"> <param name="sequence">user_seq</param> </generator> 
+			 uuid UUID被编码为一个32位16进制数字的字符串。 
+			 native 根据底层数据库的能力选择identity, sequence 或者hilo中的一个。 
+			 assigned 自己指定主键
+		-->		
+			<generator class="native"></generator>
+		</id>
+		<!-- 实体类的属性 
+			name指明pojo类属性名称(区分大小写)
+		-->	
+		<property name="name">
+			<column name="name"></column>
+		</property>
+		<property name="pwd"/>
+	</class>
+</hibernate-mapping>

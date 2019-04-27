@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hs.dao.UserDao">	
+	<select id="selectUserByIf" resultType="User">
+		select * from user 
+		where 1=1
+		<if test="name != null and name != ''">
+			and name like "%" #{name} "%"
+		</if>	
+		<if test="age > 0">
+			and age >#{age}
+		</if>
+	</select>
+	
+	<select id="selectUserByWhere" resultType="User">
+		select * from user 
+		<where>
+			<if test="name != null and name != ''">
+				and name like "%" #{name} "%"
+			</if>	
+			<if test="age > 0">
+				and age >#{age}
+			</if>
+		</where>
+	</select>
+	
+	 <!--  choose标签
+	 	   如果name不为空，按name查询；否则，age不为空，按age查询；没有满足条件，返回null。
+	  -->
+	<select id="selectUserByChoose" resultType="User">
+		select * from user 
+		<where>
+			<choose>
+				<when test="name != null and name != ''">
+					and name like "%" #{name} "%"
+				</when>
+				<when test="age>0">
+					and age > #{age}
+				</when>
+				<otherwise>
+					1 = 2
+				</otherwise>
+			</choose>
+		</where>
+	</select>
+	
+	<!-- 映射文件里的数组名称固定 array 
+		item 查询对象
+	-->
+	<select id="selectUserByForeach" resultType="User">
+		<!-- select * from user where id in (1,3,5) -->
+		select * from user 
+		<if test="array.length > 0">
+			where id in 
+			<foreach collection="array" item="id" open="(" close=")" separator=",">
+				#{id}
+			</foreach>
+		</if>
+	</select>
+	
+	<select id="selectUserByForeach2" resultType="User">
+		select * from user 
+		<if test="list.size > 0">
+			where id in 
+			<foreach collection="list" item="id" open="(" close=")" separator=",">
+				#{id}
+			</foreach>
+		</if>
+	</select>
+	
+	<select id="selectUserByForeach3" resultType="User">
+		select * from user 
+		<if test="list.size > 0">
+			where id in 
+			<foreach collection="list" item="user" open="(" close=")" separator=",">
+				#{user.id}
+			</foreach>
+		</if>
+	</select>
+	
+	<!-- sql语句片段：可读性差 -->
+	<select id="selectUserBySqlFragment" resultType="User">
+		select <include refid="SqlCoumns"/> 
+		<if test="list.size > 0">
+			where id in 
+			<foreach collection="list" item="user" open="(" close=")" separator=",">
+				#{user.id}
+			</foreach>
+		</if>
+	</select>	
+	<sql id="SqlCoumns">
+		* from user
+	</sql>
+</mapper>

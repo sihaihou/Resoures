@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+ 	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+<session-factory>
+	<!-- 配置数据库连接信息 -->
+	<property name="connection.driver_class">
+		com.mysql.jdbc.Driver
+	</property>
+	<property name="connection.url">
+		jdbc:mysql://localhost:3306/hibernate4
+	</property>
+	<property name="connection.username">root</property>
+	<property name="connection.password">123456</property>
+	<!-- hibernate可选项信息 -->
+	<!-- 数据库方言 -->
+	<property name="dialect">
+		org.hibernate.dialect.MySQLDialect
+	</property>
+	<!-- 是否打印sql语句 -->
+	<property name="show_sql">true</property>
+	<!-- 格式化sql语句 -->
+	<property name="format_sql">true</property>
+	<!-- 数据库更新方式：
+		cretae:每次执行，都先把数据表删除，然后创建改表
+		create_drop:使用create_drop时,在显示关闭SessionFactory时，将drop掉数据库schema(表)
+		validate：检测
+		Update:如果表不存在，则创建，有则不创建。		
+	-->
+	<property name="hbm2ddl_auto">Update</property>
+	<mapping class="hs.pojo.Book" />
+</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hs.dao.NewsLabelDao">	
+	<!-- 查询指定栏目及其所有父栏目-->
+	<!-- <select id="selectNewsLabelById" resultMap="newslabelMapper">
+		select * from newslabel where id=#{id}
+	</select> -->
+	
+	<resultMap id="newslabelMapper" type="NewsLabel">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<collection property="parent" 
+					ofType="NewsLabel" 
+					select="selectNewsLabelById"
+					column="pid"/> 
+	</resultMap>
+	<select id="selectNewsLabelById" resultMap="newslabelMapper">
+		select * from newslabel
+		where id=#{id}
+	</select>
+</mapper>

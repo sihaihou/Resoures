@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="hs.pojo">
+	<class name="Score" table="score">
+		<composite-id name="scoreId" class="ScoreId">
+			<key-property name="stuId"></key-property>
+			<key-property name="subId"></key-property>
+		</composite-id>
+		<property name="result"></property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+	<class name="hs.pojo.User" table="user">
+		<id name="id">
+		<!-- 生成主键策略 -->
+			<generator class="native"></generator>
+		</id>
+		<!-- 实体类的属性 -->
+		<property name="name"/>
+		<property name="pwd"/>
+	</class>
+</hibernate-mapping>

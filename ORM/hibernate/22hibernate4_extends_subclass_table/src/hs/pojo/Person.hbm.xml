@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="hs.pojo">
+	<class name="Person" abstract="true">
+		<id name="id">
+			<generator class="assigned"></generator>
+		</id>
+		<property name="name"/>
+		<property name="age"/>
+		<union-subclass name="Student">
+			<property name="work"/>
+		</union-subclass>
+		<union-subclass name="Teacher">
+			<property name="salary"/>
+		</union-subclass>
+	</class>	
+</hibernate-mapping>
