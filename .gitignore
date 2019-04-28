@@ -1,5 +1,4 @@
 ##ignore this file##
-target/* 
-/bin/
-/logs/
+target/*
+bin/*
 .settings
