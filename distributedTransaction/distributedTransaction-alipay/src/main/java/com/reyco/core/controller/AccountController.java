@@ -29,7 +29,7 @@ public class AccountController {
 		logger.info("Parameter:\taccountId==="+accountId+"\tamount==="+amount);
 		boolean flag = accountService.transfer(accountId, amount);
 		if(flag) {
-			logger.info("转账成功，预计24小时之内到账,请注意查收!");
+			logger.info("##############支付宝方转账成功，预计24小时之内到账,请注意查收!##############");
 			return "转账成功，预计24小时之内到账,请注意查收!";
 		}
 		return "转账失败。。。";
@@ -40,7 +40,7 @@ public class AccountController {
 		if(null == param || "".equals(param)) {
 			return "fail";
 		}
-		logger.info("Parameter:\tparam==="+param.toString());
+		logger.info("################Parameter:\t#################param==="+param.toString());
 		try {
 			messageService.updateStatusById(param);
 			return "success";

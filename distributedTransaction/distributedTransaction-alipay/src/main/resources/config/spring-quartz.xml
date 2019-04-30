@@ -29,7 +29,7 @@
 		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="jobDetail" ref="messageJobDetail" />
 		<!-- 每两分钟执行 -->
-		<property name="cronExpression" value="0 0/30 * * * ? *" />
+		<property name="cronExpression" value="0 0/1 * * * ? *" />
 	</bean>
 	<bean
 		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">

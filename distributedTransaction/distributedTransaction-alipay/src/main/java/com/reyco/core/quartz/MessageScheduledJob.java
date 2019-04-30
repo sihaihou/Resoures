@@ -41,6 +41,7 @@ public class MessageScheduledJob extends QuartzJobBean {
 	protected void executeInternal(JobExecutionContext arg0) throws JobExecutionException {
 		logger.info("###################定时任务被执行啦################");
 		List<MessageMQ> messages = messageService.listMessageByStatus();
+		logger.info("###################发送失败的消息################"+messages);
 		if(messages.size() < 1) {
 			logger.info("###################没有发送失败的消息################");
 			return;

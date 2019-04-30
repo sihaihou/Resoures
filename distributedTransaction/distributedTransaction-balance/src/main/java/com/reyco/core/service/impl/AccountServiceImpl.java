@@ -16,14 +16,12 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public void updateAccountById(Account account)  {
 		Integer accountId = account.getId();
-		Integer amount = account.getAmount();
 		Account ac = getAccountById(accountId);
-		Integer oldAmount = ac.getAmount();
-		// 余额
-		amount = oldAmount + amount;
-		ac.setAmount(amount);
+		if(null == ac) {
+			return;
+		}
 		// 修改金额
-		accountDao.updateAccountById(ac);
+		accountDao.updateAccountById(account);
 	}
 
 	@Override

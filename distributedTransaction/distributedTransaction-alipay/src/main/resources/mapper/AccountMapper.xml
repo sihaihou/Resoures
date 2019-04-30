@@ -9,7 +9,7 @@
  	</select>
  	
 	<update id="updateAccountById">
- 		update account set amount = #{amount} where id= #{id}
+ 		update account set amount = amount-#{amount} where id= #{id}
  	</update> 	
  	
 </mapper>

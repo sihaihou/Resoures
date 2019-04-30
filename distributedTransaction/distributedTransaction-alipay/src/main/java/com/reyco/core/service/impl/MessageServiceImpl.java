@@ -36,20 +36,23 @@ public class MessageServiceImpl implements MessageService {
 			// JSONObject jsonObject = JSONObject.parseObject(param);
 			// String messageId = jsonObject.getString("messageId");
 			// String respCode = jsonObject.getString("respCode");
+			logger.info("############支付宝收到回调参数##########"+param);
 			Integer id = Integer.parseInt(param);
-			 MessageMQ message = this.getMessageById(id);
-			 Integer search_id = message.getId();
+			MessageMQ message = this.getMessageById(id);
+			logger.info("############支付宝根据根据回调参数查询消息##########"+message);
+			Integer search_id = message.getId();
 			if (id.equals(search_id)) {
 				Integer search_status = message.getStatus();
 				if(search_status==1) {
 					Integer status = 0;
 					message.setStatus(status);
+					logger.info("############支付宝根据根据回调修改消息状态##########"+message);
 					messageDao.updateStatusById(message);
-					logger.info("消息已更新确认状态。。。");
+					logger.info("############支付宝消息已更新确认状态##########"+message);
 				}
 			}
 		} catch (Exception e) {
-			logger.error("消息更新失败。。。");
+			logger.error("############消息更新失败############。。。"+param);
 			throw e;
 		}
 	}

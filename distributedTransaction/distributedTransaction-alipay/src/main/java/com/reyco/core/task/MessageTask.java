@@ -45,11 +45,12 @@ public class MessageTask {
 				int endIndex = (i+1) * countSize;
 				newMessages = messages.subList(startIndex, endIndex);
 			}
-			logger.info("newMessages size"+newMessages.size());
+			logger.info("################newMessages size################"+newMessages.size());
 			new Thread(new Runnable() {
 				@Override
 				public void run() {
 					for(MessageMQ message : messages) {
+						logger.info("################定时任务向MQ发送消息################"+message);
 						queueProducerService.sendObjectMessage(message);
 					}				
 				}

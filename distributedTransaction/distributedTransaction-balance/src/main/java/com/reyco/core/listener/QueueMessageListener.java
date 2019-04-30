@@ -7,13 +7,11 @@ import javax.jms.ObjectMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
-import com.alibaba.fastjson.JSONObject;
 import com.reyco.core.domain.Account;
 import com.reyco.core.domain.MessageMQ;
 import com.reyco.core.service.AccountService;
@@ -57,12 +55,15 @@ public class QueueMessageListener implements MessageListener {
 						account.setId(accountId);
 						account.setAmount(amount);
 						// 收钱
+						logger.info("###########余额宝方收款操作###########"+amount);
 						accountService.updateAccountById(account);
+						logger.info("###########余额宝方收款成功###########"+amount);
 						mcMQ.setStatus(0);
-						System.out.println("新增前-----------------"+mcMQ);
+						logger.info("###########余额宝方新增消息操作###########"+mcMQ);
 						// 新增消息
 						messageService.insertMessage(mcMQ);
 						System.out.println("新增后-----------------"+mcMQ);
+						logger.info("###########余额宝方新增消息成功###########"+mcMQ);
 						RestTemplate restTemplate = this.getRestTemplate();
 						// 请求参数
 						//JSONObject jsonObject = new JSONObject();
@@ -71,21 +72,22 @@ public class QueueMessageListener implements MessageListener {
 						//String url = "http://localhost:80/alipay/account/callback.do?param=" + jsonObject.toString();
 						//ResponseEntity<Object> response = restTemplate.getForEntity(url, null);
 						String url = "http://localhost:80/alipay/account/callback.do?param=" + mcMQ.getId();
+						logger.info("###########余额宝方回调支付宝操作###########"+url);
 						String response = restTemplate.getForObject(url, String.class);
 						if("fail".equals(response)) {
-							logger.error("回调失败。。。" + message);
-							throw new RuntimeException("回调失败。。。" + message);
+							logger.error("###########余额宝方回调支付宝失败###########"+message);
+							throw new RuntimeException("###########余额宝方回调支付宝失败###########。。。" + message);
 						}else {
-							logger.info("回调成功。。。" + message);
+							logger.info("###########余额宝方回调支付宝成功###########" + message);
 						}
 					} else {
-						logger.info("#################异常转账。。。");
+						logger.info("#################异常转账###########");
 					}
 				}
 			}
 		} catch (Exception e) {
-			logger.error("消息消费失败。。。" + message);
-			throw new RuntimeException("消息消费失败。。。" + message);
+			logger.error("###########余额宝方消息消费失败###########"+message);
+			throw new RuntimeException("###########余额宝方消息消费失败###########" + message);
 		}
 	}
 
