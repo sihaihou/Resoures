@@ -1,0 +1,1959 @@
+﻿<report name="包月产品运营分门户月累计报" type="0"
+	id="add9085c1e5241b9b2e5f0081d7eb17d" cycleType="day">
+	<parameters>
+		<parameter id="a26c757c103e4dfab668254edfcabf49">
+			<dataType>java.Lang.Date</dataType>
+			<exType>Date</exType>
+			<visible>True</visible>
+			<allowInput>True</allowInput>
+			<allowEmpty>True</allowEmpty>
+			<allowMultiValues>false</allowMultiValues>
+			<defaultValue></defaultValue>
+			<value></value>
+			<name>start_date</name>
+			<showName>开始日期</showName>
+		</parameter>
+		<parameter id="d2a9ac909cbf446f9d57435db284d73f">
+			<dataType>java.Lang.Date</dataType>
+			<exType>Date</exType>
+			<visible>True</visible>
+			<allowInput>True</allowInput>
+			<allowEmpty>True</allowEmpty>
+			<allowMultiValues>false</allowMultiValues>
+			<defaultValue></defaultValue>
+			<value></value>
+			<showName>结束日期</showName>
+			<name>end_date</name>
+		</parameter>
+		<parameter id="e72f5d95d2e5494dbadd9be6eafb4391">
+			<dataType>java.Lang.String</dataType>
+			<exType>text</exType>
+			<visible>True</visible>
+			<allowInput>True</allowInput>
+			<allowEmpty>True</allowEmpty>
+			<allowMultiValues>false</allowMultiValues>
+			<defaultValue></defaultValue>
+			<value></value>
+			<name>province_id</name>
+			<showName>省份ID</showName>
+		</parameter>
+		<parameter id="965a9aad128d43faa1d51833b8fd84bd">
+			<dataType>java.Lang.String</dataType>
+			<exType>text</exType>
+			<visible>True</visible>
+			<allowInput>True</allowInput>
+			<allowEmpty>True</allowEmpty>
+			<allowMultiValues>false</allowMultiValues>
+			<defaultValue></defaultValue>
+			<value></value>
+			<name>province_name</name>
+			<showName>省份</showName>
+		</parameter>
+		<parameter id="c0399fa42d8b4da99b558de293999177">
+			<dataType>java.Lang.String</dataType>
+			<exType>text</exType>
+			<visible>True</visible>
+			<allowInput>True</allowInput>
+			<allowEmpty>True</allowEmpty>
+			<allowMultiValues>false</allowMultiValues>
+			<defaultValue></defaultValue>
+			<value></value>
+			<name>city_id</name>
+			<showName>城市ID</showName>
+		</parameter>
+		<parameter id="969161bdb240401a93419bd668c44534">
+			<dataType>java.Lang.String</dataType>
+			<exType>text</exType>
+			<visible>True</visible>
+			<allowInput>True</allowInput>
+			<allowEmpty>True</allowEmpty>
+			<allowMultiValues>false</allowMultiValues>
+			<defaultValue></defaultValue>
+			<value></value>
+			<name>city_name</name>
+			<showName>城市</showName>
+		</parameter>
+		<parameter id="17ad9f938a8a4ef2bbe4a284d8df0d03">
+			<dataType>java.Lang.String</dataType>
+			<exType>text</exType>
+			<visible>True</visible>
+			<allowInput>false</allowInput>
+			<allowEmpty>True</allowEmpty>
+			<allowMultiValues>false</allowMultiValues>
+			<defaultValue></defaultValue>
+			<value></value>
+			<showName>用户类型</showName>
+			<name>tele_desc</name>
+		</parameter>
+		<parameter id="8dfea16b0e044bdab90e7caa7df4cf30">
+			<dataType>java.Lang.String</dataType>
+			<exType>text</exType>
+			<visible>True</visible>
+			<allowInput>false</allowInput>
+			<allowEmpty>True</allowEmpty>
+			<allowMultiValues>false</allowMultiValues>
+			<defaultValue></defaultValue>
+			<value></value>
+			<showName>用户类型ID</showName>
+			<name>tele_type</name>
+		</parameter>
+		<parameter id="6bc7da104c5c4598950096568bfbd30a">
+			<dataType>java.Lang.String</dataType>
+			<exType>text</exType>
+			<visible>True</visible>
+			<allowInput>false</allowInput>
+			<allowEmpty>True</allowEmpty>
+			<allowMultiValues>false</allowMultiValues>
+			<defaultValue></defaultValue>
+			<value></value>
+			<showName>产品类型ID</showName>
+			<name>product_id</name>
+		</parameter>
+		<parameter id="cfc5f3503a714360adff76c0b42bd9c6">
+			<dataType>java.Lang.String</dataType>
+			<exType>text</exType>
+			<visible>True</visible>
+			<allowInput>false</allowInput>
+			<allowEmpty>True</allowEmpty>
+			<allowMultiValues>false</allowMultiValues>
+			<defaultValue></defaultValue>
+			<value></value>
+			<showName>产品类型</showName>
+			<name>product_name</name>
+		</parameter>
+		<parameter id="fd1929d24c1942c8bcebc54fcbf90f38">
+			<dataType>java.Lang.String</dataType>
+			<exType>text</exType>
+			<visible>True</visible>
+			<allowInput>True</allowInput>
+			<allowEmpty>True</allowEmpty>
+			<allowMultiValues>True</allowMultiValues>
+			<defaultValue></defaultValue>
+			<value></value>
+			<showName>站点ID</showName>
+			<name>site_id</name>
+		</parameter>
+		<parameter id="7df7c84db0174f4cb3483c1168749dcd">
+			<dataType>java.Lang.String</dataType>
+			<exType>text</exType>
+			<visible>True</visible>
+			<allowInput>True</allowInput>
+			<allowEmpty>True</allowEmpty>
+			<allowMultiValues>True</allowMultiValues>
+			<defaultValue></defaultValue>
+			<value></value>
+			<showName>站点名称</showName>
+			<name>site_name</name>
+		</parameter>
+	</parameters>
+	<cube>
+		<drillDown id="1f9f3e2b7e1c4e74b87794737e7c1b68"
+			drillValueChn="日期"><!--日期+门户+产品-->
+			<parameterSet>
+				<parameter id="a26c757c103e4dfab668254edfcabf49" />
+				<parameter id="d2a9ac909cbf446f9d57435db284d73f" />
+				<parameter id="fd1929d24c1942c8bcebc54fcbf90f38" />
+				<parameter id="7df7c84db0174f4cb3483c1168749dcd" />
+				<parameter id="6bc7da104c5c4598950096568bfbd30a" />
+				<parameter id="cfc5f3503a714360adff76c0b42bd9c6" />
+			</parameterSet>
+			<queryString id="ba273348783844ebba93ff7ce4640060">
+				<language>sql</language>
+				<vmFile>ba273348783844ebba93ff7ce4640060.sql.vm</vmFile>
+				<expression></expression>
+			</queryString>
+
+			<dimensions>
+				<dimension id="a33c9d71dbea4f33ad2ca6f224f4b01c">
+					<dimensionId>901029</dimensionId>
+					<copyFrom>7df7c84db0174f4cb3483c1168749dcd</copyFrom>
+					<drillLevel>1</drillLevel>
+				</dimension>
+				<dimension id="1b5aa926165a405fac278161b9425144">
+					<dimensionId>901020</dimensionId>
+					<copyFrom>cfc5f3503a714360adff76c0b42bd9c6</copyFrom>
+					<drillLevel>2</drillLevel>
+				</dimension>
+			</dimensions>
+
+			<measures>
+				<measure id="fbf839773f89435b8328fda435e23d80">
+					<name>site_name</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>9094983</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>site_name</column>
+					<showName>站点名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="3c1afe09a64442a7acd3767745b7491d">
+					<name>site_id</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>9094982</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>site_id</column>
+					<showName>站点ID</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="c13b5b0775264c94a7ef790827c273da">
+					<name>product_name</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902698</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>product_name</column>
+					<showName>产品名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="f9e555f60f384056a5c4105e15ea09a1">
+					<name>product_id</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>9094980</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>product_id</column>
+					<showName>产品ID</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="969057bf3f3a4afcbb7a9006e72a998a">
+					<name>chrg_act_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902072</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_act_incprsted_mopk_cnt</column>
+					<showName>包月即订付费次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="c5e4e38bb10a4be788d5db86e401b8d1">
+					<name>chrg_act_incprsted_mopk_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902073</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_act_incprsted_mopk_fee</column>
+					<showName>包月即订付费信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="469ae1902ba24de4831d2dc350c8a0a1">
+					<name>chrg_act_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902074</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_act_incprsted_mopk_uv</column>
+					<showName>包月即订付费用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="41604f5a7d7c496d98e6fd33aba37d42">
+					<name>chrg_canc_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902097</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_canc_incprsted_mopk_cnt</column>
+					<showName>包月退订次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="e5972a8550be49dc93fa43de7a0a3a76">
+					<name>chrg_canc_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902098</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_canc_incprsted_mopk_uv</column>
+					<showName>包月退订用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="896a61b4022f4c69ad06c044fd1875e4">
+					<name>chrg_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902151</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_incprsted_mopk_cnt</column>
+					<showName>付费包月产品订购次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="f548eecec85d44daa42da622696b81c7">
+					<name>chrg_incprsted_mopk_ent_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902153</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_incprsted_mopk_ent_cnt</column>
+					<showName>企业包月订购次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="d38c0ebaa74249478a57ba14aa8bc983">
+					<name>chrg_incprsted_mopk_ent_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902154</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_incprsted_mopk_ent_fee</column>
+					<showName>企业包月信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="17bed5d1c7034c44b3507ff06bc7b706">
+					<name>chrg_incprsted_mopk_ent_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902155</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_incprsted_mopk_ent_uv</column>
+					<showName>企业包月用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="5c76363a6fa44a62af8801038e8330a8">
+					<name>chrg_incprsted_mopk_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902156</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_incprsted_mopk_fee</column>
+					<showName>包月信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="20654444b8724b99a00edd063acd5e45">
+					<name>chrg_incprsted_mopk_kpi_allfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902157</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_incprsted_mopk_kpi_allfee</column>
+					<showName>包月活跃用户全站信息费 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="34d46a71192f402ea4ae4e1a1853f530">
+					<name>chrg_incprsted_mopk_kpi_dmdfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902158</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_incprsted_mopk_kpi_dmdfee</column>
+					<showName>包月活跃用户点播信息费 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="5e77affde7f7475198ec6e2c12c69079">
+					<name>chrg_incprsted_mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902159</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_incprsted_mopk_kpi_uv</column>
+					<showName>包月活跃的用户数  </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="13bd533d08c84825bdce9da73395ac96">
+					<name>chrg_incprsted_mopk_us_allfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902165</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_incprsted_mopk_us_allfee</column>
+					<showName>包月用户全站信息费 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="f0142971e7b145a5a06e3a5b08321611">
+					<name>chrg_incprsted_mopk_us_dmdfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902166</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_incprsted_mopk_us_dmdfee</column>
+					<showName>包月用户点播信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="6576bb69b85a4b8a98a17a8126014f99">
+					<name>chrg_inczero_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902190</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_inczero_incprsted_mopk_uv</column>
+					<showName>包月用户数 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="a7d8af351666434cbe7f584e270a8ce6">
+					<name>chrg_mopk_prsted_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902211</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_mopk_prsted_uv</column>
+					<showName>包月被赠送付费用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="d2e30f40b75e4d87ab3decb62b4c6a33">
+					<name>chrg_mopk_prst_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902212</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_mopk_prst_uv</column>
+					<showName>包月赠送用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="f52510bbd9c246908630a63fe0440438">
+					<name>chrg_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902167</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_incprsted_mopk_uv</column>
+					<showName>包月付费用户数B</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="e8f89dd3b8f84fadbed22a8760044282">
+					<name>chrg_rodr_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902239</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_rodr_incprsted_mopk_cnt</column>
+					<showName>付费包月产品续订次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="13ab980bef2e4f5daa3a512635f4059c">
+					<name>chrg_rodr_incprsted_mopk_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902240</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_rodr_incprsted_mopk_fee</column>
+					<showName>包月续订信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="1839e6ea32564b7ea4e7a8f02b94a238">
+					<name>chrg_rodr_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902241</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>chrg_rodr_incprsted_mopk_uv</column>
+					<showName>包月续订用户数B</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="6535dc49c3d74d759f1a28aafb7909db">
+					<name>odr_incprsted_mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902425</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CM</dataset>
+					<column>odr_incprsted_mopk_kpi_uv</column>
+					<showName>包月订购KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+			</measures>
+
+		</drillDown>
+
+		<drillDown id="fcd821e95df247778955a04f3b165957"
+			drillValueChn="日期+用户类型"><!--日期+用户类型+门户+产品-->
+			<parameterSet>
+				<parameter id="a26c757c103e4dfab668254edfcabf49" />
+				<parameter id="d2a9ac909cbf446f9d57435db284d73f" />
+				<parameter id="17ad9f938a8a4ef2bbe4a284d8df0d03" />
+				<parameter id="8dfea16b0e044bdab90e7caa7df4cf30" />
+				<parameter id="fd1929d24c1942c8bcebc54fcbf90f38" />
+				<parameter id="7df7c84db0174f4cb3483c1168749dcd" />
+				<parameter id="6bc7da104c5c4598950096568bfbd30a" />
+				<parameter id="cfc5f3503a714360adff76c0b42bd9c6" />
+			</parameterSet>
+			<queryString id="8ebe5616b8f34011ba94a145a6cb2a04">
+				<language>sql</language>
+				<vmFile>8ebe5616b8f34011ba94a145a6cb2a04.sql.vm</vmFile>
+				<expression></expression>
+			</queryString>
+
+			<dimensions>
+				<dimension id="82aa3413f8a54da491ac7dd055a51b38">
+					<dimensionId>901031</dimensionId>
+					<copyFrom>17ad9f938a8a4ef2bbe4a284d8df0d03</copyFrom>
+					<drillLevel>1</drillLevel>
+				</dimension>
+				<dimension id="e8b585bb9756473690ec148f26128bb9">
+					<dimensionId>901029</dimensionId>
+					<copyFrom>7df7c84db0174f4cb3483c1168749dcd</copyFrom>
+					<drillLevel>2</drillLevel>
+				</dimension>
+				<dimension id="f6b58162ce474276939480f8ddddc63c">
+					<dimensionId>901020</dimensionId>
+					<copyFrom>cfc5f3503a714360adff76c0b42bd9c6</copyFrom>
+					<drillLevel>3</drillLevel>
+				</dimension>
+			</dimensions>
+
+			<measures>
+				<measure id="01c29db5d0f541f4b6fd1f53005f00a8">
+					<name>tele_desc</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902707</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>tele_desc</column>
+					<showName>用户类型描述</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="46cd0c693947400c8a19cbff85af1bd1">
+					<name>site_name</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>9094983</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>site_name</column>
+					<showName>站点名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="65c1836027d94d99a7b98192bb73bc43">
+					<name>site_id</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>9094982</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>site_id</column>
+					<showName>站点ID</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="c83e319fdd82461d929e0f606892810b">
+					<name>product_name</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902698</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>product_name</column>
+					<showName>产品名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="5c75c069e81e4cf8809cf72a0a275f38">
+					<name>product_id</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>9094980</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>product_id</column>
+					<showName>产品ID</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="f6c415f5b9bf42549c07d17907e1adc1">
+					<name>chrg_act_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902072</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_act_incprsted_mopk_cnt</column>
+					<showName>包月即订付费次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="5785534b4fd94e39bb3a25e5e1e929d7">
+					<name>chrg_act_incprsted_mopk_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902073</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_act_incprsted_mopk_fee</column>
+					<showName>包月即订付费信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="ae7e4c4111bd45c58ad5c92f156f4e61">
+					<name>chrg_act_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902074</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_act_incprsted_mopk_uv</column>
+					<showName>包月即订付费用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="a1e7924b144e4874a642621a4c36f4e8">
+					<name>chrg_canc_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902097</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_canc_incprsted_mopk_cnt</column>
+					<showName>包月退订次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="27e183dc5bfb476b940dbe0641d37ced">
+					<name>chrg_canc_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902098</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_canc_incprsted_mopk_uv</column>
+					<showName>包月退订用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="5d1d1494ed4e455bb93df916b09fd134">
+					<name>chrg_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902151</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_cnt</column>
+					<showName>付费包月产品订购次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="56db7dc6eb2740f1ab6bbd6c25d6b633">
+					<name>chrg_incprsted_mopk_ent_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902153</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_ent_cnt</column>
+					<showName>企业包月订购次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="456623b1cf9b4024a02def3b2dfece07">
+					<name>chrg_incprsted_mopk_ent_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902154</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_ent_fee</column>
+					<showName>企业包月信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="4b153d661df84d8a834fa8101648e51a">
+					<name>chrg_incprsted_mopk_ent_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902155</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_ent_uv</column>
+					<showName>企业包月用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="6b8f6b54c6fa412da806c3ca496c63c7">
+					<name>chrg_incprsted_mopk_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902156</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_fee</column>
+					<showName>包月信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="d828aa4a713a45a19cb9b184c0702590">
+					<name>chrg_incprsted_mopk_kpi_allfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902157</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_kpi_allfee</column>
+					<showName>包月活跃用户全站信息费 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="ac66f9f3bd5e442fb94ffb68a9a614f1">
+					<name>chrg_incprsted_mopk_kpi_dmdfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902158</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_kpi_dmdfee</column>
+					<showName>包月活跃用户点播信息费 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="8cc05677e5b14b3f96dfbfdfff55fd28">
+					<name>chrg_incprsted_mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902159</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_kpi_uv</column>
+					<showName>包月活跃的用户数  </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="f4888fe9854645fb8690404c5d3af412">
+					<name>chrg_incprsted_mopk_us_allfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902165</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_us_allfee</column>
+					<showName>包月用户全站信息费 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="e342be28e85a4bcf8632244260ccdeb7">
+					<name>chrg_incprsted_mopk_us_dmdfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902166</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_us_dmdfee</column>
+					<showName>包月用户点播信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="8d07e87cd7f843958e238353a7a51824">
+					<name>chrg_inczero_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902190</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_inczero_incprsted_mopk_uv</column>
+					<showName>包月用户数 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="ffea17dbd4a14cd8b16db7e1e15513bd">
+					<name>chrg_mopk_prsted_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902211</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_mopk_prsted_uv</column>
+					<showName>包月被赠送付费用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="ab0cacaebd734f638fb3a0a77528784d">
+					<name>chrg_mopk_prst_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902212</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_mopk_prst_uv</column>
+					<showName>包月赠送用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="9c637e832bff40c68f7c2949a6f80e41">
+					<name>chrg_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902167</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_uv</column>
+					<showName>包月付费用户数B</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="6e0a4dc302b04ab891c84e03fcfc1d0f">
+					<name>chrg_rodr_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902239</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_rodr_incprsted_mopk_cnt</column>
+					<showName>付费包月产品续订次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="d164483ce74c4325bcbb374914be878f">
+					<name>chrg_rodr_incprsted_mopk_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902240</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_rodr_incprsted_mopk_fee</column>
+					<showName>包月续订信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="a959298eb7034d90a4e2c8cc65560f1d">
+					<name>chrg_rodr_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902241</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>chrg_rodr_incprsted_mopk_uv</column>
+					<showName>包月续订用户数B</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="0727cafac0b8443a80a6a95c2f7c9b0a">
+					<name>odr_incprsted_mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902425</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_TEL_CM</dataset>
+					<column>odr_incprsted_mopk_kpi_uv</column>
+					<showName>包月订购KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+			</measures>
+
+		</drillDown>
+
+		<drillDown id="c3de4206250747cfb0dc147511f61488"
+			drillValueChn="日期+省份"><!--日期+省份+门户+产品-->
+			<parameterSet>
+				<parameter id="a26c757c103e4dfab668254edfcabf49" />
+				<parameter id="d2a9ac909cbf446f9d57435db284d73f" />
+				<parameter id="e72f5d95d2e5494dbadd9be6eafb4391" />
+				<parameter id="965a9aad128d43faa1d51833b8fd84bd" />
+				<parameter id="fd1929d24c1942c8bcebc54fcbf90f38" />
+				<parameter id="7df7c84db0174f4cb3483c1168749dcd" />
+				<parameter id="6bc7da104c5c4598950096568bfbd30a" />
+				<parameter id="cfc5f3503a714360adff76c0b42bd9c6" />
+			</parameterSet>
+			<queryString id="fa99f643fdfa479188623a792eb59eb3">
+				<language>sql</language>
+				<vmFile>fa99f643fdfa479188623a792eb59eb3.sql.vm</vmFile>
+				<expression></expression>
+			</queryString>
+
+			<dimensions>
+				<dimension id="037158fd8c994344a7bf491f3f0af944">
+					<dimensionId>901022</dimensionId>
+					<copyFrom>965a9aad128d43faa1d51833b8fd84bd</copyFrom>
+					<drillLevel>1</drillLevel>
+				</dimension>
+				<dimension id="b7fa880a5e5a49658b72910de5d0d03e">
+					<dimensionId>901029</dimensionId>
+					<copyFrom>7df7c84db0174f4cb3483c1168749dcd</copyFrom>
+					<drillLevel>2</drillLevel>
+				</dimension>
+				<dimension id="e527db979c4c4a5e9639c6cd2dee2eda">
+					<dimensionId>901020</dimensionId>
+					<copyFrom>cfc5f3503a714360adff76c0b42bd9c6</copyFrom>
+					<drillLevel>3</drillLevel>
+				</dimension>
+			</dimensions>
+
+			<measures>
+				<measure id="0d7a814df8514a6c9a55db4225414c23">
+					<name>province_name</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902700</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>province_name</column>
+					<showName>省份名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="db3594b23a6b4c539422f8febc493491">
+					<name>site_name</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>9094983</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>site_name</column>
+					<showName>站点名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="33d10aecfd814c08a8f20cb6f7135ca4">
+					<name>site_id</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>9094982</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>site_id</column>
+					<showName>站点ID</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="2d15923b899c47b19dcbec53a4a821c0">
+					<name>product_name</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902698</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>product_name</column>
+					<showName>产品名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="414ee95366df4d19ac2dc5227c036764">
+					<name>product_id</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>9094980</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>product_id</column>
+					<showName>产品ID</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="e4677e14b6c94976a5b264f3df2da128">
+					<name>chrg_act_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902072</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_act_incprsted_mopk_cnt</column>
+					<showName>包月即订付费次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="abb66744f05046a2a74a7d66df13114b">
+					<name>chrg_act_incprsted_mopk_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902073</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_act_incprsted_mopk_fee</column>
+					<showName>包月即订付费信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="db4059bbcbd14646b212b3d1cdfbcf9c">
+					<name>chrg_act_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902074</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_act_incprsted_mopk_uv</column>
+					<showName>包月即订付费用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="cf2bb8403b8e4fef9a1cd2620e4b68df">
+					<name>chrg_canc_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902097</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_canc_incprsted_mopk_cnt</column>
+					<showName>包月退订次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="777241beaa3a45a68a6c0a78304816c7">
+					<name>chrg_canc_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902098</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_canc_incprsted_mopk_uv</column>
+					<showName>包月退订用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="1e4b67c3cb2949afad07fb25a237c32e">
+					<name>chrg_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902151</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_incprsted_mopk_cnt</column>
+					<showName>付费包月产品订购次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="87862ab2c6104907b9576812ca4c4dd5">
+					<name>chrg_incprsted_mopk_ent_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902153</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_incprsted_mopk_ent_cnt</column>
+					<showName>企业包月订购次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="79511af20cf740598afc609e686c8e81">
+					<name>chrg_incprsted_mopk_ent_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902154</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_incprsted_mopk_ent_fee</column>
+					<showName>企业包月信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="9e0fa48a214045e2934f9dc78353f0d4">
+					<name>chrg_incprsted_mopk_ent_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902155</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_incprsted_mopk_ent_uv</column>
+					<showName>企业包月用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="532070009c9e4ba8bf8735d936b9d0ef">
+					<name>chrg_incprsted_mopk_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902156</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_incprsted_mopk_fee</column>
+					<showName>包月信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="8931d6ad3e3e4106979e8653b7d1b9a4">
+					<name>chrg_incprsted_mopk_kpi_allfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902157</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_incprsted_mopk_kpi_allfee</column>
+					<showName>包月活跃用户全站信息费 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="fdac817ad76c429a942a13b68e6aeabe">
+					<name>chrg_incprsted_mopk_kpi_dmdfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902158</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_incprsted_mopk_kpi_dmdfee</column>
+					<showName>包月活跃用户点播信息费 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="9816eb38a9ac44b09858f1bd72bd5940">
+					<name>chrg_incprsted_mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902159</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_incprsted_mopk_kpi_uv</column>
+					<showName>包月活跃的用户数  </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="d8a967b3157b4148bf4d602ae118765b">
+					<name>chrg_incprsted_mopk_us_allfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902165</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_incprsted_mopk_us_allfee</column>
+					<showName>包月用户全站信息费 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="0bdc96c5a8c6424299136e58f1dbd8a9">
+					<name>chrg_incprsted_mopk_us_dmdfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902166</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_incprsted_mopk_us_dmdfee</column>
+					<showName>包月用户点播信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="242ebefa7122422597ca37b5b1da528d">
+					<name>chrg_inczero_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902190</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_inczero_incprsted_mopk_uv</column>
+					<showName>包月用户数 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="3db9263243174736bcc5eb79005e5b93">
+					<name>chrg_mopk_prsted_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902211</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_mopk_prsted_uv</column>
+					<showName>包月被赠送付费用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="038073469aec4a16b2a825e666bfb71b">
+					<name>chrg_mopk_prst_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902212</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_mopk_prst_uv</column>
+					<showName>包月赠送用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="5fe60cd5606d4f5ab86eea0fb9ae0660">
+					<name>chrg_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902167</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_incprsted_mopk_uv</column>
+					<showName>包月付费用户数B</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="36a9cd519bb848c2b59ef683aa131362">
+					<name>chrg_rodr_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902239</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_rodr_incprsted_mopk_cnt</column>
+					<showName>付费包月产品续订次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="3b71c638b3cc4eecae6268d1096e87da">
+					<name>chrg_rodr_incprsted_mopk_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902240</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_rodr_incprsted_mopk_fee</column>
+					<showName>包月续订信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="427d9afa341d42a09c8d5635eb122266">
+					<name>chrg_rodr_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902241</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>chrg_rodr_incprsted_mopk_uv</column>
+					<showName>包月续订用户数B</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="1cdb5ef7980c4c9dad446e26c57dd8fd">
+					<name>odr_incprsted_mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902425</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_CM</dataset>
+					<column>odr_incprsted_mopk_kpi_uv</column>
+					<showName>包月订购KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+			</measures>
+
+		</drillDown>
+
+		<drillDown id="677a911294474daeb9fa3f303dcff68d"
+			drillValueChn="日期+省份+用户类型"><!--日期+省份+用户类型+门户+产品-->
+			<parameterSet>
+				<parameter id="a26c757c103e4dfab668254edfcabf49" />
+				<parameter id="d2a9ac909cbf446f9d57435db284d73f" />
+				<parameter id="e72f5d95d2e5494dbadd9be6eafb4391" />
+				<parameter id="965a9aad128d43faa1d51833b8fd84bd" />
+				<parameter id="17ad9f938a8a4ef2bbe4a284d8df0d03" />
+				<parameter id="8dfea16b0e044bdab90e7caa7df4cf30" />
+				<parameter id="fd1929d24c1942c8bcebc54fcbf90f38" />
+				<parameter id="7df7c84db0174f4cb3483c1168749dcd" />
+				<parameter id="6bc7da104c5c4598950096568bfbd30a" />
+				<parameter id="cfc5f3503a714360adff76c0b42bd9c6" />
+			</parameterSet>
+			<queryString id="702e36843c854a82951f4c59e67f761f">
+				<language>sql</language>
+				<vmFile>702e36843c854a82951f4c59e67f761f.sql.vm</vmFile>
+				<expression></expression>
+			</queryString>
+
+			<dimensions>
+				<dimension id="98bdf1e575554cabb83429b4a9d768d8">
+					<dimensionId>901022</dimensionId>
+					<copyFrom>965a9aad128d43faa1d51833b8fd84bd</copyFrom>
+					<drillLevel>1</drillLevel>
+				</dimension>
+				<dimension id="65aa93386c7947c8a2e62d068f574b68">
+					<dimensionId>901031</dimensionId>
+					<copyFrom>17ad9f938a8a4ef2bbe4a284d8df0d03</copyFrom>
+					<drillLevel>2</drillLevel>
+				</dimension>
+				<dimension id="8105365f94e84f5c84bdfb80fe07ea8b">
+					<dimensionId>901029</dimensionId>
+					<copyFrom>7df7c84db0174f4cb3483c1168749dcd</copyFrom>
+					<drillLevel>3</drillLevel>
+				</dimension>
+				<dimension id="ec57f3fb0dab4104b0ef5a0fa51a57e8">
+					<dimensionId>901020</dimensionId>
+					<copyFrom>cfc5f3503a714360adff76c0b42bd9c6</copyFrom>
+					<drillLevel>4</drillLevel>
+				</dimension>
+			</dimensions>
+
+			<measures>
+				<measure id="11404b885e8a450cafeef8ee43a1f834">
+					<name>province_name</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902700</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>province_name</column>
+					<showName>省份名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="77186902dfc54ebbac6457ec4a8c8337">
+					<name>tele_desc</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902707</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>tele_desc</column>
+					<showName>用户类型描述</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="beffe4637c0b426b8174cbf70a696793">
+					<name>site_name</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>9094983</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>site_name</column>
+					<showName>站点名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="24dc883ebb144d5fb2a03c83ce9fe7cf">
+					<name>site_id</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>9094982</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>site_id</column>
+					<showName>站点ID</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="a8e17f85b62c45b98cc5df78831d8e99">
+					<name>product_name</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902698</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>product_name</column>
+					<showName>产品名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="dc7dca7924c3403ba948f56544c4be19">
+					<name>product_id</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>9094980</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>product_id</column>
+					<showName>产品ID</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="0f9b3a47c0cc4c649a0394f6aebc4d48">
+					<name>chrg_act_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902072</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_act_incprsted_mopk_cnt</column>
+					<showName>包月即订付费次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="4cdcb1fde6dc491bbc4610b2b737cb07">
+					<name>chrg_act_incprsted_mopk_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902073</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_act_incprsted_mopk_fee</column>
+					<showName>包月即订付费信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="287745355d694effa6ac40f2c433b99b">
+					<name>chrg_act_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902074</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_act_incprsted_mopk_uv</column>
+					<showName>包月即订付费用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="610b52047292457bb9dedcf0e3f0fb19">
+					<name>chrg_canc_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902097</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_canc_incprsted_mopk_cnt</column>
+					<showName>包月退订次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="5016b7c175eb4822baecc1a1fff329e4">
+					<name>chrg_canc_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902098</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_canc_incprsted_mopk_uv</column>
+					<showName>包月退订用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="a6d01711e0954685836491b86cb00d13">
+					<name>chrg_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902151</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_cnt</column>
+					<showName>付费包月产品订购次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="6ca9db335dc44b37b7b76fa69f44afdb">
+					<name>chrg_incprsted_mopk_ent_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902153</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_ent_cnt</column>
+					<showName>企业包月订购次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="f7be1010526c40b09973678694c4baf7">
+					<name>chrg_incprsted_mopk_ent_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902154</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_ent_fee</column>
+					<showName>企业包月信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="da5cd6dc56de4460b8be65555116d1be">
+					<name>chrg_incprsted_mopk_ent_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902155</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_ent_uv</column>
+					<showName>企业包月用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="72386071be0f43aaa1cb7da2ed97e9a7">
+					<name>chrg_incprsted_mopk_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902156</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_fee</column>
+					<showName>包月信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="85454555cd1a4ec4afabc1f10bf917db">
+					<name>chrg_incprsted_mopk_kpi_allfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902157</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_kpi_allfee</column>
+					<showName>包月活跃用户全站信息费 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="8a15ae24a8424e39978f7da69d1a2dd9">
+					<name>chrg_incprsted_mopk_kpi_dmdfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902158</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_kpi_dmdfee</column>
+					<showName>包月活跃用户点播信息费 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="4b8984ebd1b44872a322bf2d256e2e0b">
+					<name>chrg_incprsted_mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902159</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_kpi_uv</column>
+					<showName>包月活跃的用户数  </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="89a777b3576f43d482088c61b47deb5e">
+					<name>chrg_incprsted_mopk_us_allfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902165</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_us_allfee</column>
+					<showName>包月用户全站信息费 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="ba4664f8899b436e802e00531df1a453">
+					<name>chrg_incprsted_mopk_us_dmdfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902166</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_us_dmdfee</column>
+					<showName>包月用户点播信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="ad1001d7b0f44dc8afbce94d1f653f8d">
+					<name>chrg_inczero_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902190</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_inczero_incprsted_mopk_uv</column>
+					<showName>包月用户数 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="6e3e2a11ce004849abcbc0bb3c6bdbc2">
+					<name>chrg_mopk_prsted_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902211</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_mopk_prsted_uv</column>
+					<showName>包月被赠送付费用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="ad37924572dd489ebfd1a16830756a8e">
+					<name>chrg_mopk_prst_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902212</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_mopk_prst_uv</column>
+					<showName>包月赠送用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="ec5154ead8aa4c64936708c1c791384c">
+					<name>chrg_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902167</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_uv</column>
+					<showName>包月付费用户数B</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="61dc459ba09749da8a5bf9f24c81fec2">
+					<name>chrg_rodr_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902239</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_rodr_incprsted_mopk_cnt</column>
+					<showName>付费包月产品续订次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="526c2453700a4e6f91adb346d753366b">
+					<name>chrg_rodr_incprsted_mopk_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902240</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_rodr_incprsted_mopk_fee</column>
+					<showName>包月续订信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="4d8757900d2b4da7bad38c09140bba41">
+					<name>chrg_rodr_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902241</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>chrg_rodr_incprsted_mopk_uv</column>
+					<showName>包月续订用户数B</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="6c70984bfd8c4df293aef217d4dae90b">
+					<name>odr_incprsted_mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902425</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_PRV_TEL_CM</dataset>
+					<column>odr_incprsted_mopk_kpi_uv</column>
+					<showName>包月订购KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+			</measures>
+
+		</drillDown>
+
+		<drillDown id="617bc77099fa4b0f9a2fc028f8d3eb9e"
+			drillValueChn="日期+省份+城市"><!--日期+省份+城市+门户+产品-->
+			<parameterSet>
+				<parameter id="a26c757c103e4dfab668254edfcabf49" />
+				<parameter id="d2a9ac909cbf446f9d57435db284d73f" />
+				<parameter id="e72f5d95d2e5494dbadd9be6eafb4391" />
+				<parameter id="965a9aad128d43faa1d51833b8fd84bd" />
+				<parameter id="c0399fa42d8b4da99b558de293999177" />
+				<parameter id="969161bdb240401a93419bd668c44534" />
+				<parameter id="fd1929d24c1942c8bcebc54fcbf90f38" />
+				<parameter id="7df7c84db0174f4cb3483c1168749dcd" />
+				<parameter id="6bc7da104c5c4598950096568bfbd30a" />
+				<parameter id="cfc5f3503a714360adff76c0b42bd9c6" />
+			</parameterSet>
+			<queryString id="e4be1fd28ad94e4ebb6ac8ab785cf42f">
+				<language>sql</language>
+				<vmFile>e4be1fd28ad94e4ebb6ac8ab785cf42f.sql.vm</vmFile>
+				<expression></expression>
+			</queryString>
+
+			<dimensions>
+				<dimension id="988c04030bf24357b881afdb3f2be264">
+					<dimensionId>901022</dimensionId>
+					<copyFrom>965a9aad128d43faa1d51833b8fd84bd</copyFrom>
+					<drillLevel>1</drillLevel>
+				</dimension>
+				<dimension id="adec2e7089af484bb9e480ff0a48cad9">
+					<dimensionId>901010</dimensionId>
+					<copyFrom>969161bdb240401a93419bd668c44534</copyFrom>
+					<drillLevel>2</drillLevel>
+				</dimension>
+				<dimension id="1163008f4552486e91bbe08453d3e684">
+					<dimensionId>901029</dimensionId>
+					<copyFrom>7df7c84db0174f4cb3483c1168749dcd</copyFrom>
+					<drillLevel>3</drillLevel>
+				</dimension>
+				<dimension id="f86de68446eb4c73919f04e806c65e2d">
+					<dimensionId>901020</dimensionId>
+					<copyFrom>cfc5f3503a714360adff76c0b42bd9c6</copyFrom>
+					<drillLevel>4</drillLevel>
+				</dimension>
+			</dimensions>
+
+			<measures>
+				<measure id="b4e3f08af5b04cb283126ad6a0dbe9fc">
+					<name>province_name</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902700</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>province_name</column>
+					<showName>省份名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="c65e5942516243b3b44cc4799458f1dc">
+					<name>city_name</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902689</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>city_name</column>
+					<showName>城市名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="fdd8e906a6b744c88aaa17684200b33c">
+					<name>site_name</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>9094983</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>site_name</column>
+					<showName>站点名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="d57556fdf8d442d28766533df39019cf">
+					<name>site_id</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>9094982</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>site_id</column>
+					<showName>站点ID</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="ef6ba65ba4da4f9a9981652f0c180620">
+					<name>product_name</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902698</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>product_name</column>
+					<showName>产品名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="497b0e39bb7e4d0abf44f13156e36597">
+					<name>product_id</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>9094980</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>product_id</column>
+					<showName>产品ID</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="9e9440e0173645d2a59ebf640b96797c">
+					<name>chrg_act_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902072</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_act_incprsted_mopk_cnt</column>
+					<showName>包月即订付费次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="1d179e1d511942e4b1a2295f9ee35899">
+					<name>chrg_act_incprsted_mopk_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902073</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_act_incprsted_mopk_fee</column>
+					<showName>包月即订付费信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="0a98267d88b24017b648d54d7aa99644">
+					<name>chrg_act_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902074</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_act_incprsted_mopk_uv</column>
+					<showName>包月即订付费用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="27a191ffcb16499288a847c7ef9e2812">
+					<name>chrg_canc_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902097</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_canc_incprsted_mopk_cnt</column>
+					<showName>包月退订次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="78b1df1cfd06492aa0dde4b35e760c5b">
+					<name>chrg_canc_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902098</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_canc_incprsted_mopk_uv</column>
+					<showName>包月退订用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="853732200bb94a7ba2264f1eef1e45be">
+					<name>chrg_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902151</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_incprsted_mopk_cnt</column>
+					<showName>付费包月产品订购次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="c1787f376f46491dbf0db8d399697064">
+					<name>chrg_incprsted_mopk_ent_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902153</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_incprsted_mopk_ent_cnt</column>
+					<showName>企业包月订购次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="041d239f50f84f86a0b18bcfeb7d6080">
+					<name>chrg_incprsted_mopk_ent_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902154</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_incprsted_mopk_ent_fee</column>
+					<showName>企业包月信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="5cc6d5bc554f4dc1aa6eda238523a678">
+					<name>chrg_incprsted_mopk_ent_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902155</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_incprsted_mopk_ent_uv</column>
+					<showName>企业包月用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="06fa151720054896be9c42122c3a082e">
+					<name>chrg_incprsted_mopk_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902156</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_incprsted_mopk_fee</column>
+					<showName>包月信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="1f40e1dbe7324e26854365783cd8d5a5">
+					<name>chrg_incprsted_mopk_kpi_allfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902157</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_incprsted_mopk_kpi_allfee</column>
+					<showName>包月活跃用户全站信息费 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="33e8d55614444b88a8cf136955861780">
+					<name>chrg_incprsted_mopk_kpi_dmdfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902158</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_incprsted_mopk_kpi_dmdfee</column>
+					<showName>包月活跃用户点播信息费 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="d6cc62393d44467ebe414c317e0522c8">
+					<name>chrg_incprsted_mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902159</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_incprsted_mopk_kpi_uv</column>
+					<showName>包月活跃的用户数  </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="a9095e8b406c4090a3b019b899d377b2">
+					<name>chrg_incprsted_mopk_us_allfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902165</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_incprsted_mopk_us_allfee</column>
+					<showName>包月用户全站信息费 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="2bdd722708704888aa9e4541b088d1c8">
+					<name>chrg_incprsted_mopk_us_dmdfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902166</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_incprsted_mopk_us_dmdfee</column>
+					<showName>包月用户点播信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="0ca0c29c8d7845249ba6084fbb9643a2">
+					<name>chrg_inczero_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902190</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_inczero_incprsted_mopk_uv</column>
+					<showName>包月用户数 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="0e8a738ca8074f6e90d31f163d093056">
+					<name>chrg_mopk_prsted_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902211</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_mopk_prsted_uv</column>
+					<showName>包月被赠送付费用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="c484a12285da4370bc45b6d3e48bfdb2">
+					<name>chrg_mopk_prst_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902212</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_mopk_prst_uv</column>
+					<showName>包月赠送用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="e5fd0e97a9be442c9ed808289bad1c49">
+					<name>chrg_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902167</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_incprsted_mopk_uv</column>
+					<showName>包月付费用户数B</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="52db014e07ea4ec78c43970870bd3fbb">
+					<name>chrg_rodr_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902239</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_rodr_incprsted_mopk_cnt</column>
+					<showName>付费包月产品续订次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="50b1e3452856472ead7971d2952b84c7">
+					<name>chrg_rodr_incprsted_mopk_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902240</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_rodr_incprsted_mopk_fee</column>
+					<showName>包月续订信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="c1fb1740a5094d21a24c7bcd4556b3b3">
+					<name>chrg_rodr_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902241</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>chrg_rodr_incprsted_mopk_uv</column>
+					<showName>包月续订用户数B</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="3187333abb8142db9abe70f56e666129">
+					<name>odr_incprsted_mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902425</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_CM</dataset>
+					<column>odr_incprsted_mopk_kpi_uv</column>
+					<showName>包月订购KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+			</measures>
+
+		</drillDown>
+
+		<drillDown id="cf2198dadebf4de19abf4cf8d514d8db"
+			drillValueChn="日期+省份+城市+用户类型"><!--日期+省份+城市+用户类型+门户+产品-->
+			<parameterSet>
+				<parameter id="a26c757c103e4dfab668254edfcabf49" />
+				<parameter id="d2a9ac909cbf446f9d57435db284d73f" />
+				<parameter id="e72f5d95d2e5494dbadd9be6eafb4391" />
+				<parameter id="965a9aad128d43faa1d51833b8fd84bd" />
+				<parameter id="c0399fa42d8b4da99b558de293999177" />
+				<parameter id="969161bdb240401a93419bd668c44534" />
+				<parameter id="17ad9f938a8a4ef2bbe4a284d8df0d03" />
+				<parameter id="8dfea16b0e044bdab90e7caa7df4cf30" />
+				<parameter id="fd1929d24c1942c8bcebc54fcbf90f38" />
+				<parameter id="7df7c84db0174f4cb3483c1168749dcd" />
+				<parameter id="6bc7da104c5c4598950096568bfbd30a" />
+				<parameter id="cfc5f3503a714360adff76c0b42bd9c6" />
+			</parameterSet>
+			<queryString id="7c4d7644ee924a8b947f32e8d2c11e14">
+				<language>sql</language>
+				<vmFile>7c4d7644ee924a8b947f32e8d2c11e14.sql.vm</vmFile>
+				<expression></expression>
+			</queryString>
+
+			<dimensions>
+				<dimension id="bae860cdde6d4bd2977571c27fe86030">
+					<dimensionId>901022</dimensionId>
+					<copyFrom>965a9aad128d43faa1d51833b8fd84bd</copyFrom>
+					<drillLevel>1</drillLevel>
+				</dimension>
+				<dimension id="ecc11a72c1c64bdb8234060fd4366006">
+					<dimensionId>901010</dimensionId>
+					<copyFrom>969161bdb240401a93419bd668c44534</copyFrom>
+					<drillLevel>2</drillLevel>
+				</dimension>
+				<dimension id="2e3c54b2c4a24cfe99a23784e32f21cd">
+					<dimensionId>901031</dimensionId>
+					<copyFrom>17ad9f938a8a4ef2bbe4a284d8df0d03</copyFrom>
+					<drillLevel>3</drillLevel>
+				</dimension>
+				<dimension id="fafd9627fb9c491fae8e60b090741891">
+					<dimensionId>901029</dimensionId>
+					<copyFrom>7df7c84db0174f4cb3483c1168749dcd</copyFrom>
+					<drillLevel>4</drillLevel>
+				</dimension>
+				<dimension id="45d1d4f87378437f8709787909c1016f">
+					<dimensionId>901020</dimensionId>
+					<copyFrom>cfc5f3503a714360adff76c0b42bd9c6</copyFrom>
+					<drillLevel>5</drillLevel>
+				</dimension>
+			</dimensions>
+
+			<measures>
+				<measure id="0ff001d218514a1ab3f5c9f40682f29b">
+					<name>province_name</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902700</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>province_name</column>
+					<showName>省份名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="b724f0cc4f364c41a2cdfe04ec8bdcd2">
+					<name>city_name</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902689</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>city_name</column>
+					<showName>城市名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="d62d1baba0c74e53869891b649540969">
+					<name>tele_desc</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902707</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>tele_desc</column>
+					<showName>用户类型描述</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="ddf8d1e6c03d4e2c83a6b121d3a48fbb">
+					<name>site_name</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>9094983</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>site_name</column>
+					<showName>站点名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="1ff8fbb3aa1b4fddb5bbc84fb590af0c">
+					<name>site_id</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>9094982</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>site_id</column>
+					<showName>站点ID</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="c520c473e9c34ff3bcab90ea480a056b">
+					<name>product_name</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902698</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>product_name</column>
+					<showName>产品名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="8560277dc9664ec88e8ae97649e97e2d">
+					<name>product_id</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>9094980</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>product_id</column>
+					<showName>产品ID</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="5c9e8878c8dd4952aa415faf561b5c53">
+					<name>chrg_act_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902072</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_act_incprsted_mopk_cnt</column>
+					<showName>包月即订付费次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="51cc943f6d7f4a948b89a9672d0472ae">
+					<name>chrg_act_incprsted_mopk_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902073</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_act_incprsted_mopk_fee</column>
+					<showName>包月即订付费信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="cb3dacc4b2784d6f8f28becb466d464f">
+					<name>chrg_act_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902074</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_act_incprsted_mopk_uv</column>
+					<showName>包月即订付费用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="061e49dd72f94501bd4fcb3f245a5bdf">
+					<name>chrg_canc_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902097</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_canc_incprsted_mopk_cnt</column>
+					<showName>包月退订次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="c6f579b320274157bae7d90353371863">
+					<name>chrg_canc_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902098</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_canc_incprsted_mopk_uv</column>
+					<showName>包月退订用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="23c6f54c0c264afbb16ea492b08de678">
+					<name>chrg_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902151</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_cnt</column>
+					<showName>付费包月产品订购次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="abe65b49c15c453cabb1770d3286c547">
+					<name>chrg_incprsted_mopk_ent_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902153</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_ent_cnt</column>
+					<showName>企业包月订购次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="1f0d5aa06e144293af4a674c18ac2ba2">
+					<name>chrg_incprsted_mopk_ent_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902154</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_ent_fee</column>
+					<showName>企业包月信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="954a6d9506bb470f934d24a4fedca00f">
+					<name>chrg_incprsted_mopk_ent_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902155</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_ent_uv</column>
+					<showName>企业包月用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="5736c0115b064b629bfe9b7089585fcd">
+					<name>chrg_incprsted_mopk_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902156</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_fee</column>
+					<showName>包月信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="fea05a9a8a834b25aa4fe82688d33572">
+					<name>chrg_incprsted_mopk_kpi_allfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902157</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_kpi_allfee</column>
+					<showName>包月活跃用户全站信息费 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="d7e5741b38a64a0784636c3b0d2935c5">
+					<name>chrg_incprsted_mopk_kpi_dmdfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902158</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_kpi_dmdfee</column>
+					<showName>包月活跃用户点播信息费 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="569238f5b4864cc582826dae37fea9f5">
+					<name>chrg_incprsted_mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902159</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_kpi_uv</column>
+					<showName>包月活跃的用户数  </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="5daafd5c888d43ca84ddec1947a9a8b1">
+					<name>chrg_incprsted_mopk_us_allfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902165</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_us_allfee</column>
+					<showName>包月用户全站信息费 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="2262808736144344be17818f34db9b10">
+					<name>chrg_incprsted_mopk_us_dmdfee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902166</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_us_dmdfee</column>
+					<showName>包月用户点播信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="8085a6d5a9c245ca8d7d954df69146dd">
+					<name>chrg_inczero_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902190</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_inczero_incprsted_mopk_uv</column>
+					<showName>包月用户数 </showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="15b8ceb0ad554e3199e44f7cf88f7ad1">
+					<name>chrg_mopk_prsted_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902211</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_mopk_prsted_uv</column>
+					<showName>包月被赠送付费用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="1bfa5cbb4c7340fc9fb277d2f7410ada">
+					<name>chrg_mopk_prst_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902212</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_mopk_prst_uv</column>
+					<showName>包月赠送用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="73d67ab7c2204652a773988113d234cf">
+					<name>chrg_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902167</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_incprsted_mopk_uv</column>
+					<showName>包月付费用户数B</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="4464a2bff13b499eb613176e10f36883">
+					<name>chrg_rodr_incprsted_mopk_cnt</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902239</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_rodr_incprsted_mopk_cnt</column>
+					<showName>付费包月产品续订次数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="f1680730809a4bdf8d3817162c448b4e">
+					<name>chrg_rodr_incprsted_mopk_fee</name>
+					<dataType>Java.Lang.Double</dataType>
+					<measureId>902240</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_rodr_incprsted_mopk_fee</column>
+					<showName>包月续订信息费</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="49089d1872ac422a8475753d0dabd270">
+					<name>chrg_rodr_incprsted_mopk_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902241</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>chrg_rodr_incprsted_mopk_uv</column>
+					<showName>包月续订用户数B</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="3d05add742874e118969cb8adf7c81dd">
+					<name>odr_incprsted_mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902425</measureId>
+					<dataset>PRT.PRD_MOPK_ID_STID_CTY_TEL_CM</dataset>
+					<column>odr_incprsted_mopk_kpi_uv</column>
+					<showName>包月订购KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+			</measures>
+
+		</drillDown>
+
+
+	</cube>
+
+</report>
