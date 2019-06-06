@@ -21,3 +21,28 @@ dimension_add9085c1e5241b9b2e5f0081d7eb17d_2 : EBUPT.tpl.province_all + EBUPT.tp
 dimension_add9085c1e5241b9b2e5f0081d7eb17d_3 : EBUPT.tpl.province_all + EBUPT.tpl.UserType_all + EBUPT.tpl.site_all + EBUPT.tpl.product_all + EBUPT.tpl.measure,
 dimension_add9085c1e5241b9b2e5f0081d7eb17d_4 : EBUPT.tpl.province_all + EBUPT.tpl.city_all + EBUPT.tpl.site_all + EBUPT.tpl.product_all + EBUPT.tpl.measure,
 dimension_add9085c1e5241b9b2e5f0081d7eb17d_5 : EBUPT.tpl.province_all + EBUPT.tpl.city_all + EBUPT.tpl.UserType_all + EBUPT.tpl.site_all + EBUPT.tpl.product_all + EBUPT.tpl.measure,
+
+
+//KPI当月累计报
+dimension_dbd86ae7f2de4891b95952f6e8476db8_0 : EBUPT.tpl.measure,
+dimension_dbd86ae7f2de4891b95952f6e8476db8_1 : EBUPT.tpl.UserType_all + EBUPT.tpl.measure,
+dimension_dbd86ae7f2de4891b95952f6e8476db8_2 : EBUPT.tpl.province_all + EBUPT.tpl.measure,
+dimension_dbd86ae7f2de4891b95952f6e8476db8_3 : EBUPT.tpl.province_all + EBUPT.tpl.UserType_all + EBUPT.tpl.measure,
+dimension_dbd86ae7f2de4891b95952f6e8476db8_4 : EBUPT.tpl.province_all + EBUPT.tpl.city_all + EBUPT.tpl.measure,
+dimension_dbd86ae7f2de4891b95952f6e8476db8_5 : EBUPT.tpl.province_all + EBUPT.tpl.city_all + EBUPT.tpl.UserType_all + EBUPT.tpl.measure,
+
+//KPI日报
+dimension_da7a177e4d77486c995907c069937aae_0 : EBUPT.tpl.measure,
+dimension_da7a177e4d77486c995907c069937aae_1 : EBUPT.tpl.UserType_all + EBUPT.tpl.measure,
+dimension_da7a177e4d77486c995907c069937aae_2 : EBUPT.tpl.province_all + EBUPT.tpl.measure,
+dimension_da7a177e4d77486c995907c069937aae_3 : EBUPT.tpl.province_all + EBUPT.tpl.UserType_all + EBUPT.tpl.measure,
+dimension_da7a177e4d77486c995907c069937aae_4 : EBUPT.tpl.province_all + EBUPT.tpl.city_all + EBUPT.tpl.measure,
+dimension_da7a177e4d77486c995907c069937aae_5 : EBUPT.tpl.province_all + EBUPT.tpl.city_all + EBUPT.tpl.UserType_all + EBUPT.tpl.measure,
+
+//KPI月报
+dimension_dc9cd41c2b0442d892c6690e3f067b39_0 : EBUPT.tpl.measure,
+dimension_dc9cd41c2b0442d892c6690e3f067b39_1 : EBUPT.tpl.UserType_all + EBUPT.tpl.measure,
+dimension_dc9cd41c2b0442d892c6690e3f067b39_2 : EBUPT.tpl.province_all + EBUPT.tpl.measure,
+dimension_dc9cd41c2b0442d892c6690e3f067b39_3 : EBUPT.tpl.province_all + EBUPT.tpl.UserType_all + EBUPT.tpl.measure,
+dimension_dc9cd41c2b0442d892c6690e3f067b39_4 : EBUPT.tpl.province_all + EBUPT.tpl.city_all + EBUPT.tpl.measure,
+dimension_dc9cd41c2b0442d892c6690e3f067b39_5 : EBUPT.tpl.province_all + EBUPT.tpl.city_all + EBUPT.tpl.UserType_all + EBUPT.tpl.measure,

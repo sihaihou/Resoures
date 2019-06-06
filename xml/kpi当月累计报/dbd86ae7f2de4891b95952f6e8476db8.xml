@@ -1,0 +1,1278 @@
+﻿<report name="KPI当月累计报" type="0" id="dbd86ae7f2de4891b95952f6e8476db8" cycleType="day">
+	<parameters>
+		<parameter id="a26c757c103e4dfab668254edfcabf49">
+			<dataType>java.Lang.Date</dataType>
+			<exType>Date</exType>
+			<visible>True</visible>
+			<allowInput>True</allowInput>
+			<allowEmpty>True</allowEmpty>
+			<allowMultiValues>false</allowMultiValues>
+			<defaultValue></defaultValue>
+			<value></value>
+			<name>start_date</name>
+			<showName>开始日期</showName>
+		</parameter>
+		<parameter id="d2a9ac909cbf446f9d57435db284d73f">
+			<dataType>java.Lang.Date</dataType>
+			<exType>Date</exType>
+			<visible>True</visible>
+			<allowInput>True</allowInput>
+			<allowEmpty>True</allowEmpty>
+			<allowMultiValues>false</allowMultiValues>
+			<defaultValue></defaultValue>
+			<value></value>
+			<showName>结束日期</showName>
+			<name>end_date</name>
+		</parameter>
+		<parameter id="e72f5d95d2e5494dbadd9be6eafb4391">
+			<dataType>java.Lang.String</dataType>
+			<exType>text</exType>
+			<visible>True</visible>
+			<allowInput>True</allowInput>
+			<allowEmpty>True</allowEmpty>
+			<allowMultiValues>false</allowMultiValues>
+			<defaultValue></defaultValue>
+			<value></value>
+			<name>province_id</name>
+			<showName>省份ID</showName>
+		</parameter>
+		<parameter id="965a9aad128d43faa1d51833b8fd84bd">
+			<dataType>java.Lang.String</dataType>
+			<exType>text</exType>
+			<visible>True</visible>
+			<allowInput>True</allowInput>
+			<allowEmpty>True</allowEmpty>
+			<allowMultiValues>false</allowMultiValues>
+			<defaultValue></defaultValue>
+			<value></value>
+			<name>province_name</name>
+			<showName>省份</showName>
+		</parameter>
+		<parameter id="c0399fa42d8b4da99b558de293999177">
+			<dataType>java.Lang.String</dataType>
+			<exType>text</exType>
+			<visible>True</visible>
+			<allowInput>True</allowInput>
+			<allowEmpty>True</allowEmpty>
+			<allowMultiValues>false</allowMultiValues>
+			<defaultValue></defaultValue>
+			<value></value>
+			<name>city_id</name>
+			<showName>城市ID</showName>
+		</parameter>
+		<parameter id="969161bdb240401a93419bd668c44534">
+			<dataType>java.Lang.String</dataType>
+			<exType>text</exType>
+			<visible>True</visible>
+			<allowInput>True</allowInput>
+			<allowEmpty>True</allowEmpty>
+			<allowMultiValues>false</allowMultiValues>
+			<defaultValue></defaultValue>
+			<value></value>
+			<name>city_name</name>
+			<showName>城市</showName>
+		</parameter>
+		<parameter id="17ad9f938a8a4ef2bbe4a284d8df0d03">
+			<dataType>java.Lang.String</dataType>
+			<exType>text</exType>
+			<visible>True</visible>
+			<allowInput>false</allowInput>
+			<allowEmpty>True</allowEmpty>
+			<allowMultiValues>false</allowMultiValues>
+			<defaultValue></defaultValue>
+			<value></value>
+			<showName>用户类型</showName>
+			<name>tele_desc</name>
+		</parameter>
+		<parameter id="8dfea16b0e044bdab90e7caa7df4cf30">
+			<dataType>java.Lang.String</dataType>
+			<exType>text</exType>
+			<visible>True</visible>
+			<allowInput>false</allowInput>
+			<allowEmpty>True</allowEmpty>
+			<allowMultiValues>false</allowMultiValues>
+			<defaultValue></defaultValue>
+			<value></value>
+			<showName>用户类型ID</showName>
+			<name>tele_type</name>
+		</parameter>
+	</parameters>
+	<cube>
+		<drillDown id="7990a1a8481a41aaa496d089081390dd" drillValueChn="日期"><!--日期-->
+			<parameterSet>
+				<parameter id="a26c757c103e4dfab668254edfcabf49" />
+				<parameter id="d2a9ac909cbf446f9d57435db284d73f" />
+			</parameterSet>
+			<queryString id="45aa2d1bd15c482bb972547b7e06c366">
+				<language>sql</language>
+				<vmFile>45aa2d1bd15c482bb972547b7e06c366.sql.vm</vmFile>
+				<expression></expression>
+			</queryString>
+
+			<dimensions>
+			</dimensions>
+
+			<measures>
+				<measure id="5a1329237f5c4db69e4ed01f0dba1509">
+					<name>chpt_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902071</measureId>
+					<dataset>PRT.KPI_CM</dataset>
+					<column>chpt_kpi_uv</column>
+					<showName>按章KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="86cd0d190d924d189b25c93f1c193c31">
+					<name>dmd_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902307</measureId>
+					<dataset>PRT.KPI_CM</dataset>
+					<column>dmd_kpi_uv</column>
+					<showName>点播KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="7b90bf72fca84c32aaf0ccaf56b51389">
+					<name>mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902350</measureId>
+					<dataset>PRT.KPI_CM</dataset>
+					<column>mopk_kpi_uv</column>
+					<showName>包月KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="99e92d80e6c34e18ab1fcce90345fcd2">
+					<name>prst_ent_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902528</measureId>
+					<dataset>PRT.KPI_CM</dataset>
+					<column>prst_ent_kpi_uv</column>
+					<showName>企业赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="7878bbfb08014febaa347dba524ad233">
+					<name>prst_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902530</measureId>
+					<dataset>PRT.KPI_CM</dataset>
+					<column>prst_kpi_uv</column>
+					<showName>赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="913353c26ae3449c88f622503fb40f09">
+					<name>prst_mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902531</measureId>
+					<dataset>PRT.KPI_CM</dataset>
+					<column>prst_mopk_kpi_uv</column>
+					<showName>包月赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="d8b596aa82c446abaa63447235c3629e">
+					<name>prst_plat_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902532</measureId>
+					<dataset>PRT.KPI_CM</dataset>
+					<column>prst_plat_kpi_uv</column>
+					<showName>平台赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="2f414777f03146ca84cd338ffbb68e2d">
+					<name>pv1_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902534</measureId>
+					<dataset>PRT.KPI_CM</dataset>
+					<column>pv1_uv</column>
+					<showName>PV=1的KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="0b29785f1149449e9c510d7816882640">
+					<name>sapk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902563</measureId>
+					<dataset>PRT.KPI_CM</dataset>
+					<column>sapk_kpi_uv</column>
+					<showName>促销包KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="c57aae1ab6f24ef48ffa3c4116b9a658">
+					<name>soft_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902569</measureId>
+					<dataset>PRT.KPI_CM</dataset>
+					<column>soft_kpi_uv</column>
+					<showName>客户端KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="d03d474459f546bdaff9ef0c7582f607">
+					<name>vol_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902597</measureId>
+					<dataset>PRT.KPI_CM</dataset>
+					<column>vol_kpi_uv</column>
+					<showName>分册KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="798886e3b8e3440f8b049dc568e13938">
+					<name>whol_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902676</measureId>
+					<dataset>PRT.KPI_CM</dataset>
+					<column>whol_kpi_uv</column>
+					<showName>按本KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="48b1423094734afdbac7d314dca78a8c">
+					<name>kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902341</measureId>
+					<dataset>PRT.KPI_CM</dataset>
+					<column>kpi_uv</column>
+					<showName>KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="0c495904a9fc48068457025395d52de7">
+					<name>prst_dmd_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902522</measureId>
+					<dataset>PRT.KPI_CM</dataset>
+					<column>prst_dmd_kpi_uv</column>
+					<showName>点播赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="d4d5506407774ae2a96a781d27c6032f">
+					<name>prst_frd_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902529</measureId>
+					<dataset>PRT.KPI_CM</dataset>
+					<column>prst_frd_kpi_uv</column>
+					<showName>好友赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="793a822665684ba999939c45a121dd08">
+					<name>prst_whol_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902533</measureId>
+					<dataset>PRT.KPI_CM</dataset>
+					<column>prst_whol_kpi_uv</column>
+					<showName>按本赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="3b04f5765fb445b297095525241b5dde">
+					<name>chrg_incprsted_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902177</measureId>
+					<dataset>PRT.KPI_CM</dataset>
+					<column>chrg_incprsted_uv</column>
+					<showName>付费用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+			</measures>
+
+		</drillDown>
+
+		<drillDown id="4318a0cc561b4b1c9c261b8337a89796" drillValueChn="日期+用户类型"><!--日期+用户类型-->
+			<parameterSet>
+				<parameter id="a26c757c103e4dfab668254edfcabf49" />
+				<parameter id="d2a9ac909cbf446f9d57435db284d73f" />
+				<parameter id="17ad9f938a8a4ef2bbe4a284d8df0d03" />
+				<parameter id="8dfea16b0e044bdab90e7caa7df4cf30" />
+			</parameterSet>
+			<queryString id="bd55d53e4203421dac01d3957c36813a">
+				<language>sql</language>
+				<vmFile>bd55d53e4203421dac01d3957c36813a.sql.vm</vmFile>
+				<expression></expression>
+			</queryString>
+
+			<dimensions>
+				<dimension id="b91a1bae8c8b4b0195a63fae1c516412">
+					<dimensionId>901031</dimensionId>
+					<copyFrom>17ad9f938a8a4ef2bbe4a284d8df0d03</copyFrom>
+					<drillLevel>1</drillLevel>
+				</dimension>
+			</dimensions>
+
+			<measures>
+				<measure id="8d3ea9a2a9584c1a809fa92c97790190">
+					<name>tele_desc</name>
+					<dataType>Java.Lang.Long</dataType> 
+					<measureId>902707</measureId>
+					<dataset>PRT.KPI_TEL_CM</dataset>
+					<column>tele_desc</column>
+					<showName>用户类型描述</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="ad1aa7f42be242c8a57c4a67607573e3">
+					<name>chpt_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902071</measureId>
+					<dataset>PRT.KPI_TEL_CM</dataset>
+					<column>chpt_kpi_uv</column>
+					<showName>按章KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="a71bce8e604b403b8cf986f2eef59a82">
+					<name>dmd_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902307</measureId>
+					<dataset>PRT.KPI_TEL_CM</dataset>
+					<column>dmd_kpi_uv</column>
+					<showName>点播KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="b54f1182172f4535b02842ef7427bca4">
+					<name>mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902350</measureId>
+					<dataset>PRT.KPI_TEL_CM</dataset>
+					<column>mopk_kpi_uv</column>
+					<showName>包月KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="c51261c051ce4ec6a200c2c871f5d509">
+					<name>prst_ent_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902528</measureId>
+					<dataset>PRT.KPI_TEL_CM</dataset>
+					<column>prst_ent_kpi_uv</column>
+					<showName>企业赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="78e3604fd0964437b77077cd2040ad19">
+					<name>prst_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902530</measureId>
+					<dataset>PRT.KPI_TEL_CM</dataset>
+					<column>prst_kpi_uv</column>
+					<showName>赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="437e982d665847649cb421b54021e6b3">
+					<name>prst_mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902531</measureId>
+					<dataset>PRT.KPI_TEL_CM</dataset>
+					<column>prst_mopk_kpi_uv</column>
+					<showName>包月赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="7b8e7b3f0c494cbb95a40ab77ba3bb55">
+					<name>prst_plat_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902532</measureId>
+					<dataset>PRT.KPI_TEL_CM</dataset>
+					<column>prst_plat_kpi_uv</column>
+					<showName>平台赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="533be5b6e0f1455c8921285a0bf87422">
+					<name>pv1_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902534</measureId>
+					<dataset>PRT.KPI_TEL_CM</dataset>
+					<column>pv1_uv</column>
+					<showName>PV=1的KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="316e89abf3294e328467f1e3a2ad7c56">
+					<name>sapk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902563</measureId>
+					<dataset>PRT.KPI_TEL_CM</dataset>
+					<column>sapk_kpi_uv</column>
+					<showName>促销包KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="965789c0c74e4ee3824cee1764f98949">
+					<name>soft_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902569</measureId>
+					<dataset>PRT.KPI_TEL_CM</dataset>
+					<column>soft_kpi_uv</column>
+					<showName>客户端KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="c0cb9226b8cb42a2a6458c74d8e79c50">
+					<name>vol_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902597</measureId>
+					<dataset>PRT.KPI_TEL_CM</dataset>
+					<column>vol_kpi_uv</column>
+					<showName>分册KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="07b84f61ab234263837a5e4110ff85fc">
+					<name>whol_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902676</measureId>
+					<dataset>PRT.KPI_TEL_CM</dataset>
+					<column>whol_kpi_uv</column>
+					<showName>按本KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="bfed8c57ef11451087e7bdbdfdfa9034">
+					<name>kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902341</measureId>
+					<dataset>PRT.KPI_TEL_CM</dataset>
+					<column>kpi_uv</column>
+					<showName>KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="b49c04f9ce19478ebae770ff91e24bdc">
+					<name>prst_dmd_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902522</measureId>
+					<dataset>PRT.KPI_TEL_CM</dataset>
+					<column>prst_dmd_kpi_uv</column>
+					<showName>点播赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="0db21492cb504b08b47f642a37703f41">
+					<name>prst_frd_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902529</measureId>
+					<dataset>PRT.KPI_TEL_CM</dataset>
+					<column>prst_frd_kpi_uv</column>
+					<showName>好友赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="b8c850098e2c4e2fb7ea238652a12420">
+					<name>prst_whol_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902533</measureId>
+					<dataset>PRT.KPI_TEL_CM</dataset>
+					<column>prst_whol_kpi_uv</column>
+					<showName>按本赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="9505579a1fc84a75ad95dc69dca236be">
+					<name>chrg_incprsted_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902177</measureId>
+					<dataset>PRT.KPI_TEL_CM</dataset>
+					<column>chrg_incprsted_uv</column>
+					<showName>付费用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+			</measures>
+
+		</drillDown>
+
+		<drillDown id="dbc04b861e5f4d8cacd90ba924665ca7" drillValueChn="日期+省份"><!--日期+省份-->
+			<parameterSet>
+				<parameter id="a26c757c103e4dfab668254edfcabf49" />
+				<parameter id="d2a9ac909cbf446f9d57435db284d73f" />
+				<parameter id="e72f5d95d2e5494dbadd9be6eafb4391" />
+				<parameter id="965a9aad128d43faa1d51833b8fd84bd" />
+			</parameterSet>
+			<queryString id="77b3b18f78f74bc99357d85881cdc5c3">
+				<language>sql</language>
+				<vmFile>77b3b18f78f74bc99357d85881cdc5c3.sql.vm</vmFile>
+				<expression></expression>
+			</queryString>
+
+			<dimensions>
+				<dimension id="e6fe1ed084e84d519187459584834df3">
+					<dimensionId>901022</dimensionId>
+					<copyFrom>965a9aad128d43faa1d51833b8fd84bd</copyFrom>
+					<drillLevel>1</drillLevel>
+				</dimension>
+			</dimensions>
+
+			<measures>
+				<measure id="f6244ea741b04b04839e3c29ef2c4ff4">
+					<name>province_name</name>
+					<dataType>Java.Lang.Long</dataType> 
+					<measureId>902700</measureId>
+					<dataset>PRT.KPI_PRV_CM</dataset>
+					<column>province_name</column>
+					<showName>省份名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="2682763762534bb8a0b1b04e6e680b31">
+					<name>chpt_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902071</measureId>
+					<dataset>PRT.KPI_PRV_CM</dataset>
+					<column>chpt_kpi_uv</column>
+					<showName>按章KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="a089d282b2284256941a12f8b4f61609">
+					<name>dmd_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902307</measureId>
+					<dataset>PRT.KPI_PRV_CM</dataset>
+					<column>dmd_kpi_uv</column>
+					<showName>点播KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="89bf2a96c42a478f8c282cc4b8b8d119">
+					<name>mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902350</measureId>
+					<dataset>PRT.KPI_PRV_CM</dataset>
+					<column>mopk_kpi_uv</column>
+					<showName>包月KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="4f792888b2d14511854eaddab567cf86">
+					<name>prst_ent_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902528</measureId>
+					<dataset>PRT.KPI_PRV_CM</dataset>
+					<column>prst_ent_kpi_uv</column>
+					<showName>企业赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="b95f4158803640258876c6dbe01249b9">
+					<name>prst_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902530</measureId>
+					<dataset>PRT.KPI_PRV_CM</dataset>
+					<column>prst_kpi_uv</column>
+					<showName>赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="24138143c9c14473b2b831082fde68e6">
+					<name>prst_mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902531</measureId>
+					<dataset>PRT.KPI_PRV_CM</dataset>
+					<column>prst_mopk_kpi_uv</column>
+					<showName>包月赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="29e168603de0456abff2bc0cbe846010">
+					<name>prst_plat_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902532</measureId>
+					<dataset>PRT.KPI_PRV_CM</dataset>
+					<column>prst_plat_kpi_uv</column>
+					<showName>平台赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="bc7833d26123483e8581543bdc668d55">
+					<name>pv1_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902534</measureId>
+					<dataset>PRT.KPI_PRV_CM</dataset>
+					<column>pv1_uv</column>
+					<showName>PV=1的KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="8d4df4ec48094a26b4bb59c7d05eaeea">
+					<name>sapk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902563</measureId>
+					<dataset>PRT.KPI_PRV_CM</dataset>
+					<column>sapk_kpi_uv</column>
+					<showName>促销包KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="7fb47292b3bc4f4489082f8b56712f21">
+					<name>soft_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902569</measureId>
+					<dataset>PRT.KPI_PRV_CM</dataset>
+					<column>soft_kpi_uv</column>
+					<showName>客户端KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="5d9056618d6042f984055bfb6c5349ae">
+					<name>vol_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902597</measureId>
+					<dataset>PRT.KPI_PRV_CM</dataset>
+					<column>vol_kpi_uv</column>
+					<showName>分册KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="85e060880eba408485b4fc14a9cd361d">
+					<name>whol_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902676</measureId>
+					<dataset>PRT.KPI_PRV_CM</dataset>
+					<column>whol_kpi_uv</column>
+					<showName>按本KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="c82342dd358c4cb0a185efae3869f82e">
+					<name>kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902341</measureId>
+					<dataset>PRT.KPI_PRV_CM</dataset>
+					<column>kpi_uv</column>
+					<showName>KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="e2c88f3119a84bd1af3b7d8f528bf5e0">
+					<name>prst_dmd_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902522</measureId>
+					<dataset>PRT.KPI_PRV_CM</dataset>
+					<column>prst_dmd_kpi_uv</column>
+					<showName>点播赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="e62dbca5afc64fac91f131cd31529ca9">
+					<name>prst_frd_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902529</measureId>
+					<dataset>PRT.KPI_PRV_CM</dataset>
+					<column>prst_frd_kpi_uv</column>
+					<showName>好友赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="110d10f445154631a2e7d740d52929f3">
+					<name>prst_whol_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902533</measureId>
+					<dataset>PRT.KPI_PRV_CM</dataset>
+					<column>prst_whol_kpi_uv</column>
+					<showName>按本赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="bf5f9693c4fe42a08f66c414ab7754d2">
+					<name>chrg_incprsted_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902177</measureId>
+					<dataset>PRT.KPI_PRV_CM</dataset>
+					<column>chrg_incprsted_uv</column>
+					<showName>付费用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+			</measures>
+
+		</drillDown>
+
+		<drillDown id="7f1cfa2e6aab49f5bd94bca22be72790" drillValueChn="日期+省份+用户类型"><!--日期+省份+用户类型-->
+			<parameterSet>
+				<parameter id="a26c757c103e4dfab668254edfcabf49" />
+				<parameter id="d2a9ac909cbf446f9d57435db284d73f" />
+				<parameter id="e72f5d95d2e5494dbadd9be6eafb4391" />
+				<parameter id="965a9aad128d43faa1d51833b8fd84bd" />
+				<parameter id="17ad9f938a8a4ef2bbe4a284d8df0d03" />
+				<parameter id="8dfea16b0e044bdab90e7caa7df4cf30" />
+			</parameterSet>
+			<queryString id="548bacb3535f4c4e912ee10b9fa9030f">
+				<language>sql</language>
+				<vmFile>548bacb3535f4c4e912ee10b9fa9030f.sql.vm</vmFile>
+				<expression></expression>
+			</queryString>
+
+			<dimensions>
+				<dimension id="703c170766674519bf4de071ac68d776">
+					<dimensionId>901022</dimensionId>
+					<copyFrom>965a9aad128d43faa1d51833b8fd84bd</copyFrom>
+					<drillLevel>1</drillLevel>
+				</dimension>
+				<dimension id="eaba9280e44e45b2a7a05c87c6a6d54c">
+					<dimensionId>901031</dimensionId>
+					<copyFrom>17ad9f938a8a4ef2bbe4a284d8df0d03</copyFrom>
+					<drillLevel>2</drillLevel>
+				</dimension>
+			</dimensions>
+
+			<measures>
+				<measure id="a04ee5f76d3a44a3a8927352b202e5e3">
+					<name>province_name</name>
+					<dataType>Java.Lang.Long</dataType> 
+					<measureId>902700</measureId>
+					<dataset>PRT.KPI_PRV_TEL_CM</dataset>
+					<column>province_name</column>
+					<showName>省份名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="a0751cd96ad544f3ba37f3eaba5c6b7c">
+					<name>tele_desc</name>
+					<dataType>Java.Lang.Long</dataType> 
+					<measureId>902707</measureId>
+					<dataset>PRT.KPI_PRV_TEL_CM</dataset>
+					<column>tele_desc</column>
+					<showName>用户类型描述</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="5dcc481493314e3f853814e51b92f745">
+					<name>chpt_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902071</measureId>
+					<dataset>PRT.KPI_PRV_TEL_CM</dataset>
+					<column>chpt_kpi_uv</column>
+					<showName>按章KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="95b859b83be54051872be0ebc0beeba2">
+					<name>dmd_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902307</measureId>
+					<dataset>PRT.KPI_PRV_TEL_CM</dataset>
+					<column>dmd_kpi_uv</column>
+					<showName>点播KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="215d8a53bce54d0d847cbc46efb9fb23">
+					<name>mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902350</measureId>
+					<dataset>PRT.KPI_PRV_TEL_CM</dataset>
+					<column>mopk_kpi_uv</column>
+					<showName>包月KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="7df536851ce949f580fd8564f55f27be">
+					<name>prst_ent_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902528</measureId>
+					<dataset>PRT.KPI_PRV_TEL_CM</dataset>
+					<column>prst_ent_kpi_uv</column>
+					<showName>企业赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="1caf081897e74039b94bcd1c7ffc6c6e">
+					<name>prst_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902530</measureId>
+					<dataset>PRT.KPI_PRV_TEL_CM</dataset>
+					<column>prst_kpi_uv</column>
+					<showName>赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="0805f538c59946b78d4b8351adea95fe">
+					<name>prst_mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902531</measureId>
+					<dataset>PRT.KPI_PRV_TEL_CM</dataset>
+					<column>prst_mopk_kpi_uv</column>
+					<showName>包月赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="70e198fd6f2f4f4285234d87c1d3bde4">
+					<name>prst_plat_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902532</measureId>
+					<dataset>PRT.KPI_PRV_TEL_CM</dataset>
+					<column>prst_plat_kpi_uv</column>
+					<showName>平台赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="9d382fd713774a47870371fa8b13b656">
+					<name>pv1_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902534</measureId>
+					<dataset>PRT.KPI_PRV_TEL_CM</dataset>
+					<column>pv1_uv</column>
+					<showName>PV=1的KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="272e88b250894cfb97e53ba9740b4055">
+					<name>sapk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902563</measureId>
+					<dataset>PRT.KPI_PRV_TEL_CM</dataset>
+					<column>sapk_kpi_uv</column>
+					<showName>促销包KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="6d4355f4ebb74632aff3238f9ed3631e">
+					<name>soft_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902569</measureId>
+					<dataset>PRT.KPI_PRV_TEL_CM</dataset>
+					<column>soft_kpi_uv</column>
+					<showName>客户端KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="452c0df4f65a4266917ec3558df9c01c">
+					<name>vol_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902597</measureId>
+					<dataset>PRT.KPI_PRV_TEL_CM</dataset>
+					<column>vol_kpi_uv</column>
+					<showName>分册KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="95c8b2d838224244aa01a2c093cfa8bd">
+					<name>whol_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902676</measureId>
+					<dataset>PRT.KPI_PRV_TEL_CM</dataset>
+					<column>whol_kpi_uv</column>
+					<showName>按本KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="21753a78fbb14d699d84cbc2459954b4">
+					<name>kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902341</measureId>
+					<dataset>PRT.KPI_PRV_TEL_CM</dataset>
+					<column>kpi_uv</column>
+					<showName>KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="10860cdef21848cc99f3783a15eda456">
+					<name>prst_dmd_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902522</measureId>
+					<dataset>PRT.KPI_PRV_TEL_CM</dataset>
+					<column>prst_dmd_kpi_uv</column>
+					<showName>点播赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="09c539dd41034be097eb4b2c4e7a4d5e">
+					<name>prst_frd_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902529</measureId>
+					<dataset>PRT.KPI_PRV_TEL_CM</dataset>
+					<column>prst_frd_kpi_uv</column>
+					<showName>好友赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="ae4865b7d7a043e7a25e8e71f2c1c012">
+					<name>prst_whol_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902533</measureId>
+					<dataset>PRT.KPI_PRV_TEL_CM</dataset>
+					<column>prst_whol_kpi_uv</column>
+					<showName>按本赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="bf998ab422f34bd3b062616520fe00de">
+					<name>chrg_incprsted_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902177</measureId>
+					<dataset>PRT.KPI_PRV_TEL_CM</dataset>
+					<column>chrg_incprsted_uv</column>
+					<showName>付费用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+			</measures>
+		</drillDown>
+
+		<drillDown id="3307504a1e334b608895b448f6ec8f07" drillValueChn="日期+省份+城市"><!--日期+省份+城市-->
+			<parameterSet>
+				<parameter id="a26c757c103e4dfab668254edfcabf49" />
+				<parameter id="d2a9ac909cbf446f9d57435db284d73f" />
+				<parameter id="e72f5d95d2e5494dbadd9be6eafb4391" />
+				<parameter id="965a9aad128d43faa1d51833b8fd84bd" />
+				<parameter id="c0399fa42d8b4da99b558de293999177" />
+				<parameter id="969161bdb240401a93419bd668c44534" />
+			</parameterSet>
+			<queryString id="6dc677693527414ca6df7e5c48202391">
+				<language>sql</language>
+				<vmFile>6dc677693527414ca6df7e5c48202391.sql.vm</vmFile>
+				<expression></expression>
+			</queryString>
+
+			<dimensions>
+				<dimension id="18de941927184fa0b486091af2a8727d">
+					<dimensionId>901022</dimensionId>
+					<copyFrom>965a9aad128d43faa1d51833b8fd84bd</copyFrom>
+					<drillLevel>1</drillLevel>
+				</dimension>
+				<dimension id="2f3e42e22e1d4116ab57a340cc15cabb">
+					<dimensionId>901010</dimensionId>
+					<copyFrom>969161bdb240401a93419bd668c44534</copyFrom>
+					<drillLevel>2</drillLevel>
+				</dimension>
+			</dimensions>
+
+			<measures>
+				<measure id="a8335c716d8241ba8d3177faeb3851ca">
+					<name>city_name</name>
+					<dataType>Java.Lang.Long</dataType> 
+					<measureId>902689</measureId>
+					<dataset>PRT.KPI_CTY_CM</dataset>
+					<column>city_name</column>
+					<showName>城市名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="3270388d0f2845eebdcc7a891551aeeb">
+					<name>province_name</name>
+					<dataType>Java.Lang.Long</dataType> 
+					<measureId>902700</measureId>
+					<dataset>PRT.KPI_CTY_CM</dataset>
+					<column>province_name</column>
+					<showName>省份名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="0141e05a37884ec8a9599391206dbf5d">
+					<name>chpt_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902071</measureId>
+					<dataset>PRT.KPI_CTY_CM</dataset>
+					<column>chpt_kpi_uv</column>
+					<showName>按章KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="8724757d7c6b4b12bd8620730cfdd5c4">
+					<name>dmd_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902307</measureId>
+					<dataset>PRT.KPI_CTY_CM</dataset>
+					<column>dmd_kpi_uv</column>
+					<showName>点播KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="7efd53e02f6748dfbe455fabe75740fe">
+					<name>mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902350</measureId>
+					<dataset>PRT.KPI_CTY_CM</dataset>
+					<column>mopk_kpi_uv</column>
+					<showName>包月KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="b70ce62802dc4c7987dd06dd8924338a">
+					<name>prst_ent_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902528</measureId>
+					<dataset>PRT.KPI_CTY_CM</dataset>
+					<column>prst_ent_kpi_uv</column>
+					<showName>企业赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="e12fc80c205248dd9e4ceb737c36a7e7">
+					<name>prst_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902530</measureId>
+					<dataset>PRT.KPI_CTY_CM</dataset>
+					<column>prst_kpi_uv</column>
+					<showName>赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="a0a2f7201b664f87b335ff7a997fbdb5">
+					<name>prst_mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902531</measureId>
+					<dataset>PRT.KPI_CTY_CM</dataset>
+					<column>prst_mopk_kpi_uv</column>
+					<showName>包月赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="8c8747cb3e654652b235f39c505d9a20">
+					<name>prst_plat_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902532</measureId>
+					<dataset>PRT.KPI_CTY_CM</dataset>
+					<column>prst_plat_kpi_uv</column>
+					<showName>平台赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="9c12f05d007146b68c301caa6476f8bf">
+					<name>pv1_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902534</measureId>
+					<dataset>PRT.KPI_CTY_CM</dataset>
+					<column>pv1_uv</column>
+					<showName>PV=1的KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="cde16e1d313e4087b6bf3ae54e041509">
+					<name>sapk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902563</measureId>
+					<dataset>PRT.KPI_CTY_CM</dataset>
+					<column>sapk_kpi_uv</column>
+					<showName>促销包KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="e48627cd3ddc480999d2c76218ff1564">
+					<name>soft_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902569</measureId>
+					<dataset>PRT.KPI_CTY_CM</dataset>
+					<column>soft_kpi_uv</column>
+					<showName>客户端KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="8c2be6b7e3c340f586a8d32d23049286">
+					<name>vol_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902597</measureId>
+					<dataset>PRT.KPI_CTY_CM</dataset>
+					<column>vol_kpi_uv</column>
+					<showName>分册KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="bd6aa0a4aeba4a20b878a8804238bde1">
+					<name>whol_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902676</measureId>
+					<dataset>PRT.KPI_CTY_CM</dataset>
+					<column>whol_kpi_uv</column>
+					<showName>按本KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="a11a067f3afa4c4ebfee6b8f13efd8d6">
+					<name>kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902341</measureId>
+					<dataset>PRT.KPI_CTY_CM</dataset>
+					<column>kpi_uv</column>
+					<showName>KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="d67313a297194323b8aa20f99bc8fd55">
+					<name>prst_dmd_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902522</measureId>
+					<dataset>PRT.KPI_CTY_CM</dataset>
+					<column>prst_dmd_kpi_uv</column>
+					<showName>点播赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="d27fc323f63f40dba375e35b737c0f7d">
+					<name>prst_frd_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902529</measureId>
+					<dataset>PRT.KPI_CTY_CM</dataset>
+					<column>prst_frd_kpi_uv</column>
+					<showName>好友赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="62e1890bb10644c693544959d7ef0d51">
+					<name>prst_whol_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902533</measureId>
+					<dataset>PRT.KPI_CTY_CM</dataset>
+					<column>prst_whol_kpi_uv</column>
+					<showName>按本赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="80d4bc18f12a48b8ae209ad1f66b9189">
+					<name>chrg_incprsted_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902177</measureId>
+					<dataset>PRT.KPI_CTY_CM</dataset>
+					<column>chrg_incprsted_uv</column>
+					<showName>付费用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+			</measures>
+
+		</drillDown>
+
+		<drillDown id="6f007cdfa70142c8a9a6c01ce3b1c56f" drillValueChn="日期+省份+城市+用户类型"><!--日期+省份+城市+用户类型-->
+			<parameterSet>
+				<parameter id="a26c757c103e4dfab668254edfcabf49" />
+				<parameter id="d2a9ac909cbf446f9d57435db284d73f" />
+				<parameter id="e72f5d95d2e5494dbadd9be6eafb4391" />
+				<parameter id="965a9aad128d43faa1d51833b8fd84bd" />
+				<parameter id="c0399fa42d8b4da99b558de293999177" />
+				<parameter id="969161bdb240401a93419bd668c44534" />
+				<parameter id="17ad9f938a8a4ef2bbe4a284d8df0d03" />
+				<parameter id="8dfea16b0e044bdab90e7caa7df4cf30" />
+			</parameterSet>
+			<queryString id="006f738f16b2479d8b84e938d5cfeb97">
+				<language>sql</language>
+				<vmFile>006f738f16b2479d8b84e938d5cfeb97.sql.vm</vmFile>
+				<expression></expression>
+			</queryString>
+
+			<dimensions>
+				<dimension id="7a0bc9a71c474e80ad1bb17496939471">
+					<dimensionId>901022</dimensionId>
+					<copyFrom>965a9aad128d43faa1d51833b8fd84bd</copyFrom>
+					<drillLevel>1</drillLevel>
+				</dimension>
+				<dimension id="212de0742e3b4f4cb5553af2fe8f739a">
+					<dimensionId>901010</dimensionId>
+					<copyFrom>969161bdb240401a93419bd668c44534</copyFrom>
+					<drillLevel>2</drillLevel>
+				</dimension>
+				<dimension id="a109c11c33b94ce188977301f05b05e1">
+					<dimensionId>901031</dimensionId>
+					<copyFrom>17ad9f938a8a4ef2bbe4a284d8df0d03</copyFrom>
+					<drillLevel>3</drillLevel>
+				</dimension>
+			</dimensions>
+
+			<measures>
+				<measure id="6cc38cb542694336b5184a0d56c34c0c">
+					<name>city_name</name>
+					<dataType>Java.Lang.Long</dataType> 
+					<measureId>902689</measureId>
+					<dataset>PRT.KPI_CTY_TEL_CM</dataset>
+					<column>city_name</column>
+					<showName>城市名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="3dcfc711058b4b0496de43f7452717cd">
+					<name>province_name</name>
+					<dataType>Java.Lang.Long</dataType> 
+					<measureId>902700</measureId>
+					<dataset>PRT.KPI_CTY_TEL_CM</dataset>
+					<column>province_name</column>
+					<showName>省份名称</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="ef7867afc78346b0af9f5b1144facfc3">
+					<name>tele_desc</name>
+					<dataType>Java.Lang.Long</dataType> 
+					<measureId>902707</measureId>
+					<dataset>PRT.KPI_CTY_TEL_CM</dataset>
+					<column>tele_desc</column>
+					<showName>用户类型描述</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="bda58bebacee4993b4aba0d4f18c332f">
+					<name>chpt_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902071</measureId>
+					<dataset>PRT.KPI_CTY_TEL_CM</dataset>
+					<column>chpt_kpi_uv</column>
+					<showName>按章KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="05087ab0c1634083a8edffa627190ac3">
+					<name>dmd_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902307</measureId>
+					<dataset>PRT.KPI_CTY_TEL_CM</dataset>
+					<column>dmd_kpi_uv</column>
+					<showName>点播KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="c51a86d2a25d42749b102ade61cba23c">
+					<name>mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902350</measureId>
+					<dataset>PRT.KPI_CTY_TEL_CM</dataset>
+					<column>mopk_kpi_uv</column>
+					<showName>包月KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="97d8b589ab904362bab919eaa3707486">
+					<name>prst_ent_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902528</measureId>
+					<dataset>PRT.KPI_CTY_TEL_CM</dataset>
+					<column>prst_ent_kpi_uv</column>
+					<showName>企业赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="9e0f711d1ea2414aa10f87c3dfc57bef">
+					<name>prst_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902530</measureId>
+					<dataset>PRT.KPI_CTY_TEL_CM</dataset>
+					<column>prst_kpi_uv</column>
+					<showName>赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="2384508827374ef9b763c4b5a1fd49a8">
+					<name>prst_mopk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902531</measureId>
+					<dataset>PRT.KPI_CTY_TEL_CM</dataset>
+					<column>prst_mopk_kpi_uv</column>
+					<showName>包月赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="126dc0051617401fb2a4076e1a93d0bc">
+					<name>prst_plat_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902532</measureId>
+					<dataset>PRT.KPI_CTY_TEL_CM</dataset>
+					<column>prst_plat_kpi_uv</column>
+					<showName>平台赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="cf37c1d9e0ae423ca2088222ca11cc3c">
+					<name>pv1_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902534</measureId>
+					<dataset>PRT.KPI_CTY_TEL_CM</dataset>
+					<column>pv1_uv</column>
+					<showName>PV=1的KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="bf8517eb8efa4e1490815073f49b22f7">
+					<name>sapk_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902563</measureId>
+					<dataset>PRT.KPI_CTY_TEL_CM</dataset>
+					<column>sapk_kpi_uv</column>
+					<showName>促销包KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="b59887e3e4bc44fa917e4d902d63c60f">
+					<name>soft_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902569</measureId>
+					<dataset>PRT.KPI_CTY_TEL_CM</dataset>
+					<column>soft_kpi_uv</column>
+					<showName>客户端KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="23d64c3ab14c44648abe25568890c66b">
+					<name>vol_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902597</measureId>
+					<dataset>PRT.KPI_CTY_TEL_CM</dataset>
+					<column>vol_kpi_uv</column>
+					<showName>分册KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="1e5eddfd03824a42957fff34a4cf4978">
+					<name>whol_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902676</measureId>
+					<dataset>PRT.KPI_CTY_TEL_CM</dataset>
+					<column>whol_kpi_uv</column>
+					<showName>按本KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="d15da3893e574eaa85f769ab6dabb9a4">
+					<name>kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902341</measureId>
+					<dataset>PRT.KPI_CTY_TEL_CM</dataset>
+					<column>kpi_uv</column>
+					<showName>KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="8eaee6743c4a4799ae90dbd50c1ffa6e">
+					<name>prst_dmd_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902522</measureId>
+					<dataset>PRT.KPI_CTY_TEL_CM</dataset>
+					<column>prst_dmd_kpi_uv</column>
+					<showName>点播赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="613d7404f8ae477a8f46973728048e75">
+					<name>prst_frd_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902529</measureId>
+					<dataset>PRT.KPI_CTY_TEL_CM</dataset>
+					<column>prst_frd_kpi_uv</column>
+					<showName>好友赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="8d4a3c45fd154da580dc53cdd3f333f1">
+					<name>prst_whol_kpi_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902533</measureId>
+					<dataset>PRT.KPI_CTY_TEL_CM</dataset>
+					<column>prst_whol_kpi_uv</column>
+					<showName>按本赠送KPI用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+				<measure id="6a8a63a8e0644cdaa565ad5fc5dd84e3">
+					<name>chrg_incprsted_uv</name>
+					<dataType>Java.Lang.Long</dataType>
+					<measureId>902177</measureId>
+					<dataset>PRT.KPI_CTY_TEL_CM</dataset>
+					<column>chrg_incprsted_uv</column>
+					<showName>付费用户数</showName>
+					<showFormat></showFormat>
+				</measure>
+			</measures>
+		</drillDown>
+
+
+	</cube>
+
+</report>
