@@ -15,10 +15,10 @@ public class Test {
 				@Override
 				public void run(){
 					for(int i=0;i<1000000;i++){
-						Object c1=SingLeton01.getInstance();  //饿汉式
-						//Object c2=SingLeton02.getInstance();	//懒汉式
-						//Object c3=SingLeton03.getInstance();	//静态内部类
-						//Object c4=SingLeton04.Instance;			//枚举式
+						//Object c1=SingLeton01.getInstance();  //饿汉式   23s
+						//Object c2=SingLeton02.getInstance();	//懒汉式   111s
+						//Object c3=SingLeton03.getInstance();	//静态内部类  30s
+						Object c4=SingLeton04.Instance;			//枚举式  20s
 					}
 					countDownLatch.countDown();
 				}

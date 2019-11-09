@@ -11,7 +11,7 @@ public class SingLeton03 {
 	 *
 	 */
 	private static class Test03SingLetonInstance{
-		private static final SingLeton03 instance=new SingLeton03();
+		private static final SingLeton03 INSTANCE=new SingLeton03();
 	} 	
 	private SingLeton03() {
 		
@@ -21,6 +21,6 @@ public class SingLeton03 {
 	 * @return
 	 */
 	public static SingLeton03 getInstance(){
-		return Test03SingLetonInstance.instance;	
+		return Test03SingLetonInstance.INSTANCE;	
 	}	
 }
